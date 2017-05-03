@@ -91,22 +91,20 @@ class structure(object):
         self.ngridpoints = len(self.grid)
 
 
-    def compute_radii(self):
+    def compute_rmat(self):
         rmat = np.zeros((self.natoms, self.ngridpoints))
         for i in range(self.natoms):
             ri = self.coordinates[i]
             for j in range(self.ngridpoints):
                 rj = self.grid[j]
-                rmat[i,j] = np.sqrt((ri[0] - rj[0])**2 + (ri[1] - rj[1])**2 + (ri[2] - rj[2])**2)
+                rmat[i,j] = np.sqrt(np.sum((ri-rj)**2))
         self.rmat = rmat
 
 
-    def compute_qm_potential(self):
-        pass
-
-
-    def compute_ESP_squared_error(self, testcharges):
-        pass
+    def compute_qm_esp(self):
+        #this is somewhat expensive
+        esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float), self.grid)
+        self.esp_grid_qm = esp_grid_qm 
 
     
     def write_xyz(self, filename):
