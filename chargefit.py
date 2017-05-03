@@ -110,6 +110,14 @@ class structure(object):
                 atomname = conversions.number2name[self.numbers[i]]
                 f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i,0], self.coordinates[i,1],self.coordinates[i,2]))
 
+    def write_grid(self, filename):
+        with open(filename, "w") as f:
+            f.write("{}\n\n".format(self.ngridpoints))
+            for i in range(self.ngridpoints):
+                atomname = 'H'
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i,0], self.grid[i,1],self.grid[i,2]))
+
+
 
 def loadfchks(dirname):
     content = os.listdir(dirname)
