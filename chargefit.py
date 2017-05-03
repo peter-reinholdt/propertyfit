@@ -93,6 +93,12 @@ class structure(object):
 
     def compute_radii(self):
         rmat = np.zeros((self.natoms, self.ngridpoints))
+        for i in range(self.natoms):
+            ri = self.coordinates[i]
+            for j in range(self.ngridpoints):
+                rj = self.grid[j]
+                rmat[i,j] = np.sqrt((ri[0] - rj[0])**2 + (ri[1] - rj[1])**2 + (ri[2] - rj[2])**2)
+        self.rmat = rmat
 
 
     def compute_qm_potential(self):
