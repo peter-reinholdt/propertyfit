@@ -91,14 +91,14 @@ class structure(object):
         self.ngridpoints = len(self.grid)
 
 
-    def compute_rmat(self):
-        rmat = np.zeros((self.natoms, self.ngridpoints))
+    def compute_rinvmat(self):
+        rinvmat = np.zeros((self.natoms, self.ngridpoints))
         for i in range(self.natoms):
             ri = self.coordinates[i]
             for j in range(self.ngridpoints):
                 rj = self.grid[j]
-                rmat[i,j] = np.sqrt(np.sum((ri-rj)**2))
-        self.rmat = rmat
+                rinvmat[i,j] = np.sum((ri-rj)**2)**(-0.5)
+        self.rinvmat = rinvmat
 
 
     def compute_qm_esp(self):
@@ -132,6 +132,17 @@ def loadfchks(dirname):
         structures.append(structure(io))
         del io
     return structures
+
+
+def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
+    #compute ESP due to points charges in grid points, get sum of squared error to QM ESP
+    natoms      = rinvmat.shape[0]
+    ngridpoints = rinvmat.shape[1]
+    for i in range(natoms):
+        for j in range(ngridpoints):
+            esp_grid_qm[j] -= testcharges[i] * rinvmat[i,j]
+    return np.sum(esp_grid_qm**2)
+
 
 def cost():
     pass
