@@ -12,7 +12,7 @@ class structure(object):
         self.obasis         = IO.obasis
 
 
-    def compute_grid(self, pointdensity=1.0):
+    def compute_grid_surface(self, pointdensity=1.0, radius_scale=1.4):
         # #####################################################
         #
         # This part generates apparent uniformly spaced points on a vdW
@@ -32,7 +32,7 @@ class structure(object):
         vdW = {1:1.200, 6:1.700, 7:1.550, 8:1.520, 16:1.800}
         points = np.zeros(len(self.numbers)-1)
         for i in range(1, len(self.numbers)):
-            points[i-1] = int(pointdensity*4*np.pi*1.4*vdW[self.numbers[i]])
+            points[i-1] = int(pointdensity*4*np.pi*radius_scale*vdW[self.numbers[i]])
         # grid = [x, y, z]
         grid = np.zeros((np.int(np.sum(points)), 3))
         idx = 0
@@ -45,13 +45,11 @@ class structure(object):
                 if k == 1 or k == N:
                     phi = 0
                 else:
-                    print(N)
-                    print ((N*(1-h**2))**0.5) 
                     phi = ((phiold + 3.6/((N*(1-h**2))**0.5))) % (2*np.pi)
                 phiold = phi
-                x = 1.4*vdW[self.numbers[i]]*np.cos(phi)*np.sin(theta)
-                y = 1.4*vdW[self.numbers[i]]*np.sin(phi)*np.sin(theta)
-                z = 1.4*vdW[self.numbers[i]]*np.cos(theta)
+                x = radius_scale*vdW[self.numbers[i]]*np.cos(phi)*np.sin(theta)
+                y = radius_scale*vdW[self.numbers[i]]*np.sin(phi)*np.sin(theta)
+                z = radius_scale*vdW[self.numbers[i]]*np.cos(theta)
                 grid[idx, 0] = x + self.coordinates[i,0]
                 grid[idx, 1] = y + self.coordinates[i,1]
                 grid[idx, 2] = z + self.coordinates[i,2]
@@ -77,8 +75,18 @@ class structure(object):
                     chkrm += 1
                     break
         
-        self.grid = grid
+        return grid
 
+    
+    def compute_grid(self, rmin=1.4, rmax=2.0, pointdensity=1.0, nsurfaces=10):
+        radii = np.linspace(rmin, rmax, nsurfaces)
+        surfaces = []
+        for r in radii:
+            print(r)
+            surfaces.append(self.compute_grid_surface(pointdensity=pointdensity, radius_scale=r))
+        for s in surfaces:
+            print(len(s))
+        self.grid = np.concatenate(surfaces)
 
     def compute_radii(self):
         pass
