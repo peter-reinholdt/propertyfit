@@ -64,7 +64,7 @@ class structure(object):
             chkrm = 0
             for j in range(0, len(grid)):
                 r = ((grid[j-chkrm,0]-self.coordinates[i,0])**2+(grid[j-chkrm,1]-self.coordinates[i,1])**2+(grid[j-chkrm,2]-self.coordinates[i,2])**2)**0.5
-                if r < 1.39*vdW[self.numbers[i]]:
+                if r < radius_scale*0.99*vdW[self.numbers[i]]:
                     grid = np.delete(grid,j-chkrm,axis=0)
                     chkrm += 1
         chkrm = 0
@@ -79,7 +79,7 @@ class structure(object):
         return grid
 
     
-    def compute_grid(self, rmin=1.4, rmax=2.0, pointdensity=1.0, nsurfaces=10):
+    def compute_grid(self, rmin=1.4, rmax=2.0, pointdensity=1.0, nsurfaces=2):
         radii = np.linspace(rmin, rmax, nsurfaces)
         surfaces = []
         for r in radii:
