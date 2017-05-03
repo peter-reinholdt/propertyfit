@@ -2,7 +2,7 @@ import numpy as np
 import horton
 import os
 import sys
-
+import conversions
 
 class structure(object):
     def __init__(self, IO):
@@ -107,7 +107,8 @@ class structure(object):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.natoms))
             for i in range(self.natoms):
-                f.write("H {} {} {}\n".format(self.coordinates[i,0], self.coordinates[i,1],self.coordinates[i,2]))
+                atomname = conversions.number2name[self.numbers[i]]
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i,0], self.coordinates[i,1],self.coordinates[i,2]))
 
 
 def loadfchks(dirname):
