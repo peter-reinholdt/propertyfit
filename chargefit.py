@@ -29,7 +29,7 @@ class structure(object):
         #
         # #####################################################
         # vdW in pm as of now
-        vdW = {1:120.0, 6:170.0, 7:155.0, 8:152.0, 16:180.0}
+        vdW = {1:1.200, 6:1.700, 7:1.550, 8:1.520, 16:1.800}
         points = np.zeros(len(self.numbers)-1)
         for i in range(1, len(self.numbers)):
             points[i-1] = int(pointdensity*4*np.pi*1.4*vdW[self.numbers[i]])
@@ -40,11 +40,13 @@ class structure(object):
             N = int(points[i-1])
             #Saff & Kuijlaars algorithm
             for k in range(1, N+1):
-                h = -1 +2*(k-1)/(N-1)
+                h = -1.0 +2.0*(k-1.0)/(N-1.0)
                 theta = np.arccos(h)
                 if k == 1 or k == N:
                     phi = 0
                 else:
+                    print(N)
+                    print ((N*(1-h**2))**0.5) 
                     phi = ((phiold + 3.6/((N*(1-h**2))**0.5))) % (2*np.pi)
                 phiold = phi
                 x = 1.4*vdW[self.numbers[i]]*np.cos(phi)*np.sin(theta)
@@ -59,7 +61,7 @@ class structure(object):
         dist = ((grid[0,0]-grid[1,0])**2+(grid[0,1]-grid[1,1])**2+(grid[0,2]-grid[1,2])**2)**0.5
         
         # Remove overlap all points to close to any atom
-        for i in range(1, len(input)):
+        for i in range(1, len(self.numbers)):
             chkrm = 0
             for j in range(0, len(grid)):
                 r = ((grid[j-chkrm,0]-self.coordinates[i,0])**2+(grid[j-chkrm,1]-self.coordinates[i,1])**2+(grid[j-chkrm,2]-self.coordinates[i,2])**2)**0.5
@@ -75,7 +77,7 @@ class structure(object):
                     chkrm += 1
                     break
         
-        self.grid
+        self.grid = grid
 
 
     def compute_radii(self):
