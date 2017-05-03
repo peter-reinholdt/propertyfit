@@ -10,6 +10,7 @@ class structure(object):
         self.numbers        = IO.numbers
         self.dm             = IO.get_dm_full()
         self.obasis         = IO.obasis
+        self.natoms         = len(self.numbers)
 
 
     def compute_grid_surface(self, pointdensity=1.0, radius_scale=1.4):
@@ -86,10 +87,12 @@ class structure(object):
             surfaces.append(self.compute_grid_surface(pointdensity=pointdensity, radius_scale=r))
         for s in surfaces:
             print(len(s))
-        self.grid = np.concatenate(surfaces)
+        self.grid        = np.concatenate(surfaces)
+        self.ngridpoints = len(self.grid)
+
 
     def compute_radii(self):
-        pass
+        rmat = np.zeros((self.natoms, self.ngridpoints))
 
 
     def compute_qm_potential(self):
@@ -99,6 +102,12 @@ class structure(object):
     def compute_ESP_squared_error(self, testcharges):
         pass
 
+    
+    def write_xyz(self, filename):
+        with open(filename, "w") as f:
+            f.write("{}\n\n".format(self.natoms))
+            for i in range(self.natoms):
+                f.write("H {} {} {}\n".format(self.coordinates[i,0], self.coordinates[i,1],self.coordinates[i,2]))
 
 
 def loadfchks(dirname):
