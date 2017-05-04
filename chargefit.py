@@ -34,7 +34,7 @@ class structure(object):
         #
         # #####################################################
         # vdW in pm as of now
-        vdW = {1:1.200*angstrom2bohr, 6:1.700,*angstrom2bohr 7:1.550,*angstrom2bohr 8:1.520*angstrom2bohr, 16:1.800*angstrom2bohr}
+        vdW = {1:1.200*angstrom2bohr, 6:1.700*angstrom2bohr, 7:1.550*angstrom2bohr, 8:1.520*angstrom2bohr, 16:1.800*angstrom2bohr}
         points = np.zeros(len(self.numbers)-1)
         for i in range(1, len(self.numbers)):
             points[i-1] = int(pointdensity*4*np.pi*radius_scale*vdW[self.numbers[i]])
@@ -142,12 +142,12 @@ def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
     #compute ESP due to points charges in grid points, get sum of squared error to QM ESP
     natoms      = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
+    grid = np.copy(esp_grid_qm)
     for i in range(natoms):
         for j in range(ngridpoints):
-            esp_grid_qm[j] -= testcharges[i] * rinvmat[i,j]
-    return np.sum(esp_grid_qm**2)
+            grid[j] -= testcharges[i] * rinvmat[i,j]
+    return np.sum(grid**2)
 
 
-def cost():
-    pass
-    #her er det parallel
+def cost(q):
+    return esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, q)
