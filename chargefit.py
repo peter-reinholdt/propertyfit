@@ -2,7 +2,11 @@ import numpy as np
 import horton
 import os
 import sys
-import conversions
+from conversions import number2name, angstrom2bohr, bohr2angstrom
+
+#
+#Internally, we work in atomic units
+#
 
 class structure(object):
     def __init__(self, IO):
@@ -30,7 +34,7 @@ class structure(object):
         #
         # #####################################################
         # vdW in pm as of now
-        vdW = {1:1.200, 6:1.700, 7:1.550, 8:1.520, 16:1.800}
+        vdW = {1:1.200*angstrom2bohr, 6:1.700,*angstrom2bohr 7:1.550,*angstrom2bohr 8:1.520*angstrom2bohr, 16:1.800*angstrom2bohr}
         points = np.zeros(len(self.numbers)-1)
         for i in range(1, len(self.numbers)):
             points[i-1] = int(pointdensity*4*np.pi*radius_scale*vdW[self.numbers[i]])
@@ -79,7 +83,7 @@ class structure(object):
         return grid
 
     
-    def compute_grid(self, rmin=1.4, rmax=2.0, pointdensity=1.0, nsurfaces=2):
+    def compute_grid(self, rmin=1.4*angstrom2bohr, rmax=2.0*angstrom2bohr, pointdensity=1.0, nsurfaces=2):
         radii = np.linspace(rmin, rmax, nsurfaces)
         surfaces = []
         for r in radii:
@@ -111,15 +115,15 @@ class structure(object):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.natoms))
             for i in range(self.natoms):
-                atomname = conversions.number2name[self.numbers[i]]
-                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i,0], self.coordinates[i,1],self.coordinates[i,2]))
+                atomname = number2name[self.numbers[i]]
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i,0]*bohr2angstrom, self.coordinates[i,1]*bohr2angstrom,self.coordinates[i,2]*bohr2angstrom))
 
     def write_grid(self, filename):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.ngridpoints))
             for i in range(self.ngridpoints):
                 atomname = 'H'
-                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i,0], self.grid[i,1],self.grid[i,2]))
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i,0]*bohr2angstrom, self.grid[i,1]*bohr2angstrom,self.grid[i,2]*bohr2angstrom))
 
 
 
