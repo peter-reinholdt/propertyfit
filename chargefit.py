@@ -1,7 +1,6 @@
 import numpy as np
 import horton
-import os
-import sys
+from pfio import save_file, load_file, loadfchks
 from conversions import number2name, angstrom2bohr, bohr2angstrom
 
 #
@@ -9,12 +8,13 @@ from conversions import number2name, angstrom2bohr, bohr2angstrom
 #
 
 class structure(object):
-    def __init__(self, IO):
+    def __init__(self, IO, fchkname):
         self.coordinates    = IO.coordinates
         self.numbers        = IO.numbers
         self.dm             = IO.get_dm_full()
         self.obasis         = IO.obasis
         self.natoms         = len(self.numbers)
+        self.fchkname       = fchkname
 
 
     def compute_grid_surface(self, pointdensity=1.0, radius_scale=1.4):
@@ -110,7 +110,13 @@ class structure(object):
         esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float), self.grid)
         self.esp_grid_qm = esp_grid_qm 
 
-    
+   
+    def compute_all(self):
+        self.compute_grid()
+        self.compute_rinvmat()
+        self.compute_qm_esp()
+
+
     def write_xyz(self, filename):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.natoms))
@@ -126,16 +132,10 @@ class structure(object):
                 f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i,0]*bohr2angstrom, self.grid[i,1]*bohr2angstrom,self.grid[i,2]*bohr2angstrom))
 
 
+    def reload_obasis(self):
+        IO = horton.IOData.from_file(self.fchkname)
+        self.obasis = IO.obasis
 
-def loadfchks(dirname):
-    content = os.listdir(dirname)
-    fchks   = [f for f in content if ".fchk" in f]
-    structures = []
-    for i in fchks:
-        io = horton.IOData.from_file(dirname + '/' + i)
-        structures.append(structure(io))
-        del io
-    return structures
 
 
 def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
@@ -147,5 +147,3 @@ def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
         for j in range(ngridpoints):
             grid[j] -= testcharges[i] * rinvmat[i,j]
     return np.sum(grid**2)
-
-
