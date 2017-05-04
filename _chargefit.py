@@ -2,11 +2,7 @@ import numpy as np
 import horton
 import os
 import sys
-from conversions import number2name, angstrom2bohr, bohr2angstrom
-
-#
-#Internally, we work in atomic units
-#
+import conversions
 
 class structure(object):
     def __init__(self, IO):
@@ -34,7 +30,7 @@ class structure(object):
         #
         # #####################################################
         # vdW in pm as of now
-        vdW = {1:1.200*angstrom2bohr, 6:1.700*angstrom2bohr, 7:1.550*angstrom2bohr, 8:1.520*angstrom2bohr, 16:1.800*angstrom2bohr}
+        vdW = {1:1.200, 6:1.700, 7:1.550, 8:1.520, 16:1.800}
         points = np.zeros(len(self.numbers)-1)
         for i in range(1, len(self.numbers)):
             points[i-1] = int(pointdensity*4*np.pi*radius_scale*vdW[self.numbers[i]])
@@ -68,7 +64,7 @@ class structure(object):
             chkrm = 0
             for j in range(0, len(grid)):
                 r = ((grid[j-chkrm,0]-self.coordinates[i,0])**2+(grid[j-chkrm,1]-self.coordinates[i,1])**2+(grid[j-chkrm,2]-self.coordinates[i,2])**2)**0.5
-                if r < radius_scale*0.99*vdW[self.numbers[i]]:
+                if r < 1.39*vdW[self.numbers[i]]:
                     grid = np.delete(grid,j-chkrm,axis=0)
                     chkrm += 1
         chkrm = 0
@@ -83,7 +79,7 @@ class structure(object):
         return grid
 
     
-    def compute_grid(self, rmin=1.4*angstrom2bohr, rmax=2.0*angstrom2bohr, pointdensity=1.0, nsurfaces=2):
+    def compute_grid(self, rmin=1.4, rmax=2.0, pointdensity=1.0, nsurfaces=10):
         radii = np.linspace(rmin, rmax, nsurfaces)
         surfaces = []
         for r in radii:
@@ -95,35 +91,37 @@ class structure(object):
         self.ngridpoints = len(self.grid)
 
 
-    def compute_rinvmat(self):
-        rinvmat = np.zeros((self.natoms, self.ngridpoints))
+    def compute_radii(self):
+        rmat = np.zeros((self.natoms, self.ngridpoints))
         for i in range(self.natoms):
             ri = self.coordinates[i]
             for j in range(self.ngridpoints):
                 rj = self.grid[j]
-                rinvmat[i,j] = np.sum((ri-rj)**2)**(-0.5)
-        self.rinvmat = rinvmat
+                rmat[i,j] = np.sqrt((ri[0] - rj[0])**2 + (ri[1] - rj[1])**2 + (ri[2] - rj[2])**2)
+        self.rmat = rmat
 
 
-    def compute_qm_esp(self):
-        #this is somewhat expensive
-        esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float), self.grid)
-        self.esp_grid_qm = esp_grid_qm 
+    def compute_qm_potential(self):
+        pass
+
+
+    def compute_ESP_squared_error(self, testcharges):
+        pass
 
     
     def write_xyz(self, filename):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.natoms))
             for i in range(self.natoms):
-                atomname = number2name[self.numbers[i]]
-                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i,0]*bohr2angstrom, self.coordinates[i,1]*bohr2angstrom,self.coordinates[i,2]*bohr2angstrom))
+                atomname = conversions.number2name[self.numbers[i]]
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i,0], self.coordinates[i,1],self.coordinates[i,2]))
 
     def write_grid(self, filename):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.ngridpoints))
             for i in range(self.ngridpoints):
                 atomname = 'H'
-                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i,0]*bohr2angstrom, self.grid[i,1]*bohr2angstrom,self.grid[i,2]*bohr2angstrom))
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i,0], self.grid[i,1],self.grid[i,2]))
 
 
 
@@ -137,15 +135,6 @@ def loadfchks(dirname):
         del io
     return structures
 
-
-def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
-    #compute ESP due to points charges in grid points, get sum of squared error to QM ESP
-    natoms      = rinvmat.shape[0]
-    ngridpoints = rinvmat.shape[1]
-    grid = np.copy(esp_grid_qm)
-    for i in range(natoms):
-        for j in range(ngridpoints):
-            grid[j] -= testcharges[i] * rinvmat[i,j]
-    return np.sum(grid**2)
-
-
+def cost():
+    pass
+    #her er det parallel
