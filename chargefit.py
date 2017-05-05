@@ -105,6 +105,17 @@ class structure(object):
         self.rinvmat = rinvmat
 
 
+    def compute_xyzmat(self):
+        xyzmat = np.zeros((self.natoms, self.ngridpoints, 3))
+        for i in range(self.natoms):
+            ri = self.coordinates[i]
+            for j in range(self.ngridpoints):
+                rj = self.grid[j]
+                for k in range(3):
+                    xyzmat[i,j,k] = ri[k] - rj[k]
+        self.xyzmat = xyzmat
+
+
     def compute_qm_esp(self):
         #this is somewhat expensive
         esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float), self.grid)

@@ -1,4 +1,3 @@
-
 bohr2angstrom = 0.52917724900001
 angstrom2bohr = 1.0/(bohr2angstrom)
 number2name          = {1: 'H',
