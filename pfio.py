@@ -1,6 +1,8 @@
 import dill
 import os
 import horton
+import glob
+import numpy as np
 
 
 def save_file(thing, filename):
@@ -19,13 +21,35 @@ def load_file(filename):
         s = f.read()
     return dill.loads(s)
 
-def loadfchks(dirname):
+def loadfchks(regex):
     from chargefit import structure #sorry!
-    content = os.listdir(dirname)
-    fchks   = [f for f in content if ".fchk" in f]
+    fchks  = glob.glob(regex)
     structures = []
     for i in fchks:
-        io = horton.IOData.from_file(dirname + '/' + i)
-        structures.append(structure(io, dirname + '/' + i))
+        io = horton.IOData.from_file( i)
+        structures.append(structure(io, i))
         del io
     return structures
+
+
+def loadfchks_field(regex):
+    from chargefit import structure
+    fchks = glob.glob(regex) 
+    structures = []
+    for i in fchks:
+        io = horton.IOData.from_file(i)
+        field_string = i.split('/')[-1].split('.')[0].split('_')[-1]
+        print(field_string)
+        direction    = field_string[0]
+        strength     = float(field_string[1:])
+        if direction == 'x':
+            field = np.array([strength, 0.0, 0.0])
+        if direction == 'y':
+            field = np.array([0.0, strength, 0.0])
+        if direction == 'z':
+            field = np.array([0.0, 0.0, strength])
+        structures.append(structure(io, i, field))
+        del io
+    return structures
+
+

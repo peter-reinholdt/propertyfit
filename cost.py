@@ -2,7 +2,7 @@ import chargefit
 import numpy as np
 import scipy.optimize
 
-structures = chargefit.loadfchks("test")
+structures = chargefit.loadfchks("test/VAL_[^xyz]*.fchk")
 [s.compute_grid() for s in structures]
 [s.compute_rinvmat() for s in structures]
 [s.compute_qm_esp() for s in structures]
@@ -74,6 +74,11 @@ def return_q(q):
     qout[6:atoms-6] -= (qout[6:atoms-6].sum()-qtot)/(atoms-12)
     
     return qout
+
+
+def fit_induced_potential():
+    pass
+    #stuff
 
 # AA = amino acid, give name as string // make it as input
 AA = 'GLY'
