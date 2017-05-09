@@ -8,13 +8,14 @@ from conversions import number2name, angstrom2bohr, bohr2angstrom
 #
 
 class structure(object):
-    def __init__(self, IO, fchkname):
+    def __init__(self, IO, fchkname, field):
         self.coordinates    = IO.coordinates
         self.numbers        = IO.numbers
         self.dm             = IO.get_dm_full()
         self.obasis         = IO.obasis
         self.natoms         = len(self.numbers)
         self.fchkname       = fchkname
+        self.field          = field #np.zeros((3)) ::: x,y,z components of homogenous field
 
 
     def compute_grid_surface(self, pointdensity=1.0, radius_scale=1.4):

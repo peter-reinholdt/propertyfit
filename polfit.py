@@ -7,7 +7,9 @@ def induced_dipole(alpha_ab, field):
     mu = np.zeros((natoms,3))
     for i in range(natoms):
         for j in range(3):
-            mu[i,j] += alpha_ab[i,j] * field[j]
+            for k in range(3):
+                #mu_i,alpha = alpha_i,alphabeta*Fbeta
+                mu[i,j] += alpha_ab[i,j,k] * field[k]
     return mu
 
 
