@@ -76,10 +76,6 @@ def return_q(q):
     return qout
 
 
-def fit_induced_potential():
-    pass
-    #stuff
-
 # AA = amino acid, give name as string // make it as input
 AA = 'GLY'
 # qtot = total charge of the amino acid, give number // make it as input
