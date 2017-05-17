@@ -8,7 +8,7 @@ from conversions import number2name, angstrom2bohr, bohr2angstrom
 #
 
 class structure(object):
-    def __init__(self, IO, fchkname, field=np.zeros(3)):
+    def __init__(self, IO, fchkname='', field=np.zeros(3)):
         self.coordinates    = IO.coordinates
         self.numbers        = IO.numbers
         self.dm             = IO.get_dm_full()

@@ -24,24 +24,47 @@ def dipole_potential(dipoles, rinvmat, xyzmat):
     return potential
 
 
-def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, testpols):
+def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, alpha_ab):
     #induced_esp_grid_qm should be (IND_ESP_QM - ESP_QM_nofield)
     natoms      = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
     grid = np.copy(induced_esp_grid_qm)
     mu_ind = induced_dipole(alpha_ab, field)
-    dipole_potential = dipole_potential(mu_ind, rinvmat, xyzmat)
-    return np.sum((grid-dipole_potential)**2)
+    alpha_pot = dipole_potential(mu_ind, rinvmat, xyzmat)
+    return np.sum((grid-alpha_pot)**2)
 
 def fit_alpha(structures):
     pass
 
 
-def fit_alpha_iso(structures):
-    #we assume structures contain grid, rinvmat, xyzmat and qm (+induced) ESP
-    natoms                  = structures[0].natoms
-    alpha_iso = np.zeros((natoms))
+def cost_alpha_iso(refstructures, fieldstructures, alpha_iso):
+    #we assume structures contain grid, rinvmat, xyzmat and qm ESP
+    #refstructures, fieldstructures arranged so they line up pairwise, eg:
+    #VAL_0   VAL_0 x+50
+    #VAL_0   VAL_0 z-60
+    #...
+    #VAL_1   VAL_1 z+10
+    #alpha_iso is of size natoms
+    natoms = refstructures[0].natoms
     
-    def cost(alpha_iso, structures):
+    #reality check
+    assert(len(refstructures) == len(fieldstructures))
+    assert(natoms == len(alpha_iso))
 
+    #fill in isotropic polarizabilities in full tensor
+    alphas = np.zeros((natoms,3,3))
+    for i in range(natoms):
+        alphas[i,0,0] = alpha_iso[i]
+        alphas[i,1,1] = alpha_iso[i]
+        alphas[i,2,2] = alpha_iso[i]
 
+    cost = 0.0
+    for i in range(len(refstructures)):
+        rs = refstructures[i] 
+        fs = fieldstructures[i]
+        cost += induced_esp_sum_squared_error(rs.rinvmat,  
+                                              rs.xyzmat, 
+                                              rs.esp_grid_qm - fs.esp_grid_qm,
+                                              fs.field,
+                                              alphas)
+    return cost
