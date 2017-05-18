@@ -1,13 +1,10 @@
 import chargefit
 import numpy as np
 import scipy.optimize
+import sys
+from conversions import name2number
 
-structures = chargefit.loadfchks("test/VAL_[^xyz]*.fchk")
-[s.compute_grid() for s in structures]
-[s.compute_rinvmat() for s in structures]
-[s.compute_qm_esp() for s in structures]
-
-def get_q0():
+def get_q0(constraints):
     # #####################################################
     #
     # Gets the start guess of the charges, fourth coloum
@@ -76,12 +73,44 @@ def return_q(q):
     return qout
 
 
-# AA = amino acid, give name as string // make it as input
-AA = 'GLY'
-# qtot = total charge of the amino acid, give number // make it as input
-qtot = 0.0
-constraints = np.genfromtxt('constraints/'+AA+'idx.csv', delimiter=';')
-q0 = get_q0()
-res = scipy.optimize.minimize(cost, q0, method='SLSQP')
-print(res)
-print(return_q(res['x']))
+# AA = amino acid, give name as string
+AA = str(sys.argv[1])
+# qtot = total charge of the amino acid, give number
+qtot = float(sys.argv[2])
+
+# Ugly way to load in constraints, but it works for now
+constraints = np.genfromtxt('constraints/'+AA+'idx.csv', delimiter=';', dtype=str)
+for i in range(0, len(constraints)):
+        constraints[i,1] = int(constraints[i,1])
+        constraints[i,2] = int(constraints[i,2])
+        constraints[i,3] = float(constraints[i,3])
+
+# Get initial charge guess
+q0 = get_q0(constraints)
+
+# Get structures from fchk files
+# Change below to something more meaningfull
+structures = chargefit.loadfchks("test/*.fchk")
+
+#Check if sys arg and fchk match
+check = 0
+for i in structures:
+    for j in range(0, len(i.numbers)):
+        if i.numbers[j] != name2number[constraints[j,0]]:
+            check = 1
+            print('FATAL ERROR: Atom number '+str(j+1)+' does not match')
+            break
+
+if check == 0:
+    [s.compute_grid() for s in structures]
+    [s.compute_rinvmat() for s in structures]
+    [s.compute_qm_esp() for s in structures]
+
+    res = scipy.optimize.minimize(cost, q0, method='SLSQP')
+    print(res)
+    print(return_q(res['x']))
+else:
+    if check == 1:
+        print('FATAL ERROR: Atom(s) in given molecule, does not match atom(s) in fchk-file(s)')
+    else:
+        print('FATAL ERROR: UNKNOWN')
