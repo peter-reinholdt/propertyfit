@@ -149,6 +149,9 @@ class structure(object):
         self.obasis = IO.obasis
 
 
+    def save(self, filename):
+        save_file(self, filename)
+
 
 def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
     #compute ESP due to points charges in grid points, get sum of squared error to QM ESP
