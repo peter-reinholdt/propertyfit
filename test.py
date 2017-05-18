@@ -7,3 +7,5 @@ def test_constraints():
         for j in range(0, len(AAloaded)):
             assert AAloaded[int(AAloaded[i,2])-1,0] == AAloaded[i,0]
 
+def test_nothing():
+    pass

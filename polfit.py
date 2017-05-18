@@ -1,5 +1,5 @@
 import numpy as np
-
+from numba import jit
 
 def induced_dipole(alpha_ab, field):
     """Anisotropic atom-centered dipole-dipole polarizabilities in a homogenous field"""
@@ -12,7 +12,7 @@ def induced_dipole(alpha_ab, field):
                 mu[i,j] += alpha_ab[i,j,k] * field[k]
     return mu
 
-
+@jit #numba makes this hella fast
 def dipole_potential(dipoles, rinvmat, xyzmat):
     natoms      = rinvmat.shape[0] 
     ngridpoints = rinvmat.shape[1]

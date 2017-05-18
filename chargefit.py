@@ -1,6 +1,6 @@
 import numpy as np
 import horton
-from pfio import save_file, load_file, loadfchks, loadfchks_field
+from pfio import save_file, load_file, loadfchks
 from conversions import number2name, angstrom2bohr, bohr2angstrom
 
 #

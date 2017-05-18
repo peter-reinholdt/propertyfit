@@ -85,6 +85,3 @@ q0 = get_q0()
 res = scipy.optimize.minimize(cost, q0, method='SLSQP')
 print(res)
 print(return_q(res['x']))
-
-s.write_xyz('mol.xyz')
-s.write_grid('grid.xyz')
