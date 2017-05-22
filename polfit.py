@@ -45,6 +45,7 @@ def cost_alpha_iso(refstructures, fieldstructures, alpha_iso):
     #...
     #VAL_1   VAL_1 z+10
     #alpha_iso is of size natoms
+    #returns RMSD
     natoms = refstructures[0].natoms
     
     #reality check
@@ -59,6 +60,7 @@ def cost_alpha_iso(refstructures, fieldstructures, alpha_iso):
         alphas[i,2,2] = alpha_iso[i]
 
     cost = 0.0
+    npoints = 0
     for i in range(len(refstructures)):
         rs = refstructures[i] 
         fs = fieldstructures[i]
@@ -67,4 +69,6 @@ def cost_alpha_iso(refstructures, fieldstructures, alpha_iso):
                                               rs.esp_grid_qm - fs.esp_grid_qm,
                                               fs.field,
                                               alphas)
-    return cost
+        npoints += len(rs.grid)
+
+    return np.sqrt(cost/npoints)

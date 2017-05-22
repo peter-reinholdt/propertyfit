@@ -1,5 +1,9 @@
 bohr2angstrom = 0.52917724900001
 angstrom2bohr = 1.0/(bohr2angstrom)
+hartree2kjmol = 2625.5002
+kjmol2hartree = 1.0 / hartree2kjmol
+
+
 number2name          = {1: 'H',
                         2: 'He',
                         3: 'Li',
