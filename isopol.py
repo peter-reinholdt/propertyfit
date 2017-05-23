@@ -35,7 +35,8 @@ def fun(alpha):
         alpha_in[i] = alpha_in[int(constraints[i,2])-1]
     
     # Total molecular polarizability set to alphatot
-    alpha_in[:] -= (alpha_in[:].sum() - alphatot)/len(alpha_in)
+    if alphatot != 'ignore':
+        alpha_in[:] -= (alpha_in[:].sum() - alphatot)/len(alpha_in)
     
     res =  polfit.cost_alpha_iso(rs, fs, alpha_in)*2625.5002
     print(res)
