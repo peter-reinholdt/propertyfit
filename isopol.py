@@ -49,7 +49,8 @@ def return_alpha(alpha):
         alpha_in[i] = alpha_in[int(constraints[i,2])-1]
     
     # Total molecular polarizability set to alphatot
-    alpha_in[:] -= (alpha_in[:].sum() - alphatot)/len(alpha_in)
+    if alphatot != 'ignore':
+        alpha_in[:] -= (alpha_in[:].sum() - alphatot)/len(alpha_in)
     return alpha_in
 
 # Ugly way to load in constraints, but it works for now
