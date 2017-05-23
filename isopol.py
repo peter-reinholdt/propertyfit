@@ -7,10 +7,16 @@ import numpy as np
 import glob
 import sys
 import re
+from conversions import name2number
 
 aafolder = sys.argv[1]
 AA       = sys.argv[2] # Might be same as aafolder?
-alphatot = sys.argv[3]
+if len(sys.argv) > 3:
+    constrain_alphatot = True
+    alphatot = float(sys.argv[3])
+else:
+    constrain_alphatot = False
+
 
 #find and match "unfielded" to "fielded" versions of a particular structure
 frsx = glob.glob(aafolder+"/*.fchk.s")
@@ -35,7 +41,7 @@ def fun(alpha):
         alpha_in[i] = alpha_in[int(constraints[i,2])-1]
     
     # Total molecular polarizability set to alphatot
-    if alphatot != 'ignore':
+    if constrain_alphatot:
         alpha_in[:] -= (alpha_in[:].sum() - alphatot)/len(alpha_in)
     
     res =  polfit.cost_alpha_iso(rs, fs, alpha_in)*2625.5002
@@ -50,7 +56,7 @@ def return_alpha(alpha):
         alpha_in[i] = alpha_in[int(constraints[i,2])-1]
     
     # Total molecular polarizability set to alphatot
-    if alphatot != 'ignore':
+    if constrain_alphatot:
         alpha_in[:] -= (alpha_in[:].sum() - alphatot)/len(alpha_in)
     return alpha_in
 
@@ -72,8 +78,9 @@ for i in rs:
             break
 
 if check == 0:
-    res = opt.minimize(fun, x0=a, method="bfgs")
+    print(a)
+    res = opt.minimize(fun, x0=a, method="slsqp")
     print(res)
-    print(return_alpha(res['x'])
+    print(return_alpha(res['x']))
 else:
     print('FATAL ERROR')
