@@ -33,9 +33,6 @@ def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, a
     alpha_pot = dipole_potential(mu_ind, rinvmat, xyzmat)
     return np.sum((grid-alpha_pot)**2)
 
-def fit_alpha(structures):
-    pass
-
 
 def cost_alpha_iso(refstructures, fieldstructures, alpha_iso):
     #we assume structures contain grid, rinvmat, xyzmat and qm ESP
