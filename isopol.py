@@ -32,7 +32,10 @@ for i in frsx:
 rs = [chargefit.load_file(f) for f in frs]
 fs = [chargefit.load_file(f) for f in ffs]
 
-a = np.random.rand(rs[0].natoms)
+try:
+    a = np.loadtxt("x0/{}.x0".format(AA))
+except:
+    a = np.random.rand(rs[0].natoms)
 
 def fun(alpha):
     alpha_in = alpha
@@ -79,7 +82,7 @@ for i in rs:
 
 if check == 0:
     print(a)
-    res = opt.minimize(fun, x0=a, method="slsqp")
+    res = opt.minimize(fun, x0=a, method="nelder-mead")
     print(res)
     print(return_alpha(res['x']))
 else:
