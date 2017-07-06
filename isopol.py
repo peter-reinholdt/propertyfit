@@ -29,8 +29,13 @@ for i in frsx:
         ffs.append(j)
         frs.append(i)
 
+
+for i in range(len(frs)):
+    print(frs[i], ffs[i])
+
 rs = [chargefit.load_file(f) for f in frs]
 fs = [chargefit.load_file(f) for f in ffs]
+
 
 try:
     a = np.loadtxt("x0/{}.x0".format(AA))
@@ -82,7 +87,7 @@ for i in rs:
 
 if check == 0:
     print(a)
-    res = opt.minimize(fun, x0=a, method="nelder-mead")
+    res = opt.minimize(fun, x0=a, method="slsqp")
     print(res)
     print(return_alpha(res['x']))
 else:

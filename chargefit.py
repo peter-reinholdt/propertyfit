@@ -18,7 +18,7 @@ class structure(object):
         self.field          = field #np.zeros((3)) ::: x,y,z components of homogenous field
 
 
-    def compute_grid_surface(self, pointdensity=1.0, radius_scale=1.4):
+    def compute_grid_surface(self, pointdensity=2.0, radius_scale=1.4):
         # #####################################################
         #
         # This part generates apparent uniformly spaced points on a vdW
@@ -34,7 +34,7 @@ class structure(object):
         #           removing points
         #
         # #####################################################
-        # vdW in pm as of now
+        # vdW in bohr as of now
         vdW = {1:1.200*angstrom2bohr, 6:1.700*angstrom2bohr, 7:1.550*angstrom2bohr, 8:1.520*angstrom2bohr, 16:1.800*angstrom2bohr}
         points = np.zeros(len(self.numbers)-1)
         for i in range(1, len(self.numbers)):
