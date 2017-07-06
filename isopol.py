@@ -33,8 +33,20 @@ for i in frsx:
 for i in range(len(frs)):
     print(frs[i], ffs[i])
 
-rs = [chargefit.load_file(f) for f in frs]
-fs = [chargefit.load_file(f) for f in ffs]
+rs = []
+fs = []
+
+for f in frs:
+    rs.append(chargefit.load_file(f))
+    del rs[-1].dm
+for f in ffs:
+    fs.append(chargefit.load_file(f))
+    del fs[-1].dm
+    del fs[-1].xyzmat
+    del fs[-1].rinvmat
+    del fs[-1].grid
+#rs = [chargefit.load_file(f) for f in frs]
+#fs = [chargefit.load_file(f) for f in ffs]
 
 
 try:
@@ -47,7 +59,6 @@ def fun(alpha):
     # Make same atoms same polarizability
     for i in range(0, len(constraints)):
         alpha_in[i] = alpha_in[int(constraints[i,2])-1]
-    
     # Total molecular polarizability set to alphatot
     if constrain_alphatot:
         alpha_in[:] -= (alpha_in[:].sum() - alphatot)/len(alpha_in)
