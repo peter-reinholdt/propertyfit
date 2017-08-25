@@ -57,6 +57,6 @@ def runConstraints(AA):
             for j in range(len(AAidx)):
                 output.write(AAidx[j,0]+';'+AAidx[j,1]+';'+AAidx[j,2]+';'+AAidx[j,3]+'\n')
         
-AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'CYX', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
+AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', """'CYX',""" 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
 for k in range(len(AAlist)):
     runConstraints(AAlist[k])

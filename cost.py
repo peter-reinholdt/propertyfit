@@ -21,7 +21,7 @@ def cost(q):
     #
     # Put hard constraints on the total charge, and atoms
     # that is chosen to have the same charge. The constraints
-    # is forced in such away that nummerical problems can arise
+    # are forced in such away that nummerical problems can arise
     # cost function might be discontineous?
     # Atoms to be constrained to the same charge, can be found
     # in constraints file;
@@ -30,9 +30,29 @@ def cost(q):
     # q    = input charge
     # qout = charge used in RMSD calculation
     # capq = Change in cap atoms to get total capping charge to zero
+	#
+	# checkCYX, is used to see if AA is CYX. For CYX, checkCYX=1
+	# cehckTERMINAL, is used to determine terminal type.
+    #     1 = methylcharged
+	#     2 = methylneutral
+    #     3 = chargedmethyl
+	#     4 = neutralmethyl
     #
     # #####################################################
     
+    # Set cappings:
+	if checkTERMINAL == 0:
+	    cap1 = 6
+		cap2 = 6
+	elif checkTERMINAL == 1 or checkTERMINAL == 2:
+	    cap1 = 0
+		cap2 = 6
+	elif checkTERMINAL == 3 or checkTERMINAL == 4:
+	    cap1 = 6
+		cap2 = 0
+	if checkCYX == 1:
+	    cap2 += 5
+	
     # Make same atoms same charge
     qout=q
     for i in range(0, len(constraints)):
@@ -40,59 +60,19 @@ def cost(q):
 
     # Assign constraints
     # Total charge on caps is set to zero
-    capq = qout[0:6].sum()+qout[-6:].sum()
-    qout[0:6] -= (capq)/12
-    qout[-6:] -= (capq)/12
+    capq = qout[0:cap1].sum()+qout[-cap2:].sum()
+    qout[0:cap1] -= (capq)/(cap1+cap2)
+    qout[-cap2:] -= (capq)/(cap1+cap2)
     
     # Total molecular charge set to qtot
     atoms = len(qout)
-    qout[6:atoms-6] -= (qout[6:atoms-6].sum()-qtot)/(atoms-12)
+    qout[cap1:atoms-cap2] -= (qout[cap1:atoms-cap2].sum()-qtot)/(atoms-cap1-cap2)
 
     return np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures])
-    
-    
-def costCYX(q):
-    # #####################################################
-    #
-    # Special case for CYX, capping on sulfur
-    #
-    # Put hard constraints on the total charge, and atoms
-    # that is chosen to have the same charge. The constraints
-    # is forced in such away that nummerical problems can arise
-    # cost function might be discontineous?
-    # Atoms to be constrained to the same charge, can be found
-    # in constraints file;
-    # Constraint file = [Atom, index, same charge index, start charge guess]
-    #
-    # q    = input charge
-    # qout = charge used in RMSD calculation
-    # capq = Change in cap atoms to get total capping charge to zero
-    #
-    # #####################################################
-    
-    # Make same atoms same charge
-    qout=q
-    for i in range(0, len(constraints)):
-        qout[i] = qout[int(constraints[i,2])-1]
+ 
 
-    # Assign constraints
-    # Total charge on caps is set to zero
-    capq = qout[0:6].sum()+qout[-11:].sum()
-    qout[0:6] -= (capq)/17
-    qout[-11:] -= (capq)/17
-    
-    # Total molecular charge set to qtot
-    atoms = len(qout)
-    qout[6:atoms-11] -= (qout[6:atoms-11].sum()-qtot)/(atoms-17)
-
-    return np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures])    
-
-
-# AA = amino acid, give name as string
-#AA = str(sys.argv[1])
-# qtot = total charge of the amino acid, give number
-#qtot = float(sys.argv[2])
 def fit(AA):
+    # NEED TO FIX ALL THE FILE OPEN AND CLOSING TO BE ABLE TO HANDLE TERMINALS
     global constraints
     global structures
     # Ugly way to load in constraints, but it works for now
@@ -125,10 +105,7 @@ def fit(AA):
     
     if check == 0:
         file = open(str(AA)+'_q_out.txt','w')
-        if AA == 'CYX':
-            res = scipy.optimize.minimize(costCYX, q0, method='SLSQP')
-        else:
-            res = scipy.optimize.minimize(cost, q0, method='SLSQP')
+        res = scipy.optimize.minimize(cost, q0, method='SLSQP')
         for key in res:
             file.write(str(key)+'    '+str(res[key]))
             file.write('\n')
@@ -144,17 +121,40 @@ def fit(AA):
             print('FATAL ERROR: UNKNOWN')
 
 
-#AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'CYX', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
-def run(AAlist):
+def run(AA):
     global qtot
-    if AAlist == 'LYS' or AAlist == 'ARG' or AAlist == 'HIS':
-        qtot = 1
-    elif AAlist == 'ASP' or AAlist == 'GLU' or AAlist =='CYD':
-        qtot = -1
-    else:
-        qtot = 0
+	qtot = 0
+    if AA == 'LYS' or AA == 'ARG' or AA == 'HIS':
+        qtot += 1
+    elif AA == 'ASP' or AA == 'GLU' or AA =='CYD':
+        qtot += -1
+	if checkTERMINAL == 1:
+	   qtot += 1
+	elif checkTERMINAL == 3:
+	   qtot += -1
     fit(AAlist)
 
-AA = str(sys.argv[1])
-run(AA)
+#AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'CYX', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
+terminals = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl']
+global checkCYX
+global checkTERMINAL
+for i in range(len(AAlist)):
+	if AAlist[i] == CYX:
+	   checkCYX = 1
+	 else:
+		checkCYX = 0
+	for j in range(len(len(terminals)):
+	    if terminials[j] == 'methylcharged':
+		    checkTERMINAL = 1
+		elif terminials[j] == 'methylneutral':
+		    checkTERMINAL = 2
+		elif terminials[j] == 'chargedmethyl':
+		    checkTERMINAL = 3
+		elif terminials[j] == 'neutralmethyl':
+		    checkTERMINAL = 4
+		else:
+		    checkTERMINAL = 0
+	    run(AAlist[i])
+	
+
 
