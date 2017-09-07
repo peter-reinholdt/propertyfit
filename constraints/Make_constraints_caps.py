@@ -65,7 +65,6 @@ def runConstraints(AA):
         
         output.close()
         
-AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD','GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
-"""'CYX'""" 
+AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD','GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS','CYX']
 for k in range(len(AAlist)):
     runConstraints(AAlist[k])
