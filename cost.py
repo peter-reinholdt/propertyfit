@@ -109,7 +109,7 @@ def fit(AA):
     elif checkTERMINAL == 3:
         frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/datacaps/"+str(AA)+"_charged_methyl/*.fchk.s")
     elif checkTERMINAL == 4:
-        frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/datacaps/"+str(AA)+"_netutral_methyl/*.fchk.s")
+        frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/datacaps/"+str(AA)+"_neutral_methyl/*.fchk.s")
     else:
         frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/data/"+str(AA)+"/*.fchk.s")
     frs = []
@@ -168,8 +168,12 @@ def run(AA):
     fit(AA)
 
 #AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'CYX', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
+#terminals = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl', 'None']
+AAlist = ['PLACEHOLDER']
 terminals = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl', 'None']
-AAlist = ['ALA']
+
+AAlist[0] = str(sys.argv[1])
+
 global checkCYX
 global checkTERMINAL
 for i in range(len(AAlist)):
