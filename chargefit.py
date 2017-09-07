@@ -161,4 +161,4 @@ def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
     for i in range(natoms):
         for j in range(ngridpoints):
             grid[j] -= testcharges[i] * rinvmat[i,j]
-    return np.sum(grid**2)
+    return np.sum(grid**2) / ngridpoints

@@ -68,7 +68,8 @@ def cost(q):
     atoms = len(qout)
     qout[cap1:atoms-cap2] -= (qout[cap1:atoms-cap2].sum()-qtot)/(atoms-cap1-cap2)
 
-    return np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures])
+    return np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))
+
  
 
 def fit(AA):

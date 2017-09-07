@@ -65,7 +65,6 @@ def cost_alpha_iso(refstructures, fieldstructures, alpha_iso):
                                               rs.xyzmat, 
                                               rs.esp_grid_qm - fs.esp_grid_qm,
                                               fs.field,
-                                              alphas)
-        npoints += len(rs.grid)
+                                              alphas) / len(rs.grid)
 
-    return np.sqrt(cost/npoints)
+    return np.sqrt(cost/natoms)
