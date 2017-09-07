@@ -30,29 +30,29 @@ def cost(q):
     # q    = input charge
     # qout = charge used in RMSD calculation
     # capq = Change in cap atoms to get total capping charge to zero
-	#
-	# checkCYX, is used to see if AA is CYX. For CYX, checkCYX=1
-	# cehckTERMINAL, is used to determine terminal type.
+    #
+    # checkCYX, is used to see if AA is CYX. For CYX, checkCYX=1
+    # cehckTERMINAL, is used to determine terminal type.
     #     1 = methylcharged
-	#     2 = methylneutral
+    #     2 = methylneutral
     #     3 = chargedmethyl
-	#     4 = neutralmethyl
+    #     4 = neutralmethyl
     #
     # #####################################################
     
     # Set cappings:
-	if checkTERMINAL == 0:
-	    cap1 = 6
-		cap2 = 6
-	elif checkTERMINAL == 1 or checkTERMINAL == 2:
-	    cap1 = 0
-		cap2 = 6
-	elif checkTERMINAL == 3 or checkTERMINAL == 4:
-	    cap1 = 6
-		cap2 = 0
-	if checkCYX == 1:
-	    cap2 += 5
-	
+    if checkTERMINAL == 0:
+        cap1 = 6
+        cap2 = 6
+    elif checkTERMINAL == 1 or checkTERMINAL == 2:
+        cap1 = 0
+        cap2 = 6
+    elif checkTERMINAL == 3 or checkTERMINAL == 4:
+        cap1 = 6
+        cap2 = 0
+    if checkCYX == 1:
+        cap2 += 5
+
     # Make same atoms same charge
     qout=q
     for i in range(0, len(constraints)):
@@ -60,9 +60,15 @@ def cost(q):
 
     # Assign constraints
     # Total charge on caps is set to zero
-    capq = qout[0:cap1].sum()+qout[-cap2:].sum()
-    qout[0:cap1] -= (capq)/(cap1+cap2)
-    qout[-cap2:] -= (capq)/(cap1+cap2)
+    capq = 0
+    if cap1 != 0:
+        capq += qout[0:cap1].sum()
+    if cap2 != 0:
+        capq += qout[-cap2:].sum()
+    if cap1 != 0:
+        qout[0:cap1] -= (capq)/(cap1+cap2)
+    if cap2 != 0:
+        qout[-cap2:] -= (capq)/(cap1+cap2)
     
     # Total molecular charge set to qtot
     atoms = len(qout)
@@ -73,11 +79,19 @@ def cost(q):
  
 
 def fit(AA):
-    # NEED TO FIX ALL THE FILE OPEN AND CLOSING TO BE ABLE TO HANDLE TERMINALS
     global constraints
     global structures
     # Ugly way to load in constraints, but it works for now
-    constraints = np.genfromtxt('/work/sdujk/kjellgren/propertyfit/constraints/'+AA+'idx.csv', delimiter=';', dtype=str)
+    if checkTERMINAL == 1:
+        constraints = np.genfromtxt('/work/sdujk/kjellgren/propertyfit/constraints/'+AA+'methylchargedidx.csv', delimiter=';', dtype=str)
+    elif checkTERMINAL == 2:
+        constraints = np.genfromtxt('/work/sdujk/kjellgren/propertyfit/constraints/'+AA+'methylneutralidx.csv', delimiter=';', dtype=str)
+    elif checkTERMINAL == 3:
+        constraints = np.genfromtxt('/work/sdujk/kjellgren/propertyfit/constraints/'+AA+'chargedmethylidx.csv', delimiter=';', dtype=str)
+    elif checkTERMINAL == 4:
+        constraints = np.genfromtxt('/work/sdujk/kjellgren/propertyfit/constraints/'+AA+'neutralmethylidx.csv', delimiter=';', dtype=str)
+    else:
+        constraints = np.genfromtxt('/work/sdujk/kjellgren/propertyfit/constraints/'+AA+'idx.csv', delimiter=';', dtype=str)
     for i in range(0, len(constraints)):
             constraints[i,1] = int(constraints[i,1])
             constraints[i,2] = int(constraints[i,2])
@@ -88,7 +102,16 @@ def fit(AA):
     
     # Get structures from fchk files
     # Change below to something more meaningfull
-    frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/data/"+str(AA)+"/*.fchk.s")
+    if checkTERMINAL == 1:
+        frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/datacaps/"+str(AA)+"_methyl_charged/*.fchk.s")
+    elif checkTERMINAL == 2:
+        frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/datacaps/"+str(AA)+"_methyl_neutral/*.fchk.s")
+    elif checkTERMINAL == 3:
+        frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/datacaps/"+str(AA)+"_charged_methyl/*.fchk.s")
+    elif checkTERMINAL == 4:
+        frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/datacaps/"+str(AA)+"_netutral_methyl/*.fchk.s")
+    else:
+        frsx = glob.glob("/work/sdujk/reinholdt/IAKE805/charge/data/"+str(AA)+"/*.fchk.s")
     frs = []
     for i in frsx:
         x = re.split("/|\.", i)[-3]
@@ -105,8 +128,17 @@ def fit(AA):
                 break
     
     if check == 0:
-        file = open(str(AA)+'_q_out.txt','w')
-        res = scipy.optimize.minimize(cost, q0, method='SLSQP')
+        if checkTERMINAL == 1:
+            file = open(str(AA)+'methylcharged_q_out.txt','w')
+        elif checkTERMINAL == 2:
+            file = open(str(AA)+'methylneutral_q_out.txt','w')
+        elif checkTERMINAL == 3:
+            file = open(str(AA)+'chargedmethyl_q_out.txt','w')
+        elif checkTERMINAL == 4:
+            file = open(str(AA)+'neutralmethyl_q_out.txt','w')
+        else:
+            file = open(str(AA)+'_q_out.txt','w')
+        res = scipy.optimize.minimize(cost, q0, method='SLSQP', options={'ftol':1e-10})
         for key in res:
             file.write(str(key)+'    '+str(res[key]))
             file.write('\n')
@@ -124,38 +156,36 @@ def fit(AA):
 
 def run(AA):
     global qtot
-	qtot = 0
+    qtot = 0
     if AA == 'LYS' or AA == 'ARG' or AA == 'HIS':
         qtot += 1
     elif AA == 'ASP' or AA == 'GLU' or AA =='CYD':
         qtot += -1
-	if checkTERMINAL == 1:
-	   qtot += 1
-	elif checkTERMINAL == 3:
-	   qtot += -1
-    fit(AAlist)
+    if checkTERMINAL == 1:
+        qtot += 1
+    elif checkTERMINAL == 3:
+        qtot += -1
+    fit(AA)
 
 #AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'CYX', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
-terminals = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl']
+terminals = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl', 'None']
+AAlist = ['ALA']
 global checkCYX
 global checkTERMINAL
 for i in range(len(AAlist)):
-	if AAlist[i] == CYX:
-	   checkCYX = 1
-	 else:
-		checkCYX = 0
-	for j in range(len(len(terminals)):
-	    if terminials[j] == 'methylcharged':
-		    checkTERMINAL = 1
-		elif terminials[j] == 'methylneutral':
-		    checkTERMINAL = 2
-		elif terminials[j] == 'chargedmethyl':
-		    checkTERMINAL = 3
-		elif terminials[j] == 'neutralmethyl':
-		    checkTERMINAL = 4
-		else:
-		    checkTERMINAL = 0
-	    run(AAlist[i])
-	
-
-
+    if AAlist[i] == 'CYX':
+        checkCYX = 1
+    else:
+        checkCYX = 0
+    for j in range(len(terminals)):
+        if terminals[j] == 'methylcharged':
+            checkTERMINAL = 1
+        elif terminals[j] == 'methylneutral':
+            checkTERMINAL = 2
+        elif terminals[j] == 'chargedmethyl':
+            checkTERMINAL = 3
+        elif terminals[j] == 'neutralmethyl':
+            checkTERMINAL = 4
+        else:
+            checkTERMINAL = 0
+        run(AAlist[i])
