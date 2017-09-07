@@ -42,7 +42,13 @@ def runConstraints(AA):
         elif i == 3:
             AAidx = np.delete(AAidx,[len(AAidx)-1,len(AAidx)-2,len(AAidx)-3,len(AAidx)-4,len(AAidx)-5],0)
             AAidx[-1,0] = 'O'
-            AAidx[-1,1] = AAidx[-1,2] = str(int(AAidx[-2,1])+1)
+            AAidx[-1,1] = str(int(AAidx[-2,1])+1)
+            if AA == 'PRO':
+                AAidx[-1,2] = 20
+            elif AA == 'GLY':
+                AAidx[-1,2] = 13
+            else:
+                AAidx[-1,2] = 16
             output = open(str(AA)+'chargedmethylidx.csv', 'w')
             for j in range(len(AAidx)):
                 output.write(AAidx[j,0]+';'+AAidx[j,1]+';'+AAidx[j,2]+';'+AAidx[j,3]+'\n')
@@ -57,6 +63,9 @@ def runConstraints(AA):
             for j in range(len(AAidx)):
                 output.write(AAidx[j,0]+';'+AAidx[j,1]+';'+AAidx[j,2]+';'+AAidx[j,3]+'\n')
         
-AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', """'CYX',""" 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
+        output.close()
+        
+AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD','GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
+"""'CYX'""" 
 for k in range(len(AAlist)):
     runConstraints(AAlist[k])
