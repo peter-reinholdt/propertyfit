@@ -7,10 +7,8 @@ __pycache__
 
 *.log
 logs/
-*
-scripts/*
-
 *out.txt
+.cache/
 
 # Specific files:
 run_alpha.sh
