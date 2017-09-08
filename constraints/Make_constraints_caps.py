@@ -23,6 +23,10 @@ def runConstraints(AA):
             
             AAidx = np.delete(AAidx,[0,1,2,3],0)
             AAidx[0,2] = AAidx[1,2] = '1'
+            
+            q0 = np.genfromtxt('../x0/'+str(AA)+'_methyl_charged.q0')
+            AAidx[:,3] = q0[:,2]
+            
             output = open(str(AA)+'methylchargedidx.csv', 'w')
             for j in range(len(AAidx)):
                 output.write(AAidx[j,0]+';'+AAidx[j,1]+';'+AAidx[j,2]+';'+AAidx[j,3]+'\n')
@@ -35,6 +39,10 @@ def runConstraints(AA):
             
             AAidx = np.delete(AAidx,[0,1,2,3,4],0)
             AAidx[0,2] = '1'
+            
+            q0 = np.genfromtxt('../x0/'+str(AA)+'_methyl_neutral.q0')
+            AAidx[:,3] = q0[:,2]
+            
             output = open(str(AA)+'methylneutralidx.csv', 'w')
             for j in range(len(AAidx)):
                 output.write(AAidx[j,0]+';'+AAidx[j,1]+';'+AAidx[j,2]+';'+AAidx[j,3]+'\n')
@@ -49,6 +57,10 @@ def runConstraints(AA):
                 AAidx[-1,2] = 13
             else:
                 AAidx[-1,2] = 16
+            
+            q0 = np.genfromtxt('../x0/'+str(AA)+'_charged_methyl.q0')
+            AAidx[:,3] = q0[:,2]    
+            
             output = open(str(AA)+'chargedmethylidx.csv', 'w')
             for j in range(len(AAidx)):
                 output.write(AAidx[j,0]+';'+AAidx[j,1]+';'+AAidx[j,2]+';'+AAidx[j,3]+'\n')
@@ -59,6 +71,10 @@ def runConstraints(AA):
             AAidx[-2,1] = AAidx[-2,2] = str(int(AAidx[-3,1])+1)
             AAidx[-1,0] = 'H'
             AAidx[-1,1] = AAidx[-1,2] = str(int(AAidx[-3,1])+2)
+            
+            q0 = np.genfromtxt('../x0/'+str(AA)+'_neutral_methyl.q0')
+            AAidx[:,3] = q0[:,2]    
+            
             output = open(str(AA)+'neutralmethylidx.csv', 'w')
             for j in range(len(AAidx)):
                 output.write(AAidx[j,0]+';'+AAidx[j,1]+';'+AAidx[j,2]+';'+AAidx[j,3]+'\n')
