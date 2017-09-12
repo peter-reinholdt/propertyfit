@@ -19,10 +19,10 @@ def makeparameterfiler():
                         for k in range(0,len(charges)):
                             parameters[i+k,2] = charges[k]
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,4] = 0
-                            parameters[i+k,5] = 0
+                            parameters[i+k,4] = 0.0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
                                 
             elif parameters[i,0][0] == 'c':
@@ -38,10 +38,10 @@ def makeparameterfiler():
                         for k in range(0,len(charges)):
                             parameters[i+k,2] = charges[k]
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,4] = 0
-                            parameters[i+k,5] = 0
+                            parameters[i+k,4] = 0.0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
                             
             elif parameters[i,0][0] == 'N':
@@ -58,10 +58,10 @@ def makeparameterfiler():
                         for k in range(0,len(charges)):
                             parameters[i+k,2] = charges[k]
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,4] = 0
-                            parameters[i+k,5] = 0
+                            parameters[i+k,4] = 0.0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
                 
             elif parameters[i,0][0] == 'n':
@@ -78,10 +78,10 @@ def makeparameterfiler():
                         for k in range(0,len(charges)):
                             parameters[i+k,2] = charges[k]
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,4] = 0
-                            parameters[i+k,5] = 0
+                            parameters[i+k,4] = 0.0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
                 
             else:
@@ -98,10 +98,10 @@ def makeparameterfiler():
                         for k in range(0,len(charges)):
                             parameters[i+k,2] = charges[k]
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,4] = 0
-                            parameters[i+k,5] = 0
+                            parameters[i+k,4] = 0.0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0
+                            parameters[i+k,5] = 0.0
                             parameters[i+k,3] = alpha[k]
                     
         current = parameters[i,0]
