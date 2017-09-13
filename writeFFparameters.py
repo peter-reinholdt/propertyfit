@@ -1,7 +1,7 @@
 import numpy as np
 
 def makeparameterfiler():
-    parameters = np.genfromtxt('FFparameterstemplate.csv',delimiter=';',dtype=str)
+    parameters = np.genfromtxt('FFparameterstemplate.csv',delimiter=';',dtype='U256')
     current = 'None'
     for i in range(1,len(parameters)):
         
@@ -12,6 +12,8 @@ def makeparameterfiler():
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'nit':
                         charges = fitoutput[j+2+6:len(fitoutput)]
+                        for k in range(0, len(charges)):
+                            charges[k] = charges[k][:-2]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'_charged_methyl.out.txt')[6:]
                         if parameters[i,0][1:] == 'CYX':
                             charges = np.delete(charges, [10, 11, 12, 13, 14])
@@ -31,6 +33,8 @@ def makeparameterfiler():
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'nit':
                         charges = fitoutput[j+2+6:len(fitoutput)]
+                        for k in range(0, len(charges)):
+                            charges[k] = charges[k][:-2]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'_neutral_methyl.out.txt')[6:]
                         if parameters[i,0][1:] == 'CYX':
                             charges = np.delete(charges, [10, 11, 12, 13, 14])
@@ -50,6 +54,8 @@ def makeparameterfiler():
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'nit':
                         charges = fitoutput[j+2:len(fitoutput)-6]
+                        for k in range(0, len(charges)):
+                            charges[k] = charges[k][:-2]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'_methyl_charged.out.txt')
                         alpha = alpha[:len(alpha)-6]
                         if parameters[i,0][1:] == 'CYX':
@@ -70,6 +76,8 @@ def makeparameterfiler():
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'nit':
                         charges = fitoutput[j+2:len(fitoutput)-6]
+                        for k in range(0, len(charges)):
+                            charges[k] = charges[k][:-2]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'_methyl_neutral.out.txt')
                         alpha = alpha[:len(alpha)-6]
                         if parameters[i,0][1:] == 'CYX':
@@ -90,6 +98,8 @@ def makeparameterfiler():
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'nit':
                         charges = fitoutput[j+2+6:len(fitoutput)-6]
+                        for k in range(0, len(charges)):
+                            charges[k] = charges[k][:-2]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][:]+'.out.txt')
                         alpha = alpha[6:len(alpha)-6]
                         if parameters[i,0][:] == 'CYX':
@@ -107,7 +117,7 @@ def makeparameterfiler():
         current = parameters[i,0]
     
     FFpar = open('FFparameterswithduplicates.csv','w')
-    for i in range(0,len(parameters)):
+    for i in range(0, len(parameters)):
         FFpar.write(parameters[i,0])
         FFpar.write(',')
         FFpar.write(parameters[i,1])
@@ -130,7 +140,7 @@ def makeparameterfiler():
 
 
 def removeduplicates():
-    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
+    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',',dtype='U256')
     
     FFdict = {}
     for i in range(1, len(par)):

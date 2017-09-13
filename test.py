@@ -22,7 +22,7 @@ def test_constraints_caps():
                     print(AA[i], captype[j])
                 assert AAloaded[int(AAloaded[k,2])-1,0] == AAloaded[k,0]
 
-"""
+
 def test_parameterfile():
     # Test that atoms given the same atom type have identical parameters
     par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
@@ -30,24 +30,24 @@ def test_parameterfile():
     for i in range(1, len(par)):
         if par[i,0]+par[i,1]+'q' not in checkdict:
             checkdict[par[i,0]+par[i,1]+'q']   = float(par[i,2])
-            checkdict[par[i,0]+par[i,1]+'axx'] = float(par[i,3])
-            checkdict[par[i,0]+par[i,1]+'axy'] = float(par[i,4])
-            checkdict[par[i,0]+par[i,1]+'axz'] = float(par[i,5])
-            checkdict[par[i,0]+par[i,1]+'ayy'] = float(par[i,6])
-            checkdict[par[i,0]+par[i,1]+'ayz'] = float(par[i,7])
-            checkdict[par[i,0]+par[i,1]+'azz'] = float(par[i,8])
+            #checkdict[par[i,0]+par[i,1]+'axx'] = float(par[i,3])
+            #checkdict[par[i,0]+par[i,1]+'axy'] = float(par[i,4])
+            #checkdict[par[i,0]+par[i,1]+'axz'] = float(par[i,5])
+            #checkdict[par[i,0]+par[i,1]+'ayy'] = float(par[i,6])
+            #checkdict[par[i,0]+par[i,1]+'ayz'] = float(par[i,7])
+            #checkdict[par[i,0]+par[i,1]+'azz'] = float(par[i,8])
         else:
             assert checkdict[par[i,0]+par[i,1]+'q']   == float(par[i,2])
-            assert checkdict[par[i,0]+par[i,1]+'axx'] == float(par[i,3])
-            assert checkdict[par[i,0]+par[i,1]+'axy'] == float(par[i,4])
-            assert checkdict[par[i,0]+par[i,1]+'axz'] == float(par[i,5])
-            assert checkdict[par[i,0]+par[i,1]+'ayy'] == float(par[i,6])
-            assert checkdict[par[i,0]+par[i,1]+'ayz'] == float(par[i,7])
-            assert checkdict[par[i,0]+par[i,1]+'azz'] == float(par[i,8])
+            #assert checkdict[par[i,0]+par[i,1]+'axx'] == float(par[i,3])
+            #assert checkdict[par[i,0]+par[i,1]+'axy'] == float(par[i,4])
+            #assert checkdict[par[i,0]+par[i,1]+'axz'] == float(par[i,5])
+            #assert checkdict[par[i,0]+par[i,1]+'ayy'] == float(par[i,6])
+            #assert checkdict[par[i,0]+par[i,1]+'ayz'] == float(par[i,7])
+            #assert checkdict[par[i,0]+par[i,1]+'azz'] == float(par[i,8])
 
 
 def test_parameterfile_totcharge():
-    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
+    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype='U256')
     calcdict = {}
     checkdict =    {'NARG':2,
                     'nARG':1,
@@ -191,5 +191,5 @@ def test_parameterfile_totcharge():
         else:
             calcdict[par[i,0]] = float(par[i,2]) + calcdict[par[i,0]]
     for key in checkdict:
-        assert abs(checkdict[key] - calcdict[key] < 10**-8)
-"""
+        print(key, calcdict[key])
+        assert abs(checkdict[key] - calcdict[key]) < 10**-5
