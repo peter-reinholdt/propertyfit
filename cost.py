@@ -73,8 +73,9 @@ def cost(q):
     # Total molecular charge set to qtot
     atoms = len(qout)
     qout[cap1:atoms-cap2] -= (qout[cap1:atoms-cap2].sum()-qtot)/(atoms-cap1-cap2)
-
-    return np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))
+    A = np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))
+    print(A)
+    return A
 
 
 
@@ -124,10 +125,13 @@ def costCYX(q):
     
     # Total molecular charge set to qtot
     atoms = len(qout)
-    qout[cap1:16] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
-    qout[21::] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
+    qtottemp = (qout[cap1:16].sum()+qout[21:].sum()-qtot)/(atoms-cap1-5)
+    qout[cap1:16] -= qtottemp 
+    qout[21:] -= qtottemp 
 
-    return np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))
+    A = np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))
+    print(A)
+    return A
 
 
 def getfinalQ(q):
@@ -207,8 +211,9 @@ def getfinalQCCYX(q):
     
     # Total molecular charge set to qtot
     atoms = len(qout)
-    qout[cap1:16] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
-    qout[21::] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
+    qtottemp = (qout[cap1:16].sum()+qout[21:].sum()-qtot)/(atoms-cap1-5)
+    qout[cap1:16] -= qtottemp 
+    qout[21:] -= qtottemp 
     
     return qout
  
@@ -281,12 +286,15 @@ def fit(AA):
             file.write(str(key)+'    '+str(res[key]))
             file.write('\n')
         file.write('\n')
+        """
         if checkCCYX == 1:
-            qtot = getfinalQCCYX(res['x'])
+            qout = getfinalQCCYX(res['x'])
         else:
-            qtot = getfinalQ(res['x'])
-        for i in range(0, len(qtot)):
-             file.write(str(qtot[i]))
+            qout = getfinalQ(res['x'])
+        """
+        qout = res['x']
+        for i in range(0, len(qout)):
+             file.write("{:14.11f}".format(qout[i]))
              file.write('\n')
         file.close()
     else:
