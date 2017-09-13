@@ -21,9 +21,9 @@ def makeparameterfiler():
                             parameters[i+k,3] = alpha[k]
                             parameters[i+k,4] = 0.0
                             parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
+                            parameters[i+k,6] = alpha[k]
+                            parameters[i+k,7] = 0.0
+                            parameters[i+k,8] = alpha[k]
                                 
             elif parameters[i,0][0] == 'c':
                 with open('fittedparameters/'+parameters[i,0][1:]+'neutralmethyl_q_out.txt') as f:
@@ -40,9 +40,9 @@ def makeparameterfiler():
                             parameters[i+k,3] = alpha[k]
                             parameters[i+k,4] = 0.0
                             parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
+                            parameters[i+k,6] = alpha[k]
+                            parameters[i+k,7] = 0.0
+                            parameters[i+k,8] = alpha[k]
                             
             elif parameters[i,0][0] == 'N':
                 with open('fittedparameters/'+parameters[i,0][1:]+'methylcharged_q_out.txt') as f:
@@ -60,9 +60,9 @@ def makeparameterfiler():
                             parameters[i+k,3] = alpha[k]
                             parameters[i+k,4] = 0.0
                             parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
+                            parameters[i+k,6] = alpha[k]
+                            parameters[i+k,7] = 0.0
+                            parameters[i+k,8] = alpha[k]
                 
             elif parameters[i,0][0] == 'n':
                 with open('fittedparameters/'+parameters[i,0][1:]+'methylneutral_q_out.txt') as f:
@@ -80,9 +80,9 @@ def makeparameterfiler():
                             parameters[i+k,3] = alpha[k]
                             parameters[i+k,4] = 0.0
                             parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
+                            parameters[i+k,6] = alpha[k]
+                            parameters[i+k,7] = 0.0
+                            parameters[i+k,8] = alpha[k]
                 
             else:
                 with open('fittedparameters/'+parameters[i,0]+'_q_out.txt') as f:
@@ -100,9 +100,9 @@ def makeparameterfiler():
                             parameters[i+k,3] = alpha[k]
                             parameters[i+k,4] = 0.0
                             parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
-                            parameters[i+k,5] = 0.0
-                            parameters[i+k,3] = alpha[k]
+                            parameters[i+k,6] = alpha[k]
+                            parameters[i+k,7] = 0.0
+                            parameters[i+k,8] = alpha[k]
                     
         current = parameters[i,0]
     

@@ -2,6 +2,7 @@ import numpy as np
 import horton
 from pfio import save_file, load_file, loadfchks
 from conversions import number2name, angstrom2bohr, bohr2angstrom
+from numba import jit, float64
 
 #
 #Internally, we work in atomic units
@@ -152,7 +153,7 @@ class structure(object):
     def save(self, filename):
         save_file(self, filename)
 
-
+@jit(nopython=True)
 def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
     #compute ESP due to points charges in grid points, get sum of squared error to QM ESP
     natoms      = rinvmat.shape[0]
