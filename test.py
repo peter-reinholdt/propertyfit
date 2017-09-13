@@ -23,7 +23,7 @@ def test_constraints_caps():
 
 def test_parameterfile():
     # Test that atoms given the same atom type have identical parameters
-    par = np.genfromtxt('FFparameters.csv', delimiter=',', dtype=str)
+    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
     checkdict = {}
     for i in range(1, len(par)):
         if par[i,0]+par[i,1]+'q' not in checkdict:
@@ -45,7 +45,7 @@ def test_parameterfile():
 
 """
 def test_parameterfile_totcharge():
-    par = np.genfromtxt('FFparameters.csv', delimiter=',', dtype=str)
+    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
     calcdict = {}
     checkdict =    {'NARG':2,
                     'nARG':1,

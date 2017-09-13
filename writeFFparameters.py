@@ -106,7 +106,7 @@ def makeparameterfiler():
                     
         current = parameters[i,0]
     
-    FFpar = open('FFparameters.csv','w')
+    FFpar = open('FFparameterswithduplicates.csv','w')
     for i in range(0,len(parameters)):
         FFpar.write(parameters[i,0])
         FFpar.write(',')
@@ -128,4 +128,37 @@ def makeparameterfiler():
         FFpar.write('\n')
     FFpar.close()
 
+
+def removeduplicates():
+    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
+    
+    FFdict = {}
+    for i in range(1, len(par)):
+        if par[i,0]+par[i,1] not in FFdict:
+            FFdict[par[i,0]+par[i,1]] = par[i,:]
+    
+    FFpar = open('FFparameters.csv','w')
+    for key in FFdict:
+        parameters = FFdict[key]
+        FFpar.write(parameters[0])
+        FFpar.write(',')
+        FFpar.write(parameters[1])
+        FFpar.write(',')
+        FFpar.write(parameters[2])
+        FFpar.write(',')
+        FFpar.write(parameters[3])
+        FFpar.write(',')
+        FFpar.write(parameters[4])
+        FFpar.write(',')
+        FFpar.write(parameters[5])
+        FFpar.write(',')
+        FFpar.write(parameters[6])
+        FFpar.write(',')
+        FFpar.write(parameters[7])
+        FFpar.write(',')
+        FFpar.write(parameters[8])
+        FFpar.write('\n')
+    FFpar.close()
+
 makeparameterfiler()
+removeduplicates()
