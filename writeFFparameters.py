@@ -135,6 +135,8 @@ def makeparameterfiler():
         FFpar.write(parameters[i,7])
         FFpar.write(',')
         FFpar.write(parameters[i,8])
+        
+            
         FFpar.write('\n')
     FFpar.close()
 

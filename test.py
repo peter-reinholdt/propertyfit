@@ -30,20 +30,20 @@ def test_parameterfile():
     for i in range(1, len(par)):
         if par[i,0]+par[i,1]+'q' not in checkdict:
             checkdict[par[i,0]+par[i,1]+'q']   = float(par[i,2])
-            #checkdict[par[i,0]+par[i,1]+'axx'] = float(par[i,3])
-            #checkdict[par[i,0]+par[i,1]+'axy'] = float(par[i,4])
-            #checkdict[par[i,0]+par[i,1]+'axz'] = float(par[i,5])
-            #checkdict[par[i,0]+par[i,1]+'ayy'] = float(par[i,6])
-            #checkdict[par[i,0]+par[i,1]+'ayz'] = float(par[i,7])
-            #checkdict[par[i,0]+par[i,1]+'azz'] = float(par[i,8])
+            checkdict[par[i,0]+par[i,1]+'axx'] = float(par[i,3])
+            checkdict[par[i,0]+par[i,1]+'axy'] = float(par[i,4])
+            checkdict[par[i,0]+par[i,1]+'axz'] = float(par[i,5])
+            checkdict[par[i,0]+par[i,1]+'ayy'] = float(par[i,6])
+            checkdict[par[i,0]+par[i,1]+'ayz'] = float(par[i,7])
+            checkdict[par[i,0]+par[i,1]+'azz'] = float(par[i,8])
         else:
             assert checkdict[par[i,0]+par[i,1]+'q']   == float(par[i,2])
-            #assert checkdict[par[i,0]+par[i,1]+'axx'] == float(par[i,3])
-            #assert checkdict[par[i,0]+par[i,1]+'axy'] == float(par[i,4])
-            #assert checkdict[par[i,0]+par[i,1]+'axz'] == float(par[i,5])
-            #assert checkdict[par[i,0]+par[i,1]+'ayy'] == float(par[i,6])
-            #assert checkdict[par[i,0]+par[i,1]+'ayz'] == float(par[i,7])
-            #assert checkdict[par[i,0]+par[i,1]+'azz'] == float(par[i,8])
+            assert checkdict[par[i,0]+par[i,1]+'axx'] == float(par[i,3])
+            assert checkdict[par[i,0]+par[i,1]+'axy'] == float(par[i,4])
+            assert checkdict[par[i,0]+par[i,1]+'axz'] == float(par[i,5])
+            assert checkdict[par[i,0]+par[i,1]+'ayy'] == float(par[i,6])
+            assert checkdict[par[i,0]+par[i,1]+'ayz'] == float(par[i,7])
+            assert checkdict[par[i,0]+par[i,1]+'azz'] == float(par[i,8])
 
 
 def test_parameterfile_totcharge():
@@ -192,4 +192,4 @@ def test_parameterfile_totcharge():
             calcdict[par[i,0]] = float(par[i,2]) + calcdict[par[i,0]]
     for key in checkdict:
         print(key, calcdict[key])
-        assert abs(checkdict[key] - calcdict[key]) < 10**-5
+        assert abs(checkdict[key] - calcdict[key]) < 10**-8
