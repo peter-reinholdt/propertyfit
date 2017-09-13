@@ -145,7 +145,7 @@ def removeduplicates():
     par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',',dtype='U256')
     
     FFdict = {}
-    for i in range(1, len(par)):
+    for i in range(0, len(par)):
         if par[i,0]+par[i,1] not in FFdict:
             FFdict[par[i,0]+par[i,1]] = par[i,:]
     
