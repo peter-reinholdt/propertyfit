@@ -22,7 +22,7 @@ def runConstraints(AA):
                 AAidx[j,2] = str(int(AAidx[j,2])-4)
             
             AAidx = np.delete(AAidx,[0,1,2,3],0)
-            AAidx[0,2] = AAidx[1,2] = '1'
+            AAidx[0,2] = AAidx[1,2] = AAidx[3,2] = '1'
             
             q0 = np.genfromtxt('../x0/'+str(AA)+'_methyl_charged.q0')
             AAidx[:,3] = q0[:,2]
@@ -38,7 +38,7 @@ def runConstraints(AA):
                 AAidx[j,2] = str(int(AAidx[j,2])-5)
             
             AAidx = np.delete(AAidx,[0,1,2,3,4],0)
-            AAidx[0,2] = '1'
+            AAidx[0,2]= AAidx[2,2] = '1'
             
             q0 = np.genfromtxt('../x0/'+str(AA)+'_methyl_neutral.q0')
             AAidx[:,3] = q0[:,2]

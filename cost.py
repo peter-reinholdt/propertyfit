@@ -124,11 +124,93 @@ def costCYX(q):
     
     # Total molecular charge set to qtot
     atoms = len(qout)
-    qout[cap1:16] -= (qout[cap1:16].sum()-qtot)/(atoms-cap1-5)
-    qout[21::] -= (qout[cap1:16].sum()-qtot)/(atoms-cap1-5)
+    qout[cap1:16] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
+    qout[21::] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
 
     return np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))
 
+
+def getfinalQ(q):
+    # #####################################################
+    #
+    # Get charges from after the fitting have converged. 
+    # Input charges in the fitting doesnt need to strictly
+    # follow the constraints, because the constraints are
+    # imposed in a discontenious fashion.
+    #
+    # #####################################################
+    
+    # Set cappings:
+    if checkTERMINAL == 0:
+        cap1 = 6
+        cap2 = 6
+    elif checkTERMINAL == 1 or checkTERMINAL == 2:
+        cap1 = 0
+        cap2 = 6
+    elif checkTERMINAL == 3 or checkTERMINAL == 4:
+        cap1 = 6
+        cap2 = 0
+    if checkCYX == 1:
+        cap2 += 5
+
+    # Make same atoms same charge
+    qout=q
+    for i in range(0, len(constraints)):
+        qout[i] = qout[int(constraints[i,2])-1]
+
+    # Assign constraints
+    # Total charge on caps is set to zero
+    capq = 0
+    if cap1 != 0:
+        capq += qout[0:cap1].sum()
+    if cap2 != 0:
+        capq += qout[-cap2:].sum()
+    if cap1 != 0:
+        qout[0:cap1] -= (capq)/(cap1+cap2)
+    if cap2 != 0:
+        qout[-cap2:] -= (capq)/(cap1+cap2)
+    
+    # Total molecular charge set to qtot
+    atoms = len(qout)
+    qout[cap1:atoms-cap2] -= (qout[cap1:atoms-cap2].sum()-qtot)/(atoms-cap1-cap2)
+    
+    return qout
+
+
+def getfinalQCCYX(q):
+    # #####################################################
+    #
+    # SPECIAL CASEE FOR CCYX and cCYX
+    # Get charges from after the fitting have converged. 
+    # Input charges in the fitting doesnt need to strictly
+    # follow the constraints, because the constraints are
+    # imposed in a discontenious fashion.
+    #
+    # #####################################################
+    
+    # Set cappings:
+    if checkTERMINAL == 3 or checkTERMINAL == 4:
+        cap1 = 6
+
+    # Make same atoms same charge
+    qout=q
+    for i in range(0, len(constraints)):
+        qout[i] = qout[int(constraints[i,2])-1]
+
+    # Assign constraints
+    # Total charge on caps is set to zero
+    capq = 0
+    capq += qout[0:cap1].sum()
+    capq += qout[16:21].sum()
+    qout[0:cap1] -= (capq)/(cap1+5)
+    qout[16:21] -= (capq)/(cap1+5)
+    
+    # Total molecular charge set to qtot
+    atoms = len(qout)
+    qout[cap1:16] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
+    qout[21::] -= (qout[cap1:16].sum()+qout[21::].sum()-qtot)/(atoms-cap1-5)
+    
+    return qout
  
 
 def fit(AA):
@@ -199,8 +281,12 @@ def fit(AA):
             file.write(str(key)+'    '+str(res[key]))
             file.write('\n')
         file.write('\n')
-        for i in range(0, len(res['x'])):
-             file.write(str(res['x'][i]))
+        if checkCCYX == 1:
+            qtot = getfinalQCCYX(res['x'])
+        else:
+            qtot = getfinalQ(res['x'])
+        for i in range(0, len(qtot)):
+             file.write(str(qtot[i]))
              file.write('\n')
         file.close()
     else:

@@ -18,9 +18,11 @@ def test_constraints_caps():
         for j in range(0, len(captype)):
             AAloaded = np.genfromtxt('constraints/'+str(AA[i])+str(captype[j])+'idx.csv', delimiter=';', dtype='str')
             for k in range(0, len(AAloaded)):
+                if AAloaded[int(AAloaded[k,2])-1,0] == 'H' and AAloaded[k,0] == 'C':
+                    print(AA[i], captype[j])
                 assert AAloaded[int(AAloaded[k,2])-1,0] == AAloaded[k,0]
 
-
+"""
 def test_parameterfile():
     # Test that atoms given the same atom type have identical parameters
     par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
@@ -43,7 +45,7 @@ def test_parameterfile():
             assert checkdict[par[i,0]+par[i,1]+'ayz'] == float(par[i,7])
             assert checkdict[par[i,0]+par[i,1]+'azz'] == float(par[i,8])
 
-"""
+
 def test_parameterfile_totcharge():
     par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
     calcdict = {}
