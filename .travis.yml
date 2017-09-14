@@ -17,7 +17,6 @@ install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy scipy pytest numba
   - source activate test-environment
   - pip install python-coveralls pytest-cov
-  - python setup.py build_ext --inplace
   
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]];
