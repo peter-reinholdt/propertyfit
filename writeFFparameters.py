@@ -103,7 +103,7 @@ def makeparameterfiler():
                             charges[k] = charges[k][:-2]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'.out.txt')
                         alpha = alpha[0:len(alpha)-6]
-                        if parameters[i,0][:] == 'CYX':
+                        if parameters[i,0][1:] == 'CYX':
                             charges = np.delete(charges, [16, 17, 18, 19, 20])
                             alpha = np.delete(alpha, [16, 17, 18, 19, 20])
                         for k in range(0,len(charges)):
@@ -125,7 +125,7 @@ def makeparameterfiler():
                             charges[k] = charges[k][:-2]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'.out.txt')
                         alpha = alpha[6:len(alpha)]
-                        if parameters[i,0][:] == 'CYX':
+                        if parameters[i,0][1:] == 'CYX':
                             charges = np.delete(charges, [10, 11, 12, 13, 14])
                             alpha = np.delete(alpha, [10, 11, 12, 13, 14])
                         for k in range(0,len(charges)):
