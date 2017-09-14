@@ -255,7 +255,7 @@ for i in range(len(AAlist)):
             checkTERMINAL = 3
         elif terminals[j] == 'neutralmethyl':
             checkTERMINAL = 4
-        elif terminals == 'ACE':
+        elif terminals[j] == 'ACE':
             checkTERMINAL = 5
         elif terminals[j] == 'NME':
             checkTERMINAL = 6
