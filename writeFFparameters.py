@@ -91,6 +91,55 @@ def makeparameterfiler():
                             parameters[i+k,6] = alpha[k]
                             parameters[i+k,7] = 0.0
                             parameters[i+k,8] = alpha[k]
+            
+            # check ALA, ARG, ASP, ASN and ASH for ACE
+            if parameters[i,0][1:] == 'ALA' or parameters[i,0][1:] == 'ARG'  or parameters[i,0][1:] == 'ASP' or parameters[i,0][1:] == 'ASH' or parameters[i,0][1:] == 'ASN':
+                AAcheck = 1
+            else:
+                AAcheck = 0
+            elif parameters[i,0][0] == 'A' and AAcheck == 1:
+                with open('fittedparameters/ACE_'+parameters[i,1:]+'_q_out.txt') as f:
+                    fitoutput = list(f)
+                for j in range(0,len(fitoutput)):
+                    if fitoutput[j][0:3] == 'nit':
+                        charges = fitoutput[j+2:len(fitoutput)-6]
+                        for k in range(0, len(charges)):
+                            charges[k] = charges[k][:-2]
+                        alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][:]+'.out.txt')
+                        alpha = alpha[0:len(alpha)-6]
+                        if parameters[i,0][:] == 'CYX':
+                            charges = np.delete(charges, [16, 17, 18, 19, 20])
+                            alpha = np.delete(alpha, [16, 17, 18, 19, 20])
+                        for k in range(0,len(charges)):
+                            parameters[i+k,2] = charges[k]
+                            parameters[i+k,3] = alpha[k]
+                            parameters[i+k,4] = 0.0
+                            parameters[i+k,5] = 0.0
+                            parameters[i+k,6] = alpha[k]
+                            parameters[i+k,7] = 0.0
+                            parameters[i+k,8] = alpha[k]
+            
+            elif parameters[i,0][0] == 'B':
+                with open('fittedparameters/NME_'+parameters[i,1:]+'_q_out.txt') as f:
+                    fitoutput = list(f)
+                for j in range(0,len(fitoutput)):
+                    if fitoutput[j][0:3] == 'nit':
+                        charges = fitoutput[j+2:len(fitoutput)]
+                        for k in range(0, len(charges)):
+                            charges[k] = charges[k][:-2]
+                        alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][:]+'.out.txt')
+                        alpha = alpha[6:len(alpha)]
+                        if parameters[i,0][:] == 'CYX':
+                            charges = np.delete(charges, [10, 11, 12, 13, 14])
+                            alpha = np.delete(alpha, [10, 11, 12, 13, 14])
+                        for k in range(0,len(charges)):
+                            parameters[i+k,2] = charges[k]
+                            parameters[i+k,3] = alpha[k]
+                            parameters[i+k,4] = 0.0
+                            parameters[i+k,5] = 0.0
+                            parameters[i+k,6] = alpha[k]
+                            parameters[i+k,7] = 0.0
+                            parameters[i+k,8] = alpha[k]
                 
             else:
                 with open('fittedparameters/'+parameters[i,0]+'_q_out.txt') as f:
