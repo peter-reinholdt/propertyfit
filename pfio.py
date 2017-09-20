@@ -21,7 +21,7 @@ def load_file(filename):
         s = f.read()
     return dill.loads(s)
 
-def load_qmfile(regex):
+def load_qmfiles(regex):
     from chargefit import structure #sorry!
     files = glob.glob(regex)
     structures = []
