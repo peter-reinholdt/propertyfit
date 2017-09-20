@@ -21,11 +21,11 @@ def load_file(filename):
         s = f.read()
     return dill.loads(s)
 
-def loadfchks(regex):
+def load_qmfile(regex):
     from chargefit import structure #sorry!
-    fchks  = glob.glob(regex)
+    files = glob.glob(regex)
     structures = []
-    for i in fchks:
+    for i in files:
         io = horton.IOData.from_file(i)
         try:
             grepfield = sh.grep("E-field", i, "-A1")

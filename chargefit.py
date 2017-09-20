@@ -1,6 +1,6 @@
 import numpy as np
 import horton
-from pfio import save_file, load_file, loadfchks
+from pfio import save_file, load_file, load_qmfiles
 from conversions import number2name, angstrom2bohr, bohr2angstrom
 from numba import jit, float64
 

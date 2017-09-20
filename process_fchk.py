@@ -4,7 +4,7 @@ import sys
 
 fchk = sys.argv[1]
 try:
-    structure = chargefit.loadfchks(fchk)[0]
+    structure = chargefit.load_qmfiles(fchk)[0]
     structure.compute_grid()
     structure.compute_rinvmat()
     structure.compute_xyzmat()
