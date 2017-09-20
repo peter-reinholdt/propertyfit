@@ -27,7 +27,11 @@ def loadfchks(regex):
     structures = []
     for i in fchks:
         io = horton.IOData.from_file(i)
-        grepfield = sh.grep("E-field", i, "-A1")
-        field = np.array([float(x) for x in grepfield.stdout.split()[6:9]])
+        try:
+            grepfield = sh.grep("E-field", i, "-A1")
+            field = np.array([float(x) for x in grepfield.stdout.split()[6:9]])
+        except:
+            print("INFO: no field information found in {}. Assuming zero field.".format(i))
+            field = np.array([0., 0., 0.])
         structures.append(structure(io, fchkname=i, field=field))
     return structures
