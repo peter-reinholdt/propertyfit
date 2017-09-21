@@ -16,8 +16,8 @@ def potentialPBD(V, molecule, filename):
     # it is assumed that it has no header
     # molcule[0,:] = atom name
     # molcule[1,:] = x
-    # molcule[1,:] = y
-    # molcule[1,:] = z
+    # molcule[2,:] = y
+    # molcule[3,:] = z
     #
     # filename is the name of the pdb file, such that:
     # file = "filename"_potential.pdb
