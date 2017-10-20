@@ -73,7 +73,8 @@ def cost(q):
     # Total molecular charge set to qtot
     atoms = len(qout)
     qout[cap1:atoms-cap2] -= (qout[cap1:atoms-cap2].sum()-qtot)/(atoms-cap1-cap2)
-    A = np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))
+	# 2625.5 to convert a.u. to kJ/mol
+    A = np.sqrt(np.average([chargefit.esp_sum_squared_error(s.rinvmat, s.esp_grid_qm, qout) for s in structures]))*2625.5
     print(A)
     return A
 
@@ -198,9 +199,9 @@ def fit(AA):
         else:
             file = open(str(AA)+'_q_out.txt','w')
         if checkCCYX == 1:
-            res = scipy.optimize.minimize(costCYX, q0, method='SLSQP', options={'ftol':1e-10})
+            res = scipy.optimize.minimize(costCYX, q0, method='SLSQP', options={'ftol':1e-3})
         else:
-            res = scipy.optimize.minimize(cost, q0, method='SLSQP', options={'ftol':1e-10})
+            res = scipy.optimize.minimize(cost, q0, method='SLSQP', options={'ftol':1e-3})
         for key in res:
             file.write(str(key)+'    '+str(res[key]))
             file.write('\n')
