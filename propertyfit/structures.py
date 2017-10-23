@@ -1,14 +1,19 @@
+#!/usr/bin/env python
+
 import numpy as np
 import horton
 from pfio import save_file, load_file, load_qmfiles
 from conversions import number2name, angstrom2bohr, bohr2angstrom
 from numba import jit, float64
 
-#
-#Internally, we work in atomic units
-#
 
 class structure(object):
+    """
+    A structure depends on horton for loading QM file data
+    and calculating ESP on a grid.
+    We define the grid-points on which to calculate ESP, as
+    well as pre-calculated arrays of distances
+    """
     def __init__(self, IO, fchkname='', field=np.zeros(3)):
         self.coordinates    = IO.coordinates
         self.numbers        = IO.numbers
@@ -16,26 +21,23 @@ class structure(object):
         self.obasis         = IO.obasis
         self.natoms         = len(self.numbers)
         self.fchkname       = fchkname
-        self.field          = field #np.zeros((3)) ::: x,y,z components of homogenous field
+        self.field          = field 
 
 
     def compute_grid_surface(self, pointdensity=2.0, radius_scale=1.4):
-        # #####################################################
-        #
-        # This part generates apparent uniformly spaced points on a vdW
-        # surface of a molecule.
-        #
-        # vdW     = van der Waals radius of atoms
-        # points  = number of points on a sphere around each atom
-        # grid    = output points in x, y, z
-        # idx     = used to keep track of index in grid, when generating 
-        #           initial points
-        # density = points per area on a surface
-        # chkrm   = (checkremove) used to keep track in index when 
-        #           removing points
-        #
-        # #####################################################
-        # vdW in bohr as of now
+        """
+        This part generates apparent uniformly spaced points on a vdW
+        surface of a molecule.
+        
+        vdW     = van der Waals radius of atoms
+        points  = number of points on a sphere around each atom
+        grid    = output points in x, y, z
+        idx     = used to keep track of index in grid, when generating 
+                  initial points
+        density = points per area on a surface
+        chkrm   = (checkremove) used to keep track in index when 
+                 removing points
+        """
         vdW = {1:1.200*angstrom2bohr, 6:1.700*angstrom2bohr, 7:1.550*angstrom2bohr, 8:1.520*angstrom2bohr, 16:1.800*angstrom2bohr}
         points = np.zeros(len(self.numbers)-1)
         for i in range(1, len(self.numbers)):
@@ -81,7 +83,6 @@ class structure(object):
                     grid = np.delete(grid,j,axis=0)
                     chkrm += 1
                     break
-        
         return grid
 
     
@@ -119,7 +120,6 @@ class structure(object):
 
 
     def compute_qm_esp(self):
-        #this is somewhat expensive
         esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float), self.grid)
         self.esp_grid_qm = esp_grid_qm 
 
@@ -152,14 +152,3 @@ class structure(object):
 
     def save(self, filename):
         save_file(self, filename)
-
-@jit(nopython=True)
-def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
-    #compute ESP due to points charges in grid points, get sum of squared error to QM ESP
-    natoms      = rinvmat.shape[0]
-    ngridpoints = rinvmat.shape[1]
-    grid = np.copy(esp_grid_qm)
-    for i in range(natoms):
-        for j in range(ngridpoints):
-            grid[j] -= testcharges[i] * rinvmat[i,j]
-    return np.sum(grid**2) / ngridpoints
