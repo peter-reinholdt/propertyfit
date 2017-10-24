@@ -12,7 +12,7 @@ def getSymmetries(lista, listb):
             try:
                 symmetries[listb[i]].append(lista[i])
             except KeyError:
-                symmetries[listb[i]] = [lista[i], listb[i]]
+                symmetries[listb[i]] = [listb[i], lista[i]]
     return list(symmetries.values())
     
 

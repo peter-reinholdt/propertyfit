@@ -21,8 +21,8 @@
             "qtot": 0.0,
             "symmetries": [
                 [
-                    5,
                     4,
+                    5,
                     6
                 ]
             ],
@@ -59,8 +59,8 @@
             "qtot": 0.0,
             "symmetries": [
                 [
-                    14,
-                    13
+                    13,
+                    14
                 ]
             ],
             "startguess": [
@@ -94,8 +94,8 @@
             "qtot": -1.0,
             "symmetries": [
                 [
-                    18,
-                    17
+                    17,
+                    18
                 ]
             ],
             "startguess": [
