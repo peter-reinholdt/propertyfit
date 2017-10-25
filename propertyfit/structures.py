@@ -151,3 +151,13 @@ class structure(object):
 
     def save(self, filename):
         save_file(self, filename)
+
+
+class constraints(object):
+    def __init__(self, filename):
+        load_constraints(filename)
+        self.
+        self.
+        self.
+        self.
+

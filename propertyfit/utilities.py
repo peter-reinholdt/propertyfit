@@ -11,6 +11,7 @@ import horton
 import glob
 import numpy as np
 import sh
+import json
 
 
 bohr2angstrom = 0.52917724900001
@@ -35,6 +36,7 @@ def load_file(filename):
         s = f.read()
     return dill.loads(s)
 
+
 def load_qmfiles(regex):
     from chargefit import structure #sorry!
     files = glob.glob(regex)
@@ -49,6 +51,12 @@ def load_qmfiles(regex):
             field = np.array([0., 0., 0.])
         structures.append(structure(io, fchkname=i, field=field))
     return structures
+
+
+def load_json(filename):
+    with open(filename, "r") as f:
+        res = json.load(f)
+    return res
 
 
 number2name          = {1: 'H',

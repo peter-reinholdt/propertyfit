@@ -82,6 +82,12 @@ def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, a
 @jit(nopython=True)
 def charge_cost_function(qtest, structures, constraints):
     """
+    Cost function for charges, based on the average of 
+    charge_esp_square_error across all structures.
+
+    qtest:          array of non-redundant test-charge parameters
+    structures:     list of structure objects
+    constraints:    
     """
     return res
 
