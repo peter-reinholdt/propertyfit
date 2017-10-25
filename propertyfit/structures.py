@@ -2,9 +2,8 @@
 
 import numpy as np
 import horton
-from pfio import save_file, load_file, load_qmfiles
-from conversions import number2name, angstrom2bohr, bohr2angstrom
-from numba import jit, float64
+from utilities import save_file, load_file, load_qmfiles, number2name, angstrom2bohr, bohr2angstrom
+from numba import jit
 
 
 class structure(object):

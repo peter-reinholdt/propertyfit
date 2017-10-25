@@ -11,8 +11,14 @@ from numba import jit
 
 
 @jit(nopython=True)
-def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
-    #compute ESP due to points charges in grid points, get sum of squared error to QM ESP
+def charge_esp_square_error(rinvmat, esp_grid_qm, testcharges):
+    """Compute the average square error
+    between the ESP set up by points charge
+    and the full QM ESP. 
+    The error is evaluated in the grid points
+    and the average of the squares of the errors
+    is returned
+    """
     natoms      = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
     grid = np.copy(esp_grid_qm)
@@ -24,7 +30,13 @@ def esp_sum_squared_error(rinvmat, esp_grid_qm, testcharges):
 
 @jit(nopython=True)
 def induced_dipole(alpha_ab, field):
-    """Anisotropic atom-centered dipole-dipole polarizabilities in a homogenous field"""
+    """Calculate the set of induced dipoles
+    set up by a homogenous field acting on 
+    a set of polarizabilties
+    The polarizabilities can be anisotropic
+    and the full Nx3x3 polarizability tensor
+    is used
+    """
     natoms = len(alpha_ab)
     mu = np.zeros((natoms,3))
     for i in range(natoms):
@@ -34,8 +46,11 @@ def induced_dipole(alpha_ab, field):
                 mu[i,j] += alpha_ab[i,j,k] * field[k]
     return mu
 
-@jit(nopython=True) 
+
+@jit(nopython=True)
 def dipole_potential(dipoles, rinvmat, xyzmat):
+    """Compute the potential from a set of
+    dipoles in the defined gridpoints"""
     natoms      = rinvmat.shape[0] 
     ngridpoints = rinvmat.shape[1]
     potential = np.zeros(ngridpoints)
@@ -46,8 +61,16 @@ def dipole_potential(dipoles, rinvmat, xyzmat):
     return potential
 
 
+@jit(nopython=True)
 def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, alpha_ab):
-    #induced_esp_grid_qm should be (IND_ESP_QM - ESP_QM_nofield)
+    """Compute the average square error
+    between the ESP set up by points dipole
+    and the full QM induced ESP, where
+    the induced ESP is defined as phi_QM(0) - phi_QM(F)
+    The error is evaluated in the grid points
+    and the average of the squares of the errors
+    is returned
+    """
     natoms      = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
     grid = np.copy(induced_esp_grid_qm)
@@ -56,17 +79,15 @@ def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, a
     return np.sum((grid-alpha_pot)**2)
 
 
-def cost_alpha_iso(refstructures, fieldstructures, alpha_iso):
-    #we assume structures contain grid, rinvmat, xyzmat and qm ESP
-    #refstructures, fieldstructures arranged so they line up pairwise, eg:
-    #VAL_0   VAL_0 x+50
-    #VAL_0   VAL_0 z-60
-    #...
-    #VAL_1   VAL_1 z+10
-    #alpha_iso is of size natoms
-    #returns RMSD
-    natoms = refstructures[0].natoms
-    
-    #reality check
-    assert(len(refstructures) == len(fieldstructures))
-    assert(natoms == len(alpha_iso))
+@jit(nopython=True)
+def charge_cost_function(qtest, structures, constraints):
+    """
+    """
+    return res
+
+
+@jit(nopython=True)
+def isopol_cost_function(alphatest, structures, constraints):
+    """
+    """
+    return res
