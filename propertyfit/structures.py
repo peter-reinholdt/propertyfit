@@ -2,7 +2,7 @@
 
 import numpy as np
 import horton
-from utilities import save_file, load_file, load_qmfiles, number2name, angstrom2bohr, bohr2angstrom
+from utilities import save_file, load_file, load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json
 from numba import jit
 
 
@@ -153,11 +153,77 @@ class structure(object):
         save_file(self, filename)
 
 
+class fragment(object):
+    def __init__(self, fragdict):
+        self.atomindices    = np.array(fragdict["atomindices"],dtype=np.int64) - 1
+        self.atomnames      = fragdict["atomnames"]
+        self.qtot           = fragdict["qtot"]
+        self.symmetries     = [np.array(x, dtype=np.int64) - 1 for x in fragdict["symmetries"]]
+        self.natoms         = len(self.atomindices)
+        self.symmetryidx    = np.copy(self.atomindices)
+        self.nparamtersq    = 0
+        self.nparamtersa    = 0
+        self.lastidx        = self.atomindices[-1]
+        self.lastidxissym   = False
+        self.lastidxnsym    = 1  #standard, no symmetry on last atom 
+        self.lastidxsym     = []
+
+        for iloc, idx in enumerate(self.symmetryidx):
+            for sym in self.symmetries:
+                if idx in sym:
+                    self.symmetryidx[iloc] = sym[0]
+                    if idx == self.lastidx:
+                        self.lastidxissym  = True
+                        self.lastidxsym    = sym
+                        self.lastidxnsym   = len(sym)
+
+        #number of paramters less than the total amount
+        # due to symmetries
+        nsymp = 0
+        for sym in self.symmetries:
+            nsymp += len(sym) - 1
+        #Np              = Na          - nsym  - (sum constraint)
+        self.nparametersq = self.natoms - nsymp - 1
+        #for isotropic polarizability, there is no constraint on
+        # the sum
+        self.nparametersa = self.natoms - nsymp
+
+
 class constraints(object):
     def __init__(self, filename):
-        load_constraints(filename)
-        self.
-        self.
-        self.
-        self.
+        data = load_json(filename)
+        self.filename       = filename
+        self.name           = data["name"]
+        self.nfragments     = len(data["fragments"])
+        self.fragments      = []
+        self.qtot           = 0.0
+        self.natoms         = 0
+        self.nparametersq   = 0
+        self.nparametersa   = 0
+        for i in range(self.nfragments):
+            frag = fragment(data["fragments"][i])
+            self.qtot           += frag.qtot
+            self.natoms         += frag.natoms
+            self.nparametersq   += frag.nparametersq
+            self.nparametersa   += frag.nparametersa
+            self.fragments.append(frag)
 
+    def expand_q(self, qcompressed):
+        qout = np.zeros(self.natoms, dtype=np.float64)
+        for frag in self.fragments:
+            qcur = 0.0
+            for i in range(frag.natoms-frag.lastidxnsym):
+                qout[frag.atomindices[i]] = qcompressed[frag.symmetryidx[i]]
+                qcur += qout[frag.atomindices[i]]
+            #fix total charge condition
+            if frag.lastidxissym:
+                qsym = (frag.qtot - qcur) / frag.lastidxnsym
+                for i in frag.lastidxsym:
+                    qout[i] = qsym
+            else:
+                #total charge of fragment should be qtot
+                qout[frag.lastidx] = frag.qtot - qcur 
+        return qout
+
+    def expand_a(self, acompressed):
+        return afull
