@@ -8,6 +8,7 @@ of cost functions for fitting charges and
 
 import numpy as np
 from numba import jit
+from utilities import hartree2kjmol
 
 
 @jit(nopython=True)
@@ -73,10 +74,9 @@ def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, a
     """
     natoms      = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
-    grid = np.copy(induced_esp_grid_qm)
-    mu_ind = induced_dipole(alpha_ab, field)
-    alpha_pot = dipole_potential(mu_ind, rinvmat, xyzmat)
-    return np.sum((grid-alpha_pot)**2)
+    mu_ind      = induced_dipole(alpha_ab, field)
+    alpha_pot   = dipole_potential(mu_ind, rinvmat, xyzmat)
+    return np.sum((induced_esp_grid_qm-alpha_pot)**2) / ngridpoints
 
 
 @jit(nopython=True)
@@ -87,13 +87,35 @@ def charge_cost_function(qtest, structures, constraints):
 
     qtest:          array of non-redundant test-charge parameters
     structures:     list of structure objects
-    constraints:    
+    constraints:    constraints object, which contains information
+                    about symmetries etc.
     """
-    return res
+    #expand charges to full set
+    qfull       = constraints.expand_q(qtest)
+    nstructures = len(structures)
+    res = 0.0
+    for s in structures:
+        res += charge_esp_square_error(s.rinvmat, s.esp_grid_qm, qfull)
+    return np.sqrt(res/nstructures) *  hartree2kjmol
 
 
 @jit(nopython=True)
-def isopol_cost_function(alphatest, structures, constraints):
+def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
     """
+    Cost function for isotropic polarizabilities, based on the average of 
+    induced_esp_sum_squared_error across all structures.
+    alphatest:      array of non-redundant test-polarizablity parameters
+    structures:     list of structure objects
+    constraints:    constraints object, which contains information
+                    about symmetries etc.
     """
-    return res
+    afull       = constraints.expand_a(alphatest)
+    nstructures = len(structures)
+    res         = 0.0
+    for i in range(nstructures):
+        res += induced_esp_sum_squared_error(structures[i].rinvmat, 
+                                             structures[i].xyzmat, 
+                                             structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm, 
+                                             fieldstructures[i].field, 
+                                             afull)
+    return np.sqrt(res/nstructures) * hartree2kjmol
