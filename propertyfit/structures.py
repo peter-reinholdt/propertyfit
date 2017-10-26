@@ -226,4 +226,10 @@ class constraints(object):
         return qout
 
     def expand_a(self, acompressed):
-        return afull
+        aout = np.zeros((self.natoms,3,3), dtype=np.float64)
+        for frag in self.fragments:
+            for i in range(frag.natoms):
+                aout[frag.atomindices[i],0,0] = acompressed[frag.symmetryidx[i]]
+                aout[frag.atomindices[i],1,1] = acompressed[frag.symmetryidx[i]]
+                aout[frag.atomindices[i],2,2] = acompressed[frag.symmetryidx[i]]
+        return aout
