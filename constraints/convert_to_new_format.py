@@ -16,7 +16,7 @@ def getSymmetries(lista, listb):
     return list(symmetries.values())
     
 checkcap = 'None'
-AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'CYX', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
+AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
 terminals = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl', 'None']
 #terminals = ['None']
 #checkcap = 'NME'
