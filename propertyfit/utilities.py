@@ -38,7 +38,7 @@ def load_file(filename):
 
 
 def load_qmfiles(regex):
-    from chargefit import structure #sorry!
+    from structures import structure #sorry!
     files = glob.glob(regex)
     structures = []
     for i in files:
