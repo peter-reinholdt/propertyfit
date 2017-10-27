@@ -2,6 +2,7 @@
 
 import numpy as np
 import horton
+import h5py
 from utilities import save_file, load_file, load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json
 from numba import jit
 
@@ -151,6 +152,40 @@ class structure(object):
 
     def save(self, filename):
         save_file(self, filename)
+
+
+    def save_h5(self, filename):
+        """
+        Save important arrays
+        on disk
+        """
+        f = h5py.File(filename, "w")
+        dmgroup = f.create_group("dm")
+        self.dm.to_hdf5(dmgroup)
+        f.create_dataset("nbasis",      data=self.dm.nbasis)
+        f.create_dataset("coordinates", data=self.coordinates)
+        f.create_dataset("numbers",     data=self.numbers)
+        f.create_dataset("natoms",      data=self.natoms)
+        f.create_dataset("fchkname",    data=self.fchkname)
+        f.create_dataset("field",       data=self.field)
+        f.create_dataset("xyzmat",      data=self.xyzmat)
+        f.create_dataset("rinvmat",     data=self.rinvmat)
+        f.create_dataset("esp_grid_qm", data=self.esp_grid_qm)
+
+
+    def load_h5(self, filename):
+        f = h5py.File(filename, "r")
+        self.dm = horton.matrix.dense.DenseTwoIndex(f["nbasis"].value)
+        self.dm.from_hdf5(f["dm"])
+        self.coordinates    = f["coordinates"].value
+        self.numbers        = f["numbers"].value
+        self.natoms         = f["natoms"].value
+        self.fchkname       = f["fchkname"].value
+        self.field          = f["field"].value
+        self.xyzmat         = f["xyzmat"].value
+        self.rinvmat        = f["rinvmat"].value
+        self.esp_grid_qm    = f["esp_grid_qm"].value
+
 
 
 class fragment(object):
