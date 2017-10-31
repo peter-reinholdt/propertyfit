@@ -198,7 +198,7 @@ class fragment(object):
         self.atomindices    = np.array(fragdict["atomindices"],dtype=np.int64) - 1
         self.atomnames      = fragdict["atomnames"]
         self.qtot           = fragdict["qtot"]
-        self.symmetries     = [np.array(x, dtype=np.int64) - 1 for x in fragdict["symmetries"]]
+        self.symmetries     = [list(np.array(x, dtype=np.int64) - 1) for x in fragdict["symmetries"]]
         self.fullsymmetries = []
         self.natoms         = len(self.atomindices)
         self.symmetryidx    = np.copy(self.atomindices)
@@ -219,6 +219,22 @@ class fragment(object):
                         self.lastidxissym  = True
                         self.lastidxsym    = sym
                         self.lastidxnsym   = len(sym)
+        
+        self.fullsymmetries = []
+        for idx in self.atomindices:
+            insym = False
+            if sym in self.fullsymmetries:
+                if idx in sym:
+                    continue
+            for sym in self.symmetries:
+                if idx in sym:
+                    insym = True
+                    break
+            if insym:
+                self.fullsymmetries.append(sym)
+            else:
+                self.fullsymmetries.append([idx])
+        
 
         #number of paramters less than the total amount
         # due to symmetries
@@ -277,26 +293,18 @@ class constraints(object):
 
     def expand_q(self, qcompressed):
         qout = np.zeros(self.natoms, dtype=np.float64)
-        counter  = 0
         pcounter = 0
         for frag in self.fragments:
-            ilast = -1
             qcur = 0.0
-            for idx in frag.symmetryidx[:-frag.lastidxnsym]:
-                #possible bug: what if symmetry-related idx are not consecutive?
-                if idx == ilast:
-                    #we went too far; rewind pcounter
-                    pcounter -= 1
-                qout[counter] = qcompressed[pcounter]
-                qcur += qout[counter]
-                counter  += 1
+            for sym in frag.fullsymmetries[:-1]:
+                for idx in sym:
+                    qout[idx] = qcompressed[pcounter]
+                    qcur += qout[idx]
                 pcounter += 1
-                ilast = idx
             #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
-            qlast = (frag.qtot - qcur) / frag.lastidxnsym
-            for i in range(frag.lastidxnsym):
-                qout[counter] = qlast 
-                counter += 1
+            qlast = (frag.qtot - qcur) / len(frag.fullsymmetries[-1])
+            for idx in frag.fullsymmetries[-1]:
+                qout[idx] = qlast 
         return qout
 
     def expand_a(self, acompressed):
