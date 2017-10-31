@@ -194,6 +194,7 @@ class fragment(object):
         self.atomnames      = fragdict["atomnames"]
         self.qtot           = fragdict["qtot"]
         self.symmetries     = [np.array(x, dtype=np.int64) - 1 for x in fragdict["symmetries"]]
+        self.fullsymmetries = []
         self.natoms         = len(self.atomindices)
         self.symmetryidx    = np.copy(self.atomindices)
         self.nparamtersq    = 0
@@ -202,6 +203,8 @@ class fragment(object):
         self.lastidxissym   = False
         self.lastidxnsym    = 1  #standard, no symmetry on last atom 
         self.lastidxsym     = []
+        self.startguess     = fragdict["startguess"]
+
 
         for iloc, idx in enumerate(self.symmetryidx):
             for sym in self.symmetries:
@@ -222,6 +225,7 @@ class fragment(object):
         #for isotropic polarizability, there is no constraint on
         # the sum
         self.nparametersa = self.natoms - nsymp
+          
 
 
 class constraints(object):
@@ -235,29 +239,59 @@ class constraints(object):
         self.natoms         = 0
         self.nparametersq   = 0
         self.nparametersa   = 0
+        q_red   = []
+        indices = []
+
         for i in range(self.nfragments):
             frag = fragment(data["fragments"][i])
             self.qtot           += frag.qtot
             self.natoms         += frag.natoms
             self.nparametersq   += frag.nparametersq
             self.nparametersa   += frag.nparametersa
+            q_red               += frag.startguess
             self.fragments.append(frag)
+       
+        #get non-redundant start guess
+        #1) remove (symmetry) indices from end
+        indices = []
+        for frag in self.fragments:
+            indices += list(frag.symmetryidx)
+            for i in range(frag.lastidxnsym):
+                indices.pop(-1)
+
+        #2) remove remaining symmetry-equivalent indices
+        indices = list(set(indices))
+        indices.sort()
+
+        q_red   = np.array(q_red,               dtype=np.float64)
+        self.q0 = np.zeros(self.nparametersq,   dtype=np.float64)
+
+        for i, index in enumerate(indices):
+            self.q0[i] = q_red[index]
+
 
     def expand_q(self, qcompressed):
         qout = np.zeros(self.natoms, dtype=np.float64)
+        counter  = 0
+        pcounter = 0
         for frag in self.fragments:
+            ilast = -1
             qcur = 0.0
-            for i in range(frag.natoms-frag.lastidxnsym):
-                qout[frag.atomindices[i]] = qcompressed[frag.symmetryidx[i]]
-                qcur += qout[frag.atomindices[i]]
-            #fix total charge condition
-            if frag.lastidxissym:
-                qsym = (frag.qtot - qcur) / frag.lastidxnsym
-                for i in frag.lastidxsym:
-                    qout[i] = qsym
-            else:
-                #total charge of fragment should be qtot
-                qout[frag.lastidx] = frag.qtot - qcur 
+            for idx in frag.symmetryidx[:-frag.lastidxnsym]:
+                #possible bug: what if symmetry-related idx are not consecutive?
+                if idx == ilast:
+                    #we went too far; rewind pcounter
+                    pcounter -= 1
+                qout[counter] = qcompressed[pcounter]
+                qcur += qout[counter]
+                counter  += 1
+                pcounter += 1
+                ilast = idx
+            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
+            qlast = (frag.qtot - qcur) / frag.lastidxnsym
+            for i in range(frag.lastidxnsym):
+                qout[counter] = qlast 
+                counter += 1
         return qout
 
     def expand_a(self, acompressed):
