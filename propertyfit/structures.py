@@ -14,13 +14,18 @@ class structure(object):
     We define the grid-points on which to calculate ESP, as
     well as pre-calculated arrays of distances
     """
-    def __init__(self, IO, fchkname='', field=np.zeros(3)):
+    def __init__(self):
+        pass
+
+
+    def load_qm(filename, field):
+        IO                  = horton.IOData.from_file(filename)
         self.coordinates    = IO.coordinates
         self.numbers        = IO.numbers
         self.dm             = IO.get_dm_full()
         self.obasis         = IO.obasis
         self.natoms         = len(self.numbers)
-        self.fchkname       = fchkname
+        self.fchkname       = filename
         self.field          = field 
 
 

@@ -95,7 +95,9 @@ def charge_cost_function(qtest, structures=None, constraints=None):
     res = 0.0
     for s in structures:
         res += charge_esp_square_error(s.rinvmat, s.esp_grid_qm, qfull)
-    return np.sqrt(res/nstructures) *  hartree2kjmol
+    res = np.sqrt(res/nstructures) *  hartree2kjmol
+    print(res)
+    return res
 
 
 @jit(nopython=True)
