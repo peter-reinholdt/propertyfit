@@ -1,16 +1,11 @@
 # Script created files:
 *.pyc
-
 __pycache__
-
 *.out
-
 *.log
 logs/
 cache/
 scripts/
-
 # Specific files:
 run_alpha.sh
 run_q.sh
-
