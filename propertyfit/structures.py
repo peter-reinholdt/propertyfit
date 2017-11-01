@@ -222,10 +222,14 @@ class fragment(object):
         
         self.fullsymmetries = []
         for idx in self.atomindices:
-            insym = False
-            if sym in self.fullsymmetries:
+            counted = False
+            for sym in self.fullsymmetries:
                 if idx in sym:
-                    continue
+                    counted = True
+            if counted:
+                continue
+
+            insym = False
             for sym in self.symmetries:
                 if idx in sym:
                     insym = True
