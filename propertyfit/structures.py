@@ -282,7 +282,8 @@ class constraints(object):
         for frag in self.fragments:
             indices += list(frag.symmetryidx)
             for i in range(frag.lastidxnsym):
-                indices.pop(-1)
+                indices.remove(frag.lastidxsym[0])
+                
 
         #2) remove remaining symmetry-equivalent indices
         indices = list(set(indices))
