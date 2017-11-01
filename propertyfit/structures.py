@@ -207,7 +207,7 @@ class fragment(object):
         self.lastidx        = self.atomindices[-1]
         self.lastidxissym   = False
         self.lastidxnsym    = 1  #standard, no symmetry on last atom 
-        self.lastidxsym     = []
+        self.lastidxsym     = [self.lastidx]
         self.startguess     = fragdict["startguess"]
 
 
@@ -282,7 +282,8 @@ class constraints(object):
         for frag in self.fragments:
             indices += list(frag.symmetryidx)
             for i in range(frag.lastidxnsym):
-                indices.pop(-1)
+                indices.remove(frag.lastidxsym[0])
+                
 
         #2) remove remaining symmetry-equivalent indices
         indices = list(set(indices))
