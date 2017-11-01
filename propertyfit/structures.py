@@ -207,7 +207,7 @@ class fragment(object):
         self.lastidx        = self.atomindices[-1]
         self.lastidxissym   = False
         self.lastidxnsym    = 1  #standard, no symmetry on last atom 
-        self.lastidxsym     = []
+        self.lastidxsym     = [self.lastidx]
         self.startguess     = fragdict["startguess"]
 
 
