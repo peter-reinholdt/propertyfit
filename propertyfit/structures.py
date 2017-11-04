@@ -257,7 +257,6 @@ class constraints(object):
     def __init__(self, filename):
         data = load_json(filename)
         self.filename       = filename
-        self.krestraint     = 0.0
         self.name           = data["name"]
         self.restraint      = 0.0
         self.nfragments     = len(data["fragments"])
@@ -272,7 +271,43 @@ class constraints(object):
         for i in range(self.nfragments):
             frag = fragment(data["fragments"][i])
             self.qtot           += frag.qtot
-            constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
+            self.natoms         += frag.natoms
+            self.nparametersq   += frag.nparametersq
+            self.nparametersa   += frag.nparametersa
+            q_red               += frag.startguess
+            self.fragments.append(frag)
+       
+        #get non-redundant start guess
+        #1) remove (symmetry) indices from end
+        indices = []
+        for frag in self.fragments:
+            indices += list(frag.symmetryidx)
+            for i in range(frag.lastidxnsym):
+                indices.remove(frag.lastidxsym[0])
+                
+
+        #2) remove remaining symmetry-equivalent indices
+        indices = list(set(indices))
+        indices.sort()
+
+        q_red   = np.array(q_red,               dtype=np.float64)
+        self.q0 = np.zeros(self.nparametersq,   dtype=np.float64)
+
+        for i, index in enumerate(indices):
+            self.q0[i] = q_red[index]
+
+
+    def expand_q(self, qcompressed):
+        qout = np.zeros(self.natoms, dtype=np.float64)
+        pcounter = 0
+        for frag in self.fragments:
+            qcur = 0.0
+            for sym in frag.fullsymmetries[:-1]:
+                for idx in sym:
+                    qout[idx] = qcompressed[pcounter]
+                    qcur += qout[idx]
+                pcounter += 1
+            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
             qlast = (frag.qtot - qcur) / len(frag.fullsymmetries[-1])
             for idx in frag.fullsymmetries[-1]:
                 qout[idx] = qlast 
