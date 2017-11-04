@@ -103,7 +103,7 @@ def charge_cost_function(qtest, structures=None, constraints=None):
     #restraints towards zero for increased stability
     if constraints.krestraint > 0.0:
         for i in range(natoms):
-            res += constraints.krestraint * (qfull[i])**2
+            res += constraints.restraint * (qfull[i])**2
 
     return res
 
