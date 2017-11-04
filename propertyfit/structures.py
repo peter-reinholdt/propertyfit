@@ -259,6 +259,7 @@ class constraints(object):
         self.filename       = filename
         self.krestraint     = 0.0
         self.name           = data["name"]
+        self.restraint      = 0.0
         self.nfragments     = len(data["fragments"])
         self.fragments      = []
         self.qtot           = 0.0
