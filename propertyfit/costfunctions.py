@@ -96,7 +96,15 @@ def charge_cost_function(qtest, structures=None, constraints=None):
     for s in structures:
         res += charge_esp_square_error(s.rinvmat, s.esp_grid_qm, qfull)
     res = np.sqrt(res/nstructures) *  hartree2kjmol
+    
+    #print the pure version of the cost function
     print(res)
+    
+    #restraints towards zero for increased stability
+    if constraints.krestraint > 0.0:
+        for i in range(natoms):
+            res += constraints.krestraint * (qfull[i])**2
+
     return res
 
 
