@@ -258,6 +258,7 @@ class constraints(object):
         data = load_json(filename)
         self.filename       = filename
         self.name           = data["name"]
+        self.restraint      = 0.0
         self.nfragments     = len(data["fragments"])
         self.fragments      = []
         self.qtot           = 0.0
