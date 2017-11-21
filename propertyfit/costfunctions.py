@@ -91,6 +91,7 @@ def charge_cost_function(qtest, structures=None, constraints=None):
     """
     #expand charges to full set
     qfull       = constraints.expand_q(qtest)
+    qfull_ref   = constraints.expand_q(constraints.q0)
     nstructures = len(structures)
     res = 0.0
     for s in structures:
@@ -101,10 +102,9 @@ def charge_cost_function(qtest, structures=None, constraints=None):
     print(res)
     
     #restraints towards zero for increased stability
-    if constraints.krestraint > 0.0:
-        for i in range(natoms):
-            res += constraints.restraint * (qfull[i])**2
-
+    if constraints.restraint > 0.0:
+        for i in range(constraints.natoms):
+            res += constraints.restraint * (qfull[i]-qfull_ref[i])**2
     return res
 
 
