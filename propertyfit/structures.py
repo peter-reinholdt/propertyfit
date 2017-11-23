@@ -315,9 +315,12 @@ class constraints(object):
 
     def expand_a(self, acompressed):
         aout = np.zeros((self.natoms,3,3), dtype=np.float64)
+        pcounter = 0
         for frag in self.fragments:
-            for i in range(frag.natoms):
-                aout[frag.atomindices[i],0,0] = acompressed[frag.symmetryidx[i]]
-                aout[frag.atomindices[i],1,1] = acompressed[frag.symmetryidx[i]]
-                aout[frag.atomindices[i],2,2] = acompressed[frag.symmetryidx[i]]
+            for sym in frag.fullsymmetries[:]:
+                for idx in sym:
+                    aout[idx,0,0] = acompressed[pcounter]
+                    aout[idx,1,1] = acompressed[pcounter]
+                    aout[idx,2,2] = acompressed[pcounter]
+                pcounter += 1
         return aout

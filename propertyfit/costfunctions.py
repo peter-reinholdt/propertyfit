@@ -127,4 +127,5 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
                                              structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm, 
                                              fieldstructures[i].field, 
                                              afull)
+    #TODO: add restraints
     return np.sqrt(res/nstructures) * hartree2kjmol
