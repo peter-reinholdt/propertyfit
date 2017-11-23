@@ -1,7 +1,5 @@
 import numpy as np
 
-# New:
-# Core set of charges
 
 def makeparameterfiler():
     parameters = np.genfromtxt('FFparameterstemplate.csv',delimiter=';',dtype='U256')

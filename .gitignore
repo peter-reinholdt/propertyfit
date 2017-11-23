@@ -1,7 +1,6 @@
 # Script created files:
 *.pyc
 __pycache__
-*.out
 *.log
 logs/
 cache/
