@@ -18,7 +18,7 @@ class structure(object):
         pass
 
 
-    def load_qm(filename, field):
+    def load_qm(self, filename, field):
         IO                  = horton.IOData.from_file(filename)
         self.coordinates    = IO.coordinates
         self.numbers        = IO.numbers

@@ -2,8 +2,8 @@
 import sys
 import numpy as np
 from numba import jit
-import pfio
-from conversions import angstrom2bohr, hartree2kjmol
+from propertyfit.utilities import load_qmfiles
+from propertyfit.utilities import angstrom2bohr, hartree2kjmol
 
 
 @jit(nopython=True, cache=True)
@@ -37,10 +37,14 @@ if __name__ == "__main__":
     testcharges = np.loadtxt(chargefile)
     testdipoles = np.loadtxt(dipolefile)
 
-    structure = pfio.load_qmfiles(qmfile)[0]
-    structure.compute_grid(rmin=2.0*angstrom2bohr, rmax=2.0*angstrom2bohr, nsurfaces=1, pointdensity=20.0)
+    structure = load_qmfiles(qmfile)[0]
+    print("Computing grid...")
+    structure.compute_grid(rmin=2.0*angstrom2bohr, rmax=2.0*angstrom2bohr, nsurfaces=1, pointdensity=5.0)
+    print("Computing rinvmat...")
     structure.compute_rinvmat()
+    print("Computing xyzmat...")
     structure.compute_xyzmat()
+    print("Computing QM ESP...")
     structure.compute_qm_esp()
 
 
