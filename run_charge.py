@@ -16,6 +16,7 @@ if len(sys.argv) < 3:
 
 constraintsfile = sys.argv[1]
 locationfile    = sys.argv[2]
+print(locationfile)
 files = np.loadtxt(locationfile, dtype=str)
 
 #create constraints object
@@ -31,7 +32,10 @@ for fname in files:
 #use partial to wrap cost function, so we only need a single qtest argument (and not constraints, structures)
 #then we can call fun(qtest) instead of charge_cost_function(qtest, structures, constraints)
 
+con.restraint = 1.0
 q0 = con.q0
+
+
 
 fun = functools.partial(charge_cost_function, structures=structures, constraints=con)
 res = minimize(fun, x0=q0, method='SLSQP')

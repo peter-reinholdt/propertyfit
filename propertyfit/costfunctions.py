@@ -6,6 +6,7 @@ of cost functions for fitting charges and
 (isotropic) polarizabilities
 """
 
+from __future__ import print_function
 import numpy as np
 from numba import jit
 from utilities import hartree2kjmol
@@ -108,7 +109,6 @@ def charge_cost_function(qtest, structures=None, constraints=None):
     return res
 
 
-@jit(nopython=True)
 def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
     """
     Cost function for isotropic polarizabilities, based on the average of 
@@ -128,4 +128,6 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
                                              fieldstructures[i].field, 
                                              afull)
     #TODO: add restraints
-    return np.sqrt(res/nstructures) * hartree2kjmol
+    res = np.sqrt(res/nstructures) * hartree2kjmol
+    print(res)
+    return res

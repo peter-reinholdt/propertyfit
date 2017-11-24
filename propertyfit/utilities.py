@@ -49,7 +49,10 @@ def load_qmfiles(regex):
         except:
             print("INFO: no field information found in {}. Assuming zero field.".format(i))
             field = np.array([0., 0., 0.])
-        structures.append(structure(io, fchkname=i, field=field))
+
+        s = structure()
+        s.load_qm(i, field)
+        structures.append(s)
     return structures
 
 
