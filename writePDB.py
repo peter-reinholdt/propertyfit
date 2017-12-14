@@ -1,4 +1,4 @@
-def potentialPBD(V, molecule, filename):
+def writePDB(V, atom_names, atom_coords, filename):
     # #####################################################
     #
     # Function to write ESP and error in ESP to a pdb file,
@@ -6,39 +6,33 @@ def potentialPBD(V, molecule, filename):
     #
     # V is the points where to the ESP have been calculated.
     # V is saved in the pdb as the atom He
-    # V[0,:] = x
-    # V[1,:] = y
-    # V[2,:] = z
-    # V[3,:] = ESP
-    # V[4,:] = ESP error
+    # V[:,0] = x
+    # V[:,1] = y
+    # V[:,2] = z
+    # V[:,3] = ESP
+    # V[:,4] = ESP error
     #
-    # molcule is the coordinates of the molecule
-    # it is assumed that it has no header
-    # molcule[0,:] = atom name
-    # molcule[1,:] = x
-    # molcule[2,:] = y
-    # molcule[3,:] = z
+    # atom_name  :: [:],   dtype=str,        atom labels
+    # atom_coord :: [:,3], dtype=np.float64, atom coordinates
     #
-    # filename is the name of the pdb file, such that:
-    # file = "filename"_potential.pdb
+    # filename is the name of the pdb file
     #
     # #####################################################
     
     #AtomNrtoName =  {1: 'H',2: 'He',3: 'Li',4: 'Be',5: 'B',6: 'C',7: 'N',8: 'O',9: 'F',10: 'Ne',11: 'Na',12: 'Mg',13: 'Al',14: 'Si',15: 'P',16: 'S',17: 'Cl',18: 'Ar',19: 'K',20: 'Ca',21: 'Sc',22: 'Ti',23: 'V',24: 'Cr',25: 'Mn',26: 'Fe',27: 'Co',28: 'Ni',29: 'Cu',30: 'Zn',31: 'Ga',32: 'Ge',33: 'As',34: 'Se',35: 'Br',36: 'Kr',37: 'Rb',38: 'Sr',39: 'Y',40: 'Zr',41: 'Nb',42: 'Mo',43: 'Tc',44: 'Ru',45: 'Rh',46: 'Pd',47: 'Ag',48: 'Cd',49: 'In',50: 'Sn',51: 'Sb',52: 'Te',53: 'I',54: 'Xe',55: 'Cs',56: 'Ba',57: 'La',58: 'Ce',59: 'Pr',60: 'Nd',61: 'Pm',62: 'Sm',63: 'Eu',64: 'Gd',65: 'Tb',66: 'Dy',67: 'Ho',68: 'Er',69: 'Tm',70: 'Yb',71: 'Lu',72: 'Hf',73: 'Ta',74: 'W',75: 'Re',76: 'Os',77: 'Ir',78: 'Pt',79: 'Au',80: 'Hg',81: 'Tl',82: 'Pb',83: 'Bi',84: 'Po',85: 'At',86: 'Rn',87: 'Fr',88: 'Ra',89: 'Ac',90: 'Th',91: 'Pa',92: 'U',93: 'Np',94: 'Pu',95: 'Am',96: 'Cm',97: 'Bk',98: 'Cf',99: 'Es',100: 'Fm',101: 'Md',102: 'No',103: 'Lr',104: 'Rf',105: 'Db',106: 'Sg',107: 'Bh',108: 'Hs',109: 'Mt'}
     
-    # scaling of ESP and ESP error to fit within the PDB format
+    # scaling of ESP and ESP error to fit within the (fixed format) PDB
     scaleESP = 100
     scaleESPerror = 10000
     
     #Write potential to pdb
-    f = open(filename+'_potential.pdb', 'w+')
+    f = open(filename, 'w+')
     idx = 1
-    for i in range(0, len(molecule)):
+    for i in range(0, len(atom_names)):
         f.write('{:>6}'.format('HETATM'))
         f.write('{:>5}'.format(str(idx)))
         f.write('{:>1}'.format(' '))
-        #atom = AtomNrtoName[molecule[i,0]]
-        atom = molecule[i,0]
+        atom = atom_names[i]
         f.write('{:>4}'.format(atom))
         f.write('{:>1}'.format(' '))
         f.write('{:>3}'.format('MOL'))
@@ -47,9 +41,9 @@ def potentialPBD(V, molecule, filename):
         f.write('{:>4}'.format(' '))
         f.write('{:>1}'.format(' '))
         f.write('{:>3}'.format(' '))
-        f.write('{: 8.3f}'.format(molecule[i,1]))
-        f.write('{: 8.3f}'.format(molecule[i,2]))
-        f.write('{: 8.3f}'.format(molecule[i,3]))
+        f.write('{: 8.3f}'.format(atom_coords[i,0]))
+        f.write('{: 8.3f}'.format(atom_coords[i,1]))
+        f.write('{: 8.3f}'.format(atom_coords[i,2]))
         f.write('{: 6.2f}'.format(1))
         f.write('{: 6.2f}'.format(1))
         f.write('{:>6}'.format(' '))
