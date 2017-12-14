@@ -30,7 +30,7 @@ def makeparameterfiler():
                             parameters[i+k,8] = alpha[k]
                                 
             elif parameters[i,0][0] == 'c':
-                with open('fittedparameters/charges_'+parameters[i,0][1:]+'_neutral_methyl.out') as f:
+                with open('fittedparameters/restraints_'+parameters[i,0][1:]+'_neutral_methyl.out') as f:
                     fitoutput = list(f)
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'Fin':
@@ -51,7 +51,7 @@ def makeparameterfiler():
                             parameters[i+k,8] = alpha[k]
                             
             elif parameters[i,0][0] == 'N':
-                with open('fittedparameters/charges_'+parameters[i,0][1:]+'_methyl_charged.out') as f:
+                with open('fittedparameters/restraints_'+parameters[i,0][1:]+'_methyl_charged.out') as f:
                     fitoutput = list(f)
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'Fin':
@@ -73,7 +73,7 @@ def makeparameterfiler():
                             parameters[i+k,8] = alpha[k]
                 
             elif parameters[i,0][0] == 'n':
-                with open('fittedparameters/charges_'+parameters[i,0][1:]+'_methyl_neutral.out') as f:
+                with open('fittedparameters/restraints_'+parameters[i,0][1:]+'_methyl_neutral.out') as f:
                     fitoutput = list(f)
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'Fin':
@@ -139,7 +139,7 @@ def makeparameterfiler():
                             parameters[i+k,8] = alpha[k]
             
             elif len(parameters[i,0]) == 3:
-                with open('fittedparameters/charges_'+parameters[i,0]+'.out') as f:
+                with open('fittedparameters/restraints_'+parameters[i,0]+'.out') as f:
                     fitoutput = list(f)
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'Fin':
