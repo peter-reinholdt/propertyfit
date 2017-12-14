@@ -1,27 +1,32 @@
 import numpy as np
+import json
+import glob
 
-
-def test_constraints():
+def test_constraint_files():
     # Test that atoms constrained to same charge are the same element
+    """
     AA = ['ALA', 'ARG', 'ASH', 'ASN', 'ASP',  'CYD', 'CYS', 'CYX', 'GLH', 'GLN', 'GLU', 'GLY', 'HID', 'HIE', 'HIS', 'ILE', 'LEU', 'LYD', 'LYS', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL']
     for i in range(0, len(AA)):
         AAloaded = np.genfromtxt('constraints/'+str(AA[i])+'idx.csv', delimiter=';', dtype='str')
         for j in range(0, len(AAloaded)):
             assert AAloaded[int(AAloaded[i,2])-1,0] == AAloaded[i,0]
+    """
 
-
-def test_constraints_caps():
-    # Test that atoms constrained to same charge are the same element
-    AA = ['ALA', 'ARG', 'ASH', 'ASN', 'ASP',  'CYD', 'CYS', 'CYX', 'GLH', 'GLN', 'GLU', 'GLY', 'HID', 'HIE', 'HIS', 'ILE', 'LEU', 'LYD', 'LYS', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL']
-    captype = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl']
-    for i in range(0, len(AA)):
-        for j in range(0, len(captype)):
-            AAloaded = np.genfromtxt('constraints/'+str(AA[i])+str(captype[j])+'idx.csv', delimiter=';', dtype='str')
-            for k in range(0, len(AAloaded)):
-                if AAloaded[int(AAloaded[k,2])-1,0] == 'H' and AAloaded[k,0] == 'C':
-                    print(AA[i], captype[j])
-                assert AAloaded[int(AAloaded[k,2])-1,0] == AAloaded[k,0]
-
+    files = glob.glob('../*/*constraints')
+    for file in files:
+        with open(file, "r") as f:
+            res = json.load(f)
+        atomlist = []
+        for fragment in res["fragments"]:
+            for atom in fragment["atomnames"]:
+                atomlist.append(atom)
+        for fragment in res["fragments"]:
+            for symmetry in fragment["symmetries"]:
+                atomcheck = atomlist[symmetry[0]-1]
+                for i in symmetry:
+                    print(atomcheck, atomlist[i-1], i, res["name"])
+                    assert atomcheck == atomlist[i-1]
+test_constraint_files()
 
 def test_parameterfile():
     # Test that atoms given the same atom type have identical parameters

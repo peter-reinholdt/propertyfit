@@ -18,15 +18,19 @@ def getSymmetries(lista, listb):
 checkcap = 'None'
 AAlist = ['ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'HIS', 'ILE', 'LEU', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL', 'ALA', 'ASH', 'CYD', 'GLH', 'GLY', 'HID', 'HIE', 'LYD', 'LYS']
 terminals = ['methylcharged','methylneutral','chargedmethyl','neutralmethyl', 'None']
+terminalsout = ['_methyl_charged','_methyl_neutral','_charged_methyl','_neutral_methyl']
 #terminals = ['None']
 #checkcap = 'NME'
 for i in range(0, len(AAlist)):
     for j in range(0, len(terminals)):
         if terminals[j] == 'None':
             filename = AAlist[i]+'idx.csv'
+            filenameout = AAlist[i]+'idx.csv'
         else:
             filename = AAlist[i]+terminals[j]+'idx.csv'
+            filenameout = AAlist[i]+terminalsout[j]+'idx.csv'
         name        = filename.split("idx")[0]
+        nameout     = filenameout.split("idx")[0]
         data        = np.loadtxt(filename, dtype="U64", delimiter=";")
         natoms = len(data)
         
@@ -36,12 +40,12 @@ for i in range(0, len(AAlist)):
             nf2 = 6
         elif "methylcharged" in name:
             nfrag = 2
-            nf0 = 0
-            nf2 = 6
-        elif "chargedmethyl" in name:
-            nfrag = 2
             nf0 = 6
             nf2 = 0
+        elif "chargedmethyl" in name:
+            nfrag = 2
+            nf0 = 0
+            nf2 = 6
         elif "neutralmethyl" in name:
             nfrag = 2
             nf0 = 6
@@ -72,8 +76,8 @@ for i in range(0, len(AAlist)):
             symidx      = [int(x) for x in data[start:stop, 2]]
             symmetries  = getSymmetries(atomindices, symidx)
             qguess      = data[start:stop, 3].astype(np.float64)
-            if "chargedmethyl" in name:
-                q0 = -1.0
+            if "methylcharged" in name:
+                q0 = 1.0
             else:
                 q0 = 0.0
             #get symmetry
@@ -116,8 +120,8 @@ for i in range(0, len(AAlist)):
             symidx      = [int(x) for x in data[start:stop, 2]]
             symmetries  = getSymmetries(atomindices, symidx)
             qguess      = data[start:stop, 3].astype(np.float64)
-            if "methylcharged" in name:
-                q0 = 1.0
+            if "chargedmethyl" in name:
+                q0 = -1.0
             else:
                 q0 = 0.0
         
@@ -131,11 +135,11 @@ for i in range(0, len(AAlist)):
         stringout = json.dumps(outdict, indent=4, separators=(',', ': '))
         
         if checkcap == 'ACE':
-            with open("{}ACE.constraints".format(name), "w") as f:
+            with open("{}ACE.constraints".format(nameout), "w") as f:
                 f.write(stringout)
         elif checkcap == 'NME':
-            with open("{}NME.constraints".format(name), "w") as f:
+            with open("{}NME.constraints".format(nameout), "w") as f:
                 f.write(stringout)
         else:
-            with open("{}.constraints".format(name), "w") as f:
+            with open("{}.constraints".format(nameout), "w") as f:
                 f.write(stringout)
