@@ -18,11 +18,7 @@
                 "C",
                 "H"
             ],
-<<<<<<< HEAD
             "qtot": 1.0,
-=======
-            "qtot": 0.0,
->>>>>>> d2b864bbc59269f8d5a526bf4c63a4e8a34dbbec
             "symmetries": [
                 [
                     1,
@@ -72,11 +68,7 @@
                 "H",
                 "H"
             ],
-<<<<<<< HEAD
             "qtot": -1.0,
-=======
-            "qtot": 0.0,
->>>>>>> d2b864bbc59269f8d5a526bf4c63a4e8a34dbbec
             "symmetries": [
                 [
                     9,
