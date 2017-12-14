@@ -38,7 +38,7 @@
                 "C",
                 "O"
             ],
-            "qtot": -1.0,
+            "qtot": 0.0,
             "symmetries": [
                 [
                     4,
@@ -86,7 +86,7 @@
                 "O",
                 "O"
             ],
-            "qtot": -1.0,
+            "qtot": 0.0,
             "symmetries": [
                 [
                     17,

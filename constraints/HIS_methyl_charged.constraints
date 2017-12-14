@@ -18,7 +18,7 @@
                 "C",
                 "H"
             ],
-            "qtot": 1.0,
+            "qtot": 0.0,
             "symmetries": [
                 [
                     1,
@@ -80,7 +80,7 @@
                 "H",
                 "H"
             ],
-            "qtot": 1.0,
+            "qtot": 0.0,
             "symmetries": [
                 [
                     9,
