@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import sys
 import numpy as np
 import json
@@ -40,12 +38,12 @@ for i in range(0, len(AAlist)):
             nf2 = 6
         elif "methylcharged" in name:
             nfrag = 2
-            nf0 = 6
-            nf2 = 0
-        elif "chargedmethyl" in name:
-            nfrag = 2
             nf0 = 0
             nf2 = 6
+        elif "chargedmethyl" in name:
+            nfrag = 2
+            nf0 = 6
+            nf2 = 0
         elif "neutralmethyl" in name:
             nfrag = 2
             nf0 = 6
@@ -76,10 +74,7 @@ for i in range(0, len(AAlist)):
             symidx      = [int(x) for x in data[start:stop, 2]]
             symmetries  = getSymmetries(atomindices, symidx)
             qguess      = data[start:stop, 3].astype(np.float64)
-            if "methylcharged" in name:
-                q0 = 1.0
-            else:
-                q0 = 0.0
+            q0 = 0.0
             #get symmetry
             
         
@@ -104,13 +99,18 @@ for i in range(0, len(AAlist)):
                 q0 = -1.0
             else:
                 q0 = 0.0
-        
+            if "chargedmethyl" in name:
+                q0 -= 1.0
+            if "methylcharged" in name:
+                q0 += 1.0
+            
             fragment = {"atomindices"   : list(atomindices),
                         "atomnames"     : list(atomnames),
                         "qtot"          : q0,
                         "symmetries"    : symmetries,
                         "startguess"    : [float(x) for x in qguess]}
             outdict["fragments"].append(fragment)
+            
         
         if nf2 > 0:
             start = nf0 + nf1
@@ -120,10 +120,7 @@ for i in range(0, len(AAlist)):
             symidx      = [int(x) for x in data[start:stop, 2]]
             symmetries  = getSymmetries(atomindices, symidx)
             qguess      = data[start:stop, 3].astype(np.float64)
-            if "chargedmethyl" in name:
-                q0 = -1.0
-            else:
-                q0 = 0.0
+            q0 = 0.0
         
             fragment = {"atomindices"   : list(atomindices),
                         "atomnames"     : list(atomnames),
