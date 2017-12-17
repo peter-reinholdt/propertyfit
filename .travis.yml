@@ -15,6 +15,7 @@ install:
   - conda info -a
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy scipy pytest numba
   - source activate test-environment
+  - conda install -c pyqc horton
   - pip install python-coveralls pytest-cov
   
 script:
