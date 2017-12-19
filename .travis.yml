@@ -3,8 +3,6 @@ python:
   - 2.7
   
 os: linux
-dist: trusty
-sudo: required
 
 install:
   - sudo apt-get update
