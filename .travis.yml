@@ -18,6 +18,8 @@ install:
   - conda install numpy scipy pytest numba dill sh
   - conda install -c pyqc horton
   - pip install python-coveralls pytest-cov
+  - source deactivate
+  - source activate test-environment
   
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
