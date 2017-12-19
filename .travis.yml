@@ -21,8 +21,8 @@ install:
   
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
-    then py.test -vv data/testfiles/test_*.py --cov .;
-    else py.test -vv data/test.py;
+    then pytest -vv data/testfiles/test_*.py --cov .;
+    else pytest -vv data/test.py;
     fi
 
 after_success:
