@@ -12,20 +12,7 @@ from propertyfit.structures import structure, constraints
 from propertyfit.costfunctions import charge_cost_function, isopol_cost_function
 
 def test_run_charge():
-    this_file_location = os.path.dirname(os.path.abspath(__file__))
-
-    h = hashlib.sha1()
-    with open(this_file_location+'/../../run_charge.py','rb') as file:
-        chunk = 0
-        while chunk != b'':
-            chunk = file.read(1024)
-            h.update(chunk)
-    hashout = h.hexdigest()
-    
-    # Checks that run_charge have not been altered, and should therefore 
-    #  give the same result as this test.
-    assert hashout == '1f1fbd0f1a8d99898c134307193bf40d28619d1f'
-    
+    this_file_location = os.path.dirname(os.path.abspath(__file__))    
     
     constraintsfile = this_file_location+'/../../constraints/VAL.constraints'
     files = [this_file_location+'/fchks_test/VAL_0.fchk.h5']
@@ -55,18 +42,6 @@ def test_run_charge():
 
 def test_run_alpha():
     this_file_location = os.path.dirname(os.path.abspath(__file__))
-
-    h = hashlib.sha1()
-    with open(this_file_location+'/../../run_alpha.py','rb') as file:
-        chunk = 0
-        while chunk != b'':
-            chunk = file.read(1024)
-            h.update(chunk)
-    hashout = h.hexdigest()
-    
-    # Checks that run_charge have not been altered, and should therefore 
-    #  give the same result as this test.
-    assert hashout == '57e035989a425f080cb14f41191746dc19e10dfb'
     
     constraintsfile = this_file_location+'/../../constraints/VAL.constraints'
     files = np.array([[this_file_location+'/fchks_test/VAL_0.fchk.h5', 
