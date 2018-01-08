@@ -1,10 +1,12 @@
 import numpy as np
 import json
 import glob
+import os
 
 def test_constraint_files():
     # Test that atoms constrained to same charge are the same element
-    files = glob.glob('../*/*constraints')
+    this_file_location = os.path.dirname(os.path.abspath(__file__))
+    files = glob.glob(this_file_location+'/../../constraints/*constraints')
     for file in files:
         with open(file, "r") as f:
             res = json.load(f)
@@ -18,10 +20,11 @@ def test_constraint_files():
                 for i in symmetry:
                     assert atomcheck == atomdict[i]
                     
-
+                    
 def test_parameterfile():
     # Test that atoms given the same atom type have identical parameters
-    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype=str)
+    this_file_location = os.path.dirname(os.path.abspath(__file__))
+    par = np.genfromtxt(this_file_location+'/../FFparameterswithduplicates.csv', delimiter=',', dtype=str)
     checkdict = {}
     for i in range(1, len(par)):
         if par[i,0]+par[i,1]+'q' not in checkdict:
@@ -43,7 +46,8 @@ def test_parameterfile():
 
 
 def test_parameterfile_totcharge():
-    par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',', dtype='U256')
+    this_file_location = os.path.dirname(os.path.abspath(__file__))
+    par = np.genfromtxt(this_file_location+'/../FFparameterswithduplicates.csv', delimiter=',', dtype='U256')
     calcdict = {}
     checkdict =    {'NARG':2,
                     'nARG':1,
