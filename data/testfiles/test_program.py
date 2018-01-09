@@ -14,7 +14,7 @@ from propertyfit.costfunctions import charge_cost_function, isopol_cost_function
 def test_run_charge():
     this_file_location = os.path.dirname(os.path.abspath(__file__))    
     
-    constraintsfile = this_file_location+'/../../constraints/VAL.constraints'
+    constraintsfile = this_file_location+'/../../constraints/VAL_methyl_methyl.constraints'
     files = [this_file_location+'/fchks_test/VAL_0.fchk.h5']
     
     #create constraints object
@@ -43,7 +43,7 @@ def test_run_charge():
 def test_run_alpha():
     this_file_location = os.path.dirname(os.path.abspath(__file__))
     
-    constraintsfile = this_file_location+'/../../constraints/VAL.constraints'
+    constraintsfile = this_file_location+'/../../constraints/VAL_methyl_methyl.constraints'
     files = np.array([[this_file_location+'/fchks_test/VAL_0.fchk.h5', 
             this_file_location+'/fchks_test/VAL_0_x+50.fchk.h5',
             this_file_location+'/fchks_test/VAL_0_x-50.fchk.h5',
