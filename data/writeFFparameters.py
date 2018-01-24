@@ -235,7 +235,49 @@ def removeduplicates():
         FFpar.write(parameters[8])
         FFpar.write('\n')
     FFpar.close()
+    
+def make_all_names():
+    par = np.genfromtxt('FFparameters.csv', delimiter=',',dtype='U256')
+    convertCSV = np.genfromtxt("convert.csv",dtype=str,delimiter=",")
+    convertDict = {}
+    for i in range(0, len(convertCSV)):
+        convertDict[convertCSV[i,0]+convertCSV[i,1]] = convertCSV[i,1:]
+    
+    FFpar = open('FFparametersALLnames.csv','w')
+    for i in range(0, len(par[0])):
+        FFpar.write(par[0,i])
+        if i != len(par[0]) -1:
+            FFpar.write(",")
+    FFpar.write("\n")
+    
+    for i in range(1, len(par)):
+        charge = par[i,2]
+        alpha = par[i,3]
+
+        names = convertDict[par[i,0]+par[i,1]]
+        for name in names:
+            if name != '':
+                FFpar.write(par[i,0])
+                FFpar.write(",")
+                FFpar.write(name)
+                FFpar.write(",")
+                FFpar.write(charge)
+                FFpar.write(",")
+                FFpar.write(alpha)
+                FFpar.write(",")
+                FFpar.write("0.0")
+                FFpar.write(",")
+                FFpar.write("0.0")
+                FFpar.write(",")
+                FFpar.write(alpha)
+                FFpar.write(",")
+                FFpar.write("0.0")
+                FFpar.write(",")
+                FFpar.write(alpha)
+                FFpar.write("\n")
+    FFpar.close()
 
 make_alpha_file()
 makeparameterfiler()
 removeduplicates()
+make_all_names()
