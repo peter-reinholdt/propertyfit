@@ -5,7 +5,6 @@ conversion factors
 """
 
 
-import dill
 import os
 import horton
 import glob
@@ -18,23 +17,6 @@ bohr2angstrom = 0.52917724900001
 angstrom2bohr = 1.0/(bohr2angstrom)
 hartree2kjmol = 2625.5002
 kjmol2hartree = 1.0 / hartree2kjmol
-
-
-def save_file(thing, filename):
-    with open(filename, "wb") as f:
-        #we cannot save the obasis stuff
-        try:
-            del thing.obasis
-        except:
-            pass
-        s = dill.dumps(thing)
-        f.write(s)
-
-
-def load_file(filename):
-    with open(filename, "rb") as f:
-        s = f.read()
-    return dill.loads(s)
 
 
 def load_qmfiles(regex):
