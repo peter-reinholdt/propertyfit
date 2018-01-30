@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
+from __future__ import division, print_function
 import numpy as np
 import horton
 import h5py
-from utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json
+from utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json, vdw_radii
 from numba import jit
+
 
 
 class structure(object):
@@ -31,63 +33,67 @@ class structure(object):
 
     def compute_grid_surface(self, pointdensity=2.0, radius_scale=1.4):
         """
-        This part generates apparent uniformly spaced points on a vdW
+        Generates apparent uniformly spaced points on a vdw_radii
         surface of a molecule.
         
-        vdW     = van der Waals radius of atoms
-        points  = number of points on a sphere around each atom
-        grid    = output points in x, y, z
-        idx     = used to keep track of index in grid, when generating 
-                  initial points
-        density = points per area on a surface
-        chkrm   = (checkremove) used to keep track in index when 
-                 removing points
+        vdw_radii   = van der Waals radius of atoms
+        points      = number of points on a sphere around each atom
+        grid        = output points in x, y, z
+        idx         = used to keep track of index in grid, when generating 
+                      initial points
+        density     = points per area on a surface
+        chkrm       = (checkremove) used to keep track in index when 
+                      removing points
         """
-        vdW = {1:1.200*angstrom2bohr, 6:1.700*angstrom2bohr, 7:1.550*angstrom2bohr, 8:1.520*angstrom2bohr, 16:1.800*angstrom2bohr}
-        points = np.zeros(len(self.numbers)-1)
-        for i in range(1, len(self.numbers)):
-            points[i-1] = int(pointdensity*4*np.pi*radius_scale*vdW[self.numbers[i]])
+        points = np.zeros(self.natoms, dtype=np.int64)
+        for i in range(self.natoms):
+            points[i] = np.int(pointdensity*4*np.pi*radius_scale*vdw_radii[self.numbers[i]])
         # grid = [x, y, z]
-        grid = np.zeros((np.int(np.sum(points)), 3))
+        grid = np.zeros((np.sum(points), 3), dtype=np.float64)
         idx = 0
-        for i in range(1, len(self.numbers)):
-            N = int(points[i-1])
+        for i in range(self.natoms):
+            N = points[i]
             #Saff & Kuijlaars algorithm
-            for k in range(1, N+1):
-                h = -1.0 +2.0*(k-1.0)/(N-1.0)
+            for k in range(N):
+                h = -1.0 +2.0*k/(N-1)
                 theta = np.arccos(h)
-                if k == 1 or k == N:
-                    phi = 0
+                if k == 0 or k == (N-1):
+                    phi = 0.0
                 else:
-                    phi = ((phiold + 3.6/((N*(1-h**2))**0.5))) % (2*np.pi)
-                phiold = phi
-                x = radius_scale*vdW[self.numbers[i]]*np.cos(phi)*np.sin(theta)
-                y = radius_scale*vdW[self.numbers[i]]*np.sin(phi)*np.sin(theta)
-                z = radius_scale*vdW[self.numbers[i]]*np.cos(theta)
+                    #phi_k  phi_{k-1}
+                    phi = ((phi + 3.6/np.sqrt(N*(1-h**2)))) % (2*np.pi)
+                x = radius_scale*vdw_radii[self.numbers[i]]*np.cos(phi)*np.sin(theta)
+                y = radius_scale*vdw_radii[self.numbers[i]]*np.sin(phi)*np.sin(theta)
+                z = radius_scale*vdw_radii[self.numbers[i]]*np.cos(theta)
                 grid[idx, 0] = x + self.coordinates[i,0]
                 grid[idx, 1] = y + self.coordinates[i,1]
                 grid[idx, 2] = z + self.coordinates[i,2]
                 idx += 1
                 
-        # This is the distance points have to be apart
-        dist = ((grid[0,0]-grid[1,0])**2+(grid[0,1]-grid[1,1])**2+(grid[0,2]-grid[1,2])**2)**0.5
+        dist = lambda i,j: np.sqrt(np.sum((i-j)**2))
         
-        # Remove overlap all points to close to any atom
-        for i in range(1, len(self.numbers)):
-            chkrm = 0
-            for j in range(0, len(grid)):
-                r = ((grid[j-chkrm,0]-self.coordinates[i,0])**2+(grid[j-chkrm,1]-self.coordinates[i,1])**2+(grid[j-chkrm,2]-self.coordinates[i,2])**2)**0.5
-                if r < radius_scale*0.99*vdW[self.numbers[i]]:
-                    grid = np.delete(grid,j-chkrm,axis=0)
-                    chkrm += 1
-        chkrm = 0
+        #This is the distance points have to be apart
+        #since they are from the same atom
+        grid_spacing = dist(grid[0,:], grid[1,:])
+        
+        #Remove overlap all points to close to any atom
+        not_near_atom = np.ones(grid.shape[0], dtype=bool)
+        for i in range(self.natoms):
+            for j in range(grid.shape[0]):
+                r = dist(grid[j,:], self.coordinates[i,:])
+                if r < radius_scale*0.99*vdw_radii[self.numbers[i]]:
+                    not_near_atom[j] = False
+        grid = grid[not_near_atom]
+    
         # Double loop over grid to remove close lying points
-        for i in range(0, len(grid)):
-            for j in range(0, len(grid)):
-                if 0.9*dist > ((grid[i-chkrm,0]-grid[j,0])**2+(grid[i-chkrm,1]-grid[j,1])**2+(grid[i-chkrm,2]-grid[j,2])**2)**0.5 and i-chkrm != j:
-                    grid = np.delete(grid,j,axis=0)
-                    chkrm += 1
-                    break
+        not_overlapping = np.ones(grid.shape[0], dtype=bool)
+        for i in range(grid.shape[0]):
+            for j in range(i+1, grid.shape[0]):
+                if (not not_overlapping[j]): continue #already marked for removal
+                r = dist(grid[i,:], grid[j,:])
+                if 0.90 * grid_spacing > r:
+                    not_overlapping[j] = False
+        grid = grid[not_overlapping]
         return grid
 
     
