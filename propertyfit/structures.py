@@ -3,7 +3,7 @@
 import numpy as np
 import horton
 import h5py
-from utilities import save_file, load_file, load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json
+from utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json
 from numba import jit
 
 
@@ -148,15 +148,6 @@ class structure(object):
             for i in range(self.ngridpoints):
                 atomname = 'H'
                 f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i,0]*bohr2angstrom, self.grid[i,1]*bohr2angstrom,self.grid[i,2]*bohr2angstrom))
-
-
-    def reload_obasis(self):
-        IO = horton.IOData.from_file(self.fchkname)
-        self.obasis = IO.obasis
-
-
-    def save(self, filename):
-        save_file(self, filename)
 
 
     def save_h5(self, filename):
