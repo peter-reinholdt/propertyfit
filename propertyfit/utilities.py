@@ -11,6 +11,7 @@ import glob
 import numpy as np
 import sh
 import json
+from numpy import nan
 
 
 bohr2angstrom = 0.52917724900001
