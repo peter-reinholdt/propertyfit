@@ -122,12 +122,13 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
     nstructures = len(structures)
     res         = 0.0
     for i in range(nstructures):
-        res += induced_esp_sum_squared_error(structures[i].rinvmat, 
+        contribution = induced_esp_sum_squared_error(structures[i].rinvmat, 
                                              structures[i].xyzmat, 
                                              structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm, 
                                              fieldstructures[i].field, 
                                              afull)
-    #TODO: add restraints
+        #print("{j}:{i}:{contribution}".format(j=structures[i].fchkname, i=fieldstructures[i].fchkname, contribution=contribution))
+        res += contribution    #TODO: add restraints
     res = np.sqrt(res/nstructures) * hartree2kjmol
     print(res)
     return res
