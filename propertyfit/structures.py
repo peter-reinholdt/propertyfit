@@ -280,6 +280,12 @@ class constraints(object):
         for frag in self.fragments:
             for sym in frag.fullsymmetries[:-1]:
                 indices.append(sym[0])
+                q_sym = 0.0
+                for member in sym:
+                    q_sym += q_red[member]
+                q_sym = q_sym / len(sym)
+                for member in sym:
+                    q_red[member] = q_sym
         
         q_red   = np.array(q_red,               dtype=np.float64)
         self.q0 = np.zeros(self.nparametersq,   dtype=np.float64)
