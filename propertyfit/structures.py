@@ -278,15 +278,9 @@ class constraints(object):
         #1) remove (symmetry) indices from end
         indices = []
         for frag in self.fragments:
-            indices += list(frag.symmetryidx)
-            for i in range(frag.lastidxnsym):
-                indices.remove(frag.lastidxsym[0])
-                
-
-        #2) remove remaining symmetry-equivalent indices
-        indices = list(set(indices))
-        indices.sort()
-
+            for sym in frag.fullsymmetries[:-1]:
+                indices.append(sym[0])
+        
         q_red   = np.array(q_red,               dtype=np.float64)
         self.q0 = np.zeros(self.nparametersq,   dtype=np.float64)
 
