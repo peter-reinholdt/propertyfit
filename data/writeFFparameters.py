@@ -296,7 +296,29 @@ def make_all_names():
                     FFpar.write("\n")
     FFpar.close()
 
+
+def make_pyframe_version():
+    par = np.genfromtxt('FFparametersALLnames.csv', delimiter=',',dtype='U256')
+    FFpar = open('pep.csv','w')
+    FFpar.write("name,atom,M0,P11\n")
+    for line in par:
+        if line[0] == "RESNAME":
+            continue
+        FFpar.write(line[0]+",")
+        FFpar.write(line[1]+",")
+        FFpar.write(line[2]+",")
+        FFpar.write(line[3]+" ")
+        FFpar.write(line[4]+" ")
+        FFpar.write(line[5]+" ")
+        FFpar.write(line[6]+" ")
+        FFpar.write(line[7]+" ")
+        FFpar.write(line[8]+"\n")
+    FFpar.close()
+    
+
+
 make_alpha_file()
 makeparameterfiler()
 removeduplicates()
 make_all_names()
+make_pyframe_version()
