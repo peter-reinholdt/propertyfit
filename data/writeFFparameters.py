@@ -275,27 +275,52 @@ def make_all_names():
                 FFpar.write(",")
                 FFpar.write(alpha)
                 FFpar.write("\n")
-                if par[i,0][-3:] == "HIS":
-                    FFpar.write(par[i,0][0:-1]+"P")
-                    FFpar.write(",")
-                    FFpar.write(name)
-                    FFpar.write(",")
-                    FFpar.write(charge)
-                    FFpar.write(",")
-                    FFpar.write(alpha)
-                    FFpar.write(",")
-                    FFpar.write("0.0")
-                    FFpar.write(",")
-                    FFpar.write("0.0")
-                    FFpar.write(",")
-                    FFpar.write(alpha)
-                    FFpar.write(",")
-                    FFpar.write("0.0")
-                    FFpar.write(",")
-                    FFpar.write(alpha)
-                    FFpar.write("\n")
+
     FFpar.close()
 
+def patch_make_all_names():
+    par = np.genfromtxt('FFparametersALLnames.csv', delimiter=',',dtype='U256')
+    convertCSV = np.genfromtxt("convert2.csv",dtype=str,delimiter=",")
+    convertDict = {}
+    for i in range(0, len(convertCSV)):
+        convertDict[convertCSV[i,0]] = convertCSV[i,0:]
+    
+    FFpar = open('FFparametersALLnames.csv','w')
+    for i in range(0, len(par[0])):
+        FFpar.write(par[0,i])
+        if i != len(par[0]) -1:
+            FFpar.write(",")
+    FFpar.write("\n")
+    
+    for i in range(1, len(par)):
+        charge = par[i,2]
+        alpha = par[i,3]
+        aa_name = par[i,1]
+
+        names = convertDict[par[i,0]]
+        for name in names:
+            if name != '':
+                FFpar.write(name)
+                FFpar.write(",")
+                FFpar.write(aa_name)
+                FFpar.write(",")
+                FFpar.write(charge)
+                FFpar.write(",")
+                FFpar.write(alpha)
+                FFpar.write(",")
+                FFpar.write("0.0")
+                FFpar.write(",")
+                FFpar.write("0.0")
+                FFpar.write(",")
+                FFpar.write(alpha)
+                FFpar.write(",")
+                FFpar.write("0.0")
+                FFpar.write(",")
+                FFpar.write(alpha)
+                FFpar.write("\n")
+
+    FFpar.close()
+    
 
 def make_pyframe_version():
     par = np.genfromtxt('FFparametersALLnames.csv', delimiter=',',dtype='U256')
@@ -321,4 +346,5 @@ make_alpha_file()
 makeparameterfiler()
 removeduplicates()
 make_all_names()
+patch_make_all_names()
 make_pyframe_version()
