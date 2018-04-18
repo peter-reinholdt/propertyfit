@@ -29,16 +29,18 @@ ref_structures = []
 field_structures = []
 
 
-for fname in ref_files:
-    s = structure()
-    s.load_h5(fname)
-    ref_structures.append(s)
+assert len(ref_files) == len(field_files)
+for i in range(len(ref_files)):
+    try:
+        s_ref = structure()
+        s_ref.load_h5(ref_files[i])
+        s_field = structure()
+        s_field.load_h5(field_files[i])
+        ref_structures.append(s_ref)
+        field_structures.append(s_field)
+    except Exception as e:
+        print("Warning, recieved an exception {ex}. Ignoring bad structure, please check the files {r} and {f}".format(ex=e, r=ref_files[i], f=field_files[i]))
 
-
-for fname in field_files:
-    s = structure()
-    s.load_h5(fname)
-    field_structures.append(s)
 
 
 #use partial to wrap cost function, so we only need a single atest argument (and not constraints, structures)
