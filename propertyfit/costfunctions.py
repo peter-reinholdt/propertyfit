@@ -119,6 +119,7 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
                     about symmetries etc.
     """
     afull       = constraints.expand_a(alphatest)
+    afull_ref   = constraints.expand_a(constraints.a0)
     nstructures = len(structures)
     res         = 0.0
     for i in range(nstructures):
@@ -127,8 +128,11 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
                                              structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm, 
                                              fieldstructures[i].field, 
                                              afull)
-        #print("{j}:{i}:{contribution}".format(j=structures[i].fchkname, i=fieldstructures[i].fchkname, contribution=contribution))
         res += contribution    #TODO: add restraints
     res = np.sqrt(res/nstructures) * hartree2kjmol
     print(res)
+
+    if constraints.restraint > 0.0:
+        for i in range(constraints.natoms):
+            res += constraints.restraint * (afull[i]-afull_ref[i])**2
     return res
