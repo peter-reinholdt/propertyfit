@@ -134,5 +134,5 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
 
     if constraints.restraint > 0.0:
         for i in range(constraints.natoms):
-            res += constraints.restraint * (afull[i]-afull_ref[i])**2
+            res += constraints.restraint * (afull[i][0,0]-afull_ref[i][0,0])**2
     return res
