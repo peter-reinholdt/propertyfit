@@ -205,7 +205,8 @@ class fragment(object):
         self.lastidxissym   = False
         self.lastidxnsym    = 1  #standard, no symmetry on last atom 
         self.lastidxsym     = [self.lastidx]
-        self.startguess     = fragdict["startguess"]
+        self.startguess_charge = fragdict["startguess_charge"]
+        self.startguess_polarizability = fragdict["startguess_polarizability"]
 
 
         for iloc, idx in enumerate(self.symmetryidx):
@@ -271,7 +272,8 @@ class constraints(object):
             self.natoms         += frag.natoms
             self.nparametersq   += frag.nparametersq
             self.nparametersa   += frag.nparametersa
-            q_red               += frag.startguess
+            q_red               += frag.startguess_charge         #redundant start guesses
+            a_red               += frag.startguess_polarizability #redundant start guesses
             self.fragments.append(frag)
        
         #get non-redundant start guess
@@ -292,7 +294,23 @@ class constraints(object):
 
         for i, index in enumerate(indices):
             self.q0[i] = q_red[index]
-
+        #same, but for polarizability.
+        #there is no constraint on the total polarizability, just do the symmetry part
+        indices = []
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries[:]:
+                indices.append(sym[0])
+                a_sym = 0.0
+                for member in sym:
+                    a_sym += a_red[member]
+                a_sym = a_sym / len(sym)
+                for member in sym:
+                    a_red[member] = a_sym
+        
+        a_red   = np.array(a_red,               dtype=np.float64)
+        self.a0 = np.zeros(self.nparametersa,   dtype=np.float64)
+        for i, index in enumerate(indices):
+            self.a0[i] = a_red[index]
 
     def expand_q(self, qcompressed):
         qout = np.zeros(self.natoms, dtype=np.float64)
