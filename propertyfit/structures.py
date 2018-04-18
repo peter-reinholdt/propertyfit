@@ -264,6 +264,7 @@ class constraints(object):
         self.nparametersq   = 0
         self.nparametersa   = 0
         q_red   = []
+        a_red   = []
         indices = []
 
         for i in range(self.nfragments):
