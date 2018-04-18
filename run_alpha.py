@@ -46,9 +46,9 @@ for i in range(len(ref_files)):
 #use partial to wrap cost function, so we only need a single atest argument (and not constraints, structures)
 #then we can call fun(atest) instead of isopol_cost_function(atest, structures, fieldstructures, constraints)
 
-#read initial parameters from q0
+#read initial parameters from a0
 a0 = np.zeros(con.nparametersa)
-
+con.restraint = 1.0
 
 
 fun = functools.partial(isopol_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con)
