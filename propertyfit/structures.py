@@ -298,20 +298,21 @@ class constraints(object):
         #same, but for polarizability.
         #there is no constraint on the total polarizability, just do the symmetry part
         indices = []
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries[:]:
-                indices.append(sym[0])
-                a_sym = 0.0
-                for member in sym:
-                    a_sym += a_red[member]
-                a_sym = a_sym / len(sym)
-                for member in sym:
-                    a_red[member] = a_sym
-        
-        a_red   = np.array(a_red,               dtype=np.float64)
-        self.a0 = np.zeros(self.nparametersa,   dtype=np.float64)
-        for i, index in enumerate(indices):
-            self.a0[i] = a_red[index]
+        if a_red:
+            for frag in self.fragments:
+                for sym in frag.fullsymmetries[:]:
+                    indices.append(sym[0])
+                    a_sym = 0.0
+                    for member in sym:
+                        a_sym += a_red[member]
+                    a_sym = a_sym / len(sym)
+                    for member in sym:
+                        a_red[member] = a_sym
+            
+            a_red   = np.array(a_red,               dtype=np.float64)
+            self.a0 = np.zeros(self.nparametersa,   dtype=np.float64)
+            for i, index in enumerate(indices):
+                self.a0[i] = a_red[index]
 
     def expand_q(self, qcompressed):
         qout = np.zeros(self.natoms, dtype=np.float64)
