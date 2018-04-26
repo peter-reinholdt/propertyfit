@@ -97,7 +97,7 @@ class structure(object):
         return grid
 
     
-    def compute_grid(self, rmin=1.4*angstrom2bohr, rmax=2.0*angstrom2bohr, pointdensity=1.0, nsurfaces=2):
+    def compute_grid(self, rmin=1.4, rmax=2.0, pointdensity=1.0, nsurfaces=2):
         radii = np.linspace(rmin, rmax, nsurfaces)
         surfaces = []
         for r in radii:
