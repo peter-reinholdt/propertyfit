@@ -85,8 +85,8 @@ for f in args.frags:
 
     frag["atomnames"] = frag_atomnames 
     frag["atomindices"] = frag_indices
-    frag["start_guess_charge"] = frag_start_guess_charge
-    frag["start_guess_polarizability"] = frag_start_guess_polarizability
+    frag["startguess_charge"] = frag_start_guess_charge
+    frag["startguess_polarizability"] = frag_start_guess_polarizability
     frag["qtot"] = qtot
     out["fragments"].append(frag)
 
