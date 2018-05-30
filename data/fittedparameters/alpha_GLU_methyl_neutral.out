@@ -1,1456 +1,1325 @@
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_732.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_732_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_733.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_733_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_734.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_734_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_735.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_735_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_736.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_736_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_737.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_737_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_738.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_738_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_739.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_739_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_73.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_73_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_741.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_741_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_742.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_742_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_743.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_743_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_744.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_744_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_745.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_745_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_746.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_746_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_747.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_747_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_748.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_748_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_749.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_749_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_74.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_74_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_750.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_750_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_751.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_751_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_752.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_752_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_753.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_753_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_754.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_754_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_755.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_755_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_756.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_756_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_757.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_757_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_758.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_758_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_759.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_759_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_75.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_75_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_760.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_760_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_761.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_761_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_762.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_762_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_764.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_764_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_765.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_765_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_766.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_766_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_768.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_768_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_769.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_769_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_770.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_770_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_771.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_771_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_772.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_772_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_773.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_773_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_774.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_774_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_775.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_775_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_776.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_776_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_777.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_777_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_778.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_778_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_779.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_779_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_77.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_77_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_780.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_780_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_781.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_781_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_782.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_782_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_783.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_783_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_784.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_784_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_785.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_785_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_786.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_786_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_787.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_787_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_788.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_788_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_789.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_789_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_78.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_78_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_790.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_790_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_791.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_791_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_792.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_792_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_793.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_793_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_794.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_794_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_795.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_795_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_797.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_797_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_798.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_798_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_799.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_799_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_79.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_79_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_7.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_7_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_800.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_800_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_801.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_801_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_802.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_802_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_803.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_803_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_804.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_804_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_805.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_805_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_806.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_806_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_807.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_807_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_808.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_808_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_809.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_809_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_80.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_80_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_810.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_810_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_811.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_811_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_812.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_812_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_813.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_813_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_814.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_814_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_815.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_815_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_816.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_816_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_817.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_817_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_818.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_818_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_819.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_819_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_81.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_81_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_821.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_821_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_822.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_822_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_823.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_823_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_824.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_824_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_825.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_825_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_826.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_826_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_827.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_827_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_828.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_828_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_829.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_829_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_830.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_830_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_831.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_831_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_832.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_832_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_833.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_833_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_835.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_835_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_837.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_837_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_838.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_838_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_839.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_839_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_83.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_83_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_840.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_840_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_841.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_841_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_842.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_842_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_843.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_843_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_844.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_844_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_845.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_845_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_846.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_846_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_847.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_847_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_848.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_848_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_849.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_849_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_84.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_84_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_850.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_850_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_851.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_851_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_852.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_852_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_853.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_853_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_854.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_854_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_855.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_855_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_856.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_856_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_857.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_857_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_858.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_858_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_859.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_859_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_85.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_85_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_860.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_860_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_861.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_861_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_862.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_862_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_864.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_864_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_865.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_865_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_866.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_866_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_867.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_867_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_868.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_868_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_869.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_869_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_86.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_86_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_870.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_870_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_871.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_871_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_872.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_872_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_873.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_873_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_874.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_874_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_875.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_875_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_876.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_876_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_877.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_877_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_878.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_878_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_879.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_879_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_87.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_87_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_880.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_880_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_881.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_881_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_882.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_882_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_883.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_883_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_884.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_884_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_885.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_885_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_886.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_886_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_887.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_887_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_888.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_888_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_889.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_889_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_88.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_88_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_890.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_890_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_891.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_891_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_892.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_892_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_893.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_893_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_894.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_894_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_895.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_895_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_896.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_896_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_897.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_897_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_899.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_899_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_89.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_89_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_8.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_8_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_900.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_900_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_901.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_901_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_903.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_903_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_904.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_904_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_905.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_905_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_906.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_906_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_907.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_907_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_908.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_908_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_909.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_909_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_90.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_90_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_910.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_910_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_911.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_911_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_912.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_912_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_913.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_913_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_914.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_914_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_915.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_915_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_916.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_916_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_917.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_917_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_918.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_918_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_919.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_919_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_91.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_91_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_920.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_920_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_921.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_921_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_922.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_922_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_923.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_923_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_924.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_924_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_925.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_925_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_926.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_926_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_927.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_927_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_929.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_929_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_92.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_92_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_930.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_930_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_932.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_932_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_933.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_933_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_934.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_934_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_935.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_935_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_936.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_936_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_937.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_937_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_938.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_938_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_939.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_939_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_93.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_93_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_940.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_940_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_941.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_941_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_942.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_942_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_943.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_943_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_944.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_944_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_945.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_945_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_946.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_946_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_947.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_947_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_948.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_948_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_949.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_949_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_94.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_94_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_950.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_950_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_951.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_951_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_952.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_952_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_953.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_953_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_954.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_954_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_955.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_955_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_956.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_956_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_957.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_957_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_958.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_958_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_959.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_959_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_95.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_95_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_960.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_960_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_961.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_961_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_962.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_962_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_963.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_963_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_964.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_964_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_965.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_965_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_966.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_966_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_967.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_967_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_968.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_968_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_969.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_969_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_970.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_970_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_971.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_971_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_972.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_972_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_973.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_973_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_974.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_974_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_975.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_975_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_977.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_977_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_978.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_978_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_979.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_979_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_980.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_980_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_981.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_981_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_982.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_982_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_983.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_983_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_984.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_984_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_985.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_985_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_986.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_986_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_987.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_987_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_988.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_988_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_989.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_989_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_98.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_98_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_991.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_991_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_992.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_992_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_993.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_993_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_994.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_994_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_995.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_995_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_996.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_996_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_997.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_997_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_998.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_998_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_999.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_999_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_9.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_9_x-50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_0.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_0_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1001.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1001_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1002.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1002_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1004.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1004_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1005.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1005_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1006.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1006_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1007.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1007_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1008.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1008_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1009.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1009_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_100.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_100_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1010.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1010_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1011.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1011_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1012.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1012_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1013.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1013_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1014.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1014_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1015.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1015_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1016.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1016_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1017.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1017_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1018.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1018_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1019.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1019_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_101.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_101_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1020.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1020_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1021.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1021_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1022.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1022_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1023.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1023_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1024.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1024_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1025.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1025_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1026.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1026_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1027.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1027_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1028.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1028_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1029.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1029_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_102.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_102_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1030.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1030_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1031.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1031_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1032.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1032_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1033.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1033_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1034.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1034_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1035.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1035_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1036.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1036_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1037.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1037_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1038.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1038_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1039.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1039_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_103.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_103_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1040.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1040_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1041.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1041_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1043.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1043_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1044.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1044_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1045.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1045_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1046.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1046_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1047.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1047_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1048.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1048_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_104.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_104_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1050.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1050_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1051.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1051_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1052.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1052_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1053.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1053_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1054.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1054_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1055.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1055_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1056.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1056_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1057.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1057_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1058.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1058_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1059.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1059_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_105.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_105_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1060.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1060_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1061.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1061_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1062.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1062_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1063.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1063_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1064.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1064_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1065.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1065_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1066.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1066_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1067.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1067_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1068.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1068_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1069.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1069_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_106.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_106_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1070.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1070_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1071.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1071_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1072.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1072_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1073.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1073_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1074.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1074_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1075.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1075_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1076.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1076_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1077.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1077_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1078.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1078_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1079.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1079_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_107.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_107_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1080.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1080_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1081.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1081_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1082.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1082_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1084.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1084_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1085.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1085_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1086.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1086_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1087.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1087_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1088.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1088_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1089.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1089_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_108.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_108_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1090.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1090_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1091.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1091_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1092.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1092_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1093.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1093_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1095.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1095_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1097.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1097_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1098.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1098_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1099.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1099_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_109.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_109_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_10.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_10_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1100.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1100_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1101.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1101_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1102.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1102_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1103.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1103_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1104.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1104_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1105.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1105_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1106.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1106_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1107.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1107_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1108.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1108_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1109.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1109_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_110.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_110_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1110.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1110_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1111.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1111_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1112.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1112_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1113.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1113_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1114.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1114_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1115.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1115_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1116.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1116_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1117.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1117_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1118.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1118_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1119.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1119_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_111.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_111_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1120.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1120_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1121.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1121_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1122.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1122_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1123.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1123_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1124.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1124_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1125.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1125_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1126.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1126_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1128.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1128_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1129.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1129_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_112.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_112_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1131.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1131_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1132.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1132_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1133.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1133_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1134.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1134_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1135.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1135_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1136.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1136_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1137.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1137_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1138.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1138_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1139.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1139_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1140.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1140_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1141.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1141_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1142.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1142_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1143.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1143_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1144.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1144_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1145.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1145_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1146.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1146_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1147.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1147_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1148.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1148_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_114.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_114_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1150.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1150_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1151.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1151_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1152.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1152_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1153.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1153_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1154.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1154_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1155.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1155_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1156.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1156_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1157.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1157_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1158.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1158_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1159.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1159_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_115.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_115_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1160.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1160_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1161.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1161_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1162.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1162_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1163.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1163_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1164.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1164_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1165.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1165_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1166.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1166_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1167.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1167_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1168.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1168_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1169.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1169_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_116.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_116_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1170.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1170_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1171.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1171_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1172.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1172_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1173.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1173_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1174.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1174_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1175.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1175_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1176.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1176_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1177.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1177_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1178.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1178_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1179.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1179_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_117.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_117_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1180.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1180_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1181.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1181_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1182.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1182_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1183.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1183_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1184.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1184_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1185.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1185_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1187.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1187_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1188.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1188_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1189.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1189_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1190.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1190_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1191.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1191_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1192.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1192_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1193.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1193_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1194.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1194_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1195.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1195_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1196.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1196_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1197.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1197_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1198.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1198_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1199.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1199_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_119.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_119_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_11.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_11_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1200.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1200_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1201.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1201_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1202.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1202_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1203.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1203_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1204.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1204_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1205.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1205_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1206.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1206_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1207.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1207_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1208.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1208_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1209.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1209_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_120.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_120_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1210.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1210_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1211.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1211_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1212.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1212_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1213.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1213_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1214.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1214_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1215.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1215_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1216.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1216_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1217.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1217_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1218.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1218_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1219.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1219_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_121.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_121_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1220.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1220_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1221.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1221_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1222.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1222_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1223.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1223_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1224.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1224_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1225.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1225_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1226.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1226_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1227.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1227_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1228.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1228_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1229.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1229_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_122.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_122_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1230.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1230_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1231.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1231_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1232.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1232_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1233.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1233_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1234.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1234_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1235.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1235_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1236.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1236_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1237.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1237_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1238.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1238_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1239.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1239_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_123.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_123_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1240.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1240_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1241.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1241_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1242.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1242_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1243.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1243_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1244.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1244_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1246.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1246_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1247.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1247_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1248.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1248_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1249.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1249_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_124.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_124_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1250.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1250_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1251.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1251_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1252.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1252_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1253.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1253_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1254.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1254_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1255.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1255_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1256.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1256_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1257.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1257_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1258.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1258_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1259.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1259_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_125.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_125_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1260.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1260_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1261.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1261_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1262.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1262_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1264.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1264_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1265.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1265_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1266.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1266_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1267.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1267_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1268.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1268_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1269.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1269_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_126.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_126_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1270.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1270_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1271.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1271_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1272.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1272_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1273.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1273_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/GLU_methyl_neutral/GLU_methyl_neutral_1274.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/GLU_methyl_neutral/GLU_methyl_neutral_1274_y+50.fchk.h5
-5.1242565876
-5.1242565876
-5.12425658698
-5.12425658698
-5.12425658703
-5.12425658593
-5.12425658696
-5.12425658695
-5.12425658695
-5.12425658694
-5.12425658694
-5.12425658696
-5.12425658628
-5.12425658695
-5.12425658697
-5.1242565863
-5.12425658698
-5.12425658638
-5.12425658696
-5.12425658698
-5.06439364252
-5.06439364252
-5.0643936419
-5.0643936419
-5.06439364195
-5.06439364085
-5.06439364188
-5.06439364187
-5.06439364187
-5.06439364186
-5.06439364186
-5.06439364188
-5.0643936412
-5.06439364187
-5.06439364188
-5.06439364122
-5.06439364189
-5.0643936413
-5.06439364188
-5.06439364189
-4.76568227623
-4.76568227623
-4.76568227562
-4.76568227561
-4.76568227566
-4.76568227457
-4.76568227559
-4.76568227558
-4.76568227558
-4.76568227557
-4.76568227557
-4.76568227559
-4.76568227491
-4.76568227558
-4.7656822756
-4.76568227493
-4.76568227561
-4.76568227501
-4.76568227559
-4.76568227561
-3.29394277372
-3.29394277372
-3.29394277313
-3.29394277312
-3.29394277319
-3.29394277218
-3.2939427731
-3.2939427731
-3.29394277308
-3.29394277307
-3.29394277307
-3.29394277308
-3.29394277242
-3.29394277308
-3.29394277309
-3.29394277244
-3.2939427731
-3.29394277249
-3.29394277309
-3.29394277309
-4.39366124099
-1.00976586979
-1.00976586979
-1.00976586991
-1.00976586984
-1.00976587005
-1.00976587069
-1.00976586987
-1.00976586992
-1.00976586977
-1.00976586975
-1.00976586976
-1.00976586971
-1.00976586973
-1.00976586974
-1.00976586967
-1.00976586973
-1.00976586968
-1.00976586951
-1.00976586969
-1.00976586965
-1.0137108106
-1.00575722771
-1.00575722771
-1.00575722777
-1.0057572277
-1.00575722791
-1.00575722844
-1.00575722773
-1.00575722778
-1.00575722763
-1.00575722761
-1.00575722762
-1.00575722757
-1.00575722753
-1.0057572276
-1.00575722753
-1.00575722753
-1.00575722754
-1.00575722733
-1.00575722755
-1.00575722751
-1.00018929389
-1.00018929389
-1.00018929395
-1.00018929389
-1.0001892941
-1.00018929461
-1.00018929391
-1.00018929396
-1.00018929382
-1.00018929379
-1.00018929381
-1.00018929375
-1.00018929372
-1.00018929379
-1.00018929372
-1.00018929372
-1.00018929373
-1.00018929352
-1.00018929374
-1.0001892937
-0.973891944552
-0.973891944552
-0.973891944606
-0.973891944538
-0.973891944741
-0.973891945218
-0.973891944571
-0.973891944619
-0.97389194448
-0.973891944456
-0.973891944476
-0.973891944418
-0.973891944403
-0.973891944461
-0.973891944384
-0.973891944401
-0.973891944401
-0.973891944206
-0.973891944405
-0.973891944365
-0.881106462297
-0.881106462297
-0.8811064623
-0.881106462233
-0.881106462396
-0.881106462667
-0.881106462297
-0.881106462343
-0.881106462244
-0.881106462222
-0.881106462271
-0.881106462188
-0.881106462262
-0.881106462269
-0.881106462156
-0.88110646227
-0.881106462222
-0.881106462113
-0.881106462179
-0.881106462145
-0.848621495967
-0.848621495967
-0.848621495896
-0.848621495839
-0.848621495927
-0.848621495871
-0.848621495942
-0.848621495979
-0.848621495949
-0.848621495931
-0.848621496017
-0.848621495907
-0.848621496102
-0.848621496033
-0.848621495881
-0.848621496122
-0.848621496012
-0.848621496036
-0.848621495904
-0.848621495884
-0.846359445847
-0.846359445847
-0.84635944579
-0.846359445731
-0.846359445835
-0.846359445845
-0.846359445827
-0.846359445866
-0.846359445822
-0.846359445803
-0.846359445882
-0.846359445777
-0.846359445948
-0.846359445894
-0.84635944575
-0.846359445966
-0.846359445868
-0.846359445865
-0.846359445773
-0.84635944575
-0.845967964224
-0.845967964224
-0.845967964169
-0.84596796411
-0.845967964214
-0.845967964228
-0.845967964205
-0.845967964244
-0.845967964199
-0.84596796418
-0.845967964258
-0.845967964154
-0.845967964324
-0.845967964271
-0.845967964127
-0.845967964341
-0.845967964244
-0.845967964239
-0.84596796415
-0.845967964127
-0.843828293421
-0.843828293421
-0.843828293367
-0.843828293308
-0.843828293411
-0.843828293428
-0.843828293403
-0.843828293441
-0.843828293396
-0.843828293378
-0.843828293454
-0.843828293353
-0.843828293518
-0.843828293465
-0.843828293326
-0.843828293534
-0.843828293438
-0.84382829343
-0.84382829335
-0.843828293328
-0.834149830226
-0.834149830226
-0.834149830176
-0.834149830121
-0.834149830217
-0.834149830233
-0.834149830211
-0.834149830246
-0.834149830206
-0.834149830188
-0.834149830258
-0.83414983017
-0.834149830318
-0.834149830264
-0.834149830146
-0.834149830325
-0.834149830234
-0.834149830216
-0.834149830172
-0.834149830156
-0.808954387057
-0.808954387057
-0.808954387026
-0.808954386988
-0.808954387049
-0.808954387053
-0.808954387055
-0.808954387077
-0.808954387059
-0.808954387047
-0.808954387081
-0.808954387058
-0.808954387129
-0.808954387068
-0.808954387044
-0.808954387095
-0.808954387027
-0.808954386965
-0.80895438708
-0.808954387091
-0.806735310256
-0.806735310256
-0.806735310232
-0.806735310201
-0.806735310248
-0.806735310246
-0.806735310259
-0.806735310275
-0.806735310267
-0.806735310257
-0.806735310277
-0.80673531028
-0.806735310319
-0.806735310256
-0.806735310271
-0.806735310269
-0.806735310211
-0.806735310134
-0.80673531031
-0.806735310332
-0.806574274363
-0.806574274363
-0.80657427434
-0.806574274309
-0.806574274355
-0.806574274353
-0.806574274366
-0.806574274383
-0.806574274375
-0.806574274364
-0.806574274385
-0.806574274388
-0.806574274426
-0.806574274363
-0.806574274378
-0.806574274377
-0.806574274319
-0.806574274242
-0.806574274417
-0.806574274439
-0.805774483113
-0.805774483113
-0.80577448309
-0.805774483059
-0.805774483105
-0.805774483104
-0.805774483116
-0.805774483132
-0.805774483124
-0.805774483114
-0.805774483134
-0.805774483137
-0.805774483175
-0.805774483113
-0.805774483127
-0.805774483127
-0.805774483069
-0.805774482994
-0.805774483167
-0.805774483189
-0.802009569698
-0.802009569698
-0.802009569676
-0.802009569646
-0.802009569691
-0.80200956969
-0.802009569699
-0.802009569715
-0.802009569708
-0.802009569699
-0.802009569717
-0.80200956972
-0.802009569754
-0.802009569698
-0.80200956971
-0.80200956971
-0.802009569658
-0.802009569589
-0.802009569748
-0.80200956977
-0.788468768448
-0.788468768448
-0.78846876843
-0.788468768409
-0.788468768444
-0.788468768449
-0.788468768445
-0.788468768454
-0.788468768452
-0.788468768448
-0.788468768458
-0.78846876846
-0.788468768477
-0.788468768449
-0.788468768449
-0.788468768456
-0.788468768426
-0.788468768389
-0.788468768485
-0.788468768504
-0.780604136231
-0.780604136231
-0.780604136219
-0.780604136211
-0.780604136232
-0.780604136245
-0.78060413622
-0.780604136218
-0.780604136225
-0.78060413623
-0.780604136225
-0.780604136225
-0.780604136213
-0.780604136231
-0.780604136213
-0.78060413623
-0.780604136238
-0.780604136252
-0.780604136245
-0.780604136257
-0.78057582484
-0.78057582484
-0.780575824828
-0.78057582482
-0.780575824841
-0.780575824854
-0.780575824829
-0.780575824828
-0.780575824834
-0.780575824839
-0.780575824835
-0.780575824835
-0.780575824825
-0.78057582484
-0.780575824823
-0.78057582484
-0.780575824846
-0.780575824858
-0.780575824855
-0.780575824868
-0.780554219326
-0.780554219326
-0.780554219315
-0.780554219306
-0.780554219327
-0.78055421934
-0.780554219316
-0.780554219315
-0.780554219321
-0.780554219325
-0.780554219322
-0.780554219322
-0.780554219312
-0.780554219327
-0.78055421931
-0.780554219327
-0.780554219332
-0.780554219343
-0.780554219342
-0.780554219355
-0.780439055682
-0.780439055682
-0.78043905567
-0.780439055661
-0.780439055682
-0.780439055694
-0.780439055672
-0.780439055672
-0.780439055677
-0.780439055681
-0.780439055678
-0.780439055679
-0.780439055671
-0.780439055682
-0.780439055667
-0.780439055683
-0.780439055686
-0.780439055693
-0.780439055698
-0.780439055711
-0.780209064856
-0.780209064856
-0.780209064844
-0.780209064834
-0.780209064855
-0.780209064866
-0.780209064847
-0.780209064847
-0.780209064852
-0.780209064856
-0.780209064853
-0.780209064854
-0.780209064848
-0.780209064856
-0.780209064842
-0.780209064856
-0.780209064857
-0.78020906486
-0.780209064873
-0.780209064886
-0.779638565584
-0.779638565584
-0.779638565573
-0.779638565563
-0.779638565583
-0.779638565591
-0.779638565577
-0.779638565578
-0.779638565583
-0.779638565586
-0.779638565584
-0.779638565584
-0.779638565584
-0.779638565584
-0.779638565574
-0.779638565585
-0.779638565581
-0.779638565577
-0.779638565602
-0.779638565613
-0.77861506837
-0.77861506837
-0.778615068361
-0.778615068353
-0.778615068369
-0.778615068373
-0.778615068366
-0.778615068368
-0.778615068372
-0.778615068377
-0.778615068373
-0.778615068372
-0.778615068378
-0.77861506837
-0.778615068364
-0.778615068371
-0.778615068363
-0.778615068352
-0.778615068386
-0.778615068394
-0.777360000182
-0.777360000182
-0.777360000177
-0.777360000173
-0.77736000018
-0.77736000018
-0.777360000181
-0.777360000182
-0.777360000187
-0.777360000194
-0.777360000187
-0.777360000184
-0.777360000195
-0.777360000182
-0.777360000179
-0.777360000181
-0.777360000174
-0.777360000161
-0.777360000191
-0.777360000195
-0.776637580888
-0.776637580888
-0.776637580886
-0.776637580887
-0.776637580887
-0.776637580885
-0.776637580888
-0.776637580887
-0.776637580893
-0.776637580903
-0.776637580892
-0.776637580888
-0.776637580898
-0.776637580887
-0.776637580884
-0.776637580884
-0.776637580882
-0.776637580875
-0.776637580889
-0.77663758089
-0.776484435387
-0.776484435387
-0.776484435387
-0.776484435389
-0.776484435387
-0.776484435386
-0.776484435387
-0.776484435384
-0.776484435392
-0.776484435402
-0.77648443539
-0.776484435385
-0.776484435392
-0.776484435387
-0.776484435381
-0.776484435383
-0.776484435385
-0.776484435384
-0.776484435386
-0.776484435386
-0.776473053168
-0.776473053168
-0.776473053168
-0.77647305317
-0.776473053168
-0.776473053168
-0.776473053167
-0.776473053165
-0.776473053172
-0.776473053183
-0.776473053171
-0.776473053166
-0.776473053172
-0.776473053168
-0.776473053162
-0.776473053164
-0.776473053167
-0.776473053168
-0.776473053167
-0.776473053167
-0.776471029484
-0.776471029484
-0.776471029484
-0.776471029485
-0.776471029484
-0.776471029484
-0.776471029483
-0.776471029481
-0.776471029488
-0.776471029499
-0.776471029486
-0.776471029482
-0.776471029488
-0.776471029484
-0.776471029477
-0.77647102948
-0.776471029483
-0.776471029484
-0.776471029483
-0.776471029483
-0.776464238622
-0.776464238622
-0.776464238621
-0.776464238623
-0.776464238622
-0.776464238622
-0.776464238621
-0.776464238618
-0.776464238626
-0.776464238636
-0.776464238624
-0.77646423862
-0.776464238625
-0.776464238621
-0.776464238615
-0.776464238618
-0.776464238621
-0.776464238622
-0.776464238621
-0.776464238621
-0.776449018152
-0.776449018152
-0.776449018151
-0.776449018152
-0.776449018152
-0.776449018153
-0.776449018151
-0.776449018148
-0.776449018156
-0.776449018166
-0.776449018154
-0.77644901815
-0.776449018154
-0.776449018152
-0.776449018145
-0.776449018148
-0.776449018152
-0.776449018154
-0.776449018152
-0.776449018152
-0.77640727376
-0.77640727376
-0.776407273758
-0.776407273759
-0.77640727376
-0.776407273761
-0.776407273758
-0.776407273755
-0.776407273763
-0.776407273772
-0.776407273761
-0.776407273757
-0.77640727376
-0.776407273759
-0.776407273752
-0.776407273756
-0.77640727376
-0.776407273763
-0.77640727376
-0.776407273761
-0.776309049579
-0.776309049579
-0.776309049576
-0.776309049576
-0.776309049579
-0.776309049581
-0.776309049576
-0.776309049574
-0.77630904958
-0.776309049589
-0.776309049579
-0.776309049576
-0.776309049577
-0.776309049578
-0.776309049571
-0.776309049576
-0.77630904958
-0.776309049584
-0.776309049579
-0.776309049581
-0.776094643894
-0.776094643894
-0.77609464389
-0.776094643889
-0.776094643894
-0.776094643898
-0.77609464389
-0.776094643889
-0.776094643894
-0.776094643901
-0.776094643892
-0.776094643891
-0.776094643888
-0.776094643894
-0.776094643887
-0.776094643892
-0.776094643896
-0.776094643901
-0.776094643895
-0.776094643898
-0.775739296677
-0.775739296677
-0.775739296673
-0.775739296671
-0.775739296678
-0.775739296682
-0.775739296674
-0.775739296673
-0.775739296676
-0.775739296681
-0.775739296675
-0.775739296675
-0.775739296669
-0.775739296678
-0.775739296674
-0.775739296678
-0.77573929668
-0.775739296686
-0.775739296678
-0.775739296683
-0.775389924916
-0.775389924916
-0.775389924912
-0.775389924909
-0.775389924916
-0.77538992492
-0.775389924913
-0.775389924915
-0.775389924915
-0.775389924918
-0.775389924914
-0.775389924915
-0.775389924907
-0.775389924917
-0.775389924917
-0.775389924918
-0.775389924918
-0.775389924922
-0.775389924915
-0.77538992492
-0.775240716699
-0.775240716699
-0.775240716697
-0.775240716694
-0.775240716699
-0.775240716701
-0.775240716698
-0.7752407167
-0.775240716699
-0.775240716702
-0.775240716698
-0.7752407167
-0.775240716693
-0.7752407167
-0.775240716704
-0.775240716702
-0.7752407167
-0.775240716701
-0.775240716697
-0.775240716701
-0.775218802317
-0.775218802317
-0.775218802315
-0.775218802313
-0.775218802317
-0.775218802318
-0.775218802317
-0.775218802319
-0.775218802318
-0.775218802321
-0.775218802317
-0.775218802318
-0.775218802313
-0.775218802318
-0.775218802322
-0.77521880232
-0.775218802317
-0.775218802317
-0.775218802314
-0.775218802317
-0.775217394873
-0.775217394873
-0.775217394871
-0.775217394869
-0.775217394873
-0.775217394874
-0.775217394872
-0.775217394874
-0.775217394874
-0.775217394877
-0.775217394873
-0.775217394873
-0.775217394869
-0.775217394874
-0.775217394878
-0.775217394875
-0.775217394872
-0.775217394873
-0.77521739487
-0.775217394873
-     fun: 0.7752173948729089
-     jac: array([ -1.36606395e-04,  -2.47374177e-04,  -2.33724713e-05,
-         4.85405326e-05,  -3.10614705e-05,   1.03212893e-04,
-         7.02217221e-05,   2.61940062e-04,  -2.69711018e-05,
-         3.93986702e-05,  -2.51367688e-04,   4.42713499e-05,
-         3.32631171e-04,   1.36740506e-04,  -2.96980143e-05,
-        -1.61826611e-05,  -2.17124820e-04,  -2.18078494e-05])
+11.0646343374
+11.0646343374
+11.0646343359
+11.064634336
+11.0646343362
+11.0646343339
+11.0646343358
+11.0646343358
+11.0646343358
+11.0646343358
+11.0646343358
+11.0646343359
+11.0646343342
+11.0646343358
+11.064634336
+11.0646343343
+11.064634336
+11.0646343348
+11.064634336
+11.0646343361
+10.7345104686
+10.7345104686
+10.7345104671
+10.7345104672
+10.7345104673
+10.7345104651
+10.734510467
+10.734510467
+10.734510467
+10.734510467
+10.734510467
+10.7345104671
+10.7345104654
+10.734510467
+10.7345104672
+10.7345104655
+10.7345104672
+10.734510466
+10.7345104672
+10.7345104673
+9.10771559023
+9.10771559023
+9.10771558884
+9.10771558887
+9.10771558908
+9.10771558702
+9.1077155887
+9.10771558869
+9.10771558868
+9.10771558864
+9.10771558868
+9.10771558877
+9.10771558712
+9.10771558873
+9.10771558887
+9.10771558721
+9.10771558886
+9.10771558769
+9.10771558886
+9.10771558899
+2.98845015487
+2.98845015487
+2.98845015469
+2.98845015434
+2.98845015537
+2.98845015695
+2.98845015458
+2.98845015473
+2.98845015438
+2.9884501543
+2.9884501546
+2.98845015412
+2.98845015451
+2.98845015458
+2.98845015399
+2.98845015446
+2.98845015431
+2.9884501536
+2.98845015408
+2.98845015408
+2.99080031092
+2.94367856296
+2.94367856296
+2.94367856301
+2.94367856263
+2.94367856368
+2.9436785657
+2.94367856293
+2.94367856309
+2.94367856273
+2.94367856265
+2.94367856296
+2.94367856243
+2.94367856318
+2.94367856293
+2.94367856227
+2.9436785631
+2.94367856262
+2.94367856209
+2.94367856238
+2.94367856235
+2.8661387288
+2.8661387288
+2.86613872882
+2.86613872846
+2.86613872946
+2.86613873135
+2.86613872876
+2.86613872893
+2.86613872859
+2.86613872851
+2.86613872884
+2.86613872829
+2.86613872909
+2.86613872881
+2.86613872813
+2.86613872902
+2.8661387285
+2.86613872799
+2.86613872824
+2.86613872822
+2.57458115355
+2.57458115355
+2.57458115337
+2.57458115305
+2.57458115385
+2.57458115489
+2.57458115344
+2.57458115359
+2.57458115339
+2.57458115332
+2.5745811537
+2.57458115311
+2.5745811541
+2.57458115369
+2.57458115295
+2.57458115403
+2.57458115338
+2.574581153
+2.57458115308
+2.5745811531
+2.44028147535
+2.44028147535
+2.44028147479
+2.44028147463
+2.44028147482
+2.44028147384
+2.4402814751
+2.4402814752
+2.44028147533
+2.44028147531
+2.44028147572
+2.44028147517
+2.44028147637
+2.44028147575
+2.44028147504
+2.44028147633
+2.44028147551
+2.44028147549
+2.44028147519
+2.44028147528
+2.39891262681
+2.39891262681
+2.39891262634
+2.39891262614
+2.39891262645
+2.39891262588
+2.3989126266
+2.39891262671
+2.39891262677
+2.39891262674
+2.39891262714
+2.39891262659
+2.39891262774
+2.39891262716
+2.39891262645
+2.39891262769
+2.39891262691
+2.39891262681
+2.39891262661
+2.39891262668
+2.35292060593
+2.35292060593
+2.35292060554
+2.35292060532
+2.35292060573
+2.35292060553
+2.35292060575
+2.35292060587
+2.35292060587
+2.35292060584
+2.35292060621
+2.35292060568
+2.35292060673
+2.35292060621
+2.35292060555
+2.35292060666
+2.35292060596
+2.35292060579
+2.3529206057
+2.35292060578
+2.25560287938
+2.25560287938
+2.25560287918
+2.25560287894
+2.25560287947
+2.25560287993
+2.2556028793
+2.25560287942
+2.25560287931
+2.2556028793
+2.25560287952
+2.25560287915
+2.25560287984
+2.25560287949
+2.25560287902
+2.25560287973
+2.25560287925
+2.25560287898
+2.25560287919
+2.25560287929
+2.16585539846
+2.16585539846
+2.16585539845
+2.16585539825
+2.16585539873
+2.16585539952
+2.16585539849
+2.16585539859
+2.16585539844
+2.16585539846
+2.16585539847
+2.16585539837
+2.16585539854
+2.1658553984
+2.16585539826
+2.16585539838
+2.16585539823
+2.16585539793
+2.16585539845
+2.1658553986
+2.1163665085
+2.1163665085
+2.11636650853
+2.11636650841
+2.11636650866
+2.11636650913
+2.11636650858
+2.11636650865
+2.11636650856
+2.11636650861
+2.11636650846
+2.11636650858
+2.11636650839
+2.11636650836
+2.11636650851
+2.1163665082
+2.11636650828
+2.11636650806
+2.11636650872
+2.11636650892
+2.10679470473
+2.10679470473
+2.1067947047
+2.10679470462
+2.10679470473
+2.10679470481
+2.10679470479
+2.10679470485
+2.10679470482
+2.10679470488
+2.10679470472
+2.10679470487
+2.10679470468
+2.10679470463
+2.10679470481
+2.1067947045
+2.10679470458
+2.10679470444
+2.10679470502
+2.10679470523
+2.10342622952
+2.10342622952
+2.10342622946
+2.10342622938
+2.10342622947
+2.1034262294
+2.10342622957
+2.10342622962
+2.10342622961
+2.10342622968
+2.10342622953
+2.10342622966
+2.10342622951
+2.10342622945
+2.10342622961
+2.10342622935
+2.10342622941
+2.1034262293
+2.10342622981
+2.10342623002
+2.09714244002
+2.09714244002
+2.09714243992
+2.09714243986
+2.09714243989
+2.09714243963
+2.09714244004
+2.09714244009
+2.09714244011
+2.09714244018
+2.09714244006
+2.09714244015
+2.09714244007
+2.09714244
+2.0971424401
+2.09714243995
+2.09714243997
+2.09714243992
+2.09714244029
+2.09714244048
+2.08729157268
+2.08729157268
+2.08729157254
+2.0872915725
+2.08729157247
+2.08729157203
+2.08729157268
+2.08729157272
+2.08729157276
+2.08729157284
+2.08729157274
+2.08729157278
+2.08729157276
+2.08729157272
+2.08729157272
+2.08729157273
+2.08729157272
+2.08729157278
+2.08729157288
+2.08729157304
+2.07597147886
+2.07597147886
+2.07597147873
+2.07597147871
+2.07597147864
+2.07597147816
+2.07597147884
+2.07597147887
+2.07597147891
+2.07597147899
+2.07597147892
+2.07597147888
+2.0759714789
+2.07597147895
+2.07597147884
+2.075971479
+2.075971479
+2.07597147918
+2.07597147892
+2.07597147902
+2.0691540063
+2.0691540063
+2.06915400622
+2.06915400621
+2.06915400617
+2.06915400589
+2.06915400628
+2.0691540063
+2.06915400631
+2.06915400639
+2.0691540063
+2.06915400624
+2.06915400621
+2.06915400637
+2.0691540062
+2.06915400641
+2.06915400647
+2.0691540067
+2.06915400623
+2.06915400628
+2.0665433209
+2.0665433209
+2.06654332088
+2.06654332087
+2.06654332087
+2.06654332082
+2.0665433209
+2.06654332093
+2.06654332089
+2.06654332097
+2.06654332086
+2.06654332081
+2.06654332071
+2.06654332094
+2.06654332078
+2.06654332092
+2.06654332104
+2.06654332125
+2.06654332079
+2.06654332082
+2.06487703398
+2.06487703398
+2.064877034
+2.06487703398
+2.06487703401
+2.06487703408
+2.06487703401
+2.06487703403
+2.06487703398
+2.06487703406
+2.06487703393
+2.0648770339
+2.06487703376
+2.064877034
+2.06487703387
+2.06487703396
+2.06487703409
+2.06487703428
+2.06487703388
+2.06487703391
+2.06298807892
+2.06298807892
+2.06298807897
+2.06298807894
+2.062988079
+2.06298807918
+2.06298807896
+2.06298807899
+2.06298807892
+2.062988079
+2.06298807886
+2.06298807884
+2.06298807867
+2.06298807891
+2.06298807881
+2.06298807884
+2.06298807899
+2.06298807913
+2.06298807882
+2.06298807886
+2.06129366565
+2.06129366565
+2.06129366575
+2.06129366572
+2.06129366579
+2.0612936661
+2.06129366572
+2.06129366575
+2.06129366566
+2.06129366574
+2.06129366558
+2.06129366559
+2.0612936654
+2.0612936656
+2.06129366557
+2.06129366549
+2.06129366566
+2.06129366571
+2.06129366557
+2.0612936656
+2.0611984753
+2.0611984753
+2.06119847545
+2.06119847543
+2.06119847548
+2.06119847587
+2.06119847541
+2.06119847542
+2.06119847534
+2.0611984754
+2.06119847524
+2.06119847528
+2.06119847509
+2.06119847521
+2.06119847526
+2.06119847507
+2.06119847522
+2.06119847517
+2.06119847523
+2.06119847524
+2.06240457157
+2.06240457157
+2.06240457174
+2.06240457174
+2.06240457172
+2.06240457201
+2.0624045717
+2.06240457171
+2.06240457165
+2.06240457169
+2.06240457156
+2.06240457159
+2.06240457148
+2.06240457149
+2.06240457159
+2.06240457137
+2.06240457146
+2.06240457131
+2.06240457151
+2.06240457148
+2.06297743403
+2.06297743403
+2.06297743417
+2.06297743419
+2.06297743409
+2.06297743416
+2.06297743415
+2.06297743414
+2.06297743413
+2.06297743416
+2.06297743406
+2.06297743406
+2.06297743407
+2.062977434
+2.06297743407
+2.06297743392
+2.06297743394
+2.0629774338
+2.06297743396
+2.0629774339
+2.06212473073
+2.06212473073
+2.06212473083
+2.06212473087
+2.06212473073
+2.06212473066
+2.06212473084
+2.06212473082
+2.06212473083
+2.06212473086
+2.06212473078
+2.06212473076
+2.06212473081
+2.06212473073
+2.06212473077
+2.06212473069
+2.06212473068
+2.06212473058
+2.06212473065
+2.06212473058
+2.06093170781
+2.06093170781
+2.06093170789
+2.06093170793
+2.06093170779
+2.06093170765
+2.0609317079
+2.06093170789
+2.0609317079
+2.06093170794
+2.06093170787
+2.06093170783
+2.0609317079
+2.06093170783
+2.06093170785
+2.06093170781
+2.06093170778
+2.06093170771
+2.06093170772
+2.06093170766
+2.0589718327
+2.0589718327
+2.05897183276
+2.05897183279
+2.05897183265
+2.05897183244
+2.05897183277
+2.05897183275
+2.05897183278
+2.05897183282
+2.05897183276
+2.05897183271
+2.0589718328
+2.05897183274
+2.05897183273
+2.05897183274
+2.05897183271
+2.05897183268
+2.05897183261
+2.05897183255
+2.05674551742
+2.05674551742
+2.05674551744
+2.05674551747
+2.05674551733
+2.05674551706
+2.05674551746
+2.05674551744
+2.05674551749
+2.05674551751
+2.05674551749
+2.05674551743
+2.05674551752
+2.05674551749
+2.05674551744
+2.05674551753
+2.05674551748
+2.0567455175
+2.05674551734
+2.05674551729
+2.05511723981
+2.05511723981
+2.05511723979
+2.05511723981
+2.0551172397
+2.05511723941
+2.05511723981
+2.05511723977
+2.05511723985
+2.05511723985
+2.05511723987
+2.05511723981
+2.05511723989
+2.0551172399
+2.05511723983
+2.05511723996
+2.05511723991
+2.05511723998
+2.05511723974
+2.05511723972
+2.05448801614
+2.05448801614
+2.05448801611
+2.05448801611
+2.05448801606
+2.05448801586
+2.05448801612
+2.05448801606
+2.05448801615
+2.05448801613
+2.05448801618
+2.05448801615
+2.05448801617
+2.05448801623
+2.05448801617
+2.05448801629
+2.05448801625
+2.05448801631
+2.05448801611
+2.05448801611
+2.05425561682
+2.05425561682
+2.05425561682
+2.05425561681
+2.0542556168
+2.05425561674
+2.05425561681
+2.05425561675
+2.05425561683
+2.05425561679
+2.05425561685
+2.05425561685
+2.05425561682
+2.05425561688
+2.05425561687
+2.05425561691
+2.05425561689
+2.0542556169
+2.05425561683
+2.05425561683
+2.05391819849
+2.05391819849
+2.05391819851
+2.05391819849
+2.0539181985
+2.05391819851
+2.05391819849
+2.05391819843
+2.0539181985
+2.05391819846
+2.05391819851
+2.05391819853
+2.05391819848
+2.05391819853
+2.05391819854
+2.05391819854
+2.05391819853
+2.0539181985
+2.0539181985
+2.05391819851
+2.0536361135
+2.0536361135
+2.05363611353
+2.05363611351
+2.05363611352
+2.05363611354
+2.05363611351
+2.05363611345
+2.05363611352
+2.05363611348
+2.05363611352
+2.05363611354
+2.05363611349
+2.05363611354
+2.05363611356
+2.05363611354
+2.05363611353
+2.05363611349
+2.05363611351
+2.05363611352
+2.05328344175
+2.05328344175
+2.05328344179
+2.05328344177
+2.05328344178
+2.05328344181
+2.05328344177
+2.05328344171
+2.05328344177
+2.05328344173
+2.05328344177
+2.05328344179
+2.05328344175
+2.05328344178
+2.05328344181
+2.05328344178
+2.05328344177
+2.05328344172
+2.05328344176
+2.05328344176
+2.05304274611
+2.05304274611
+2.05304274616
+2.05304274614
+2.05304274615
+2.05304274621
+2.05304274614
+2.05304274609
+2.05304274614
+2.05304274611
+2.05304274613
+2.05304274615
+2.05304274612
+2.05304274613
+2.05304274617
+2.05304274611
+2.05304274612
+2.05304274605
+2.05304274612
+2.05304274612
+2.05338318191
+2.05338318191
+2.05338318198
+2.05338318195
+2.05338318196
+2.05338318204
+2.05338318196
+2.05338318192
+2.05338318195
+2.05338318192
+2.05338318194
+2.05338318195
+2.05338318193
+2.05338318193
+2.05338318196
+2.05338318188
+2.05338318191
+2.05338318183
+2.05338318192
+2.05338318191
+2.05466138415
+2.05466138415
+2.05466138421
+2.05466138418
+2.0546613842
+2.05466138427
+2.05466138421
+2.05466138419
+2.0546613842
+2.05466138417
+2.05466138418
+2.05466138418
+2.05466138419
+2.05466138416
+2.05466138417
+2.0546613841
+2.05466138415
+2.05466138408
+2.05466138415
+2.05466138414
+2.05604462438
+2.05604462438
+2.05604462443
+2.05604462438
+2.05604462441
+2.05604462445
+2.05604462444
+2.05604462442
+2.05604462442
+2.0560446244
+2.05604462442
+2.0560446244
+2.05604462443
+2.0560446244
+2.05604462438
+2.05604462433
+2.0560446244
+2.05604462435
+2.05604462438
+2.05604462437
+2.05648221105
+2.05648221105
+2.05648221108
+2.05648221103
+2.05648221107
+2.05648221108
+2.0564822111
+2.05648221108
+2.05648221109
+2.05648221106
+2.05648221109
+2.05648221106
+2.0564822111
+2.05648221108
+2.05648221104
+2.05648221102
+2.05648221109
+2.05648221107
+2.05648221105
+2.05648221105
+2.05636788379
+2.05636788379
+2.05636788382
+2.05636788377
+2.05636788381
+2.05636788381
+2.05636788383
+2.05636788381
+2.05636788383
+2.0563678838
+2.05636788383
+2.05636788381
+2.05636788384
+2.05636788383
+2.05636788378
+2.05636788378
+2.05636788384
+2.05636788382
+2.0563678838
+2.05636788379
+2.05625974994
+2.05625974994
+2.05625974996
+2.05625974991
+2.05625974995
+2.05625974995
+2.05625974998
+2.05625974996
+2.05625974997
+2.05625974994
+2.05625974998
+2.05625974995
+2.05625974998
+2.05625974997
+2.05625974993
+2.05625974993
+2.05625974998
+2.05625974997
+2.05625974994
+2.05625974994
+2.05608260053
+2.05608260053
+2.05608260055
+2.0560826005
+2.05608260054
+2.05608260053
+2.05608260056
+2.05608260054
+2.05608260056
+2.05608260053
+2.05608260057
+2.05608260054
+2.05608260057
+2.05608260057
+2.05608260052
+2.05608260053
+2.05608260058
+2.05608260057
+2.05608260053
+2.05608260053
+2.05599636778
+2.05599636778
+2.0559963678
+2.05599636776
+2.05599636779
+2.05599636778
+2.05599636782
+2.05599636779
+2.05599636781
+2.05599636779
+2.05599636782
+2.0559963678
+2.05599636781
+2.05599636783
+2.05599636778
+2.0559963678
+2.05599636783
+2.05599636782
+2.05599636779
+2.05599636779
+2.05617162577
+2.05617162577
+2.05617162579
+2.05617162574
+2.05617162578
+2.05617162577
+2.0561716258
+2.05617162578
+2.0561716258
+2.05617162578
+2.0561716258
+2.05617162578
+2.05617162578
+2.05617162581
+2.05617162576
+2.0561716258
+2.05617162581
+2.0561716258
+2.05617162578
+2.05617162577
+2.05653655038
+2.05653655038
+2.0565365504
+2.05653655035
+2.05653655039
+2.05653655038
+2.05653655042
+2.05653655039
+2.05653655041
+2.0565365504
+2.05653655041
+2.05653655039
+2.05653655038
+2.05653655042
+2.05653655037
+2.05653655042
+2.05653655042
+2.05653655039
+2.05653655039
+2.05653655038
+2.05674420292
+2.05674420292
+2.05674420295
+2.0567442029
+2.05674420293
+2.05674420293
+2.05674420296
+2.05674420294
+2.05674420296
+2.05674420294
+2.05674420295
+2.05674420294
+2.05674420293
+2.05674420296
+2.05674420291
+2.05674420295
+2.05674420296
+2.05674420293
+2.05674420293
+2.05674420292
+2.05678487076
+2.05678487076
+2.05678487079
+2.05678487074
+2.05678487078
+2.05678487078
+2.05678487081
+2.05678487079
+2.0567848708
+2.05678487079
+2.0567848708
+2.05678487078
+2.05678487077
+2.05678487081
+2.05678487075
+2.05678487079
+2.0567848708
+2.05678487077
+2.05678487077
+2.05678487076
+2.05680823317
+2.05680823317
+2.0568082332
+2.05680823315
+2.05680823319
+2.05680823319
+2.05680823322
+2.0568082332
+2.05680823321
+2.0568082332
+2.05680823321
+2.05680823319
+2.05680823318
+2.05680823321
+2.05680823316
+2.0568082332
+2.05680823321
+2.05680823318
+2.05680823318
+2.05680823317
+2.05684779234
+2.05684779234
+2.05684779237
+2.05684779232
+2.05684779236
+2.05684779236
+2.05684779239
+2.05684779237
+2.05684779238
+2.05684779237
+2.05684779238
+2.05684779236
+2.05684779236
+2.05684779238
+2.05684779233
+2.05684779236
+2.05684779238
+2.05684779235
+2.05684779235
+2.05684779234
+2.05689861661
+2.05689861661
+2.05689861664
+2.05689861659
+2.05689861662
+2.05689861663
+2.05689861665
+2.05689861663
+2.05689861665
+2.05689861663
+2.05689861664
+2.05689861662
+2.05689861663
+2.05689861664
+2.05689861659
+2.05689861662
+2.05689861664
+2.05689861661
+2.05689861661
+2.05689861661
+2.05695375741
+2.05695375741
+2.05695375744
+2.05695375739
+2.05695375743
+2.05695375744
+2.05695375746
+2.05695375743
+2.05695375745
+2.05695375744
+2.05695375745
+2.05695375743
+2.05695375744
+2.05695375745
+2.0569537574
+2.05695375742
+2.05695375745
+2.05695375742
+2.05695375742
+2.05695375741
+2.05696059542
+2.05696059542
+2.05696059545
+2.0569605954
+2.05696059544
+2.05696059545
+2.05696059546
+2.05696059544
+2.05696059546
+2.05696059546
+2.05696059546
+2.05696059544
+2.05696059545
+2.05696059546
+2.05696059541
+2.05696059543
+2.05696059546
+2.05696059543
+2.05696059543
+2.05696059542
+2.05691782558
+2.05691782558
+2.0569178256
+2.05691782556
+2.05691782559
+2.0569178256
+2.05691782562
+2.05691782559
+2.05691782562
+2.05691782561
+2.05691782561
+2.05691782559
+2.0569178256
+2.05691782562
+2.05691782557
+2.05691782559
+2.05691782562
+2.05691782559
+2.05691782558
+2.05691782558
+2.05688391339
+2.05688391339
+2.05688391341
+2.05688391337
+2.0568839134
+2.05688391341
+2.05688391343
+2.0568839134
+2.05688391343
+2.05688391342
+2.05688391343
+2.05688391341
+2.05688391341
+2.05688391343
+2.05688391338
+2.05688391341
+2.05688391343
+2.0568839134
+2.05688391339
+2.05688391339
+2.05686895714
+2.05686895714
+2.05686895717
+2.05686895712
+2.05686895716
+2.05686895716
+2.05686895718
+2.05686895715
+2.05686895719
+2.05686895718
+2.05686895718
+2.05686895716
+2.05686895716
+2.05686895719
+2.05686895713
+2.05686895717
+2.05686895718
+2.05686895716
+2.05686895715
+2.05686895714
+2.05684547653
+2.05684547653
+2.05684547656
+2.05684547651
+2.05684547655
+2.05684547655
+2.05684547657
+2.05684547654
+2.05684547657
+2.05684547657
+2.05684547657
+2.05684547655
+2.05684547655
+2.05684547658
+2.05684547652
+2.05684547656
+2.05684547657
+2.05684547655
+2.05684547654
+2.05684547653
+2.05680728626
+2.05680728626
+2.05680728628
+2.05680728623
+2.05680728627
+2.05680728627
+2.05680728629
+2.05680728626
+2.0568072863
+2.05680728629
+2.05680728629
+2.05680728627
+2.05680728627
+2.0568072863
+2.05680728625
+2.05680728628
+2.05680728629
+2.05680728627
+2.05680728626
+2.05680728626
+2.05674871538
+2.05674871538
+2.05674871541
+2.05674871536
+2.05674871539
+2.05674871539
+2.05674871542
+2.05674871539
+2.05674871542
+2.05674871541
+2.05674871542
+2.0567487154
+2.05674871539
+2.05674871542
+2.05674871537
+2.05674871541
+2.05674871542
+2.05674871539
+2.05674871538
+2.05674871538
+2.0566798778
+2.0566798778
+2.05667987782
+2.05667987778
+2.05667987781
+2.05667987781
+2.05667987784
+2.05667987781
+2.05667987784
+2.05667987783
+2.05667987783
+2.05667987782
+2.05667987781
+2.05667987784
+2.05667987779
+2.05667987783
+2.05667987784
+2.05667987781
+2.0566798778
+2.0566798778
+2.05664164254
+2.05664164254
+2.05664164256
+2.05664164252
+2.05664164255
+2.05664164255
+2.05664164258
+2.05664164255
+2.05664164258
+2.05664164257
+2.05664164257
+2.05664164256
+2.05664164255
+2.05664164258
+2.05664164253
+2.05664164257
+2.05664164258
+2.05664164255
+2.05664164254
+2.05664164254
+2.05665451195
+2.05665451195
+2.05665451198
+2.05665451193
+2.05665451196
+2.05665451197
+2.05665451199
+2.05665451196
+2.05665451199
+2.05665451198
+2.05665451199
+2.05665451197
+2.05665451197
+2.05665451199
+2.05665451194
+2.05665451197
+2.05665451199
+2.05665451196
+2.05665451195
+2.05665451195
+2.05667939241
+2.05667939241
+2.05667939244
+2.05667939239
+2.05667939243
+2.05667939243
+2.05667939245
+2.05667939243
+2.05667939245
+2.05667939244
+2.05667939245
+2.05667939243
+2.05667939243
+2.05667939246
+2.05667939241
+2.05667939244
+2.05667939245
+2.05667939243
+2.05667939242
+2.05667939242
+     fun: 2.068629825557749
+     jac: array([  2.78353691e-05,  -1.08957291e-04,  -3.99649143e-05,
+         8.55326653e-06,   3.61502171e-05,   6.69658184e-05,
+        -5.33759594e-05,   1.58250332e-05,   6.37769699e-06,
+         1.31726265e-05,  -3.17692757e-05,   2.13384628e-05,
+         1.37984753e-04,   1.69277191e-05,   7.59661198e-05,
+        -2.17556953e-05,  -1.10834837e-04,   2.30073929e-05])
  message: 'Optimization terminated successfully.'
-    nfev: 842
-     nit: 42
-    njev: 42
+    nfev: 1281
+     nit: 64
+    njev: 64
   status: 0
  success: True
-       x: array([  5.79122694,   8.9599799 ,   2.33726138,   4.10368776,
-         4.54379297,   3.14925623,   4.29510461,   3.82246218,
-         2.69751202,   6.14093542,   4.40943187,   3.01434313,
-         8.45137954,   5.20619686,   4.92636978,  11.01654871,
-         4.26352418,   3.79851068])
+       x: array([ 7.41346934,  6.51992114,  7.88358222,  1.89819264,  6.52891595,
+        1.0382073 ,  7.97686228,  1.03527877,  7.87603409,  7.58005043,
+        1.61202331,  9.4294001 ,  6.21855554,  1.80105361,  9.72121374,
+        7.32490974,  5.66669183,  1.67715185])
 
 ========================================================
 
 Final result:
-5.7912269376
-8.95997990318
-2.3372613823
-4.10368775925
-4.10368775925
-4.10368775925
-4.54379296671
-3.14925622942
-4.2951046093
-3.82246218119
-2.69751202339
-6.14093541962
-4.40943187471
-4.40943187471
-3.01434312682
-8.45137953659
-5.20619685871
-5.20619685871
-4.92636978366
-11.0165487138
-11.0165487138
-4.2635241781
-3.79851068098
+7.41346934449
+6.51992113842
+7.88358221613
+1.8981926395
+1.8981926395
+1.8981926395
+6.52891594613
+1.03820730461
+7.97686227957
+1.03527876911
+7.87603409084
+7.58005042503
+1.61202330882
+1.61202330882
+9.42940010444
+6.21855554124
+1.80105361316
+1.80105361316
+9.72121374077
+7.32490974316
+7.32490974316
+5.66669182888
+1.67715184981
