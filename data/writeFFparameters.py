@@ -20,7 +20,7 @@ def make_alpha_file():
                 
 
 def makeparameterfiler():
-    constr = "1.0_"
+    constr = ""
     parameters = np.genfromtxt('FFparameterstemplate.csv',delimiter=';',dtype='U256')
     current = 'None'
     #not_list = ["AARG", "BARG", "ARG", "AGLN", "BGLN", "GLN", "NARG", "nARG", "cARG"]
@@ -207,7 +207,7 @@ def makeparameterfiler():
     FFpar.close()
 
 
-def removeduplicates():
+def patch_removeduplicates():
     par = np.genfromtxt('FFparameterswithduplicates.csv', delimiter=',',dtype='U256')
     
     FFdict = {}
@@ -238,7 +238,7 @@ def removeduplicates():
         FFpar.write('\n')
     FFpar.close()
     
-def make_all_names():
+def patch_make_all_names():
     par = np.genfromtxt('FFparameters.csv', delimiter=',',dtype='U256')
     convertCSV = np.genfromtxt("convert.csv",dtype=str,delimiter=",")
     convertDict = {}
@@ -346,7 +346,7 @@ def make_pyframe_version():
 
 make_alpha_file()
 makeparameterfiler()
-removeduplicates()
-make_all_names()
+patch_removeduplicates()
+patch_make_all_names()
 patch_make_all_names()
 make_pyframe_version()
