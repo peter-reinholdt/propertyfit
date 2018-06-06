@@ -8,7 +8,7 @@ Python program to fit multipole moments and polarizabilities.
 
 List of amino acid namings. Names from Charmm, Amber and Gromos should also work. 
 If the name of an amino acid is longer than four characters, then "C", "N", "c", "n", "A" or "B" cannot be put in front.  
-Atom names from these force fields should also be fine.
+Atom type names from these force fields should also be fine.
 
 ### Terminals
 
@@ -20,9 +20,9 @@ c"XXX", neutral C-terminal amino acid
 
 n"XXX", neutral N-terminal amino acid
 
-A"XXX", methyl capped C-terminal I think (might not be fitted)
+A"XXX", methyl capped C-terminal
 
-B"XXX", methyl capped N-terminal I think (might not be fitted) 
+B"XXX", methyl capped N-terminal
 
 ### Common protonation states
 
