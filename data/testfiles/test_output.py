@@ -245,4 +245,5 @@ def test_parameterfile_totcharge():
         else:
             calcdict[par[i,0]] = float(par[i,2]) + calcdict[par[i,0]]
     for key in checkdict:
+        print(key)
         assert abs(checkdict[key] - calcdict[key]) < 10**-8

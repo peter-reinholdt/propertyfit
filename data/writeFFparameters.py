@@ -119,7 +119,7 @@ def makeparameterfiler():
                     fitoutput = list(f)
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'Fin':
-                        charges = fitoutput[j+2:len(fitoutput)-6]
+                        charges = fitoutput[j+1:len(fitoutput)-6]
                         for k in range(0, len(charges)):
                             charges[k] = charges[k][:-1]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'_ACE.out.txt')
@@ -141,7 +141,7 @@ def makeparameterfiler():
                     fitoutput = list(f)
                 for j in range(0,len(fitoutput)):
                     if fitoutput[j][0:3] == 'Fin':
-                        charges = fitoutput[j+2+6:len(fitoutput)]
+                        charges = fitoutput[j+1+6:len(fitoutput)]
                         for k in range(0, len(charges)):
                             charges[k] = charges[k][:-1]
                         alpha  = np.genfromtxt('fittedparameters/alpha_'+parameters[i,0][1:]+'_NME.out.txt')
