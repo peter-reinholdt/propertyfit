@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--qm-files', "-qm", dest="qm", type=str, nargs="+", help="Specify a number of .molden or .fchk files")
 parser.add_argument('--h5-files', "-h5", dest="h5", type=str, nargs="+", help="Specify a number of .h5 files with pre-computed potentials. If this is used, the\
         vdW surface specification arguments are ignored, since the .h5 file already contains this information")
+parser.add_argument('--h5-file-list', dest='h5_filelist', type=str, help='Read which h5 files to use from a file')
 parser.add_argument('--surface-rmin', dest='rmin', type=float, default=1.4, help='Set minimum vdW scale in bohr.')
 parser.add_argument('--surface-rmax', dest='rmax', type=float, default=2.0, help='Set minimum vdW scale in bohr.')
 parser.add_argument('--point-density', dest='point_density', type=float, default=1.0, help='Density of points on vdW surface')
@@ -22,7 +23,7 @@ parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, he
 parser.add_argument('-o', dest='output', type=str, default='charges.dat', help='Name of file to write charges to')
 
 args = parser.parse_args()
-if not (args.qm or args.h5):
+if not (args.qm or args.h5 or args.h5_filelist):
     raise ValueError("Please specify either a set of .h5 files or a set of qm files")
 
 
@@ -33,6 +34,13 @@ con = constraints(args.top)
 structures = []
 if args.h5:
     for fname in args.h5:
+        s = structure()
+        s.load_h5(fname)
+        structures.append(s)
+if args.h5_filelist:
+    with open(args.h5_filelist, "r") as f:
+        files = f.read().split()
+    for fname in files:
         s = structure()
         s.load_h5(fname)
         structures.append(s)
