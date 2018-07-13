@@ -173,6 +173,7 @@ class structure(object):
         f.create_dataset("xyzmat",      data=self.xyzmat)
         f.create_dataset("rinvmat",     data=self.rinvmat)
         f.create_dataset("esp_grid_qm", data=self.esp_grid_qm)
+        f.close()
 
 
     def load_h5(self, filename):
@@ -187,6 +188,7 @@ class structure(object):
         self.xyzmat         = f["xyzmat"].value
         self.rinvmat        = f["rinvmat"].value
         self.esp_grid_qm    = f["esp_grid_qm"].value
+        f.close()
 
 
 

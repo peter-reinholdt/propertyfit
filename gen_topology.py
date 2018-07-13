@@ -26,6 +26,7 @@ parser.add_argument('--start-guess-charge', '--charge', dest='charge', type=str,
         restraints', required=True)
 parser.add_argument('--start-guess-polarizability', '--polarizability', dest='polarizability', type=str, help='Name of file with reference polarizabilities, used as start-guess and for restraints')
 parser.add_argument('--symmetry', dest='syms', type=str, default=[], nargs='+',  action='append', help='Specify symmetry-equivalent charges')
+parser.add_argument('--read-symmetry', dest='readsym', type=str, help='Read symmetries from newline delimited file')
 parser.add_argument('--force-integer', dest='force_integer', type=bool, default=True, help='Turn off rounding and balacing of start-guess fragment charges')
 
 args = parser.parse_args()
@@ -48,6 +49,13 @@ if args.polarizability:
     with open(args.polarizability, "r") as f:
         start_guess_polarizability = [float(x) for x in f.readlines()]
 
+syms = []
+if args.readsym:
+    lines = open(args.readsym, "r").readlines()
+    for line in lines:
+        syms.append([int(x) for x in line.split()])
+
+
 out = dict()
 out["name"] = args.xyz
 out["fragments"] = []
@@ -61,6 +69,9 @@ for f in args.frags:
         sym_indices = parse_range(symmetry)
         if set(sym_indices).issubset(set(frag_indices)):
             frag["symmetries"].append(sym_indices)
+    for symmetry in syms:
+        if set(symmetry).issubset(set(frag_indices)):
+            frag["symmetries"].append(symmetry)
     frag_atomnames = []
     frag_start_guess_charge = []
     frag_start_guess_polarizability = []

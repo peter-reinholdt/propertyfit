@@ -20,6 +20,7 @@ parser.add_argument('--point-density', dest='point_density', type=float, default
 parser.add_argument('--topology', dest='top', type=str, help='Provide file for information about symmetry-equivalent atoms and more.', required=True)
 parser.add_argument('--n-surfaces', dest='n_surfaces', type=int, default=2, help='Number of vdW surfaces to use')
 parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
+parser.add_argument('-o', dest='output', type=str, default='charges.dat', help='Name of file to write charges to')
 
 args = parser.parse_args()
 if not (args.qm or args.h5 or args.h5_filelist):
@@ -64,10 +65,12 @@ q0 = con.q0
 
 
 fun = functools.partial(charge_cost_function, structures=structures, constraints=con)
-res = minimize(fun, x0=q0, method='SLSQP')
+res = minimize(fun, x0=q0, method='slsqp')
 
 print(res)
 print("\n========================================================\n")
 print("Final result:")
-for q in con.expand_q(res.x):
-    print(q)
+with open(args.output, "w") as f:
+    for q in con.expand_q(res.x):
+        print(q)
+        f.write("{}\n".format(q))
