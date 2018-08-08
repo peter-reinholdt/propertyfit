@@ -9,7 +9,7 @@ of cost functions for fitting charges and
 from __future__ import print_function
 import numpy as np
 from numba import jit
-from utilities import hartree2kjmol
+from .utilities import hartree2kjmol
 
 
 @jit(nopython=True)

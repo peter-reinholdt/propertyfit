@@ -6,7 +6,11 @@ conversion factors
 
 
 import os
-import horton
+import warnings
+try:
+    import horton
+except:
+    warnings.warn("Running without support for horton", RuntimeWarning)
 import glob
 import numpy as np
 import sh

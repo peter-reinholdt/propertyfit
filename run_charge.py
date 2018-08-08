@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--qm-files', "-qm", dest="qm", type=str, nargs="+", help="Specify a number of .molden or .fchk files")
 parser.add_argument('--h5-files', "-h5", dest="h5", type=str, nargs="+", help="Specify a number of .h5 files with pre-computed potentials. If this is used, the\
         vdW surface specification arguments are ignored, since the .h5 file already contains this information")
+parser.add_argument('--terachem-scrdirs', dest="terachem_scrdirs", type=str, nargs='+', help='List of scratch dirs from terachem, containing esp.xyz and jobname.geometry')
 parser.add_argument('--h5-file-list', dest='h5_filelist', type=str, help='Read which h5 files to use from a file')
 parser.add_argument('--surface-rmin', dest='rmin', type=float, default=1.4, help='Set minimum vdW scale in bohr.')
 parser.add_argument('--surface-rmax', dest='rmax', type=float, default=2.0, help='Set minimum vdW scale in bohr.')
@@ -24,7 +25,7 @@ parser.add_argument('--method', dest='method', default='slsqp', help='Which opti
 parser.add_argument('-o', dest='output', type=str, default='charges.dat', help='Name of file to write charges to')
 
 args = parser.parse_args()
-if not (args.qm or args.h5 or args.h5_filelist):
+if not (args.qm or args.h5 or args.h5_filelist or args.terachem_scrdirs):
     raise ValueError("Please specify either a set of .h5 files or a set of qm files")
 
 
@@ -55,6 +56,14 @@ if args.qm:
         s.compute_qm_esp()
         s.save_h5(fname + ".h5")
         structures.append(s)
+if args.terachem_scrdirs:
+    for folder_name in args.terachem_scrdirs:
+        s = structure()
+        s.load_esp_terachem(folder_name)
+        s.compute_rinvmat()
+        s.compute_xyzmat()
+        structures.append(s)
+
 
         
 

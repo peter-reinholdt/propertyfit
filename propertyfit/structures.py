@@ -1,11 +1,18 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 
 from __future__ import division, print_function
 import numpy as np
-import horton
+import warnings
+try:
+    import horton
+except:
+    warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
-from utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json, vdw_radii
+from .utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json, vdw_radii
 from numba import jit
+import os
 
 
 
@@ -20,7 +27,7 @@ class structure(object):
         pass
 
 
-    def load_qm(self, filename, field):
+    def load_qm(self, filename, field=np.zeros(3, dtype=np.float64)):
         IO                  = horton.IOData.from_file(filename)
         self.coordinates    = IO.coordinates
         self.numbers        = IO.numbers
@@ -28,7 +35,28 @@ class structure(object):
         self.obasis         = IO.obasis
         self.natoms         = len(self.numbers)
         self.fchkname       = filename
-        self.field          = field 
+        self.field          = field
+
+    def load_esp_terachem(self, terachem_scrdir, field=np.zeros(3, dtype=np.float64)):
+        #we really only need to provide coordinates, grid_points, (external field), and ESP
+        #from terachem manual:
+        #scr/esp.xyz – The ESP grid points in Å, together with the ESP on that point. Each row stands for
+        #   one grid point.
+        #   Colunm 1: The element type of the atom that the grid point originates from.
+        #   Column 2-4: coordinates of the grid point
+        #   Column 5: Electrostatic potential (ESP) on that grid point.
+        #   Column 6: The index of the the atom that the grid point originates from. Order of the index is
+        #   the same as the molecule in the input deck.
+        #   When we use software to visualize this xyz file, only data in the first 4 columns is read by the software,
+        #   though sometimes the 5th column can also be recognized and presents in labels (Molden).
+        esp_data = np.loadtxt(terachem_scrdir + '/esp.xyz', skiprows=2, dtype=str)[:,1:5].astype(np.float64)
+        self.grid = esp_data[:,0:3] * angstrom2bohr
+        self.esp_grid_qm = esp_data[:,3] #quite sure this is in hartree
+        self.ngridpoints = self.esp_grid_qm.shape[0]
+        #we assume xyz is in angstrom and convert to bohr
+        xyz_filename = terachem_scrdir + '/' +  [name for name in  os.listdir(terachem_scrdir) if '.geometry' in name][0]
+        self.coordinates = np.loadtxt(xyz_filename, skiprows=4, dtype=str)[:,5:8].astype(np.float64) #The coordinates are probably in bohr even though the file says (ANGS)
+        self.natoms = self.coordinates.shape[0]
 
 
     def compute_grid_surface(self, pointdensity=2.0, radius_scale=1.4):
