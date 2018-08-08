@@ -80,7 +80,7 @@ def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, a
     return np.sum((induced_esp_grid_qm-alpha_pot)**2) / ngridpoints
 
 
-def charge_cost_function(qtest, structures=None, constraints=None):
+def charge_cost_function(qtest, structures=None, constraints=None, filter_outliers=True):
     """
     Cost function for charges, based on the average of 
     charge_esp_square_error across all structures.
@@ -95,8 +95,19 @@ def charge_cost_function(qtest, structures=None, constraints=None):
     qfull_ref   = constraints.expand_q(constraints.q0)
     nstructures = len(structures)
     res = 0.0
-    for s in structures:
-        res += charge_esp_square_error(s.rinvmat, s.esp_grid_qm, qfull)
+    contributions = np.zeros(nstructures)
+    for i, s in enumerate(structures):
+        contribution = charge_esp_square_error(s.rinvmat, s.esp_grid_qm, qfull)
+        contributions[i] = contribution
+    if filter_outliers:
+        median = np.median(contributions)
+        res = np.sum(contributions[contributions < median * 100.0])
+        filtered = contributions > median * 100.
+        if np.any(filtered):
+            print('Contributions {} were {} times greater than the median contribution and were filtered.'.format([structures[i].fchkname for i in np.where(filtered)], contributions[filtered] /
+                median), end =' ')
+    else:
+        res = np.sum(contribution)
     res = np.sqrt(res/nstructures) *  hartree2kjmol
     
     #print the pure version of the cost function
