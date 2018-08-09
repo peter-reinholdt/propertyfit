@@ -10,7 +10,7 @@ try:
 except:
     warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
-from .utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json, vdw_radii
+from .utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden
 from numba import jit
 import os
 
@@ -54,8 +54,9 @@ class structure(object):
         self.esp_grid_qm = esp_data[:,3] #quite sure this is in hartree
         self.ngridpoints = self.esp_grid_qm.shape[0]
         #we assume xyz is in angstrom and convert to bohr
-        xyz_filename = terachem_scrdir + '/' +  [name for name in  os.listdir(terachem_scrdir) if '.geometry' in name][0]
-        self.coordinates = np.loadtxt(xyz_filename, skiprows=4, dtype=str)[:,5:8].astype(np.float64) #The coordinates are probably in bohr even though the file says (ANGS)
+        molden_filename = terachem_scrdir + '/' +  [name for name in  os.listdir(terachem_scrdir) if '.molden' in name][0]
+        print(molden_filename)
+        self.coordinates = load_geometry_from_molden(molden_filename)
         self.natoms = self.coordinates.shape[0]
 
 
@@ -138,24 +139,11 @@ class structure(object):
 
 
     def compute_rinvmat(self):
-        rinvmat = np.zeros((self.natoms, self.ngridpoints))
-        for i in range(self.natoms):
-            ri = self.coordinates[i]
-            for j in range(self.ngridpoints):
-                rj = self.grid[j]
-                rinvmat[i,j] = np.sum((ri-rj)**2)**(-0.5)
-        self.rinvmat = rinvmat
+        self.rinvmat = 1./np.sqrt(np.sum((s.coordinates[:,np.newaxis,:] - s.grid[np.newaxis,:,:])**2, axis=2))
 
 
     def compute_xyzmat(self):
-        xyzmat = np.zeros((self.natoms, self.ngridpoints, 3))
-        for i in range(self.natoms):
-            ri = self.coordinates[i]
-            for j in range(self.ngridpoints):
-                rj = self.grid[j]
-                for k in range(3):
-                    xyzmat[i,j,k] = ri[k] - rj[k]
-        self.xyzmat = xyzmat
+        self.xyzmat = self.coordinates[:,np.newaxis,:] - self.grid[np.newaxis,:,:]
 
 
     def compute_qm_esp(self):
