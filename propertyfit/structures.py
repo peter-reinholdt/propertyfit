@@ -139,7 +139,7 @@ class structure(object):
 
 
     def compute_rinvmat(self):
-        self.rinvmat = 1./np.sqrt(np.sum((s.coordinates[:,np.newaxis,:] - s.grid[np.newaxis,:,:])**2, axis=2))
+        self.rinvmat = 1./np.sqrt(np.sum((self.coordinates[:,np.newaxis,:] - self.grid[np.newaxis,:,:])**2, axis=2))
 
 
     def compute_xyzmat(self):
