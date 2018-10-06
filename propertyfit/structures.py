@@ -29,6 +29,7 @@ class structure(object):
         self.vdw_grid_rmax = vdw_grid_rmax
         self.vdw_grid_pointdensity = vdw_grid_pointdensity
         self.vdw_grid_nsurfaces = vdw_grid_nsurfaces
+        self.dm = None
 
 
     def load_qm(self, filename, field=np.zeros(3, dtype=np.float64)):
@@ -96,6 +97,8 @@ class structure(object):
         #rx, ry, rz, esp(r)
         esp = np.loadtxt(esp_file, skiprows=1)[:,3]
         self.esp_grid_qm = esp
+        self.compute_rinvmat()
+        self.compute_xyzmat()
 
 
 
@@ -218,13 +221,9 @@ class structure(object):
         on disk
         """
         f = h5py.File(filename, "w")
-        dmgroup = f.create_group("dm")
-        self.dm.to_hdf5(dmgroup)
-        f.create_dataset("nbasis",      data=self.dm.nbasis)
         f.create_dataset("coordinates", data=self.coordinates)
         f.create_dataset("numbers",     data=self.numbers)
         f.create_dataset("natoms",      data=self.natoms)
-        f.create_dataset("fchkname",    data=self.fchkname)
         f.create_dataset("field",       data=self.field)
         f.create_dataset("xyzmat",      data=self.xyzmat)
         f.create_dataset("rinvmat",     data=self.rinvmat)
@@ -234,12 +233,9 @@ class structure(object):
 
     def load_h5(self, filename):
         f = h5py.File(filename, "r")
-        self.dm = horton.matrix.dense.DenseTwoIndex(f["nbasis"].value)
-        self.dm.from_hdf5(f["dm"])
         self.coordinates    = f["coordinates"].value
         self.numbers        = f["numbers"].value
         self.natoms         = f["natoms"].value
-        self.fchkname       = f["fchkname"].value
         self.field          = f["field"].value
         self.xyzmat         = f["xyzmat"].value
         self.rinvmat        = f["rinvmat"].value
