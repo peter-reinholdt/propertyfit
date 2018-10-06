@@ -10,9 +10,10 @@ try:
 except:
     warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
-from .utilities import load_qmfiles, number2name, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden
+from .utilities import load_qmfiles, number2name, name2number, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden
 from numba import jit
 import os
+import sh
 
 
 
@@ -23,8 +24,11 @@ class structure(object):
     We define the grid-points on which to calculate ESP, as
     well as pre-calculated arrays of distances
     """
-    def __init__(self):
-        pass
+    def __init__(self, vdw_grid_rmin=1.4, vdw_grid_rmax=2.0, vdw_grid_pointdensity=2.0, vdw_grid_nsurfaces=2):
+        self.vdw_grid_rmin = vdw_grid_rmin
+        self.vdw_grid_rmax = vdw_grid_rmax
+        self.vdw_grid_pointdensity = vdw_grid_pointdensity
+        self.vdw_grid_nsurfaces = vdw_grid_nsurfaces
 
 
     def load_qm(self, filename, field=np.zeros(3, dtype=np.float64)):
@@ -55,9 +59,44 @@ class structure(object):
         self.ngridpoints = self.esp_grid_qm.shape[0]
         #we assume xyz is in angstrom and convert to bohr
         molden_filename = terachem_scrdir + '/' +  [name for name in  os.listdir(terachem_scrdir) if '.molden' in name][0]
-        print(molden_filename)
-        self.coordinates = load_geometry_from_molden(molden_filename)
+        self.coordinates, elements = load_geometry_from_molden(molden_filename)
+        self.numbers = np.array([name2number[el] for el in elements], dtype=np.int64)
         self.natoms = self.coordinates.shape[0]
+
+    def load_esp_orca(self, gbw_file, density_file, field=np.zeros(3, dtype=np.float64)):
+        #we generate our own grid and run 
+        # orca_vpot  GBWName PName XYZName POTName
+        #  GBWName  = GBW file that contains the orbitals/coordinates/basis
+        #  PName    = File that contains the density (must match the GBW file basis set!); for HF/DFT ground state jobname.scfp; for tddft jobname.cisp etc...
+        #  XYZName  = File that contains the coordinates to evaluate V(r) for
+        #  POTName  = Output file with V(r)
+        
+        self.field = field
+        #0) read in atomic positions and elements
+        #convert gbw to molden
+        gbw_base = ".".join(gbw_file.split(".")[:-1])
+        sh.orca_2mkl(gbw_base)
+        sh.orca_2mkl(gbw_base, "-molden")
+        self.coordinates, elements = load_geometry_from_molden(gbw_base  + ".molden.input")
+        self.numbers = np.array([name2number[el] for el in elements], dtype=np.int64)
+        self.natoms = len(self.numbers)
+
+
+        #1) Generate grid and write it out to file
+        grid_file = gbw_base + ".grid"
+        esp_file  = gbw_base + ".esp"
+        self.compute_grid(rmin=self.vdw_grid_rmin, rmax=self.vdw_grid_rmax, pointdensity=self.vdw_grid_pointdensity, nsurfaces=self.vdw_grid_nsurfaces)
+        np.savetxt(grid_file, self.grid, header=str(self.grid.shape[0]), comments=" ")
+
+        #2) Run orca_vpot to get esp on grid
+        
+        sh.orca_vpot(gbw_file, density_file, grid_file, esp_file)
+
+        #3) Read in esp
+        #rx, ry, rz, esp(r)
+        esp = np.loadtxt(esp_file, skiprows=1)[:,3]
+        self.esp_grid_qm = esp
+
 
 
     def compute_grid_surface(self, pointdensity=2.0, radius_scale=1.4):
@@ -127,6 +166,7 @@ class structure(object):
 
     
     def compute_grid(self, rmin=1.4, rmax=2.0, pointdensity=1.0, nsurfaces=2):
+        print(rmin, rmax, pointdensity, nsurfaces)
         radii = np.linspace(rmin, rmax, nsurfaces)
         surfaces = []
         for r in radii:
@@ -310,7 +350,6 @@ class constraints(object):
         
         q_red   = np.array(q_red,               dtype=np.float64)
         self.q0 = np.zeros(self.nparametersq,   dtype=np.float64)
-
         for i, index in enumerate(indices):
             self.q0[i] = q_red[index]
         #same, but for polarizability.

@@ -51,6 +51,7 @@ def load_json(filename):
 def load_geometry_from_molden(filename):
     with open(filename, 'r') as f:
         coordinates = []
+        elements = []
         for line in f:
             if '[Atoms]' in line:
                 unit = line.split()[-1]
@@ -61,12 +62,13 @@ def load_geometry_from_molden(filename):
             else:
                 element, index, charge, x, y, z = line.split()
                 coordinates.append([float(c) for c in [x,y,z]])
+                elements.append(element)
     #qdata should be in bohr for the coords
     coordinates = np.array(coordinates)
     if unit.lower() == 'angs':
-        return coordinates * 1.8897259886
+        return coordinates * 1.8897259886, elements
     else:
-        return coordinates
+        return coordinates, elements
 
 name2number = {"H": 1, "He": 2, "Li": 3, "Be": 4, "B": 5, "C": 6, "N": 7, "O": 8, "F": 9, "Ne": 10, "Na": 11, "Mg": 12, "Al": 13, "Si": 14, "P": 15, "S": 16,
         "Cl": 17, "Ar": 18, "K": 19, "Ca": 20, "Sc": 21, "Ti": 22, "V": 23, "Cr": 24, "Mn": 25, "Fe": 26, "Co": 27, "Ni": 28, "Cu": 29, "Zn": 30, "Ga": 31,
