@@ -18,6 +18,7 @@ install:
   - conda install numpy scipy pytest numba dill sh
   - conda install -c theochem horton
   - pip install python-coveralls pytest-cov
+  - pip install --upgrade python-coveralls 
   
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
