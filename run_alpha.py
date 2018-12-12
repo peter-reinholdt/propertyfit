@@ -48,11 +48,12 @@ for i in range(len(ref_files)):
 
 #read initial parameters from a0
 a0 = np.zeros(con.nparametersa)
-con.restraint = 1.0
+con.restraint = 0.001
 
 
 fun = functools.partial(isopol_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con)
-res = minimize(fun, x0=a0, method='SLSQP')
+constraints = [{'type': 'ineq', 'fun': lambda x: np.min(x)}]
+res = minimize(fun, x0=a0, method='SLSQP', constraints=constraints)
 
 print(res)
 print("\n========================================================\n")
