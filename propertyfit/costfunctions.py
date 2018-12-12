@@ -109,11 +109,8 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
         contributions[i] = contribution * weights[i]
     if filter_outliers:
         median = np.median(contributions)
-        res = np.sum(contributions[contributions < median * 100.0])
         filtered = contributions > median * 100.
-        if np.any(filtered):
-            print('Contributions {} were {} times greater than the median contribution and were filtered.'.format([structures[i].fchkname for i in np.where(filtered)], contributions[filtered] /
-                median), end =' ')
+        res = np.sum(contributions[~filtered])
     else:
         res = np.sum(contribution)
     

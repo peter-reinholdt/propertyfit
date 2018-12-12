@@ -43,12 +43,12 @@ for i in range(len(ref_files)):
 #then we can call fun(atest) instead of isopol_cost_function(atest, structures, fieldstructures, constraints)
 
 #read initial parameters from a0
-a0 = con.expand_a(con.a0)
+a0 = con.a0
 con.restraint = args.restraint
 
 fun = functools.partial(isopol_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con)
 constraints = [{'type': 'ineq', 'fun': lambda x: np.min(x)}]
-res = minimize(fun, x0=a0, method=args.method, constraints=constraints, tol=1e-12, options={'maxiter':1000})
+res = minimize(fun, x0=a0, method=args.method, constraints=constraints, tol=1e-14, options={'maxiter':1000})
 
 print(res)
 print("\n========================================================\n")
