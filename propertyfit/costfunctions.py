@@ -80,7 +80,7 @@ def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, a
     return np.sum((induced_esp_grid_qm-alpha_pot)**2) / ngridpoints
 
 
-def charge_cost_function(qtest, structures=None, constraints=None, filter_outliers=True):
+def charge_cost_function(qtest, structures=None, constraints=None, filter_outliers=True, weights=None):
     """
     Cost function for charges, based on the average of 
     charge_esp_square_error across all structures.
@@ -96,12 +96,13 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
     nstructures = len(structures)
     res = 0.0
 
-    if weights == None:
-        weights = np.zeros(nstructures)
-        weights[:] = 1.0/nstructures
-    else:
+    if weights is not None:
         #make sure it is normalized
         weights = weights / np.sum(weights)
+    else:
+        weights = np.zeros(nstructures)
+        weights[:] = 1.0/nstructures
+
     contributions = np.zeros(nstructures)
     for i, s in enumerate(structures):
         contribution = charge_esp_square_error(s.rinvmat, s.esp_grid_qm, qfull)
@@ -138,12 +139,14 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
     afull       = constraints.expand_a(alphatest)
     afull_ref   = constraints.expand_a(constraints.a0)
     nstructures = len(structures)
-    if weights == None:
-        weights = np.zeros(nstructures)
-        weights[:] = 1.0/nstructures
-    else:
+
+    if weights is not None:
         #make sure it is normalized
         weights = weights / np.sum(weights)
+    else:
+        weights = np.zeros(nstructures)
+        weights[:] = 1.0/nstructures
+
     res         = 0.0
     for i in range(nstructures):
         contribution =  induced_esp_sum_squared_error(structures[i].rinvmat, 

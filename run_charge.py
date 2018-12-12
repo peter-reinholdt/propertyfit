@@ -75,7 +75,7 @@ if args.orca_gbws:
         s.save_h5(fname + ".h5")
         structures.append(s)
 if args.weights:
-    weights = np.loadtxt(weights)
+    weights = np.loadtxt(args.weights)
 else:
     weights = None
 
@@ -92,7 +92,7 @@ q0 = con.q0
 
 
 fun = functools.partial(charge_cost_function, structures=structures, constraints=con, weights=weights)
-res = minimize(fun, x0=q0, method=args.method)
+res = minimize(fun, x0=q0, method=args.method, tol=1e-12, options={'maxiter':1000})
 
 print(res)
 print("\n========================================================\n")
