@@ -24,7 +24,7 @@ parser.add_argument('--topology', dest='top', type=str, help='Provide file for i
 parser.add_argument('--n-surfaces', dest='n_surfaces', type=int, default=2, help='Number of vdW surfaces to use')
 parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
-parser.add_argumnet('--weights', dest='weights', type=str, help='Weights to use in optimization')
+parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
 parser.add_argument('-o', dest='output', type=str, default='charges.dat', help='Name of file to write charges to')
 
 args = parser.parse_args()
