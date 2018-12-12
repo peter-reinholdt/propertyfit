@@ -115,7 +115,6 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
                 median), end =' ')
     else:
         res = np.sum(contribution)
-    res = res *  hartree2kjmol
     
     #print the pure version of the cost function
     print(res)
@@ -147,13 +146,12 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
         weights = weights / np.sum(weights)
     res         = 0.0
     for i in range(nstructures):
-        contribution = weights[i] * induced_esp_sum_squared_error(structures[i].rinvmat, 
+        contribution =  induced_esp_sum_squared_error(structures[i].rinvmat, 
                                              structures[i].xyzmat, 
                                              structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm, 
                                              fieldstructures[i].field, 
                                              afull)
-        res += contribution    #TODO: add restraints
-    res = res * hartree2kjmol
+        res += contribution * weights[i]
     print(res)
     if constraints.restraint > 0.0:
         for i in range(constraints.natoms):
