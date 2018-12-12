@@ -7,29 +7,25 @@ import functools
 from scipy.optimize import minimize
 from propertyfit.structures import structure, constraints
 from propertyfit.costfunctions import isopol_cost_function
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--h5-file-list', dest='h5_filelist', type=str, help='Read which h5 files to use from a file', required=True)
+parser.add_argument('--topology', dest='top', type=str, help='Provide file for information about symmetry-equivalent atoms and more.', required=True)
+parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
+parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
+parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
+parser.add_argument('-o', dest='output', type=str, default='alphas.dat', help='Name of file to write polarizabilities to')
 
 
-if len(sys.argv) < 3:
-    print("Usage ./run_alpha.py constraintsfile locationfile2")
-    print("locationfile2 contains newline separated (refstructure, filestructure)")
-    exit()
-
-
-constraintsfile = sys.argv[1]
-locationfile    = sys.argv[2]
-files = np.loadtxt(locationfile, dtype=str)
+args = parser.parse_args()
+con = constraints(args.top)
+files = np.loadtxt(args.h5_filelist, dtype=str)
 ref_files = files[:,0]
 field_files = files[:,1]
-
-#create constraints object
-con = constraints(constraintsfile)
-
-#load structure objects as defined from locationfile
 ref_structures = []
 field_structures = []
 
-
-assert len(ref_files) == len(field_files)
 for i in range(len(ref_files)):
     try:
         s_ref = structure()
@@ -47,16 +43,17 @@ for i in range(len(ref_files)):
 #then we can call fun(atest) instead of isopol_cost_function(atest, structures, fieldstructures, constraints)
 
 #read initial parameters from a0
-a0 = np.zeros(con.nparametersa)
-con.restraint = 0.001
-
+a0 = con.expand_a(con.a0)
+con.restraint = args.restraint
 
 fun = functools.partial(isopol_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con)
 constraints = [{'type': 'ineq', 'fun': lambda x: np.min(x)}]
-res = minimize(fun, x0=a0, method='SLSQP', constraints=constraints)
+res = minimize(fun, x0=a0, method=args.method, constraints=constraints, tol=1e-12, options={'maxiter':1000})
 
 print(res)
 print("\n========================================================\n")
 print("Final result:")
-for a in con.expand_a(res.x):
-    print(a[0,0])
+with open(args.output, "w") as f:
+    for a in con.expand_a(res.x):
+        print(a[0,0])
+        f.write("{}\n".format(a[0,0]))
