@@ -95,10 +95,17 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
     qfull_ref   = constraints.expand_q(constraints.q0)
     nstructures = len(structures)
     res = 0.0
+
+    if weights == None:
+        weights = np.zeros(nstructures)
+        weights[:] = 1.0/nstructures
+    else:
+        #make sure it is normalized
+        weights = weights / np.sum(weights)
     contributions = np.zeros(nstructures)
     for i, s in enumerate(structures):
         contribution = charge_esp_square_error(s.rinvmat, s.esp_grid_qm, qfull)
-        contributions[i] = contribution
+        contributions[i] = contribution * weights[i]
     if filter_outliers:
         median = np.median(contributions)
         res = np.sum(contributions[contributions < median * 100.0])
@@ -108,7 +115,7 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
                 median), end =' ')
     else:
         res = np.sum(contribution)
-    res = np.sqrt(res/nstructures) *  hartree2kjmol
+    res = res *  hartree2kjmol
     
     #print the pure version of the cost function
     print(res)
@@ -120,7 +127,7 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
     return res
 
 
-def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
+def isopol_cost_function(alphatest, structures, fieldstructures, constraints, weights=None):
     """
     Cost function for isotropic polarizabilities, based on the average of 
     induced_esp_sum_squared_error across all structures.
@@ -132,17 +139,22 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints):
     afull       = constraints.expand_a(alphatest)
     afull_ref   = constraints.expand_a(constraints.a0)
     nstructures = len(structures)
+    if weights == None:
+        weights = np.zeros(nstructures)
+        weights[:] = 1.0/nstructures
+    else:
+        #make sure it is normalized
+        weights = weights / np.sum(weights)
     res         = 0.0
     for i in range(nstructures):
-        contribution = induced_esp_sum_squared_error(structures[i].rinvmat, 
+        contribution = weights[i] * induced_esp_sum_squared_error(structures[i].rinvmat, 
                                              structures[i].xyzmat, 
                                              structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm, 
                                              fieldstructures[i].field, 
                                              afull)
         res += contribution    #TODO: add restraints
-    res = np.sqrt(res/nstructures) * hartree2kjmol
+    res = res * hartree2kjmol
     print(res)
-
     if constraints.restraint > 0.0:
         for i in range(constraints.natoms):
             res += constraints.restraint * (afull[i][0,0]-afull_ref[i][0,0])**2
