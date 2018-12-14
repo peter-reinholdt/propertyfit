@@ -1,1285 +1,272 @@
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_159.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_159_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_183.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_183_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_184.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_184_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_185.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_185_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_186.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_186_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_187.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_187_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_188.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_188_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_189.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_189_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_18.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_18_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_190.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_190_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_191.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_191_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_192.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_192_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_193.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_193_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_194.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_194_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_195.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_195_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_196.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_196_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_197.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_197_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_198.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_198_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_199.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_199_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_19.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_19_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_1.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_1_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_200.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_200_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_201.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_201_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_202.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_202_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_203.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_203_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_204.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_204_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_205.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_205_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_206.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_206_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_207.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_207_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_208.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_208_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_209.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_209_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_20.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_20_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_210.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_210_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_211.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_211_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_212.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_212_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_213.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_213_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_214.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_214_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_215.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_215_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_216.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_216_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_217.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_217_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_218.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_218_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_219.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_219_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_21.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_21_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_220.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_220_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_221.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_221_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_222.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_222_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_223.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_223_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_224.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_224_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_225.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_225_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_226.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_226_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_227.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_227_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_228.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_228_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_229.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_229_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_22.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_22_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_230.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_230_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_231.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_231_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_232.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_232_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_233.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_233_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_234.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_234_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_235.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_235_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_236.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_236_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_237.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_237_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_238.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_238_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_239.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_239_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_23.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_23_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_240.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_240_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_241.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_241_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_242.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_242_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_243.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_243_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_244.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_244_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_245.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_245_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_246.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_246_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_247.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_247_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_248.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_248_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_249.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_249_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_24.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_24_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_250.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_250_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_251.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_251_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_252.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_252_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_253.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_253_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_254.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_254_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_255.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_255_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_256.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_256_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_257.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_257_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_258.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_258_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_259.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_259_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_25.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_25_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_260.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_260_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_261.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_261_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_262.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_262_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_263.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_263_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_264.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_264_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_265.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_265_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_266.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_266_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_267.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_267_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_268.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_268_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_269.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_269_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_26.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_26_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_270.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_270_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_271.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_271_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_272.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_272_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_273.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_273_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_274.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_274_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_275.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_275_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_276.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_276_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_277.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_277_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_278.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_278_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_279.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_279_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_27.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_27_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_280.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_280_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_281.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_281_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_282.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_282_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_283.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_283_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_284.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_284_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_285.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_285_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_286.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_286_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_287.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_287_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_288.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_288_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_289.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_289_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_28.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_28_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_290.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_290_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_291.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_291_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_292.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_292_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_293.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_293_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_294.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_294_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_295.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_295_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_296.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_296_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_297.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_297_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_298.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_298_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_299.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_299_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_29.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_29_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_2.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_2_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_300.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_300_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_301.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_301_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_302.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_302_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_303.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_303_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_304.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_304_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_305.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_305_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_306.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_306_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_307.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_307_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_308.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_308_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_309.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_309_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_30.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_30_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_310.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_310_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_311.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_311_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_312.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_312_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_313.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_313_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_314.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_314_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_315.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_315_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_316.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_316_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_317.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_317_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_318.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_318_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_319.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_319_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_31.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_31_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_320.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_320_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_321.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_321_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_322.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_322_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_323.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_323_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_324.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_324_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_325.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_325_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_326.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_326_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_327.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_327_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_328.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_328_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_329.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_329_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_32.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_32_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_330.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_330_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_331.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_331_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_332.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_332_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_333.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_333_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_334.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_334_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_335.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_335_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_336.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_336_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_337.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_337_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_338.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_338_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_339.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_339_y+50.fchk.h5
-Warning, recieved an exception . Ignoring bad structure, please check the files /work/sdujk/reinholdt/IAKE805/charge/pcm_data/MET_methyl_charged/MET_methyl_charged_33.fchk.h5 and /work/sdujk/reinholdt/IAKE805/charge/pcm_data/fields/MET_methyl_charged/MET_methyl_charged_33_y+50.fchk.h5
-11.9723037608
-11.9723037608
-11.9723037594
-11.9723037595
-11.9723037596
-11.9723037575
-11.9723037593
-11.9723037592
-11.9723037592
-11.9723037592
-11.9723037592
-11.9723037593
-11.9723037577
-11.9723037593
-11.9723037581
-11.9723037578
-11.9723037595
-11.9723037596
-11.9723037573
-11.6139781698
-11.6139781698
-11.6139781684
-11.6139781685
-11.6139781686
-11.6139781665
-11.6139781683
-11.6139781683
-11.6139781683
-11.6139781682
-11.6139781683
-11.6139781684
-11.6139781667
-11.6139781683
-11.6139781671
-11.6139781668
-11.6139781685
-11.6139781686
-11.6139781664
-9.84991532145
-9.84991532145
-9.84991532009
-9.84991532013
-9.84991532034
-9.84991531833
-9.84991531995
-9.84991531994
-9.84991531992
-9.84991531989
-9.84991531994
-9.84991532002
-9.84991531842
-9.84991532
-9.84991531875
-9.84991531852
-9.84991532016
-9.8499153203
-9.84991531814
-3.29427338038
-3.29427338038
-3.29427338002
-3.29427337974
-3.2942733806
-3.29427338158
-3.29427337994
-3.29427338004
-3.29427337982
-3.29427337972
-3.29427338005
-3.29427337963
-3.29427337991
-3.29427338006
-3.29427337879
-3.29427337987
-3.29427337985
-3.29427338052
-3.29427338134
-3.27588044767
-3.27588044767
-3.27588044767
-3.27588044735
-3.27588044823
-3.27588044983
-3.27588044764
-3.27588044775
-3.27588044752
-3.27588044742
-3.27588044776
-3.27588044729
-3.27588044807
-3.27588044776
-3.27588044676
-3.275880448
-3.27588044747
-3.27588044815
-3.27588044965
-3.18489081099
-3.18489081099
-3.18489081082
-3.18489081051
-3.18489081137
-3.18489081264
-3.18489081078
-3.18489081089
-3.18489081067
-3.18489081057
-3.18489081091
-3.18489081046
-3.18489081104
-3.1848908109
-3.18489080982
-3.18489081096
-3.18489081062
-3.1848908113
-3.18489081244
-2.99966980647
-2.99966980647
-2.999669806
-2.99966980575
-2.99966980648
-2.99966980693
-2.999669806
-2.9996698061
-2.99966980594
-2.99966980585
-2.99966980615
-2.9996698058
-2.99966980605
-2.99966980612
-2.99966980508
-2.99966980594
-2.99966980582
-2.99966980641
-2.99966980677
-2.81503442455
-2.81503442455
-2.81503442394
-2.81503442374
-2.81503442422
-2.81503442387
-2.81503442403
-2.81503442413
-2.81503442407
-2.815034424
-2.81503442424
-2.81503442402
-2.81503442416
-2.81503442415
-2.81503442349
-2.81503442395
-2.81503442374
-2.81503442418
-2.81503442381
-2.69373986316
-2.69373986316
-2.6937398627
-2.69373986254
-2.69373986277
-2.69373986212
-2.69373986292
-2.69373986302
-2.69373986305
-2.693739863
-2.69373986319
-2.69373986306
-2.69373986346
-2.69373986302
-2.69373986298
-2.69373986312
-2.69373986245
-2.69373986274
-2.69373986218
-2.66078812071
-2.66078812071
-2.66078812043
-2.66078812026
-2.66078812046
-2.66078812006
-2.66078812068
-2.66078812078
-2.66078812082
-2.66078812078
-2.66078812096
-2.66078812082
-2.66078812145
-2.66078812076
-2.66078812093
-2.66078812108
-2.66078812015
-2.66078812043
-2.66078812013
-2.64289416378
-2.64289416378
-2.6428941636
-2.64289416342
-2.64289416363
-2.64289416343
-2.64289416385
-2.64289416395
-2.64289416398
-2.64289416394
-2.64289416411
-2.64289416397
-2.64289416468
-2.64289416392
-2.64289416415
-2.64289416432
-2.64289416329
-2.64289416359
-2.64289416346
-2.60643758261
-2.60643758261
-2.60643758262
-2.60643758243
-2.60643758266
-2.60643758285
-2.60643758285
-2.60643758296
-2.60643758296
-2.60643758293
-2.60643758306
-2.60643758294
-2.60643758372
-2.60643758287
-2.60643758323
-2.60643758339
-2.60643758225
-2.60643758257
-2.60643758274
-2.55044463798
-2.55044463798
-2.55044463824
-2.55044463807
-2.55044463829
-2.55044463897
-2.55044463843
-2.55044463853
-2.55044463848
-2.55044463848
-2.5504446385
-2.55044463846
-2.55044463915
-2.55044463833
-2.55044463888
-2.55044463891
-2.55044463775
-2.55044463809
-2.55044463858
-2.46973494373
-2.46973494373
-2.46973494423
-2.4697349441
-2.46973494426
-2.46973494536
-2.46973494432
-2.4697349444
-2.46973494429
-2.46973494433
-2.46973494415
-2.46973494429
-2.46973494452
-2.46973494401
-2.46973494481
-2.46973494447
-2.46973494355
-2.46973494389
-2.4697349445
-2.3941419361
-2.3941419361
-2.39414193659
-2.39414193654
-2.39414193659
-2.39414193757
-2.39414193658
-2.39414193663
-2.39414193649
-2.39414193658
-2.39414193619
-2.39414193655
-2.39414193607
-2.3941419361
-2.39414193701
-2.39414193622
-2.39414193578
-2.39414193611
-2.39414193638
-2.35644712443
-2.35644712443
-2.35644712473
-2.35644712473
-2.3564471247
-2.35644712523
-2.3564471247
-2.35644712473
-2.35644712461
-2.35644712472
-2.35644712426
-2.3564471247
-2.35644712384
-2.35644712419
-2.35644712503
-2.35644712406
-2.35644712395
-2.35644712425
-2.35644712412
-2.33713252032
-2.33713252032
-2.3371325205
-2.33713252052
-2.33713252046
-2.33713252068
-2.33713252048
-2.33713252051
-2.33713252041
-2.33713252051
-2.33713252008
-2.33713252051
-2.33713251958
-2.33713252001
-2.33713252076
-2.33713251981
-2.33713251978
-2.33713252008
-2.33713251982
-2.3121688804
-2.3121688804
-2.31216888044
-2.31216888047
-2.31216888036
-2.31216888023
-2.31216888043
-2.31216888045
-2.3121688804
-2.3121688805
-2.31216888011
-2.31216888049
-2.31216887958
-2.31216888006
-2.31216888065
-2.31216887983
-2.31216887985
-2.31216888014
-2.31216887986
-2.28125302683
-2.28125302683
-2.28125302672
-2.28125302677
-2.28125302659
-2.28125302601
-2.28125302675
-2.28125302675
-2.28125302676
-2.28125302686
-2.28125302654
-2.28125302683
-2.28125302604
-2.28125302653
-2.28125302687
-2.28125302634
-2.28125302635
-2.28125302666
-2.28125302656
-2.25898221646
-2.25898221646
-2.25898221631
-2.25898221639
-2.25898221612
-2.25898221528
-2.25898221636
-2.25898221634
-2.25898221641
-2.25898221652
-2.25898221626
-2.25898221643
-2.25898221586
-2.2589822163
-2.25898221642
-2.25898221624
-2.25898221618
-2.25898221649
-2.2589822168
-2.24911042979
-2.24911042979
-2.24911042972
-2.24911042981
-2.24911042949
-2.24911042873
-2.24911042977
-2.24911042974
-2.24911042982
-2.24911042994
-2.2491104297
-2.24911042981
-2.24911042941
-2.24911042978
-2.2491104298
-2.24911042985
-2.24911042969
-2.24911043
-2.24911043067
-2.24134088695
-2.24134088695
-2.24134088699
-2.24134088708
-2.24134088677
-2.24134088621
-2.24134088703
-2.24134088699
-2.24134088707
-2.24134088719
-2.24134088695
-2.24134088703
-2.24134088673
-2.24134088703
-2.24134088705
-2.2413408872
-2.24134088696
-2.24134088726
-2.24134088809
-2.22730084915
-2.22730084915
-2.22730084931
-2.22730084939
-2.2273008491
-2.22730084885
-2.22730084933
-2.22730084929
-2.22730084934
-2.22730084946
-2.22730084922
-2.22730084927
-2.22730084908
-2.22730084931
-2.22730084931
-2.22730084954
-2.22730084924
-2.22730084949
-2.22730085035
-2.20254952097
-2.20254952097
-2.20254952125
-2.20254952132
-2.20254952108
-2.20254952118
-2.20254952123
-2.20254952119
-2.20254952121
-2.20254952132
-2.2025495211
-2.20254952109
-2.20254952104
-2.20254952118
-2.20254952111
-2.20254952146
-2.2025495211
-2.20254952126
-2.20254952194
-2.17640465573
-2.17640465573
-2.17640465601
-2.17640465607
-2.1764046559
-2.17640465614
-2.17640465598
-2.17640465593
-2.17640465593
-2.17640465603
-2.17640465585
-2.17640465578
-2.17640465583
-2.17640465591
-2.17640465569
-2.17640465616
-2.17640465582
-2.17640465586
-2.17640465613
-2.16318221464
-2.16318221464
-2.16318221484
-2.16318221489
-2.16318221474
-2.16318221485
-2.1631822148
-2.16318221476
-2.16318221476
-2.16318221485
-2.16318221471
-2.1631822146
-2.16318221466
-2.16318221476
-2.16318221442
-2.16318221493
-2.16318221466
-2.16318221464
-2.16318221459
-2.15874062206
-2.15874062206
-2.15874062219
-2.15874062224
-2.15874062209
-2.15874062208
-2.15874062216
-2.15874062212
-2.15874062213
-2.15874062221
-2.15874062209
-2.15874062198
-2.15874062202
-2.15874062214
-2.15874062177
-2.15874062227
-2.15874062204
-2.15874062201
-2.15874062189
-2.15559322979
-2.15559322979
-2.15559322988
-2.15559322994
-2.15559322979
-2.15559322969
-2.15559322986
-2.15559322982
-2.15559322984
-2.15559322992
-2.15559322981
-2.1555932297
-2.15559322972
-2.15559322985
-2.15559322948
-2.15559322995
-2.15559322975
-2.15559322973
-2.15559322959
-2.14934342527
-2.14934342527
-2.1493434253
-2.14934342535
-2.1493434252
-2.14934342497
-2.14934342529
-2.14934342524
-2.14934342528
-2.14934342535
-2.14934342526
-2.14934342516
-2.14934342516
-2.14934342529
-2.14934342494
-2.14934342534
-2.14934342521
-2.1493434252
-2.14934342504
-2.14082865914
-2.14082865914
-2.1408286591
-2.14082865913
-2.14082865901
-2.14082865868
-2.1408286591
-2.14082865906
-2.14082865912
-2.14082865916
-2.14082865911
-2.14082865903
-2.14082865901
-2.14082865912
-2.14082865884
-2.1408286591
-2.14082865906
-2.14082865907
-2.14082865893
-2.13234163679
-2.13234163679
-2.13234163673
-2.13234163674
-2.13234163666
-2.13234163635
-2.13234163674
-2.1323416367
-2.13234163677
-2.13234163678
-2.13234163677
-2.13234163673
-2.13234163672
-2.13234163675
-2.1323416366
-2.13234163666
-2.13234163673
-2.13234163675
-2.13234163667
-2.1286517678
-2.1286517678
-2.12865176778
-2.12865176777
-2.12865176774
-2.12865176759
-2.12865176779
-2.12865176776
-2.12865176782
-2.12865176782
-2.12865176782
-2.12865176779
-2.12865176783
-2.12865176778
-2.12865176773
-2.12865176767
-2.12865176779
-2.1286517678
-2.12865176779
-2.12841865023
-2.12841865023
-2.12841865026
-2.12841865025
-2.12841865023
-2.1284186502
-2.12841865026
-2.12841865023
-2.12841865028
-2.12841865028
-2.12841865028
-2.12841865025
-2.12841865031
-2.12841865024
-2.12841865021
-2.12841865015
-2.12841865025
-2.12841865025
-2.12841865027
-2.12849328542
-2.12849328542
-2.12849328546
-2.12849328545
-2.12849328543
-2.12849328544
-2.12849328546
-2.12849328543
-2.12849328548
-2.12849328548
-2.12849328547
-2.12849328544
-2.1284932855
-2.12849328544
-2.1284932854
-2.12849328536
-2.12849328544
-2.12849328544
-2.12849328547
-2.12858494749
-2.12858494749
-2.12858494754
-2.12858494753
-2.12858494751
-2.12858494754
-2.12858494754
-2.1285849475
-2.12858494755
-2.12858494755
-2.12858494754
-2.12858494751
-2.12858494757
-2.12858494751
-2.12858494747
-2.12858494745
-2.12858494751
-2.12858494751
-2.12858494753
-2.12884228348
-2.12884228348
-2.12884228355
-2.12884228353
-2.12884228352
-2.12884228359
-2.12884228354
-2.12884228351
-2.12884228355
-2.12884228355
-2.12884228353
-2.1288422835
-2.12884228356
-2.12884228351
-2.12884228346
-2.12884228348
-2.12884228351
-2.1288422835
-2.12884228352
-2.12936318146
-2.12936318146
-2.12936318154
-2.12936318152
-2.12936318152
-2.12936318163
-2.12936318154
-2.1293631815
-2.12936318153
-2.12936318153
-2.12936318152
-2.12936318149
-2.12936318153
-2.12936318151
-2.12936318145
-2.12936318152
-2.1293631815
-2.12936318148
-2.1293631815
-2.13002366471
-2.13002366471
-2.13002366478
-2.13002366475
-2.13002366477
-2.13002366488
-2.13002366479
-2.13002366476
-2.13002366478
-2.13002366478
-2.13002366477
-2.13002366475
-2.13002366475
-2.13002366478
-2.13002366472
-2.13002366483
-2.13002366476
-2.13002366474
-2.13002366475
-2.13029926201
-2.13029926201
-2.13029926205
-2.130299262
-2.13029926204
-2.13029926211
-2.13029926206
-2.13029926203
-2.13029926206
-2.13029926204
-2.13029926204
-2.13029926204
-2.130299262
-2.13029926207
-2.13029926202
-2.13029926213
-2.13029926205
-2.13029926203
-2.13029926203
-2.13008115655
-2.13008115655
-2.13008115657
-2.13008115652
-2.13008115656
-2.13008115658
-2.13008115658
-2.13008115656
-2.13008115659
-2.13008115657
-2.13008115658
-2.13008115658
-2.13008115653
-2.13008115661
-2.13008115656
-2.13008115664
-2.13008115659
-2.13008115657
-2.13008115657
-2.12984420006
-2.12984420006
-2.12984420006
-2.12984420001
-2.12984420006
-2.12984420006
-2.12984420008
-2.12984420006
-2.12984420009
-2.12984420007
-2.12984420008
-2.12984420008
-2.12984420004
-2.12984420011
-2.12984420007
-2.12984420013
-2.12984420009
-2.12984420008
-2.12984420008
-2.12965018935
-2.12965018935
-2.12965018934
-2.12965018929
-2.12965018934
-2.12965018932
-2.12965018936
-2.12965018934
-2.12965018937
-2.12965018935
-2.12965018937
-2.12965018937
-2.12965018932
-2.12965018939
-2.12965018935
-2.1296501894
-2.12965018938
-2.12965018936
-2.12965018936
-2.12967387822
-2.12967387822
-2.12967387821
-2.12967387816
-2.1296738782
-2.12967387816
-2.12967387823
-2.12967387821
-2.12967387824
-2.12967387822
-2.12967387824
-2.12967387824
-2.1296738782
-2.12967387825
-2.12967387822
-2.12967387824
-2.12967387824
-2.12967387823
-2.12967387824
-2.13046431248
-2.13046431248
-2.13046431245
-2.1304643124
-2.13046431244
-2.13046431237
-2.13046431248
-2.13046431246
-2.13046431249
-2.13046431247
-2.13046431249
-2.13046431249
-2.13046431246
-2.13046431249
-2.13046431246
-2.13046431245
-2.13046431249
-2.13046431249
-2.13046431249
-2.13251207891
-2.13251207891
-2.13251207889
-2.13251207884
-2.13251207888
-2.13251207879
-2.13251207893
-2.13251207891
-2.13251207893
-2.13251207891
-2.13251207893
-2.13251207893
-2.13251207891
-2.13251207892
-2.13251207889
-2.13251207886
-2.13251207891
-2.13251207892
-2.13251207893
-2.13491452716
-2.13491452716
-2.13491452716
-2.1349145271
-2.13491452714
-2.13491452708
-2.1349145272
-2.13491452719
-2.1349145272
-2.13491452717
-2.13491452719
-2.13491452718
-2.13491452717
-2.13491452717
-2.13491452713
-2.13491452712
-2.13491452716
-2.13491452717
-2.13491452718
-2.1360619656
-2.1360619656
-2.13606196562
-2.13606196555
-2.1360619656
-2.13606196558
-2.13606196565
-2.13606196565
-2.13606196564
-2.13606196562
-2.13606196563
-2.13606196562
-2.13606196562
-2.13606196562
-2.13606196557
-2.1360619656
-2.1360619656
-2.13606196561
-2.13606196562
-2.13607278641
-2.13607278641
-2.13607278644
-2.13607278638
-2.13607278643
-2.13607278643
-2.13607278648
-2.13607278647
-2.13607278647
-2.13607278644
-2.13607278645
-2.13607278644
-2.13607278643
-2.13607278645
-2.13607278639
-2.13607278644
-2.13607278642
-2.13607278643
-2.13607278644
-2.13594443454
-2.13594443454
-2.13594443457
-2.13594443451
-2.13594443456
-2.13594443456
-2.13594443461
-2.1359444346
-2.13594443459
-2.13594443457
-2.13594443458
-2.13594443456
-2.13594443456
-2.13594443457
-2.13594443452
-2.13594443457
-2.13594443455
-2.13594443455
-2.13594443457
-2.13572508826
-2.13572508826
-2.13572508829
-2.13572508823
-2.13572508828
-2.13572508829
-2.13572508832
-2.13572508831
-2.13572508831
-2.13572508829
-2.1357250883
-2.13572508828
-2.13572508827
-2.13572508829
-2.13572508824
-2.13572508829
-2.13572508827
-2.13572508827
-2.13572508829
-2.13542185895
-2.13542185895
-2.13542185898
-2.13542185892
-2.13542185897
-2.13542185898
-2.13542185901
-2.135421859
-2.135421859
-2.13542185898
-2.13542185898
-2.13542185897
-2.13542185896
-2.13542185898
-2.13542185893
-2.13542185899
-2.13542185896
-2.13542185896
-2.13542185897
-2.13511209901
-2.13511209901
-2.13511209905
-2.13511209899
-2.13511209903
-2.13511209906
-2.13511209907
-2.13511209905
-2.13511209906
-2.13511209904
-2.13511209905
-2.13511209904
-2.13511209902
-2.13511209905
-2.13511209899
-2.13511209906
-2.13511209902
-2.13511209902
-2.13511209904
-2.13506211343
-2.13506211343
-2.13506211346
-2.13506211341
-2.13506211345
-2.13506211348
-2.13506211348
-2.13506211346
-2.13506211348
-2.13506211347
-2.13506211347
-2.13506211346
-2.13506211344
-2.13506211347
-2.13506211342
-2.13506211349
-2.13506211344
-2.13506211344
-2.13506211346
-2.13536906437
-2.13536906437
-2.13536906441
-2.13536906435
-2.13536906439
-2.13536906441
-2.13536906442
-2.13536906439
-2.13536906443
-2.13536906441
-2.13536906441
-2.1353690644
-2.13536906439
-2.13536906441
-2.13536906436
-2.13536906442
-2.13536906438
-2.13536906439
-2.1353690644
-2.13564468929
-2.13564468929
-2.13564468932
-2.13564468927
-2.1356446893
-2.13564468931
-2.13564468934
-2.1356446893
-2.13564468934
-2.13564468932
-2.13564468932
-2.13564468931
-2.13564468931
-2.13564468932
-2.13564468927
-2.13564468932
-2.13564468929
-2.1356446893
-2.13564468931
-2.13570962377
-2.13570962377
-2.1357096238
-2.13570962375
-2.13570962379
-2.13570962379
-2.13570962382
-2.13570962379
-2.13570962382
-2.13570962381
-2.13570962381
-2.1357096238
-2.13570962379
-2.1357096238
-2.13570962375
-2.1357096238
-2.13570962377
-2.13570962378
-2.1357096238
-     fun: 2.1495762707220023
-     jac: array([  2.59757042e-04,  -2.60084867e-04,  -1.37150288e-04,
-         4.20212746e-05,   1.30772591e-04,  -2.68876553e-04,
-        -8.15689564e-05,   2.50279903e-04,  -5.14686108e-05,
-         1.59263611e-04,  -2.23517418e-06,  -9.83476639e-06,
-        -6.51478767e-05,  -3.84449959e-06,   3.75211239e-05,
-        -8.87215137e-05,   1.85072422e-05])
+9.115985963080005e-07
+9.115985963080005e-07
+9.115985968499832e-07
+9.115985967496334e-07
+9.115985967618422e-07
+9.115985975790798e-07
+9.115985969592974e-07
+9.115985969812317e-07
+9.115985969531485e-07
+9.11598596980827e-07
+9.115985969473909e-07
+9.115985968309874e-07
+9.115985975694421e-07
+9.11598596893494e-07
+9.115985971917835e-07
+9.115985975035599e-07
+9.11598596721701e-07
+9.115985966977144e-07
+9.115985974366605e-07
+9.115985491082468e-07
+9.115985491082468e-07
+9.115985496502285e-07
+9.115985495498758e-07
+9.11598549562084e-07
+9.115985503793247e-07
+9.115985497595419e-07
+9.115985497814784e-07
+9.115985497533939e-07
+9.115985497810727e-07
+9.115985497476385e-07
+9.115985496312329e-07
+9.115985503696881e-07
+9.115985496937394e-07
+9.115985499920274e-07
+9.115985503038055e-07
+9.115985495219445e-07
+9.115985494979567e-07
+9.115985502369051e-07
+9.115983131098964e-07
+9.115983131098964e-07
+9.115983136518781e-07
+9.115983135515265e-07
+9.115983135637376e-07
+9.115983143809775e-07
+9.115983137611935e-07
+9.11598313783129e-07
+9.115983137550436e-07
+9.115983137827238e-07
+9.115983137492875e-07
+9.115983136328826e-07
+9.115983143713385e-07
+9.115983136953885e-07
+9.115983139936755e-07
+9.115983143054577e-07
+9.115983135235965e-07
+9.115983134996097e-07
+9.115983142385568e-07
+9.115971331181097e-07
+9.115971331181097e-07
+9.115971336600888e-07
+9.115971335597376e-07
+9.115971335719474e-07
+9.115971343891813e-07
+9.115971337694059e-07
+9.115971337913402e-07
+9.11597133763256e-07
+9.115971337909335e-07
+9.115971337575015e-07
+9.115971336410922e-07
+9.115971343795462e-07
+9.11597133703599e-07
+9.115971340018872e-07
+9.115971343136692e-07
+9.115971335318055e-07
+9.115971335078208e-07
+9.115971342467643e-07
+9.115912332298977e-07
+9.115912332298977e-07
+9.115912337718723e-07
+9.115912336715227e-07
+9.115912336837315e-07
+9.115912345009514e-07
+9.115912338811872e-07
+9.115912339031243e-07
+9.115912338750365e-07
+9.115912339027155e-07
+9.115912338692817e-07
+9.115912337528754e-07
+9.115912344913243e-07
+9.115912338153842e-07
+9.115912341136657e-07
+9.115912344254456e-07
+9.11591233643589e-07
+9.115912336196039e-07
+9.115912343585373e-07
+9.115617352358055e-07
+9.115617352358055e-07
+9.115617357777467e-07
+9.115617356774011e-07
+9.115617356896072e-07
+9.115617365067674e-07
+9.115617358870567e-07
+9.115617359089912e-07
+9.115617358809092e-07
+9.115617359085893e-07
+9.115617358751512e-07
+9.115617357587535e-07
+9.11561736497153e-07
+9.115617358212526e-07
+9.115617361195165e-07
+9.11561736431279e-07
+9.115617356494674e-07
+9.115617356254807e-07
+9.115617363643568e-07
+9.114142834519678e-07
+9.114142834519678e-07
+9.114142839937487e-07
+9.114142838934218e-07
+9.114142839056132e-07
+9.11414284722461e-07
+9.114142841030414e-07
+9.114142841249697e-07
+9.114142840968977e-07
+9.114142841245795e-07
+9.114142840911314e-07
+9.114142839747683e-07
+9.114142847129435e-07
+9.114142840372478e-07
+9.114142843354117e-07
+9.114142846470846e-07
+9.11414283865492e-07
+9.114142838414964e-07
+9.11414284580078e-07
+9.106779707802621e-07
+9.106779707802621e-07
+9.106779713212388e-07
+9.106779712209983e-07
+9.106779712331199e-07
+9.106779720484202e-07
+9.106779714304575e-07
+9.106779714523485e-07
+9.106779714243332e-07
+9.106779714520055e-07
+9.106779714185161e-07
+9.106779713023173e-07
+9.106779720393635e-07
+9.106779713646704e-07
+9.106779716623557e-07
+9.106779719735882e-07
+9.106779711930881e-07
+9.106779711690588e-07
+9.106779719061547e-07
+9.070200285012904e-07
+9.070200285012904e-07
+9.070200290382218e-07
+9.070200289384433e-07
+9.070200289502132e-07
+9.070200297577706e-07
+9.070200291470749e-07
+9.070200291687865e-07
+9.070200291410389e-07
+9.070200291686982e-07
+9.070200291349889e-07
+9.07020029019615e-07
+9.070200297510302e-07
+9.07020029081356e-07
+9.07020029376628e-07
+9.070200296856709e-07
+9.07020028910621e-07
+9.070200288864082e-07
+9.070200296161289e-07
+8.893133649950474e-07
+8.893133649950474e-07
+8.893133655119766e-07
+8.893133654144506e-07
+8.89313365424466e-07
+8.893133661936498e-07
+8.893133656189882e-07
+8.893133656398102e-07
+8.893133656133889e-07
+8.893133656409606e-07
+8.893133656061802e-07
+8.893133654948968e-07
+8.893133661983958e-07
+8.893133655536043e-07
+8.893133658369073e-07
+8.893133661350918e-07
+8.893133653870657e-07
+8.893133653619522e-07
+8.893133660550703e-07
+8.144174248062868e-07
+8.144174248062868e-07
+8.144174252272965e-07
+8.144174251405951e-07
+8.144174251422131e-07
+8.144174257274305e-07
+8.144174253255085e-07
+8.144174253420549e-07
+8.144174253220184e-07
+8.144174253491802e-07
+8.144174253092419e-07
+8.144174252175662e-07
+8.144174257872434e-07
+8.144174252617132e-07
+8.144174254876669e-07
+8.144174257337871e-07
+8.14417425115303e-07
+8.144174250858775e-07
+8.144174256035472e-07
+6.802966838247911e-07
+6.802966838247911e-07
+6.802966838772208e-07
+6.80296683832102e-07
+6.802966838014477e-07
+6.80296683679749e-07
+6.802966839415958e-07
+6.802966839417225e-07
+6.802966839462178e-07
+6.802966839717989e-07
+6.802966839120491e-07
+6.802966838957227e-07
+6.802966839511494e-07
+6.802966838839254e-07
+6.802966838894744e-07
+6.802966839355495e-07
+6.802966838148504e-07
+6.80296683768847e-07
+6.802966836123307e-07
+     fun: 6.883794160540251e-07
+     jac: array([ 2.83044699e-09, -7.00239866e-11, -2.14270557e-09, -1.45744963e-08,
+        7.01181335e-09,  6.99246527e-09,  7.32979544e-09,  9.01137298e-09,
+        5.04407183e-09,  4.09621492e-09,  5.27695931e-09,  3.22515348e-09,
+        2.09691109e-09,  4.39734293e-09, -1.19230492e-09, -4.24908109e-09,
+       -1.85564701e-08])
  message: 'Optimization terminated successfully.'
-    nfev: 1064
-     nit: 56
-    njev: 56
+    nfev: 228
+     nit: 12
+    njev: 12
   status: 0
  success: True
-       x: array([  7.80086401,   6.59590786,   8.21826375,   1.89601534,
-         7.05516641,   0.79867894,   8.96785999,   0.90219583,
-         8.0935091 ,   9.56504397,   1.57171688,   9.18356523,
-         7.36117793,   1.48094739,  20.1953294 ,   8.75739005,   1.74813193])
+       x: array([ 8.36085705,  5.72549177,  8.52943588,  1.34734338,  8.05777538,
+        1.15562386, 10.14603612,  1.64101912,  8.91946803, 10.08854355,
+        1.09484157,  9.79870694,  6.76467621,  1.26207792, 19.83138156,
+        8.92962443,  1.32882597])
 
 ========================================================
 
 Final result:
-7.80086400735
-6.5959078581
-8.21826375385
-1.89601534077
-1.89601534077
-1.89601534077
-7.05516640568
-0.79867893766
-8.96785998951
-0.902195832971
-8.09350910159
-9.56504397007
-1.57171687957
-1.57171687957
-9.18356522531
-7.36117792674
-1.4809473909
-1.4809473909
-20.195329403
-8.75739004783
-1.74813193249
-1.74813193249
-1.74813193249
-7.36117792674
+8.360857045421115
+5.725491766096979
+8.529435884774653
+1.3473433764858145
+1.3473433764858145
+1.3473433764858145
+8.05777537856173
+1.1556238558047065
+10.146036118736548
+1.6410191225878674
+8.91946802797955
+10.088543550834679
+1.0948415677949956
+1.0948415677949956
+9.798706942468348
+6.764676212514281
+1.2620779157164264
+1.2620779157164264
+19.831381556424724
+8.929624433813872
+1.3288259684860604
+1.3288259684860604
+1.3288259684860604
+6.764676212514281
