@@ -1,4 +1,4 @@
 
 
-import structures
+from . import structures
 __all__ = ['structures']
