@@ -233,13 +233,13 @@ class structure(object):
 
     def load_h5(self, filename):
         f = h5py.File(filename, "r")
-        self.coordinates    = f["coordinates"].value
-        self.numbers        = f["numbers"].value
-        self.natoms         = f["natoms"].value
-        self.field          = f["field"].value
-        self.xyzmat         = f["xyzmat"].value
-        self.rinvmat        = f["rinvmat"].value
-        self.esp_grid_qm    = f["esp_grid_qm"].value
+        self.coordinates    = f["coordinates"][()]
+        self.numbers        = f["numbers"][()]
+        self.natoms         = f["natoms"][()]
+        self.field          = f["field"][()]
+        self.xyzmat         = f["xyzmat"][()]
+        self.rinvmat        = f["rinvmat"][()]
+        self.esp_grid_qm    = f["esp_grid_qm"][()]
         f.close()
 
 
