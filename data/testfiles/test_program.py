@@ -30,12 +30,15 @@ def test_run_charge():
     #use partial to wrap cost function, so we only need a single qtest argument (and not constraints, structures)
     #then we can call fun(qtest) instead of charge_cost_function(qtest, structures, constraints)
     
-    con.restraint = 1.0
+    con.restraint = 2.0e-7
     q0 = con.q0
 
     fun = functools.partial(charge_cost_function, structures=structures, constraints=con)
-    res = minimize(fun, x0=q0, method='SLSQP')
-    q_check = [0.502411534, -0.460790832, -0.469714568, -0.288719066, 0.174618232, -0.083053924, 0.126948577, 0.029186223, 0.501271583, 0.086886897, -0.446373001, -0.477342324, -0.335214414, 0.250139278, -0.332115715]
+    res = minimize(fun, x0=q0, method='SLSQP', tol=1e-17, options={'maxiter': 1000})
+    q_check = np.array([ 0.50250079, -0.4609129 , -0.46979605, -0.28898077,  0.17460721,
+       -0.08110295,  0.1266726 ,  0.02618351,  0.5006874 ,  0.08786678,
+       -0.44565655, -0.4772865 , -0.33626983,  0.24962138, -0.32482822])
+    assert res.success
     for i in range(0, len(res.x)):
         assert abs(res.x[i] - q_check[i]) < 10**-3
 
