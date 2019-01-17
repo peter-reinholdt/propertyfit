@@ -115,7 +115,7 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
         res = np.sum(contribution)
     
     #print the pure version of the cost function
-    print(res)
+    #print(res)
     
     #restraints towards zero for increased stability
     if constraints.restraint > 0.0:
@@ -152,7 +152,7 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
                                              fieldstructures[i].field, 
                                              afull)
         res += contribution * weights[i]
-    print(res)
+    #print(res)
     if constraints.restraint > 0.0:
         for i in range(constraints.natoms):
             res += constraints.restraint * (afull[i][0,0]-afull_ref[i][0,0])**2
