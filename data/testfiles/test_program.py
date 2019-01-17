@@ -40,7 +40,7 @@ def test_run_charge():
        -0.44565655, -0.4772865 , -0.33626983,  0.24962138, -0.32482822])
     assert res.success
     for i in range(0, len(res.x)):
-        assert abs(res.x[i] - q_check[i]) < 10**-3
+        assert abs(res.x[i] - q_check[i]) < 1e-3
 
 
 def test_run_alpha():
@@ -81,11 +81,15 @@ def test_run_alpha():
     #then we can call fun(atest) instead of isopol_cost_function(atest, structures, fieldstructures, constraints)
     
     #read initial parameters from q0
-    a0 = np.zeros(con.nparametersa)
+    a0 = con.a0
+    con.restraint = 1e-9
     
     fun = functools.partial(isopol_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con)
-    res = minimize(fun, x0=a0, method='SLSQP')
-    alpha_check = [8.274135822, 11.74197291, 2.809621816, 3.961664646, 7.850222049, 9.080497659, 5.428903941, 5.366737385, 4.354975905, 4.867776458, 8.293173471, 3.11332895, 6.144178157, 4.038802156, 1.442260717, -0.558596838, 1.294815758, 4.014986792]
-    
+    res = minimize(fun, x0=a0, method='SLSQP', tol=1e-30, options={'maxiter': 1000})
+    alpha_check = np.array([8.50006728, 6.19302034, 8.73291484, 2.66001794, 8.13992296,
+       2.14752338, 8.81351293, 2.36159299, 8.14016149, 8.15933284,
+       2.3477356 , 8.09329647, 5.74683121, 2.40967811, 7.24353793,
+       1.50721465, 7.24980395, 1.70279374])
+    assert res.success
     for i in range(0, len(res.x)):
-        assert abs(res.x[i] - alpha_check[i]) < 10**-3
+        assert abs(res.x[i] - alpha_check[i]) < 1e-3
