@@ -1,11 +1,8 @@
-# Script created files:
 *.pyc
 __pycache__
 *.log
 logs/
 cache/
 scripts/
-
-# Specific files:
-run_alpha.sh
-run_q.sh
+.pytest_cache/
+build/
