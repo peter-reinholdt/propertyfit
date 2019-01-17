@@ -6,3 +6,4 @@ cache/
 scripts/
 .pytest_cache/
 build/
+data/testfiles/.test_program*
