@@ -11,6 +11,7 @@ except:
     warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
 from .utilities import load_qmfiles, number2name, name2number, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden
+from .rotations import zthenx, bisector
 from numba import jit
 import os
 import sh
@@ -261,6 +262,10 @@ class fragment(object):
         self.lastidxsym     = [self.lastidx]
         self.startguess_charge = fragdict["startguess_charge"]
         self.startguess_polarizability = fragdict["startguess_polarizability"]
+        self.axis_types = fragdict["axistypes"]
+        self.axis_indices = np.array(fragdict["axis_atomindices"], dtype=np.int64) - 1
+        self.idx2axis_type = {idx:axistype for (idx, axistype) in zip(self.atomindices, self.axis_types)}
+        self.idx2axis_indices = {idx:axis_indices for (idx, axis_indices) in zip(self.atomindices, self.axis_indices)}
 
 
         for iloc, idx in enumerate(self.symmetryidx):
@@ -302,6 +307,18 @@ class fragment(object):
         #for isotropic polarizability, there is no constraint on
         # the sum
         self.nparametersa = self.natoms - nsymp
+
+    def get_rotation_matrix(self, idx, coordinates):
+        point1 = coordinates[idx, :]
+        axis_indices = self.idx2axis_indices[idx]
+        point2 = coordinates[axis_indices[0], :]
+        point3 = coordinates[axis_indices[1], :]
+        if self.idx2axis_type[idx] == 'zthenx':
+            return zthenx(point1, point2, point3)
+        elif self.idx2axis_type[idx] == 'bisector':
+            return bisector(point1, point2, point3)
+        else:
+            raise NotImplementedError(f'Unknown axis type: {self.idx2axis_type[idx]}')
           
 
 
@@ -369,9 +386,6 @@ class constraints(object):
             for i, index in enumerate(indices):
                 self.a0[i] = a_red[index]
 
-    def get_rotation_matrix(self, idx):
-        pass
-
 
     def expand_a(self, acompressed):
         aout = np.zeros((self.natoms,3,3), dtype=np.float64)
@@ -412,7 +426,7 @@ class constraints(object):
             for sym in frag.fullsymmetries:
                 for idx in sym:
                     dipole = parameters[pcounter:pcounter+3]
-                    rotation_matrix = get_rotation_matrix(idx)
+                    rotation_matrix = frag.get_rotation_matrix(idx)
                     dipoles_out[idx, :] = rotation_matrix @ dipole
                 pcounter += 3
         return dipoles_out
@@ -435,7 +449,7 @@ class constraints(object):
                     quadrupole[1,1] = parameters[pcounter+3]
                     quadrupole[1,2] = quadrupole[2,1] = parameters[pcounter+4]
                     quadrupole[2,2] = -(quadrupole[0,0]+quadrupole[1,1])
-                    rotation_matrix = get_rotation_matrix(idx)
+                    rotation_matrix = frag.get_rotation_matrix(idx)
                     quadrupoles_out[idx, :, :] = rotation_matrix @ quadrupole @ rotation_matrix.T
                 pcounter += 5
         return quadrupoles_out
