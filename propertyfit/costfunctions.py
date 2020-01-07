@@ -10,6 +10,7 @@ from __future__ import print_function
 import numpy as np
 from numba import jit
 from .utilities import hartree2kjmol
+from .potentials import field
 
 
 @jit(nopython=True)
@@ -156,4 +157,54 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
     if constraints.restraint > 0.0:
         for i in range(constraints.natoms):
             res += constraints.restraint * (afull[i][0,0]-afull_ref[i][0,0])**2
+    return res
+
+def multipole_cost_function(parameters, structures=None, constraints=None, filter_outliers=True, weights=None):
+    """
+    Cost function for multipoles, based on the average of 
+    square esp error across all structures.
+
+    parameters:     array of non-redundant test-charge parameters
+                    parameters[0:nparametersq] -> charges
+                    parameters[nparametersq:nparametersq+nparametersmu] -> dipole parameters
+                    parameters[nparametersq+nparametersmu:nparametersq+nparamtersmu+nparamererstheta] -> quadrupole parameters
+    structures:     list of structure objects
+    constraints:    constraints object, which contains information
+                    about symmetries etc.
+    """
+    #expand multipole parameters to full set (and rotate dipole, quadrupole from local axis to global axis) 
+    charge_parameters = parameters[0:constraints.nparametersq]
+    dipole_parameters = parameters[constraints.nparametersq:constraints.nparamtersq+constraints.nparametersmu]
+    quadrupole_parameters = parameters[constraints.nparamtersq+constraints.nparametersmu:constraints.nparamtersq+constraints.nparametersmu+constraints.nparameterstheta]
+    
+    charges = constraints.expand_charges(charge_parameters)
+    dipoles = constraints.expand_dipoles(dipole_parameters)
+    quadrupoles = constraints.expand_quadrupoles(quadrupole_parameters)
+
+    nstructures = len(structures)
+    res = 0.0
+
+    if weights is not None:
+        #make sure it is normalized
+        weights = weights / np.sum(weights)
+    else:
+        weights = np.zeros(nstructures)
+        weights[:] = 1.0/nstructures
+
+    contributions = np.zeros(nstructures)
+    for i, s in enumerate(structures):
+        test_esp = np.zeros(s.esp_grid_qm.shape)
+        #minus sign due to potential definition
+        Rab = -(s.coordinates[:, np.newaxis, :] - s.grid[np.newaxis, :, :])
+        test_esp += -field(Rab, 0, charges, 0)
+        test_esp += -field(Rab, 1, dipoles, 0)
+        test_esp += -field(Rab, 2, quadrupoles, 0)
+        contribution = np.sum((test_esp - s.esp_grid_qm)**2)
+        contributions[i] = contribution * weights[i]
+    if filter_outliers:
+        median = np.median(contributions)
+        filtered = contributions > median * 100.
+        res = np.sum(contributions[~filtered])
+    else:
+        res = np.sum(contributions)
     return res

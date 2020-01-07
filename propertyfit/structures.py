@@ -316,6 +316,8 @@ class constraints(object):
         self.qtot           = 0.0
         self.natoms         = 0
         self.nparametersq   = 0
+        self.nparametersmu  = 0 
+        self.nparameterstheta = 0
         self.nparametersa   = 0
         q_red   = []
         a_red   = []
@@ -367,21 +369,9 @@ class constraints(object):
             for i, index in enumerate(indices):
                 self.a0[i] = a_red[index]
 
-    def expand_q(self, qcompressed):
-        qout = np.zeros(self.natoms, dtype=np.float64)
-        pcounter = 0
-        for frag in self.fragments:
-            qcur = 0.0
-            for sym in frag.fullsymmetries[:-1]:
-                for idx in sym:
-                    qout[idx] = qcompressed[pcounter]
-                    qcur += qout[idx]
-                pcounter += 1
-            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
-            qlast = (frag.qtot - qcur) / len(frag.fullsymmetries[-1])
-            for idx in frag.fullsymmetries[-1]:
-                qout[idx] = qlast 
-        return qout
+    def get_rotation_matrix(self, idx):
+        pass
+
 
     def expand_a(self, acompressed):
         aout = np.zeros((self.natoms,3,3), dtype=np.float64)
@@ -394,3 +384,59 @@ class constraints(object):
                     aout[idx,2,2] = acompressed[pcounter]
                 pcounter += 1
         return aout
+
+    def expand_charges(self, parameters):
+        charge_out = np.zeros(self.natoms, dtype=np.float64)
+        pcounter = 0
+        for frag in self.fragments:
+            qcur = 0.0
+            for sym in frag.fullsymmetries[:-1]:
+                for idx in sym:
+                    charge_out[idx] = parameters[pcounter]
+                    qcur += charge_out[idx]
+                pcounter += 1
+            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
+            qlast = (frag.qtot - qcur) / len(frag.fullsymmetries[-1])
+            for idx in frag.fullsymmetries[-1]:
+                charge_out[idx] = qlast 
+        return charge_out
+
+    def expand_dipoles(self, parameters):
+        if len(parameters) == 0:
+            return []
+        assert len(parameters) == 3*parametersa
+
+        dipoles_out = np.zeros((self.natoms, 3), dtype=np.float64)
+        pcounter = 0
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                for idx in sym:
+                    dipole = parameters[pcounter:pcounter+3]
+                    rotation_matrix = get_rotation_matrix(idx)
+                    dipoles_out[idx, :] = rotation_matrix @ dipole
+                pcounter += 3
+        return dipoles_out
+
+    def expand_quadrupoles(self, parameters):
+        if len(parameters) == 0:
+            return []
+        assert len(parameters) == 5*parametersa
+
+        quadrupoles_out = np.zeros((self.natoms, 3, 3), dtype=np.float64)
+        pcounter = 0
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                for idx in sym:
+                    # parameters are in order xx xy xz yy yz (get zz from trace condition)
+                    quadrupole = np.zeros(3,3)
+                    quadrupole[0,0] = parameters[pcounter]
+                    quadrupole[0,1] = quadrupole[1,0] = parameters[pcounter+1]
+                    quadrupole[0,2] = quadrupole[2,0] = parameters[pcounter+2]
+                    quadrupole[1,1] = parameters[pcounter+3]
+                    quadrupole[1,2] = quadrupole[2,1] = parameters[pcounter+4]
+                    quadrupole[2,2] = -(quadrupole[0,0]+quadrupole[1,1])
+                    rotation_matrix = get_rotation_matrix(idx)
+                    quadrupoles_out[idx, :, :] = rotation_matrix @ quadrupole @ rotation_matrix.T
+                pcounter += 5
+        return quadrupoles_out
+
