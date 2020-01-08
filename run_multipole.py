@@ -77,7 +77,7 @@ for i, dipole in enumerate(con.expand_dipoles(res.x[con.nparametersq:con.nparame
                                                          con.nparametersmu]).reshape(-1, 3)):
     print(f'{i:>6}: {dipole[0]: 12.10f} {dipole[1]: 12.10f} {dipole[2]: 12.10f}')
 print()
-print("Quadrupoles:")
+print("Quadrupoles (in local axes):")
 print("{:>6}   {:<13} {:<13} {:<13} {:<13} {:<13} {:<13}".format("Index", "xx", "xy", "xz", "yy", "yz", "zz"))
 for i, quadrupole in enumerate(
         con.expand_quadrupoles(res.x[con.nparametersq + con.nparametersmu:con.nparametersq + con.nparametersmu +
