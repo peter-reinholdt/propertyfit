@@ -5,6 +5,7 @@ from string import ascii_uppercase as ABC
 from numpy import sqrt
 from .utilities import memoize_on_first_arg
 
+
 @memoize_on_first_arg
 def T0(idx, Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
@@ -92,12 +93,9 @@ def field(Ra, Rb, multipole_rank, multipoles, field_rank, idx):
     # Tn:multipoles->out
     # abc... for multipole/field contraction
     # ABC... for additional ranks
-    A = ABC[0:multipole_additional_rank +
-            Rab_additional_rank] + abc[:tensor_rank]
-    B = ABC[0:multipole_additional_rank] + abc[tensor_rank -
-                                               multipole_rank:tensor_rank]
-    C = ABC[multipole_additional_rank:multipole_additional_rank +
-            Rab_additional_rank] + abc[:field_rank]
+    A = ABC[0:multipole_additional_rank + Rab_additional_rank] + abc[:tensor_rank]
+    B = ABC[0:multipole_additional_rank] + abc[tensor_rank - multipole_rank:tensor_rank]
+    C = ABC[multipole_additional_rank:multipole_additional_rank + Rab_additional_rank] + abc[:field_rank]
     signature = "{},{}->{}".format(A, B, C)
     res = factor * np.einsum(signature, Tn, multipoles)
     return res

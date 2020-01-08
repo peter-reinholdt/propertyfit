@@ -81,6 +81,7 @@ def memoize_on_first_arg(f):
         else:
             cache[args[0]] = f(*args)
             return cache[args[0]]
+
     return wrapper
 
 

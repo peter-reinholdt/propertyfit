@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def bisector(point1, point2, point3):
     """
     decide local frame unit vectors x, y, z
@@ -15,18 +16,19 @@ def bisector(point1, point2, point3):
     z = v1 + v2
     z = z / np.linalg.norm(z)
 
-    #create x-axis by rejection   
+    #create x-axis by rejection
     x = point3 - point1
-    x = x - (np.dot(x,z)/np.dot(z,z))*z
-    x = x / np.sqrt(np.sum(x*x))
-    
+    x = x - (np.dot(x, z) / np.dot(z, z)) * z
+    x = x / np.sqrt(np.sum(x * x))
+
     #dot = np.dot(v2, z)
     #x = v2 - dot * z
     #x = x / np.linalg.norm(x)
 
     #right hand rule for y
-    y = np.cross(z, x) 
+    y = np.cross(z, x)
     return np.vstack([x, y, z]).T
+
 
 def zthenx(point1, point2, point3):
     """
@@ -35,18 +37,18 @@ def zthenx(point1, point2, point3):
     point2: coordinates of the atom to which the local z-axis is created
     point3: coordinates of a third atom, with which the local x-axis is created 
     """
-    
+
     #create z-axis
     z = point2 - point1
-    z = z / np.sqrt(np.sum(z*z))
-    
-    #create x-axis by rejection   
+    z = z / np.sqrt(np.sum(z * z))
+
+    #create x-axis by rejection
     x = point3 - point1
-    x = x - (np.dot(x,z)/np.dot(z,z))*z
-    x = x / np.sqrt(np.sum(x*x))
-    
+    x = x - (np.dot(x, z) / np.dot(z, z)) * z
+    x = x / np.sqrt(np.sum(x * x))
+
     #right hand rule for y
-    y = np.cross(z, x) 
-   
+    y = np.cross(z, x)
+
     #rotation matrix
     return np.vstack([x, y, z]).T

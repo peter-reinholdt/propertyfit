@@ -289,7 +289,7 @@ class fragment(object):
         #for isotropic polarizability, there is no constraint on
         # the sum
         self.nparametersa = self.natoms - nsymp
-   
+
     @memoize_on_first_arg
     def get_rotation_matrix(self, idx, coordinates):
         point1 = coordinates[idx, :]

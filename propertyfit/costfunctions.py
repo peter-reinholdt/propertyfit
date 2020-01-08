@@ -12,6 +12,7 @@ from numba import jit
 from .utilities import hartree2kjmol
 from .potentials import field
 
+
 @jit(nopython=True)
 def charge_esp_square_error(rinvmat, esp_grid_qm, testcharges):
     """Compute the average square error
@@ -21,12 +22,12 @@ def charge_esp_square_error(rinvmat, esp_grid_qm, testcharges):
     and the average of the squares of the errors
     is returned
     """
-    natoms      = rinvmat.shape[0]
+    natoms = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
     grid = np.copy(esp_grid_qm)
     for i in range(natoms):
         for j in range(ngridpoints):
-            grid[j] -= testcharges[i] * rinvmat[i,j]
+            grid[j] -= testcharges[i] * rinvmat[i, j]
     return np.sum(grid**2) / ngridpoints
 
 
@@ -40,12 +41,12 @@ def induced_dipole(alpha_ab, field):
     is used
     """
     natoms = len(alpha_ab)
-    mu = np.zeros((natoms,3))
+    mu = np.zeros((natoms, 3))
     for i in range(natoms):
         for j in range(3):
             for k in range(3):
                 #mu_i,alpha = alpha_i,alphabeta*Fbeta
-                mu[i,j] += alpha_ab[i,j,k] * field[k]
+                mu[i, j] += alpha_ab[i, j, k] * field[k]
     return mu
 
 
@@ -53,13 +54,13 @@ def induced_dipole(alpha_ab, field):
 def dipole_potential(dipoles, rinvmat, xyzmat):
     """Compute the potential from a set of
     dipoles in the defined gridpoints"""
-    natoms      = rinvmat.shape[0] 
+    natoms = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
     potential = np.zeros(ngridpoints)
     for i in range(natoms):
         for j in range(ngridpoints):
             for k in range(3):
-                potential[j] -= dipoles[i,k] * rinvmat[i,j]**3 * xyzmat[i,j,k]
+                potential[j] -= dipoles[i, k] * rinvmat[i, j]**3 * xyzmat[i, j, k]
     return potential
 
 
@@ -73,11 +74,11 @@ def induced_esp_sum_squared_error(rinvmat, xyzmat, induced_esp_grid_qm, field, a
     and the average of the squares of the errors
     is returned
     """
-    natoms      = rinvmat.shape[0]
+    natoms = rinvmat.shape[0]
     ngridpoints = rinvmat.shape[1]
-    mu_ind      = induced_dipole(alpha_ab, field)
-    alpha_pot   = dipole_potential(mu_ind, rinvmat, xyzmat)
-    return np.sum((induced_esp_grid_qm-alpha_pot)**2) / ngridpoints
+    mu_ind = induced_dipole(alpha_ab, field)
+    alpha_pot = dipole_potential(mu_ind, rinvmat, xyzmat)
+    return np.sum((induced_esp_grid_qm - alpha_pot)**2) / ngridpoints
 
 
 def charge_cost_function(qtest, structures=None, constraints=None, filter_outliers=True, weights=None):
@@ -91,8 +92,8 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
                     about symmetries etc.
     """
     #expand charges to full set
-    qfull       = constraints.expand_q(qtest)
-    qfull_ref   = constraints.expand_q(constraints.q0)
+    qfull = constraints.expand_q(qtest)
+    qfull_ref = constraints.expand_q(constraints.q0)
     nstructures = len(structures)
     res = 0.0
 
@@ -101,7 +102,7 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
         weights = weights / np.sum(weights)
     else:
         weights = np.zeros(nstructures)
-        weights[:] = 1.0/nstructures
+        weights[:] = 1.0 / nstructures
 
     contributions = np.zeros(nstructures)
     for i, s in enumerate(structures):
@@ -113,14 +114,14 @@ def charge_cost_function(qtest, structures=None, constraints=None, filter_outlie
         res = np.sum(contributions[~filtered])
     else:
         res = np.sum(contribution)
-    
+
     #print the pure version of the cost function
     #print(res)
-    
+
     #restraints towards zero for increased stability
     if constraints.restraint > 0.0:
         for i in range(constraints.natoms):
-            res += constraints.restraint * (qfull[i]-qfull_ref[i])**2
+            res += constraints.restraint * (qfull[i] - qfull_ref[i])**2
     return res
 
 
@@ -133,8 +134,8 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
     constraints:    constraints object, which contains information
                     about symmetries etc.
     """
-    afull       = constraints.expand_a(alphatest)
-    afull_ref   = constraints.expand_a(constraints.a0)
+    afull = constraints.expand_a(alphatest)
+    afull_ref = constraints.expand_a(constraints.a0)
     nstructures = len(structures)
 
     if weights is not None:
@@ -142,21 +143,20 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
         weights = weights / np.sum(weights)
     else:
         weights = np.zeros(nstructures)
-        weights[:] = 1.0/nstructures
+        weights[:] = 1.0 / nstructures
 
-    res         = 0.0
+    res = 0.0
     for i in range(nstructures):
-        contribution =  induced_esp_sum_squared_error(structures[i].rinvmat, 
-                                             structures[i].xyzmat, 
-                                             structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm, 
-                                             fieldstructures[i].field, 
-                                             afull)
+        contribution = induced_esp_sum_squared_error(structures[i].rinvmat, structures[i].xyzmat,
+                                                     structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm,
+                                                     fieldstructures[i].field, afull)
         res += contribution * weights[i]
     #print(res)
     if constraints.restraint > 0.0:
         for i in range(constraints.natoms):
-            res += constraints.restraint * (afull[i][0,0]-afull_ref[i][0,0])**2
+            res += constraints.restraint * (afull[i][0, 0] - afull_ref[i][0, 0])**2
     return res
+
 
 def multipole_cost_function(parameters, structures=None, constraints=None, filter_outliers=True, weights=None):
     """
@@ -171,11 +171,12 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     constraints:    constraints object, which contains information
                     about symmetries etc.
     """
-    #expand multipole parameters to full set (and rotate dipole, quadrupole from local axis to global axis) 
+    #expand multipole parameters to full set (and rotate dipole, quadrupole from local axis to global axis)
     charge_parameters = parameters[0:constraints.nparametersq]
-    dipole_parameters = parameters[constraints.nparametersq:constraints.nparametersq+constraints.nparametersmu]
-    quadrupole_parameters = parameters[constraints.nparametersq+constraints.nparametersmu:constraints.nparametersq+constraints.nparametersmu+constraints.nparameterstheta]
-    
+    dipole_parameters = parameters[constraints.nparametersq:constraints.nparametersq + constraints.nparametersmu]
+    quadrupole_parameters = parameters[constraints.nparametersq + constraints.nparametersmu:constraints.nparametersq +
+                                       constraints.nparametersmu + constraints.nparameterstheta]
+
     charges = constraints.expand_charges(charge_parameters)
     dipoles_local = constraints.expand_dipoles(dipole_parameters)
     quadrupoles_local = constraints.expand_quadrupoles(quadrupole_parameters)
@@ -188,13 +189,14 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         weights = weights / np.sum(weights)
     else:
         weights = np.zeros(nstructures)
-        weights[:] = 1.0/nstructures
+        weights[:] = 1.0 / nstructures
 
     contributions = np.zeros(nstructures)
     for idx, s in enumerate(structures):
         test_esp = np.zeros(s.esp_grid_qm.shape)
         #minus sign due to potential definition
-        dipoles, quadrupoles = constraints.rotate_multipoles_to_global_axis(dipoles_local, quadrupoles_local, s.coordinates)
+        dipoles, quadrupoles = constraints.rotate_multipoles_to_global_axis(dipoles_local, quadrupoles_local,
+                                                                            s.coordinates)
         test_esp += -field(s.coordinates, s.grid, 0, charges, 0, idx)
         test_esp += -field(s.coordinates, s.grid, 1, dipoles, 0, idx)
         test_esp += -field(s.coordinates, s.grid, 2, quadrupoles, 0, idx)
