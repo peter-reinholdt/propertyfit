@@ -433,6 +433,6 @@ class constraints(object):
             for sym in frag.fullsymmetries:
                 for idx in sym:
                     R[idx, :, :] = frag.get_rotation_matrix(idx, coordinates)
-        dipoles = np.einsum('aij,aj->ai', R, dipoles, optimize=['einsum_path', (0, 1)])
-        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R, optimize=['einsum_path', (0, 1), (0, 1)])
+        dipoles = np.einsum('aij,aj->ai', R, dipoles)
+        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
         return dipoles, quadrupoles
