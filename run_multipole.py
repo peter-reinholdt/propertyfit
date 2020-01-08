@@ -26,9 +26,6 @@ parser.add_argument('--method', dest='method', default='slsqp', help='Which opti
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
 
 args = parser.parse_args()
-if not (args.qm or args.h5 or args.h5_filelist or args.terachem_scrdirs or (args.orca_gbws and args.orca_densities)):
-    raise ValueError("Please specify either a set of .h5 files or a set of qm files")
-
 #create constraints object
 con = constraints(args.top)
 
@@ -54,7 +51,7 @@ if args.weights:
 else:
     weights = None
 
-con.restraint = args.restraint
+con.restraint = 0.0 # TODO add restraints for multipole
 dipole_startguess = np.zeros(con.nparametersmu, dtype=np.float64)
 quadrupole_startguess = np.zeros(con.nparameterstheta, dtype=np.float64)
 parameters = np.hstack([con.q0, dipole_startguess, quadrupole_startguess])

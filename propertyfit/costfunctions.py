@@ -167,19 +167,17 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     parameters:     array of non-redundant test-charge parameters
                     parameters[0:nparametersq] -> charges
                     parameters[nparametersq:nparametersq+nparametersmu] -> dipole parameters
-                    parameters[nparametersq+nparametersmu:nparametersq+nparamtersmu+nparamererstheta] -> quadrupole parameters
+                    parameters[nparametersq+nparametersmu:nparametersq+nparametersmu+nparamererstheta] -> quadrupole parameters
     structures:     list of structure objects
     constraints:    constraints object, which contains information
                     about symmetries etc.
     """
     #expand multipole parameters to full set (and rotate dipole, quadrupole from local axis to global axis) 
     charge_parameters = parameters[0:constraints.nparametersq]
-    dipole_parameters = parameters[constraints.nparametersq:constraints.nparamtersq+constraints.nparametersmu]
-    quadrupole_parameters = parameters[constraints.nparamtersq+constraints.nparametersmu:constraints.nparamtersq+constraints.nparametersmu+constraints.nparameterstheta]
+    dipole_parameters = parameters[constraints.nparametersq:constraints.nparametersq+constraints.nparametersmu]
+    quadrupole_parameters = parameters[constraints.nparametersq+constraints.nparametersmu:constraints.nparametersq+constraints.nparametersmu+constraints.nparameterstheta]
     
     charges = constraints.expand_charges(charge_parameters)
-    dipoles = constraints.expand_dipoles(dipole_parameters, coordinates)
-    quadrupoles = constraints.expand_quadrupoles(quadrupole_parameters, coordinates)
 
     nstructures = len(structures)
     res = 0.0
@@ -194,6 +192,8 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     contributions = np.zeros(nstructures)
     for i, s in enumerate(structures):
         test_esp = np.zeros(s.esp_grid_qm.shape)
+        dipoles = constraints.expand_dipoles(dipole_parameters, s.coordinates)
+        quadrupoles = constraints.expand_quadrupoles(quadrupole_parameters, s.coordinates)
         #minus sign due to potential definition
         Rab = -(s.coordinates[:, np.newaxis, :] - s.grid[np.newaxis, :, :])
         test_esp += -field(Rab, 0, charges, 0)
@@ -207,4 +207,6 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         res = np.sum(contributions[~filtered])
     else:
         res = np.sum(contributions)
+
+    print(res)
     return res

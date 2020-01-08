@@ -28,7 +28,7 @@ def bisector(point1, point2, point3):
     y = np.cross(z, x) 
     return np.vstack([x, y, z]).T
 
-def z_then_x(point1, point2, point3):
+def zthenx(point1, point2, point3):
     """
     decide local frame unit vectors x, y, z
     point1: coordinates of the atom in the origin of the local coordinate system
