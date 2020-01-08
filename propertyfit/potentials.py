@@ -3,9 +3,11 @@ from math import factorial
 from string import ascii_lowercase as abc
 from string import ascii_uppercase as ABC
 from numpy import sqrt
+from .utilities import memoize_on_first_arg
 
-
-def T0(Rab):
+@memoize_on_first_arg
+def T0(idx, Ra, Rb):
+    Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
     y = Rab[..., 1]
     z = Rab[..., 2]
@@ -15,7 +17,9 @@ def T0(Rab):
     return result
 
 
-def T1(Rab):
+@memoize_on_first_arg
+def T1(idx, Ra, Rb):
+    Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
     y = Rab[..., 1]
     z = Rab[..., 2]
@@ -28,7 +32,9 @@ def T1(Rab):
     return result
 
 
-def T2(Rab):
+@memoize_on_first_arg
+def T2(idx, Ra, Rb):
+    Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
     y = Rab[..., 1]
     z = Rab[..., 2]
@@ -58,10 +64,11 @@ def T2(Rab):
 T = [T0, T1, T2]
 
 
-def field(Rab, multipole_rank, multipoles, field_rank):
+def field(Ra, Rb, multipole_rank, multipoles, field_rank, idx):
     """
     Calculates the field (derivatives) due to a set of multipoles in a set of points
-
+    
+    idx: index used to cache Tn tensors
     Rab: distance ndarrray
         shape is (nmult,...,3) so we can work with both a single distance vector (nmult,3), a vector of distance vectors (nmult,N,3) and so on
     multipole_rank: rank of the multipole
@@ -78,9 +85,9 @@ def field(Rab, multipole_rank, multipoles, field_rank):
     """
     tensor_rank = field_rank + multipole_rank
     multipole_additional_rank = len(multipoles.shape) - multipole_rank
-    Rab_additional_rank = len(Rab.shape) - multipole_additional_rank - 1
+    Rab_additional_rank = 3 - multipole_additional_rank - 1
 
-    Tn = T[tensor_rank](Rab)
+    Tn = T[tensor_rank](idx, Ra, Rb)
     factor = -1.0 * (-1)**multipole_rank / factorial(multipole_rank)
     # Tn:multipoles->out
     # abc... for multipole/field contraction

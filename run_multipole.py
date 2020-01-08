@@ -7,6 +7,7 @@ from scipy.optimize import minimize
 from propertyfit.structures import structure, constraints
 from propertyfit.costfunctions import multipole_cost_function
 import argparse
+import cProfile
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--h5-files',
@@ -59,27 +60,28 @@ parameters = np.hstack([con.q0, dipole_startguess, quadrupole_startguess])
 fun = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
 res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, options={'maxiter': 1000})
 
+
 print(res)
 print()
 print("=" * 85)
 print()
 print("Final result:")
 print("Charges:")
-print("Index Charge")
-for i, charge in enumerate(con.expand_charge(res.x[0:con.nparametersq])):
-    print(f'{i:>6}: {charge:12.10f}')
+print("{:>6}   {:<12}".format("Index", "Charge"))
+for i, charge in enumerate(con.expand_charges(res.x[0:con.nparametersq])):
+    print(f'{i:>6}: {charge: 12.10f}')
 print()
 print("Dipoles (in local axes):")
-print("Index x y z")
-for i, dipole in enumerate(con.expand_dipole_local(res.x[con.nparametersq:con.nparametersq +
-                                                         con.nparametersmu])).reshape(-1, 3):
-    print(f'{i:>6}: {dipole[0]:12.10f} {dipole[1]:12.10f} {dipole[2]:12.10f}')
+print("{:>6}   {:<13} {:<13} {:<13}".format("Index", "x", "y", "z"))
+for i, dipole in enumerate(con.expand_dipoles(res.x[con.nparametersq:con.nparametersq +
+                                                         con.nparametersmu]).reshape(-1, 3)):
+    print(f'{i:>6}: {dipole[0]: 12.10f} {dipole[1]: 12.10f} {dipole[2]: 12.10f}')
 print()
 print("Quadrupoles:")
-print("Index xx xy xz yy yz zz")
+print("{:>6}   {:<13} {:<13} {:<13} {:<13} {:<13} {:<13}".format("Index", "xx", "xy", "xz", "yy", "yz", "zz"))
 for i, quadrupole in enumerate(
-        con.expand_quadrupole_local(res.x[con.nparametersq + con.nparametersmu:con.nparametersq + con.nparametersmu +
-                                          con.nparameterstheta])).reshape(-1, 3, 3):
+        con.expand_quadrupoles(res.x[con.nparametersq + con.nparametersmu:con.nparametersq + con.nparametersmu +
+                                          con.nparameterstheta]).reshape(-1, 3, 3)):
     print(
-        f'{i:>6}: {quadrupole[0,0]:12.10f} {quadrupole[0,1]:12.10f} {quadrupole[0,2]:12.10f} {quadrupole[1,1]:12.10f} {quadrupole[1,2]:12.10f} {quadrupole[2,2]:12.10f}'
+        f'{i:>6}: {quadrupole[0,0]: 12.10f} {quadrupole[0,1]: 12.10f} {quadrupole[0,2]: 12.10f} {quadrupole[1,1]: 12.10f} {quadrupole[1,2]: 12.10f} {quadrupole[2,2]: 12.10f}'
     )

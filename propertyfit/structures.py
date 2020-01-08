@@ -9,7 +9,7 @@ try:
 except:
     warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
-from .utilities import load_qmfiles, number2name, name2number, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden
+from .utilities import load_qmfiles, number2name, name2number, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden, memoize_on_first_arg
 from .rotations import zthenx, bisector
 from numba import jit
 import os
@@ -289,7 +289,8 @@ class fragment(object):
         #for isotropic polarizability, there is no constraint on
         # the sum
         self.nparametersa = self.natoms - nsymp
-
+   
+    @memoize_on_first_arg
     def get_rotation_matrix(self, idx, coordinates):
         point1 = coordinates[idx, :]
         axis_indices = self.idx2axis_indices[idx]
@@ -397,78 +398,41 @@ class constraints(object):
                 charge_out[idx] = qlast
         return charge_out
 
-    def expand_dipoles(self, parameters, coordinates):
-        if len(parameters) == 0:
-            return []
-        assert len(parameters) == 3 * self.nparametersa
-
+    def expand_dipoles(self, parameters):
         dipoles_out = np.zeros((self.natoms, 3), dtype=np.float64)
         pcounter = 0
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
+                dipole = parameters[pcounter:pcounter + 3]
                 for idx in sym:
-                    dipole = parameters[pcounter:pcounter + 3]
-                    rotation_matrix = frag.get_rotation_matrix(idx, coordinates)
-                    dipoles_out[idx, :] = rotation_matrix @ dipole
-                pcounter += 3
-        return dipoles_out
-
-    def expand_quadrupoles(self, parameters, coordinates):
-        if len(parameters) == 0:
-            return []
-        assert len(parameters) == 5 * self.nparametersa
-
-        quadrupoles_out = np.zeros((self.natoms, 3, 3), dtype=np.float64)
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                for idx in sym:
-                    # parameters are in order xx xy xz yy yz (get zz from trace condition)
-                    quadrupole = np.zeros((3, 3))
-                    quadrupole[0, 0] = parameters[pcounter]
-                    quadrupole[0, 1] = quadrupole[1, 0] = parameters[pcounter + 1]
-                    quadrupole[0, 2] = quadrupole[2, 0] = parameters[pcounter + 2]
-                    quadrupole[1, 1] = parameters[pcounter + 3]
-                    quadrupole[1, 2] = quadrupole[2, 1] = parameters[pcounter + 4]
-                    quadrupole[2, 2] = -(quadrupole[0, 0] + quadrupole[1, 1])
-                    rotation_matrix = frag.get_rotation_matrix(idx, coordinates)
-                    quadrupoles_out[idx, :, :] = rotation_matrix @ quadrupole @ rotation_matrix.T
-                pcounter += 5
-        return quadrupoles_out
-
-    def expand_dipoles_local(self, parameters):
-        if len(parameters) == 0:
-            return []
-        assert len(parameters) == 3 * parametersa
-
-        dipoles_out = np.zeros((self.natoms, 3), dtype=np.float64)
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                for idx in sym:
-                    dipole = parameters[pcounter:pcounter + 3]
                     dipoles_out[idx, :] = dipole
                 pcounter += 3
         return dipoles_out
 
-    def expand_quadrupoles_local(self, parameters):
-        if len(parameters) == 0:
-            return []
-        assert len(parameters) == 5 * parametersa
-
+    def expand_quadrupoles(self, parameters):
         quadrupoles_out = np.zeros((self.natoms, 3, 3), dtype=np.float64)
         pcounter = 0
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
+                # parameters are in order xx xy xz yy yz (get zz from trace condition)
+                quadrupole = np.zeros((3, 3))
+                quadrupole[0, 0] = parameters[pcounter]
+                quadrupole[0, 1] = quadrupole[1, 0] = parameters[pcounter + 1]
+                quadrupole[0, 2] = quadrupole[2, 0] = parameters[pcounter + 2]
+                quadrupole[1, 1] = parameters[pcounter + 3]
+                quadrupole[1, 2] = quadrupole[2, 1] = parameters[pcounter + 4]
+                quadrupole[2, 2] = -(quadrupole[0, 0] + quadrupole[1, 1])
                 for idx in sym:
-                    # parameters are in order xx xy xz yy yz (get zz from trace condition)
-                    quadrupole = np.zeros(3, 3)
-                    quadrupole[0, 0] = parameters[pcounter]
-                    quadrupole[0, 1] = quadrupole[1, 0] = parameters[pcounter + 1]
-                    quadrupole[0, 2] = quadrupole[2, 0] = parameters[pcounter + 2]
-                    quadrupole[1, 1] = parameters[pcounter + 3]
-                    quadrupole[1, 2] = quadrupole[2, 1] = parameters[pcounter + 4]
-                    quadrupole[2, 2] = -(quadrupole[0, 0] + quadrupole[1, 1])
                     quadrupoles_out[idx, :, :] = quadrupole
                 pcounter += 5
         return quadrupoles_out
+
+    def rotate_multipoles_to_global_axis(self, dipoles, quadrupoles, coordinates):
+        R = np.zeros((self.natoms, 3, 3))
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                for idx in sym:
+                    R[idx, :, :] = frag.get_rotation_matrix(idx, coordinates)
+        dipoles = np.einsum('aij,aj->ai', R, dipoles)
+        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
+        return dipoles, quadrupoles

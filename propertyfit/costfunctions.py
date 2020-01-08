@@ -12,7 +12,6 @@ from numba import jit
 from .utilities import hartree2kjmol
 from .potentials import field
 
-
 @jit(nopython=True)
 def charge_esp_square_error(rinvmat, esp_grid_qm, testcharges):
     """Compute the average square error
@@ -178,6 +177,8 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     quadrupole_parameters = parameters[constraints.nparametersq+constraints.nparametersmu:constraints.nparametersq+constraints.nparametersmu+constraints.nparameterstheta]
     
     charges = constraints.expand_charges(charge_parameters)
+    dipoles_local = constraints.expand_dipoles(dipole_parameters)
+    quadrupoles_local = constraints.expand_quadrupoles(quadrupole_parameters)
 
     nstructures = len(structures)
     res = 0.0
@@ -190,23 +191,19 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         weights[:] = 1.0/nstructures
 
     contributions = np.zeros(nstructures)
-    for i, s in enumerate(structures):
+    for idx, s in enumerate(structures):
         test_esp = np.zeros(s.esp_grid_qm.shape)
-        dipoles = constraints.expand_dipoles(dipole_parameters, s.coordinates)
-        quadrupoles = constraints.expand_quadrupoles(quadrupole_parameters, s.coordinates)
         #minus sign due to potential definition
-        Rab = -(s.coordinates[:, np.newaxis, :] - s.grid[np.newaxis, :, :])
-        test_esp += -field(Rab, 0, charges, 0)
-        test_esp += -field(Rab, 1, dipoles, 0)
-        test_esp += -field(Rab, 2, quadrupoles, 0)
+        dipoles, quadrupoles = constraints.rotate_multipoles_to_global_axis(dipoles_local, quadrupoles_local, s.coordinates)
+        test_esp += -field(s.coordinates, s.grid, 0, charges, 0, idx)
+        test_esp += -field(s.coordinates, s.grid, 1, dipoles, 0, idx)
+        test_esp += -field(s.coordinates, s.grid, 2, quadrupoles, 0, idx)
         contribution = np.sum((test_esp - s.esp_grid_qm)**2)
-        contributions[i] = contribution * weights[i]
+        contributions[idx] = contribution * weights[idx]
     if filter_outliers:
         median = np.median(contributions)
         filtered = contributions > median * 100.
         res = np.sum(contributions[~filtered])
     else:
         res = np.sum(contributions)
-
-    print(res)
     return res
