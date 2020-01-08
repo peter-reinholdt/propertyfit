@@ -178,8 +178,8 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     quadrupole_parameters = parameters[constraints.nparamtersq+constraints.nparametersmu:constraints.nparamtersq+constraints.nparametersmu+constraints.nparameterstheta]
     
     charges = constraints.expand_charges(charge_parameters)
-    dipoles = constraints.expand_dipoles(dipole_parameters)
-    quadrupoles = constraints.expand_quadrupoles(quadrupole_parameters)
+    dipoles = constraints.expand_dipoles(dipole_parameters, coordinates)
+    quadrupoles = constraints.expand_quadrupoles(quadrupole_parameters, coordinates)
 
     nstructures = len(structures)
     res = 0.0

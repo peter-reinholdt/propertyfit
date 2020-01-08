@@ -98,9 +98,6 @@ class structure(object):
         #rx, ry, rz, esp(r)
         esp = np.loadtxt(esp_file, skiprows=1)[:,3]
         self.esp_grid_qm = esp
-        self.compute_rinvmat()
-        self.compute_xyzmat()
-
 
 
     def compute_grid_surface(self, pointdensity=2.0, radius_scale=1.4):
@@ -182,14 +179,6 @@ class structure(object):
         self.ngridpoints = len(self.grid)
 
 
-    def compute_rinvmat(self):
-        self.rinvmat = 1./np.sqrt(np.sum((self.coordinates[:,np.newaxis,:] - self.grid[np.newaxis,:,:])**2, axis=2))
-
-
-    def compute_xyzmat(self):
-        self.xyzmat = self.coordinates[:,np.newaxis,:] - self.grid[np.newaxis,:,:]
-
-
     def compute_qm_esp(self):
         esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float), self.grid)
         self.esp_grid_qm = esp_grid_qm 
@@ -197,7 +186,6 @@ class structure(object):
    
     def compute_all(self):
         self.compute_grid()
-        self.compute_rinvmat()
         self.compute_qm_esp()
 
 
@@ -217,32 +205,26 @@ class structure(object):
 
 
     def save_h5(self, filename):
-        """
-        Save important arrays
-        on disk
-        """
         f = h5py.File(filename, "w")
-        f.create_dataset("coordinates", data=self.coordinates)
-        f.create_dataset("numbers",     data=self.numbers)
-        f.create_dataset("natoms",      data=self.natoms)
-        f.create_dataset("field",       data=self.field)
-        f.create_dataset("xyzmat",      data=self.xyzmat)
-        f.create_dataset("rinvmat",     data=self.rinvmat)
-        f.create_dataset("esp_grid_qm", data=self.esp_grid_qm)
+        f.create_dataset("atom_coordinates", data=self.coordinates)
+        f.create_dataset("atom_numbers", data=self.numbers)
+        f.create_dataset("electric_potential", data=self.esp_grid_qm)
+        f.create_dataset("grid_coordinates", data=self.grid)
+        f.create_dataset("external_field", data=self.field)
         f.close()
-
 
     def load_h5(self, filename):
         f = h5py.File(filename, "r")
-        self.coordinates    = f["coordinates"][()]
-        self.numbers        = f["numbers"][()]
-        self.natoms         = f["natoms"][()]
-        self.field          = f["field"][()]
-        self.xyzmat         = f["xyzmat"][()]
-        self.rinvmat        = f["rinvmat"][()]
-        self.esp_grid_qm    = f["esp_grid_qm"][()]
+        self.coordinates = f["atom_coordinates"][()]
+        self.numbers = f["atom_numbers"][()]
+        self.esp_grid_qm = f["electric_potential"][()]
+        self.grid = f["grid_coordinates"][()]
+        self.natoms = len(self.numbers)
+        if "external_field" in f.keys():
+            self.field = f["external_field"][()]
+        else:
+            self.field = np.zeros(3, dtype=np.float64)
         f.close()
-
 
 
 class fragment(object):
@@ -415,7 +397,7 @@ class constraints(object):
                 charge_out[idx] = qlast 
         return charge_out
 
-    def expand_dipoles(self, parameters):
+    def expand_dipoles(self, parameters, coordinates):
         if len(parameters) == 0:
             return []
         assert len(parameters) == 3*parametersa
@@ -426,12 +408,12 @@ class constraints(object):
             for sym in frag.fullsymmetries:
                 for idx in sym:
                     dipole = parameters[pcounter:pcounter+3]
-                    rotation_matrix = frag.get_rotation_matrix(idx)
+                    rotation_matrix = frag.get_rotation_matrix(idx, coordinates)
                     dipoles_out[idx, :] = rotation_matrix @ dipole
                 pcounter += 3
         return dipoles_out
 
-    def expand_quadrupoles(self, parameters):
+    def expand_quadrupoles(self, parameters, coordinates):
         if len(parameters) == 0:
             return []
         assert len(parameters) == 5*parametersa
@@ -449,7 +431,7 @@ class constraints(object):
                     quadrupole[1,1] = parameters[pcounter+3]
                     quadrupole[1,2] = quadrupole[2,1] = parameters[pcounter+4]
                     quadrupole[2,2] = -(quadrupole[0,0]+quadrupole[1,1])
-                    rotation_matrix = frag.get_rotation_matrix(idx)
+                    rotation_matrix = frag.get_rotation_matrix(idx, coordinates)
                     quadrupoles_out[idx, :, :] = rotation_matrix @ quadrupole @ rotation_matrix.T
                 pcounter += 5
         return quadrupoles_out
