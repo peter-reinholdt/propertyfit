@@ -158,6 +158,37 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
     return res
 
 
+def multipole_restraint_contribution_res(parameters, constraints):
+    charge_parameters = parameters[0:constraints.nparametersq]
+    dipole_parameters = parameters[constraints.nparametersq:constraints.nparametersq + constraints.nparametersmu]
+    quadrupole_parameters = parameters[constraints.nparametersq + constraints.nparametersmu:constraints.nparametersq +
+                                       constraints.nparametersmu + constraints.nparameterstheta]
+
+    charges = constraints.expand_charges(charge_parameters)
+    ref_charges = constraints.expand_charges(constraints.q0)
+    dipoles_local = constraints.expand_dipoles(dipole_parameters)
+    quadrupoles_local = constraints.expand_quadrupoles(quadrupole_parameters)
+    # charge
+    res = np.sum((charges - ref_charges)**2)
+    res += np.sum(dipoles_local**2)
+    res += np.sum(quadrupoles_local**2)
+    res *= constraints.restraint
+    return res
+
+
+def multipole_restraint_contribution_jac(parameters, constraints):
+    h = 1e-6
+    jac = np.zeros(parameters.shape)
+    for ip in range(len(parameters)):
+        pplus = np.copy(parameters)
+        pplus[ip] += h
+        pminus = np.copy(parameters)
+        pminus[ip] -= h
+        jac[ip] = (multipole_restraint_contribution_res(pplus, constraints) -
+                   multipole_restraint_contribution_res(pminus, constraints)) / (2 * h)
+    return jac
+
+
 def multipole_cost_function(parameters, structures=None, constraints=None, filter_outliers=True, weights=None):
     """
     Cost function for multipoles, based on the average of 
@@ -207,12 +238,12 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
 
     # get jacobian
     jac = np.zeros(parameters.shape)
-    # todo: better selection...
     h = 1e-6
-
     test_charge = np.zeros(constraints.nparametersq)
     test_dipole = np.zeros(constraints.nparametersmu)
     test_quadrupole = np.zeros(constraints.nparameterstheta)
+
+    # EP contribution
     for ip in range(len(parameters)):
         if ip < constraints.nparametersq:
             test_charge[:] = 0.
@@ -246,4 +277,12 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
                 esp = -field(s.coordinates[mask, :], s.grid, 2, quadrupoles[mask, :, :], 0, (ip, idx))
                 j += weights[idx] * (np.sum((diff_esps[idx] + esp)**2) - np.sum((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
+
+    # restraint contribution
+    if constraints.restraint > 0.:
+        res_restraint = multipole_restraint_contribution_res(parameters, constraints)
+        jac_restraint = multipole_restraint_contribution_jac(parameters, constraints)
+        res += res_restraint
+        jac += jac_restraint
+
     return res, jac

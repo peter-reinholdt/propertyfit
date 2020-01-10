@@ -1,0 +1,4 @@
+[style]
+based_on_style = pep8
+column_limit = 118
+each_dict_entry_on_separate_line = False

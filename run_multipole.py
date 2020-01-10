@@ -25,6 +25,7 @@ parser.add_argument('--topology',
 #parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
+parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 
 args = parser.parse_args()
 #create constraints object
@@ -52,7 +53,7 @@ if args.weights:
 else:
     weights = None
 
-con.restraint = 0.0  # TODO add restraints for multipole
+con.restraint = args.restraint
 dipole_startguess = np.zeros(con.nparametersmu, dtype=np.float64)
 quadrupole_startguess = np.zeros(con.nparameterstheta, dtype=np.float64)
 parameters = np.hstack([con.q0, dipole_startguess, quadrupole_startguess])
