@@ -292,6 +292,7 @@ class fragment(object):
 
     @memoize_on_first_arg_method
     def get_rotation_matrix(self, idx, coordinates):
+        idx = idx[0]
         point1 = coordinates[idx, :]
         axis_indices = self.idx2axis_indices[idx]
         point2 = coordinates[axis_indices[0], :]
@@ -445,30 +446,30 @@ class constraints(object):
                 pcounter += 5
         return quadrupoles_out
 
-    def rotate_dipoles_to_global_axis(self, dipoles, coordinates):
+    def rotate_dipoles_to_global_axis(self, dipoles, structure):
         R = np.zeros((self.natoms, 3, 3))
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
                 for idx in sym:
-                    R[idx, :, :] = frag.get_rotation_matrix(idx, coordinates)
+                    R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
         dipoles = np.einsum('aij,aj->ai', R, dipoles)
         return dipoles
 
-    def rotate_quadrupoles_to_global_axis(self, quadrupoles, coordinates):
+    def rotate_quadrupoles_to_global_axis(self, quadrupoles, structure):
         R = np.zeros((self.natoms, 3, 3))
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
                 for idx in sym:
-                    R[idx, :, :] = frag.get_rotation_matrix(idx, coordinates)
+                    R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
         quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
         return quadrupoles
 
-    def rotate_multipoles_to_global_axis(self, dipoles, quadrupoles, coordinates):
+    def rotate_multipoles_to_global_axis(self, dipoles, quadrupoles, structure):
         R = np.zeros((self.natoms, 3, 3))
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
                 for idx in sym:
-                    R[idx, :, :] = frag.get_rotation_matrix(idx, coordinates)
+                    R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
         dipoles = np.einsum('aij,aj->ai', R, dipoles)
         quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
         return dipoles, quadrupoles
