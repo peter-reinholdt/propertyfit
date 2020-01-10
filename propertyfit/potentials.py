@@ -3,10 +3,10 @@ from math import factorial
 from string import ascii_lowercase as abc
 from string import ascii_uppercase as ABC
 from numpy import sqrt
-from .utilities import memoize_on_first_arg
+from .utilities import memoize_on_first_arg_function
 
 
-@memoize_on_first_arg
+@memoize_on_first_arg_function
 def T0(idx, Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
@@ -18,7 +18,7 @@ def T0(idx, Ra, Rb):
     return result
 
 
-@memoize_on_first_arg
+@memoize_on_first_arg_function
 def T1(idx, Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
@@ -33,7 +33,7 @@ def T1(idx, Ra, Rb):
     return result
 
 
-@memoize_on_first_arg
+@memoize_on_first_arg_function
 def T2(idx, Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]

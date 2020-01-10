@@ -208,6 +208,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
 
     # get jacobian
     jac = np.zeros(parameters.shape)
+    # todo: better selection...
     h = 1e-6
 
     test_charge = np.zeros(constraints.nparametersq)
@@ -217,7 +218,6 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         if ip < constraints.nparametersq:
             test_charge[:] = 0.
             test_charge[ip] = h
-            #todo: mask out zero elements
             charges = constraints.expand_charges(test_charge)
             mask = charges != 0.
             j = 0.0

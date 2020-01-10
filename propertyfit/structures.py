@@ -9,7 +9,7 @@ try:
 except:
     warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
-from .utilities import load_qmfiles, number2name, name2number, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden, memoize_on_first_arg
+from .utilities import load_qmfiles, number2name, name2number, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden, memoize_on_first_arg_method
 from .rotations import zthenx, bisector
 from numba import jit
 import os
@@ -290,7 +290,7 @@ class fragment(object):
         # the sum
         self.nparametersa = self.natoms - nsymp
 
-    @memoize_on_first_arg
+    @memoize_on_first_arg_method
     def get_rotation_matrix(self, idx, coordinates):
         point1 = coordinates[idx, :]
         axis_indices = self.idx2axis_indices[idx]

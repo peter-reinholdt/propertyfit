@@ -71,7 +71,7 @@ def load_geometry_from_molden(filename):
         return coordinates, elements
 
 
-def memoize_on_first_arg(f):
+def memoize_on_first_arg_function(f):
     cache = {}
 
     @wraps(f)
@@ -81,6 +81,22 @@ def memoize_on_first_arg(f):
         else:
             cache[args[0]] = f(*args)
             return cache[args[0]]
+
+    return wrapper
+
+
+def memoize_on_first_arg_method(f):
+    cache = {}
+
+    @wraps(f)
+    def wrapper(*args):
+        # first arg on class method is self...
+        # use args[1] instead
+        if args[1] in cache:
+            return cache[args[1]]
+        else:
+            cache[args[1]] = f(*args)
+            return cache[args[1]]
 
     return wrapper
 
