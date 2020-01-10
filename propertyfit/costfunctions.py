@@ -218,7 +218,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         if ip < constraints.nparametersq:
             test_charge[:] = 0.
             test_charge[ip] = h
-            charges = constraints.expand_charges(test_charge)
+            charges = constraints.expand_charges_for_fdiff(test_charge)
             mask = charges != 0.
             j = 0.0
             for idx, s in enumerate(structures):

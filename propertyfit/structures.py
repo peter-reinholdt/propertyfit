@@ -398,6 +398,24 @@ class constraints(object):
                 charge_out[idx] = qlast
         return charge_out
 
+    def expand_charges_for_fdiff(self, parameters):
+        # for difference charge, qtot = 0
+        qtot = 0.
+        charge_out = np.zeros(self.natoms, dtype=np.float64)
+        pcounter = 0
+        for frag in self.fragments:
+            qcur = 0.0
+            for sym in frag.fullsymmetries[:-1]:
+                for idx in sym:
+                    charge_out[idx] = parameters[pcounter]
+                    qcur += charge_out[idx]
+                pcounter += 1
+            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
+            qlast = (qtot - qcur) / len(frag.fullsymmetries[-1])
+            for idx in frag.fullsymmetries[-1]:
+                charge_out[idx] = qlast
+        return charge_out
+
     def expand_dipoles(self, parameters):
         dipoles_out = np.zeros((self.natoms, 3), dtype=np.float64)
         pcounter = 0
