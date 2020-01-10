@@ -427,6 +427,24 @@ class constraints(object):
                 pcounter += 5
         return quadrupoles_out
 
+    def rotate_dipoles_to_global_axis(self, dipoles, coordinates):
+        R = np.zeros((self.natoms, 3, 3))
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                for idx in sym:
+                    R[idx, :, :] = frag.get_rotation_matrix(idx, coordinates)
+        dipoles = np.einsum('aij,aj->ai', R, dipoles)
+        return dipoles
+
+    def rotate_quadrupoles_to_global_axis(self, quadrupoles, coordinates):
+        R = np.zeros((self.natoms, 3, 3))
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                for idx in sym:
+                    R[idx, :, :] = frag.get_rotation_matrix(idx, coordinates)
+        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
+        return quadrupoles
+
     def rotate_multipoles_to_global_axis(self, dipoles, quadrupoles, coordinates):
         R = np.zeros((self.natoms, 3, 3))
         for frag in self.fragments:

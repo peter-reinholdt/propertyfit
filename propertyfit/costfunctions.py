@@ -192,6 +192,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         weights[:] = 1.0 / nstructures
 
     contributions = np.zeros(nstructures)
+    diff_esps = []
     for idx, s in enumerate(structures):
         test_esp = np.zeros(s.esp_grid_qm.shape)
         #minus sign due to potential definition
@@ -200,12 +201,50 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         test_esp += -field(s.coordinates, s.grid, 0, charges, 0, idx)
         test_esp += -field(s.coordinates, s.grid, 1, dipoles, 0, idx)
         test_esp += -field(s.coordinates, s.grid, 2, quadrupoles, 0, idx)
+        diff_esps.append(test_esp - s.esp_grid_qm)
         contribution = np.sum((test_esp - s.esp_grid_qm)**2)
         contributions[idx] = contribution * weights[idx]
-    if filter_outliers:
-        median = np.median(contributions)
-        filtered = contributions > median * 100.
-        res = np.sum(contributions[~filtered])
-    else:
-        res = np.sum(contributions)
-    return res
+    res = np.sum(contributions)
+
+    # get jacobian
+    jac = np.zeros(parameters.shape)
+    h = 1e-6
+
+    test_charge = np.zeros(constraints.nparametersq)
+    test_dipole = np.zeros(constraints.nparametersmu)
+    test_quadrupole = np.zeros(constraints.nparameterstheta)
+    for ip in range(len(parameters)):
+        if ip < constraints.nparametersq:
+            test_charge[:] = 0.
+            test_charge[ip] = h
+            #todo: mask out zero elements
+            charges = constraints.expand_charges(test_charge)
+            mask = charges != 0.
+            j = 0.0
+            for idx, s in enumerate(structures):
+                esp = -field(s.coordinates[mask, :], s.grid, 0, charges[mask], 0, (ip, idx))
+                j += weights[idx] * (np.sum((diff_esps[idx] + esp)**2) - np.sum((diff_esps[idx] - esp)**2))
+            jac[ip] = j / (2 * h)
+        elif ip < constraints.nparametersq + constraints.nparametersmu:
+            test_dipole[:] = 0.
+            test_dipole[ip - constraints.nparametersq] = h
+            dipoles_local = constraints.expand_dipoles(test_dipole)
+            j = 0.0
+            for idx, s in enumerate(structures):
+                dipoles = constraints.rotate_dipoles_to_global_axis(dipoles_local, s.coordinates)
+                mask = np.prod(dipoles != 0., axis=1, dtype=bool)
+                esp = -field(s.coordinates[mask, :], s.grid, 1, dipoles[mask, :], 0, (ip, idx))
+                j += weights[idx] * (np.sum((diff_esps[idx] + esp)**2) - np.sum((diff_esps[idx] - esp)**2))
+            jac[ip] = j / (2 * h)
+        elif ip < constraints.nparametersq + constraints.nparametersmu + constraints.nparameterstheta:
+            test_quadrupole[:] = 0.
+            test_quadrupole[ip - constraints.nparametersq - constraints.nparametersmu] = h
+            quadrupoles_local = constraints.expand_quadrupoles(test_quadrupole)
+            j = 0.0
+            for idx, s in enumerate(structures):
+                quadrupoles = constraints.rotate_quadrupoles_to_global_axis(quadrupoles_local, s.coordinates)
+                mask = np.prod(quadrupoles != 0., axis=(1, 2), dtype=bool)
+                esp = -field(s.coordinates[mask, :], s.grid, 2, quadrupoles[mask, :, :], 0, (ip, idx))
+                j += weights[idx] * (np.sum((diff_esps[idx] + esp)**2) - np.sum((diff_esps[idx] - esp)**2))
+            jac[ip] = j / (2 * h)
+    return res, jac

@@ -58,7 +58,7 @@ quadrupole_startguess = np.zeros(con.nparameterstheta, dtype=np.float64)
 parameters = np.hstack([con.q0, dipole_startguess, quadrupole_startguess])
 
 fun = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
-res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, options={'maxiter': 1000})
+res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter': 1000})
 
 print(res)
 print()
