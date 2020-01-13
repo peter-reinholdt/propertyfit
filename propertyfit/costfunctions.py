@@ -259,7 +259,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
             test_dipole[:] = 0.
             test_dipole[ip - constraints.nparametersq] = h
             dipoles_local = constraints.expand_dipoles(test_dipole)
-            mask = np.any(dipoles != 0., axis=1)
+            mask = np.any(dipoles_local != 0., axis=1)
             j = 0.0
             for idx, s in enumerate(structures):
                 dipoles = constraints.rotate_dipoles_to_global_axis(dipoles_local, s)
@@ -270,7 +270,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
             test_quadrupole[:] = 0.
             test_quadrupole[ip - constraints.nparametersq - constraints.nparametersmu] = h
             quadrupoles_local = constraints.expand_quadrupoles(test_quadrupole)
-            mask = np.any(quadrupoles != 0., axis=(1, 2))
+            mask = np.any(quadrupoles_local != 0., axis=(1, 2))
             j = 0.0
             for idx, s in enumerate(structures):
                 quadrupoles = constraints.rotate_quadrupoles_to_global_axis(quadrupoles_local, s)
@@ -285,4 +285,6 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         res += res_restraint
         jac += jac_restraint
 
-    return res, jac
+    # scale by large number to make optimizer work better...
+    # or "units in (mH)**2"
+    return 1e6 * res, 1e6 * jac

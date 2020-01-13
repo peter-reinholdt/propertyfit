@@ -25,7 +25,11 @@ parser.add_argument('--topology',
 #parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
-parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
+parser.add_argument('--restraint',
+                    dest='restraint',
+                    type=float,
+                    default=0.0,
+                    help='Strength of harmonic restraint towards charges from topology file')
 
 args = parser.parse_args()
 #create constraints object
@@ -63,6 +67,12 @@ res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, opti
 
 print(res)
 print()
+con = constraints(args.top)
+con.restraint = 0.
+fun_EP = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
+print("fun EP:", fun_EP(res.x)[0])
+print("fun restraint:", fun(res.x)[0] - fun_EP(res.x)[0])
+print("fun full:", fun(res.x)[0])
 print("=" * 85)
 print()
 print("Final result:")
