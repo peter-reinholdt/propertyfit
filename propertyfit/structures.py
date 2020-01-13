@@ -245,7 +245,12 @@ class fragment(object):
         self.startguess_polarizability = fragdict["startguess_polarizability"]
         self.axis_types = fragdict["axis_types"]
         self.axis_indices = np.array(fragdict["axis_atomindices"], dtype=np.int64) - 1
+        self.axis_atomnames = fragdict["axis_atomnames"]
+
+        self.idx2atomname = {idx:atomname for (idx, atomname) in zip(self.atomindices, self.atomnames)}
         self.idx2axis_type = {idx: axistype for (idx, axistype) in zip(self.atomindices, self.axis_types)}
+        self.idx2axis_atomnames = {idx:atomnames for (idx, atomnames) in zip(self.atomindices, self.axis_atomnames)}
+
         self.idx2axis_indices = {
             idx: axis_indices
             for (idx, axis_indices) in zip(self.atomindices, self.axis_indices)
