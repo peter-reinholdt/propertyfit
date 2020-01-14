@@ -466,7 +466,7 @@ class constraints(object):
             for sym in frag.fullsymmetries:
                 for idx in sym:
                     R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
-        quadrupoles = np.einsum('aij,ajk,alk->ali', R, quadrupoles, R)
+        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
         return quadrupoles
 
     def rotate_multipoles_to_global_axis(self, dipoles, quadrupoles, structure):
@@ -476,5 +476,5 @@ class constraints(object):
                 for idx in sym:
                     R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
         dipoles = np.einsum('aij,aj->ai', R, dipoles)
-        quadrupoles = np.einsum('aij,ajk,alk->ali', R, quadrupoles, R)
+        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
         return dipoles, quadrupoles
