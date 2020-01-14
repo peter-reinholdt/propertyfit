@@ -188,8 +188,8 @@
                 "zthenx",
                 "zthenx",
                 "zthenx",
-                "zthenx",
-                "zthenx",
+                "bisector",
+                "bisector",
                 "zthenx",
                 "zthenx",
                 "zthenx",
@@ -240,7 +240,7 @@
                 ],
                 [
                     "C",
-                    "CA"
+                    "O2"
                 ],
                 [
                     "CG2",
@@ -306,7 +306,7 @@
                 ],
                 [
                     12,
-                    9
+                    21
                 ],
                 [
                     14,
