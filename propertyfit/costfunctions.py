@@ -168,10 +168,12 @@ def multipole_restraint_contribution_res(parameters, constraints):
     ref_charges = constraints.expand_charges(constraints.q0)
     dipoles_local = constraints.expand_dipoles(dipole_parameters)
     quadrupoles_local = constraints.expand_quadrupoles(quadrupole_parameters)
+    ref_dipoles = constraints.expand_dipoles(constraints.mu0)
+    ref_quadrupoles = constraints.expand_quadrupoles(constraints.theta0)
     # charge
     res = np.sum((charges - ref_charges)**2)
-    res += np.sum(dipoles_local**2)
-    res += np.sum(quadrupoles_local**2)
+    res += np.sum((dipoles_local - ref_dipoles)**2)
+    res += np.sum((quadrupoles_local - ref_quadrupoles)**2)
     res *= constraints.restraint
     return res
 
