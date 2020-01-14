@@ -242,16 +242,14 @@ class fragment(object):
         self.lastidxnsym = 1  #standard, no symmetry on last atom
         self.lastidxsym = [self.lastidx]
         self.startguess_charge = fragdict["startguess_charge"]
-        self.startguess_dipole = fragdict["startguess_dipole"]
-        self.startguess_quadrupole = fragdict["startguess_quadrupole"]
         self.startguess_polarizability = fragdict["startguess_polarizability"]
         self.axis_types = fragdict["axis_types"]
         self.axis_indices = np.array(fragdict["axis_atomindices"], dtype=np.int64) - 1
         self.axis_atomnames = fragdict["axis_atomnames"]
 
-        self.idx2atomname = {idx: atomname for (idx, atomname) in zip(self.atomindices, self.atomnames)}
+        self.idx2atomname = {idx:atomname for (idx, atomname) in zip(self.atomindices, self.atomnames)}
         self.idx2axis_type = {idx: axistype for (idx, axistype) in zip(self.atomindices, self.axis_types)}
-        self.idx2axis_atomnames = {idx: atomnames for (idx, atomnames) in zip(self.atomindices, self.axis_atomnames)}
+        self.idx2axis_atomnames = {idx:atomnames for (idx, atomnames) in zip(self.atomindices, self.axis_atomnames)}
 
         self.idx2axis_indices = {
             idx: axis_indices
@@ -325,12 +323,9 @@ class constraints(object):
         self.nparametersq = 0
         self.nparametersmu = 0
         self.nparameterstheta = 0
-        self.nparametersalpha = 0
         self.nparametersa = 0
         q_red = []
-        mu_red = []
-        theta_red = []
-        alpha_red = []
+        a_red = []
         indices = []
 
         for i in range(self.nfragments):
@@ -338,14 +333,11 @@ class constraints(object):
             self.qtot += frag.qtot
             self.natoms += frag.natoms
             self.nparametersq += frag.nparametersq
-            self.nparametersa += frag.nparametersa
+            self.nparametersa += frag.nparametersa  #isotropic polarizability
             self.nparametersmu += frag.nparametersa * 3
             self.nparameterstheta += frag.nparametersa * 5
-            self.nparametersalpha += frag.nparametersa * 6
-            q_red += frag.startguess_charge
-            mu_red += frag.startguess_dipole
-            theta_red += frag.startguess_quadrupole
-            alpha_red += frag.startguess_polarizability
+            q_red += frag.startguess_charge  #redundant start guesses
+            a_red += frag.startguess_polarizability  #redundant start guesses
             self.fragments.append(frag)
 
         #get non-redundant start guess
@@ -366,38 +358,23 @@ class constraints(object):
         for i, index in enumerate(indices):
             self.q0[i] = q_red[index]
         #same, but for polarizability.
-        #there is no constraint on the total dipole, quadrupole, or polarizability, just do the symmetry part
-        self.mu0 = np.zeros(self.nparametersmu, dtype=np.float64)
-        self.theta0 = np.zeros(self.nparameterstheta, dtype=np.float64)
-        self.alpha0 = np.zeros(self.nparametersalpha, dtype=np.float64)
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                dipole = np.zeros(3, dtype=np.float64)
-                for member in sym:
-                    dipole += mu_red[member]
-                dipole /= len(sym)
-                self.mu0[pcounter:pcounter + 3] = np.array([dipole[0], dipole[1], dipole[2]])
-                pcounter += 3
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                quadrupole = np.zeros((3, 3), dtype=np.float64)
-                for member in sym:
-                    quadrupole += theta_red[member]
-                quadrupole /= len(sym)
-                self.theta0[pcounter:pcounter + 5] = np.array([quadrupole[0,0], quadrupole[0,1], quadrupole[0,2], quadrupole[1,1], quadrupole[1,2]])
-#                self.theta0[pcounter:pcounter + 3] = np.array([quadrupole[0,0], quadrupole[0,2], quadrupole[1,1]])
-                pcounter += 3
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                polarizability = np.zeros((3, 3), dtype=np.float64)
-                for member in sym:
-                    polarizability += alpha_red[member]
-                polarizability /= len(sym)
-                self.alpha0[pcounter:pcounter + 6] = np.array([polarizability[0,0], polarizability[0,1], polarizability[0,2], polarizability[1,1], polarizability[1,2], polarizability[2,2]])
-                pcounter += 6
+        #there is no constraint on the total polarizability, just do the symmetry part
+        indices = []
+        if a_red:
+            for frag in self.fragments:
+                for sym in frag.fullsymmetries[:]:
+                    indices.append(sym[0])
+                    a_sym = 0.0
+                    for member in sym:
+                        a_sym += a_red[member]
+                    a_sym = a_sym / len(sym)
+                    for member in sym:
+                        a_red[member] = a_sym
+
+            a_red = np.array(a_red, dtype=np.float64)
+            self.a0 = np.zeros(self.nparametersa, dtype=np.float64)
+            for i, index in enumerate(indices):
+                self.a0[i] = a_red[index]
 
     def expand_a(self, acompressed):
         aout = np.zeros((self.natoms, 3, 3), dtype=np.float64)
@@ -452,7 +429,7 @@ class constraints(object):
             for sym in frag.fullsymmetries:
                 dipole = parameters[pcounter:pcounter + 3]
                 for idx in sym:
-                    dipoles_out[idx, :] = np.array([dipole[0], dipole[1], dipole[2]])
+                    dipoles_out[idx, :] = dipole
                 pcounter += 3
         return dipoles_out
 
@@ -489,7 +466,7 @@ class constraints(object):
             for sym in frag.fullsymmetries:
                 for idx in sym:
                     R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
-        quadrupoles = np.einsum('aij,ajk,alk->ali', R, quadrupoles, R)
+        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
         return quadrupoles
 
     def rotate_multipoles_to_global_axis(self, dipoles, quadrupoles, structure):
@@ -499,5 +476,5 @@ class constraints(object):
                 for idx in sym:
                     R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
         dipoles = np.einsum('aij,aj->ai', R, dipoles)
-        quadrupoles = np.einsum('aij,ajk,alk->ali', R, quadrupoles, R)
+        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
         return dipoles, quadrupoles
