@@ -1,34 +1,43 @@
 #!/usr/bin/env python
 
 import sys
+import pathlib
+import warnings
 import propertyfit
 from propertyfit.structures import constraints
 
 with open('results.csv', 'w') as csvfile:
     csvfile.write('resname,atomname,axis_type,axis_atomnames[0],axis_atomnames[1],charge,dipole[0],dipole[1],dipole[2],quadrupole[0],quadrupole[1],quadrupole[2],quadrupole[3],quadrupole[4],quadrupole[5]\n')
     for filename in sys.argv[1:]:
+        path = pathlib.Path(filename)
+        if not path.stat().st_size > 0:
+            warnings.warn(f'Skipping empty file {filename}')
+            continue
         section = ''
         charges = []
         dipoles = []
         quadrupoles = []
-        resname = filename.split("_")[1]
-        restype = "_".join(filename.split("_")[2:4])
+        stem = path.stem
+        resname = stem.split("_")[1]
+        restype = "_".join(stem.split("_")[2:4])
         name = '_'.join([resname, restype])
         if restype == "methyl_methyl":
             prefix = ''
             central_fragment = 1
         elif restype == "charged_methyl":
-            restype = 'N'
+            prefix = 'N'
             central_fragment = 0
         elif restype == "neutral_methyl":
-            restype = 'n'
+            prefix = 'n'
             central_fragment = 0
         elif restype == "methyl_charged":
-            restype = 'C'
+            prefix = 'C'
             central_fragment = 1
         elif restype == "methyl_neutral":
-            restype = 'c'
+            prefix = 'c'
             central_fragment = 1
+        else:
+            raise NotImplementedError(restype)
         con = constraints(f"constraints/{name}.constraints.new")
         with open(filename, 'r') as resultfile:
             for line in resultfile:
