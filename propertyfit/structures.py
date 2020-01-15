@@ -340,8 +340,8 @@ class constraints(object):
             self.natoms += frag.natoms
             self.nparametersq += frag.nparametersq
             self.nparametersa += frag.nparametersa
-            self.nparametersmu += frag.nparametersa * 2
-            self.nparameterstheta += frag.nparametersa * 3
+            self.nparametersmu += frag.nparametersa * 3
+            self.nparameterstheta += frag.nparametersa * 5
             self.nparametersalpha += frag.nparametersa * 6
             q_red += frag.startguess_charge
             mu_red += frag.startguess_dipole
@@ -378,9 +378,9 @@ class constraints(object):
                 for member in sym:
                     dipole += mu_red[member]
                 dipole /= len(sym)
-#                self.mu0[pcounter:pcounter + 3] = np.array([dipole[0], dipole[1], dipole[2]])
-                self.mu0[pcounter:pcounter + 2] = np.array([dipole[0], dipole[2]])
-                pcounter += 2
+                self.mu0[pcounter:pcounter + 3] = np.array([dipole[0], dipole[1], dipole[2]])
+#                self.mu0[pcounter:pcounter + 2] = np.array([dipole[0], dipole[2]])
+                pcounter += 3
         pcounter = 0
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
@@ -388,9 +388,9 @@ class constraints(object):
                 for member in sym:
                     quadrupole += theta_red[member]
                 quadrupole /= len(sym)
-#                self.theta0[pcounter:pcounter + 5] = np.array([quadrupole[0,0], quadrupole[0,1], quadrupole[0,2], quadrupole[1,1], quadrupole[1,2]])
-                self.theta0[pcounter:pcounter + 3] = np.array([quadrupole[0,0], quadrupole[0,2], quadrupole[1,1]])
-                pcounter += 3
+                self.theta0[pcounter:pcounter + 5] = np.array([quadrupole[0,0], quadrupole[0,1], quadrupole[0,2], quadrupole[1,1], quadrupole[1,2]])
+#                self.theta0[pcounter:pcounter + 3] = np.array([quadrupole[0,0], quadrupole[0,2], quadrupole[1,1]])
+                pcounter += 5
         pcounter = 0
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
@@ -452,10 +452,11 @@ class constraints(object):
         pcounter = 0
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
-                dipole = parameters[pcounter:pcounter + 2]
                 for idx in sym:
-                    dipoles_out[idx, :] = [dipole[0], 0, dipole[1]]
-                pcounter += 2
+                    dipoles_out[idx, 0] = parameters[pcounter]
+                    dipoles_out[idx, 1] = parameters[pcounter+1]
+                    dipoles_out[idx, 2] = parameters[pcounter+2]
+                pcounter += 3
         return dipoles_out
 
     def expand_quadrupoles(self, parameters):
@@ -466,14 +467,14 @@ class constraints(object):
                 # parameters are in order xx xy xz yy yz (get zz from trace condition)
                 quadrupole = np.zeros((3, 3))
                 quadrupole[0, 0] = parameters[pcounter]
-#                quadrupole[0, 1] = quadrupole[1, 0] = parameters[pcounter + 1]
-                quadrupole[0, 2] = quadrupole[2, 0] = parameters[pcounter + 1]
-                quadrupole[1, 1] = parameters[pcounter + 2]
-#                quadrupole[1, 2] = quadrupole[2, 1] = parameters[pcounter + 4]
+                quadrupole[0, 1] = quadrupole[1, 0] = parameters[pcounter + 1]
+                quadrupole[0, 2] = quadrupole[2, 0] = parameters[pcounter + 2]
+                quadrupole[1, 1] = parameters[pcounter + 3]
+                quadrupole[1, 2] = quadrupole[2, 1] = parameters[pcounter + 4]
                 quadrupole[2, 2] = -(quadrupole[0, 0] + quadrupole[1, 1])
                 for idx in sym:
                     quadrupoles_out[idx, :, :] = quadrupole
-                pcounter += 3
+                pcounter += 5
         return quadrupoles_out
 
     def rotate_dipoles_to_global_axis(self, dipoles, structure):
