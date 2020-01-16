@@ -15,9 +15,7 @@ install:
   - conda info -a
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
-  - conda install numpy scipy pytest numba sh
-  - conda install -c theochem horton
-  - conda install pytest-cov coveralls
+  - conda install numpy scipy pytest numba sh h5py pytest-cov coveralls
   
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
