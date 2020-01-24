@@ -55,7 +55,8 @@ def zthenx(point1, point2, point3):
 
 
 def triple(A, B, C):
-    return np.dot(A, np.cross(B,C))
+    return np.dot(A, np.cross(B, C))
+
 
 def normvec(A, B):
     AB = A - B
@@ -104,7 +105,7 @@ def internal_two_neighbors(A, B1, B2):
     # example: ether oxygen, hydroxyl oxygen
     z = np.cross(normvec(A, B1), normvec(A, B2))
     z = z / np.linalg.norm(z)
-    y = np.cross(z, np.cross(normvec(B1,A)+normvec(B2,A), z))
+    y = np.cross(z, np.cross(normvec(B1, A) + normvec(B2, A), z))
     y = y / np.linalg.norm(y)
     x = np.cross(y, z)
     return np.vstack([x, y, z]).T
@@ -125,18 +126,20 @@ def terminal_three_adjacent_neighbors(A, B1, B2, B3, B4):
 def terminal_two_adjacent_neighbors(A, B1, B2, B3):
     # example: aromatic hydrogen/halogen, carbonyl oxygen, amide hydrogen
     z = normvec(B1, A)
-    y = np.cross(z, np.cross(np.cross(normvec(B2,A), normvec(B3,A)),z))
+    y = np.cross(z, np.cross(np.cross(normvec(B2, A), normvec(B3, A)), z))
     y = y / np.linalg.norm(y)
-    if np.dot(normvec(A,B1)+normvec(B2,B1)+normvec(B3,B1), np.cross(z, np.cross(np.cross(normvec(B2,A),normvec(B3,A)),z))) > 0:
+    if np.dot(
+            normvec(A, B1) + normvec(B2, B1) + normvec(B3, B1),
+            np.cross(z, np.cross(np.cross(normvec(B2, A), normvec(B3, A)), z))) > 0:
         y *= -1
-    if np.dot(np.cross(y,z), normvec(A,B2)) > 0:
-        x = np.cross(y,z)
+    if np.dot(np.cross(y, z), normvec(A, B2)) > 0:
+        x = np.cross(y, z)
     else:
-        x = -np.cross(y,z)
+        x = -np.cross(y, z)
     return np.vstack([x, y, z]).T
 
 
-def terminal_one_adjacent_neigbor(A, B1, B2):
+def terminal_one_adjacent_neighbor(A, B1, B2):
     # example: hydroxyl H
     z = normvec(B1, A)
     y = np.cross(z, normvec(B2, B1))
