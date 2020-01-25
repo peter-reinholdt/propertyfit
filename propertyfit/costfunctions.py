@@ -230,9 +230,9 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         test_esp = np.zeros(s.esp_grid_qm.shape)
         #minus sign due to potential definition
         dipoles, quadrupoles = constraints.rotate_multipoles_to_global_axis(dipoles_local, quadrupoles_local, s)
-        test_esp += -field(s.coordinates, s.grid, 0, charges, 0, idx)
-        test_esp += -field(s.coordinates, s.grid, 1, dipoles, 0, idx)
-        test_esp += -field(s.coordinates, s.grid, 2, quadrupoles, 0, idx)
+        test_esp += -field(s, 0, charges, 0, idx)
+        test_esp += -field(s, 1, dipoles, 0, idx)
+        test_esp += -field(s, 2, quadrupoles, 0, idx)
         diff_esps.append(test_esp - s.esp_grid_qm)
         contribution = np.average((test_esp - s.esp_grid_qm)**2)
         contributions[idx] = contribution * weights[idx]
