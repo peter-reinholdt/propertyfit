@@ -52,13 +52,20 @@ if args.h5_filelist:
 if len(structures) == 0:
     raise ValueError('Please provide electric potentials via either the --h5-files or --h5-file-list options.')
 
+
+
 if args.weights:
     weights = np.loadtxt(args.weights)
 else:
     weights = None
 
 con.restraint = args.restraint
-parameters = np.hstack([con.q0, con.mu0, con.theta0])
+parameters = con.get_multipole_parameter_vector(optimize_charges=True,
+                                                optimize_dipoles=True,
+                                                optimize_quadrupoles=True)
+
+for s in structures:
+    s.get_rotation_matrices(con)
 
 fun = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
 res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter': 1000})
@@ -76,20 +83,16 @@ print()
 print("Final result:")
 print("Charges:")
 print("{:>6}   {:<12}".format("Index", "Charge"))
-for i, charge in enumerate(con.expand_charges(res.x[0:con.nparametersq])):
+charges, dipoles_local, quadrupoles_local = con.expand_parameter_vector(res.x)
+for i, charge in enumerate(charges):
     print(f'{i:>6}: {charge: 12.10f}')
 print()
 print("Dipoles (in local axes):")
 print("{:>6}   {:<13} {:<13} {:<13}".format("Index", "x", "y", "z"))
-for i, dipole in enumerate(
-        con.expand_dipoles(res.x[con.nparametersq:con.nparametersq + con.nparametersmu]).reshape(-1, 3)):
+for i, dipole in enumerate(dipoles_local):
     print(f'{i:>6}: {dipole[0]: 12.10f} {dipole[1]: 12.10f} {dipole[2]: 12.10f}')
 print()
 print("Quadrupoles (in local axes):")
 print("{:>6}   {:<13} {:<13} {:<13} {:<13} {:<13} {:<13}".format("Index", "xx", "xy", "xz", "yy", "yz", "zz"))
-for i, quadrupole in enumerate(
-        con.expand_quadrupoles(res.x[con.nparametersq + con.nparametersmu:con.nparametersq + con.nparametersmu +
-                                     con.nparameterstheta]).reshape(-1, 3, 3)):
-    print(
-        f'{i:>6}: {quadrupole[0,0]: 12.10f} {quadrupole[0,1]: 12.10f} {quadrupole[0,2]: 12.10f} {quadrupole[1,1]: 12.10f} {quadrupole[1,2]: 12.10f} {quadrupole[2,2]: 12.10f}'
-    )
+for i, quadrupole in enumerate(quadrupoles_local):
+    print(f'{i:>6}: {quadrupole[0,0]: 12.10f} {quadrupole[0,1]: 12.10f} {quadrupole[0,2]: 12.10f} {quadrupole[1,1]: 12.10f} {quadrupole[1,2]: 12.10f} {quadrupole[2,2]: 12.10f}')
