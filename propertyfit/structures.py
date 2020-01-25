@@ -348,18 +348,22 @@ class constraints(object):
         self.startguess_charge_redundant = []
         self.startguess_dipole_redundant = []
         self.startguess_quadrupole_redundant = []
+        self.atomnames = []
         self.axis_types = []
         self.axis_atomindices = []
+        self.axis_atomnames = []
         self.axis_number_of_symmetric = []
         self.qtot = 0.
         for frag in self.fragments:
             self.natoms += frag.natoms
             self.qtot += frag.qtot
+            self.atomnames += frag.atomnames
             self.startguess_charge_redundant += frag.startguess_charge
             self.startguess_dipole_redundant += frag.startguess_dipole
             self.startguess_quadrupole_redundant += frag.startguess_quadrupole
             self.axis_types += frag.axis_types
             self.axis_atomindices += list(frag.axis_atomindices)
+            self.axis_atomnames += frag.axis_atomnames
             self.axis_number_of_symmetric += frag.axis_number_of_symmetric
         self.startguess_charge_redundant = np.array(self.startguess_charge_redundant)
         self.startguess_dipole_redundant = np.array(self.startguess_dipole_redundant)
