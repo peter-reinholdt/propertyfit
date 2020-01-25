@@ -4,13 +4,15 @@
 from __future__ import division, print_function
 import numpy as np
 import warnings
+from qcelemental import periodictable, vdw_radii
+from qcelemental.constants import bohr2angstrom
 try:
     import horton
 except:
     pass
     #warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
-from .utilities import load_qmfiles, number2name, name2number, angstrom2bohr, bohr2angstrom, load_json, vdw_radii, load_geometry_from_molden, memoize_on_first_arg_method
+from .utilities import load_qmfiles, load_json, load_geometry_from_molden, memoize_on_first_arg_method
 from .rotations import zthenx, bisector
 from numba import jit
 import os
@@ -54,14 +56,14 @@ class structure(object):
         #   When we use software to visualize this xyz file, only data in the first 4 columns is read by the software,
         #   though sometimes the 5th column can also be recognized and presents in labels (Molden).
         esp_data = np.loadtxt(terachem_scrdir + '/esp.xyz', skiprows=2, dtype=str)[:, 1:5].astype(np.float64)
-        self.grid = esp_data[:, 0:3] * angstrom2bohr
+        self.grid = esp_data[:, 0:3] / bohr2angstrom
         self.esp_grid_qm = esp_data[:, 3]  #quite sure this is in hartree
         self.ngridpoints = self.esp_grid_qm.shape[0]
         #we assume xyz is in angstrom and convert to bohr
         molden_filename = terachem_scrdir + '/' + [name
                                                    for name in os.listdir(terachem_scrdir) if '.molden' in name][0]
         self.coordinates, elements = load_geometry_from_molden(molden_filename)
-        self.numbers = np.array([name2number[el] for el in elements], dtype=np.int64)
+        self.numbers = np.array([periodictable.to_atomic_number[el] for el in elements], dtype=np.int64)
         self.natoms = self.coordinates.shape[0]
 
     def load_esp_orca(self, gbw_file, density_file, field=np.zeros(3, dtype=np.float64)):
@@ -79,7 +81,7 @@ class structure(object):
         sh.orca_2mkl(gbw_base)
         sh.orca_2mkl(gbw_base, "-molden")
         self.coordinates, elements = load_geometry_from_molden(gbw_base + ".molden.input")
-        self.numbers = np.array([name2number[el] for el in elements], dtype=np.int64)
+        self.numbers = np.array([periodictable.to_atomic_number[el] for el in elements], dtype=np.int64)
         self.natoms = len(self.numbers)
 
         #1) Generate grid and write it out to file
@@ -116,7 +118,7 @@ class structure(object):
         """
         points = np.zeros(self.natoms, dtype=np.int64)
         for i in range(self.natoms):
-            points[i] = np.int(pointdensity * 4 * np.pi * radius_scale * vdw_radii[self.numbers[i]])
+            points[i] = np.int(pointdensity * 4 * np.pi * radius_scale * vdw_radii.get(self.numbers[i]))
         # grid = [x, y, z]
         grid = np.zeros((np.sum(points), 3), dtype=np.float64)
         idx = 0
@@ -131,9 +133,9 @@ class structure(object):
                 else:
                     #phi_k  phi_{k-1}
                     phi = ((phi + 3.6 / np.sqrt(N * (1 - h**2)))) % (2 * np.pi)
-                x = radius_scale * vdw_radii[self.numbers[i]] * np.cos(phi) * np.sin(theta)
-                y = radius_scale * vdw_radii[self.numbers[i]] * np.sin(phi) * np.sin(theta)
-                z = radius_scale * vdw_radii[self.numbers[i]] * np.cos(theta)
+                x = radius_scale * vdw_radii.get(self.numbers[i]) * np.cos(phi) * np.sin(theta)
+                y = radius_scale * vdw_radii.get(self.numbers[i]) * np.sin(phi) * np.sin(theta)
+                z = radius_scale * vdw_radii.get(self.numbers[i]) * np.cos(theta)
                 grid[idx, 0] = x + self.coordinates[i, 0]
                 grid[idx, 1] = y + self.coordinates[i, 1]
                 grid[idx, 2] = z + self.coordinates[i, 2]
@@ -150,7 +152,7 @@ class structure(object):
         for i in range(self.natoms):
             for j in range(grid.shape[0]):
                 r = dist(grid[j, :], self.coordinates[i, :])
-                if r < radius_scale * 0.99 * vdw_radii[self.numbers[i]]:
+                if r < radius_scale * 0.99 * vdw_radii.get(self.numbers[i]):
                     not_near_atom[j] = False
         grid = grid[not_near_atom]
 
@@ -190,7 +192,7 @@ class structure(object):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.natoms))
             for i in range(self.natoms):
-                atomname = number2name[self.numbers[i]]
+                atomname = periodictable.to_symbol[self.numbers[i]]
                 f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i, 0] * bohr2angstrom,
                                                                      self.coordinates[i, 1] * bohr2angstrom,
                                                                      self.coordinates[i, 2] * bohr2angstrom))
