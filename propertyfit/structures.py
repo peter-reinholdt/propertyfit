@@ -9,11 +9,11 @@ import sh
 import h5py
 import numpy as np
 
-from qcelemental import periodictable, vdw_radii
-from qcelemental.constants import bohr2angstrom
+from qcelemental import periodictable, vdwradii
+from qcelemental import constants
 
-import .rotations
-from .utilities import load_qmfiles, load_json, load_geometry_from_molden, memoize_on_first_arg_method, dipole_axis_nonzero, quadrupole_axis_nonzero
+from . import rotations
+from .utilities import load_qmfiles, load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero
 from .potentials import T0, T1, T2
 
 try:
@@ -36,9 +36,9 @@ class structure(object):
         self.vdw_grid_pointdensity = vdw_grid_pointdensity
         self.vdw_grid_nsurfaces = vdw_grid_nsurfaces
         self.dm = None
-        self.T0 = None
-        self.T1 = None
-        self.T2 = None
+        self._T0 = None
+        self._T1 = None
+        self._T2 = None
         self.rotation_matrices = None
 
     def load_qm(self, filename, field=np.zeros(3, dtype=np.float64)):
@@ -64,7 +64,7 @@ class structure(object):
         #   When we use software to visualize this xyz file, only data in the first 4 columns is read by the software,
         #   though sometimes the 5th column can also be recognized and presents in labels (Molden).
         esp_data = np.loadtxt(terachem_scrdir + '/esp.xyz', skiprows=2, dtype=str)[:, 1:5].astype(np.float64)
-        self.grid = esp_data[:, 0:3] / bohr2angstrom
+        self.grid = esp_data[:, 0:3] / constants.bohr2angstrom
         self.esp_grid_qm = esp_data[:, 3]  #quite sure this is in hartree
         self.ngridpoints = self.esp_grid_qm.shape[0]
         #we assume xyz is in angstrom and convert to bohr
@@ -186,9 +186,9 @@ class structure(object):
             print(len(s))
         self.grid = np.concatenate(surfaces)
         self.ngridpoints = len(self.grid)
-        self.T0 = None
-        self.T1 = None
-        self.T2 = None
+        self._T0 = None
+        self._T1 = None
+        self._T2 = None
 
     def compute_qm_esp(self):
         esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float),
@@ -204,18 +204,20 @@ class structure(object):
             f.write("{}\n\n".format(self.natoms))
             for i in range(self.natoms):
                 atomname = periodictable.to_symbol[self.numbers[i]]
-                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.coordinates[i, 0] * bohr2angstrom,
-                                                                     self.coordinates[i, 1] * bohr2angstrom,
-                                                                     self.coordinates[i, 2] * bohr2angstrom))
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(
+                    atomname, self.coordinates[i, 0] * constants.bohr2angstrom,
+                    self.coordinates[i, 1] * constants.bohr2angstrom,
+                    self.coordinates[i, 2] * constants.bohr2angstrom))
 
     def write_grid(self, filename):
         with open(filename, "w") as f:
             f.write("{}\n\n".format(self.ngridpoints))
             for i in range(self.ngridpoints):
                 atomname = 'H'
-                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname, self.grid[i, 0] * bohr2angstrom,
-                                                                     self.grid[i, 1] * bohr2angstrom,
-                                                                     self.grid[i, 2] * bohr2angstrom))
+                f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname,
+                                                                     self.grid[i, 0] * constants.bohr2angstrom,
+                                                                     self.grid[i, 1] * constants.bohr2angstrom,
+                                                                     self.grid[i, 2] * constants.bohr2angstrom))
 
     def save_h5(self, filename):
         f = h5py.File(filename, "w")
@@ -238,34 +240,33 @@ class structure(object):
         else:
             self.field = np.zeros(3, dtype=np.float64)
         f.close()
-    
+
     @property
     def T0(self):
-        if self.T0 is not None:
-            return self.T0
-        self.T0 = T0(self.coordinates, self.grid)
-        return self.T0
+        if self._T0 is not None:
+            return self._T0
+        self._T0 = T0(self.coordinates, self.grid)
+        return self._T0
 
     @property
     def T1(self):
-        if self.T1 is not None:
-            return self.T1
-        self.T1 = T1(self.coordinates, self.grid)
-        return self.T1
+        if self._T1 is not None:
+            return self._T1
+        self._T1 = T1(self.coordinates, self.grid)
+        return self._T1
 
     @property
     def T2(self):
-        if self.T2 is not None:
-            return self.T2
-        self.T2 = T2(self.coordinates, self.grid)
-        return self.T2
+        if self._T2 is not None:
+            return self._T2
+        self._T2 = T2(self.coordinates, self.grid)
+        return self._T2
 
-    def self.get_rotation_matrices(self, constraints):
+    def get_rotation_matrices(self, constraints):
         self.rotation_matrices = np.zeros((self.natoms, 3, 3), dtype=np.float64)
         for idx in range(self.natoms):
-            points = [self.coordinates[i, :] for i in [idx, *constraints.axis_indices[i]]]
+            points = [self.coordinates[i, :] for i in [idx, *constraints.axis_atomindices[idx]]]
             self.rotation_matrices[idx, :, :] = getattr(rotations, constraints.axis_types[idx])(*points)
-
 
 
 class fragment(object):
@@ -288,17 +289,10 @@ class fragment(object):
         self.startguess_quadrupole = fragdict["startguess_quadrupole"]
         self.startguess_polarizability = fragdict["startguess_polarizability"]
         self.axis_types = fragdict["axis_types"]
-        self.axis_indices = np.array(fragdict["axis_atomindices"], dtype=np.int64) - 1
+        self.axis_atomindices = [[idx - 1 for idx in axis_atomindices]
+                                 for axis_atomindices in fragdict["axis_atomindices"]]
         self.axis_atomnames = fragdict["axis_atomnames"]
-
-        self.idx2atomname = {idx: atomname for (idx, atomname) in zip(self.atomindices, self.atomnames)}
-        self.idx2axis_type = {idx: axistype for (idx, axistype) in zip(self.atomindices, self.axis_types)}
-        self.idx2axis_atomnames = {idx: atomnames for (idx, atomnames) in zip(self.atomindices, self.axis_atomnames)}
-
-        self.idx2axis_indices = {
-            idx: axis_indices
-            for (idx, axis_indices) in zip(self.atomindices, self.axis_indices)
-        }
+        self.axis_number_of_symmetric = fragdict["axis_number_of_symmetric"]
 
         for iloc, idx in enumerate(self.symmetryidx):
             for sym in self.symmetries:
@@ -339,14 +333,16 @@ class fragment(object):
         # the sum
         self.nparametersa = self.natoms - nsymp
 
+
 class constraints(object):
     def __init__(self, filename):
         data = load_json(filename)
         self.filename = filename
         self.name = data["name"]
         self.restraint = 0.0
-        self.fragments = [fragment(frag) for frag in data["fragments"]]
-        self.nfragments = len(fragments)
+        self.fragments = []
+        for fragdict in data["fragments"]:
+            self.fragments.append(fragment(fragdict))
         self.natoms = 0
 
         self.startguess_charge_redundant = []
@@ -355,130 +351,19 @@ class constraints(object):
         self.axis_types = []
         self.axis_atomindices = []
         self.axis_number_of_symmetric = []
-        for fragment in self.fragments:
-            self.natoms += fragment.natoms
-            self.startguess_charge_redundant += fragment.startguess_charge
-            self.startguess_dipole_redundant += fragment.startguess_dipole
-            self.startguess_quadrupole_redundant += fragment.startguess_quadrupole
-            self.axis_types += fragment.axis_types
-            self.axis_atomindices += list(fragment.axis_atomindices)
-            self.axis_number_of_symmetric += fragment.axis_number_of_symmetric
-        self.startguess_charge = np.array(startguess_charge)
-        self.startguess_dipole = np.array(startguess_dipole)
-        self.startguess_quadrupole = np.array(startguess_quadrupole)
-
-        #same, but for polarizability.
-        #there is no constraint on the total dipole, quadrupole, or polarizability, just do the symmetry part
-        self.mu0 = np.zeros(self.nparametersmu, dtype=np.float64)
-        self.theta0 = np.zeros(self.nparameterstheta, dtype=np.float64)
-        self.alpha0 = np.zeros(self.nparametersalpha, dtype=np.float64)
-        pcounter = 0
+        self.qtot = 0.
         for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                dipole = np.zeros(3, dtype=np.float64)
-                for member in sym:
-                    dipole += mu_red[member]
-                dipole /= len(sym)
-                self.mu0[pcounter:pcounter + 3] = np.array([dipole[0], dipole[1], dipole[2]])
-                #                self.mu0[pcounter:pcounter + 2] = np.array([dipole[0], dipole[2]])
-                pcounter += 3
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                quadrupole = np.zeros((3, 3), dtype=np.float64)
-                for member in sym:
-                    quadrupole += theta_red[member]
-                quadrupole /= len(sym)
-                self.theta0[pcounter:pcounter + 5] = np.array(
-                    [quadrupole[0, 0], quadrupole[0, 1], quadrupole[0, 2], quadrupole[1, 1], quadrupole[1, 2]])
-                #                self.theta0[pcounter:pcounter + 3] = np.array([quadrupole[0,0], quadrupole[0,2], quadrupole[1,1]])
-                pcounter += 5
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                polarizability = np.zeros((3, 3), dtype=np.float64)
-                for member in sym:
-                    polarizability += alpha_red[member]
-                polarizability /= len(sym)
-                self.alpha0[pcounter:pcounter + 6] = np.array([
-                    polarizability[0, 0], polarizability[0, 1], polarizability[0, 2], polarizability[1, 1],
-                    polarizability[1, 2], polarizability[2, 2]
-                ])
-                pcounter += 6
-
-    def expand_a(self, acompressed):
-        aout = np.zeros((self.natoms, 3, 3), dtype=np.float64)
-        pcounter = 0
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries[:]:
-                for idx in sym:
-                    aout[idx, 0, 0] = acompressed[pcounter]
-                    aout[idx, 1, 1] = acompressed[pcounter]
-                    aout[idx, 2, 2] = acompressed[pcounter]
-                pcounter += 1
-        return aout
-
-    def expand_charges(self, parameters):
-        charge_out = np.zeros(self.natoms, dtype=np.float64)
-        pcounter = 0
-        for frag in self.fragments:
-            qcur = 0.0
-            for sym in frag.fullsymmetries[:-1]:
-                for idx in sym:
-                    charge_out[idx] = parameters[pcounter]
-                    qcur += charge_out[idx]
-                pcounter += 1
-            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
-            qlast = (frag.qtot - qcur) / len(frag.fullsymmetries[-1])
-            for idx in frag.fullsymmetries[-1]:
-                charge_out[idx] = qlast
-        return charge_out
-
-    def expand_charges_for_fdiff(self, parameters):
-        # for difference charge, qtot = 0
-        qtot = 0.
-        charge_out = np.zeros(self.natoms, dtype=np.float64)
-        pcounter = 0
-        for frag in self.fragments:
-            qcur = 0.0
-            for sym in frag.fullsymmetries[:-1]:
-                for idx in sym:
-                    charge_out[idx] = parameters[pcounter]
-                    qcur += charge_out[idx]
-                pcounter += 1
-            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
-            qlast = (qtot - qcur) / len(frag.fullsymmetries[-1])
-            for idx in frag.fullsymmetries[-1]:
-                charge_out[idx] = qlast
-        return charge_out
-
-    def rotate_dipoles_to_global_axis(self, dipoles, structure):
-        R = np.zeros((self.natoms, 3, 3))
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                for idx in sym:
-                    R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
-        dipoles = np.einsum('aij,aj->ai', R, dipoles)
-        return dipoles
-
-    def rotate_quadrupoles_to_global_axis(self, quadrupoles, structure):
-        R = np.zeros((self.natoms, 3, 3))
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                for idx in sym:
-                    R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
-        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
-        return quadrupoles
-
-    def rotate_multipoles_to_global_axis(self, dipoles, quadrupoles, structure):
-        R = np.zeros((self.natoms, 3, 3))
-        for frag in self.fragments:
-            for sym in frag.fullsymmetries:
-                for idx in sym:
-                    R[idx, :, :] = frag.get_rotation_matrix((idx, id(structure)), structure.coordinates)
-        dipoles = np.einsum('aij,aj->ai', R, dipoles)
-        quadrupoles = np.einsum('aij,ajk,alk->ail', R, quadrupoles, R)
-        return dipoles, quadrupoles
+            self.natoms += frag.natoms
+            self.qtot += frag.qtot
+            self.startguess_charge_redundant += frag.startguess_charge
+            self.startguess_dipole_redundant += frag.startguess_dipole
+            self.startguess_quadrupole_redundant += frag.startguess_quadrupole
+            self.axis_types += frag.axis_types
+            self.axis_atomindices += list(frag.axis_atomindices)
+            self.axis_number_of_symmetric += frag.axis_number_of_symmetric
+        self.startguess_charge_redundant = np.array(self.startguess_charge_redundant)
+        self.startguess_dipole_redundant = np.array(self.startguess_dipole_redundant)
+        self.startguess_quadrupole_redundant = np.array(self.startguess_quadrupole_redundant)
 
     def get_multipole_parameter_vector(self, optimize_charges=True, optimize_dipoles=True, optimize_quadrupoles=True):
         self.optimize_charges = optimize_charges
@@ -488,11 +373,13 @@ class constraints(object):
         q0 = []
         mu0 = []
         theta0 = []
+        self.nparametersq = 0
+        self.nparametersmu = 0
+        self.nparameterstheta = 0
         if optimize_charges:
             # read redundant charges
             q_red = []
-            for i in range(self.nfragments):
-                frag = fragment(data["fragments"][i])
+            for frag in self.fragments:
                 self.qtot += frag.qtot
                 self.nparametersq += frag.nparametersq
                 q_red += frag.startguess_charge
@@ -522,7 +409,8 @@ class constraints(object):
                     dipole = dipole / len(sym)
                     # check which parameters are non-zero by local symmetry
                     # "bool x -> is_nonzero(x)"
-                    x, y, z = dipole_axis_nonzero[(self.axis_types[index], self.axis_number_of_symmetric[index])]
+                    x, y, z = dipole_axis_nonzero[(self.axis_types[index],
+                                                   tuple(self.axis_number_of_symmetric[index]))]
                     if x: mu0.append(dipole[0])
                     if y: mu0.append(dipole[1])
                     if z: mu0.append(dipole[2])
@@ -538,13 +426,16 @@ class constraints(object):
                     quadrupole = quadrupole / len(sym)
                     # check which parameters are non-zero by local symmetry
                     # "bool xy -> is_nonzero(xy)"
-                    xy, xz, yz, xxmyy, zz = quadrupole_axis_nonzero[(self.axis_types[index], self.axis_number_of_symmetric[index])]
+                    xy, xz, yz, xxmyy, zz = quadrupole_axis_nonzero[(self.axis_types[index],
+                                                                     tuple(self.axis_number_of_symmetric[index]))]
                     if xy: theta0.append(quadrupole[0, 1])
                     if xz: theta0.append(quadrupole[0, 2])
                     if yz: theta0.append(quadrupole[1, 2])
                     if xxmyy: theta0.append(quadrupole[0, 0] - quadrupole[1, 1])
                     if zz: theta0.append(quadrupole[2, 2])
                     self.quadrupole_parameters_active.append([xy, xz, yz, xxmyy, zz])
+        self.nparametersmu = len(mu0)
+        self.nparameterstheta = len(theta0)
         parameter_vector = q0 + mu0 + theta0
         return parameter_vector
 
@@ -574,13 +465,13 @@ class constraints(object):
                     dipole_pcounter += 1
                     mx = my = mz = 0.
                     if x:
-                        mx = parameters[pcounter]
+                        mx = parameter_vector[pcounter]
                         pcounter += 1
                     if y:
-                        my = parameters[pcounter]
+                        my = parameter_vector[pcounter]
                         pcounter += 1
                     if z:
-                        mz = parameters[pcounter]
+                        mz = parameter_vector[pcounter]
                         pcounter += 1
                     for idx in sym:
                         dipoles[idx, 0] = mx
@@ -593,23 +484,23 @@ class constraints(object):
             quadrupole_pcounter = 0
             for frag in self.fragments:
                 for sym in frag.fullsymmetries:
-                    xy, xz, yz, xxmyy, zz = self.dipole_parameters_active[quadrupole_pcounter]
+                    xy, xz, yz, xxmyy, zz = self.quadrupole_parameters_active[quadrupole_pcounter]
                     quadrupole_pcounter += 1
                     Qxy = Qxz = Qyz = Qxxmyy = Qzz = 0.
                     if xy:
-                        Qxy = parameters[pcounter]
+                        Qxy = parameter_vector[pcounter]
                         pcounter += 1
                     if xz:
-                        Qxz = parameters[pcounter]
+                        Qxz = parameter_vector[pcounter]
                         pcounter += 1
                     if yz:
-                        Qyz = parameters[pcounter]
+                        Qyz = parameter_vector[pcounter]
                         pcounter += 1
                     if xxmyy:
-                        Qxxmyy = parameters[pcounter]
+                        Qxxmyy = parameter_vector[pcounter]
                         pcounter += 1
                     if zz:
-                        Qzz = parameters[pcounter]
+                        Qzz = parameter_vector[pcounter]
                         pcounter += 1
                     for idx in sym:
                         quadrupoles[idx, 0, 1] = Qxy
@@ -626,3 +517,83 @@ class constraints(object):
         else:
             quadrupoles = self.startguess_quadrupole_redundant
         return charges, dipoles, quadrupoles
+
+    def expand_charges_for_fdiff(self, parameter_vector):
+        # for difference charge, qtot = 0
+        qtot = 0.
+        charges = np.zeros(self.natoms, dtype=np.float64)
+        pcounter = 0
+        for frag in self.fragments:
+            qcur = 0.0
+            for sym in frag.fullsymmetries[:-1]:
+                for idx in sym:
+                    charges[idx] = parameter_vector[pcounter]
+                    qcur += charges[idx]
+                pcounter += 1
+            #charge constraint. lastidxnsym is 1 if the last one is not a part of a symmetry
+            qlast = (qtot - qcur) / len(frag.fullsymmetries[-1])
+            for idx in frag.fullsymmetries[-1]:
+                charges[idx] = qlast
+        return charges
+
+    def expand_dipoles_for_fdiff(self, parameter_vector):
+        pcounter = self.nparametersq
+        dipoles = np.zeros((self.natoms, 3))
+        dipole_pcounter = 0
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                x, y, z = self.dipole_parameters_active[dipole_pcounter]
+                dipole_pcounter += 1
+                mx = my = mz = 0.
+                if x:
+                    mx = parameter_vector[pcounter]
+                    pcounter += 1
+                if y:
+                    my = parameter_vector[pcounter]
+                    pcounter += 1
+                if z:
+                    mz = parameter_vector[pcounter]
+                    pcounter += 1
+                for idx in sym:
+                    dipoles[idx, 0] = mx
+                    dipoles[idx, 1] = my
+                    dipoles[idx, 2] = mz
+        return dipoles
+
+    def expand_quadrupoles_for_fdiff(self, parameter_vector):
+        pcounter = self.nparametersq + self.nparametersmu
+        quadrupoles = np.zeros((self.natoms, 3, 3))
+        quadrupole_pcounter = 0
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                xy, xz, yz, xxmyy, zz = self.quadrupole_parameters_active[quadrupole_pcounter]
+                quadrupole_pcounter += 1
+                Qxy = Qxz = Qyz = Qxxmyy = Qzz = 0.
+                if xy:
+                    Qxy = parameter_vector[pcounter]
+                    pcounter += 1
+                if xz:
+                    Qxz = parameter_vector[pcounter]
+                    pcounter += 1
+                if yz:
+                    Qyz = parameter_vector[pcounter]
+                    pcounter += 1
+                if xxmyy:
+                    Qxxmyy = parameter_vector[pcounter]
+                    pcounter += 1
+                if zz:
+                    Qzz = parameter_vector[pcounter]
+                    pcounter += 1
+                for idx in sym:
+                    quadrupoles[idx, 0, 1] = Qxy
+                    quadrupoles[idx, 1, 0] = Qxy
+                    quadrupoles[idx, 0, 2] = Qxz
+                    quadrupoles[idx, 2, 0] = Qxz
+                    quadrupoles[idx, 1, 2] = Qyz
+                    quadrupoles[idx, 2, 1] = Qyz
+                    Qxx = 0.5 * Qxxmyy - Qzz
+                    Qyy = -(Qxxmyy - Qxx)
+                    quadrupoles[idx, 0, 0] = Qxx
+                    quadrupoles[idx, 1, 1] = Qyy
+                    quadrupoles[idx, 2, 2] = Qzz
+        return quadrupoles

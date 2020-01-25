@@ -159,21 +159,10 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
 
 
 def multipole_restraint_contribution_res(parameters, constraints):
-    charge_parameters = parameters[0:constraints.nparametersq]
-    dipole_parameters = parameters[constraints.nparametersq:constraints.nparametersq + constraints.nparametersmu]
-    quadrupole_parameters = parameters[constraints.nparametersq + constraints.nparametersmu:constraints.nparametersq +
-                                       constraints.nparametersmu + constraints.nparameterstheta]
-
-    charges = constraints.expand_charges(charge_parameters)
-    ref_charges = constraints.expand_charges(constraints.q0)
-    dipoles_local = constraints.expand_dipoles(dipole_parameters)
-    quadrupoles_local = constraints.expand_quadrupoles(quadrupole_parameters)
-    ref_dipoles = constraints.expand_dipoles(constraints.mu0)
-    ref_quadrupoles = constraints.expand_quadrupoles(constraints.theta0)
-    # charge
-    res = np.sum((charges - ref_charges)**2)
-    res += np.sum((dipoles_local - ref_dipoles)**2)
-    res += np.sum((quadrupoles_local - ref_quadrupoles)**2)
+    charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
+    res = np.sum((charges - constraints.startguess_charge_redundant)**2)
+    res += np.sum((dipoles_local - constraints.startguess_dipole_redundant)**2)
+    res += np.sum((quadrupoles_local - constraints.startguess_quadrupole_redundant)**2)
     res *= constraints.restraint
     return res
 
@@ -221,8 +210,11 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     diff_esps = []
     for idx, s in enumerate(structures):
         test_esp = np.zeros(s.esp_grid_qm.shape)
-        #minus sign due to potential definition
-        dipoles, quadrupoles = constraints.rotate_multipoles_to_global_axis(dipoles_local, quadrupoles_local, s)
+        # minus sign due to potential definition
+        # R @ mu
+        dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
+        # R @ theta @ R.T
+        quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local, s.rotation_matrices)
         test_esp += -field(s, 0, charges, 0)
         test_esp += -field(s, 1, dipoles, 0)
         test_esp += -field(s, 2, quadrupoles, 0)
@@ -234,16 +226,14 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     # get jacobian
     jac = np.zeros(parameters.shape)
     h = 1e-6
-    test_charge = np.zeros(constraints.nparametersq)
-    test_dipole = np.zeros(constraints.nparametersmu)
-    test_quadrupole = np.zeros(constraints.nparameterstheta)
+    test_parameter = np.zeros(parameters.shape[0])
 
     # EP contribution
     for ip in range(len(parameters)):
         if ip < constraints.nparametersq:
-            test_charge[:] = 0.
-            test_charge[ip] = h
-            charges = constraints.expand_charges_for_fdiff(test_charge)
+            test_parameter[:] = 0.
+            test_parameter[ip] = h
+            charges = constraints.expand_charges_for_fdiff(test_parameter)
             mask = charges != 0.
             j = 0.0
             for idx, s in enumerate(structures):
@@ -251,24 +241,25 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
         elif ip < constraints.nparametersq + constraints.nparametersmu:
-            test_dipole[:] = 0.
-            test_dipole[ip - constraints.nparametersq] = h
-            dipoles_local = constraints.expand_dipoles(test_dipole)
+            test_parameter[:] = 0.
+            test_parameter[ip] = h
+            dipoles_local = constraints.expand_dipoles_for_fdiff(test_parameter)
             mask = np.any(dipoles_local != 0., axis=1)
             j = 0.0
             for idx, s in enumerate(structures):
-                dipoles = constraints.rotate_dipoles_to_global_axis(dipoles_local, s)
+                dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
                 esp = -field(s, 1, dipoles, 0, mask=mask)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
         elif ip < constraints.nparametersq + constraints.nparametersmu + constraints.nparameterstheta:
-            test_quadrupole[:] = 0.
-            test_quadrupole[ip - constraints.nparametersq - constraints.nparametersmu] = h
-            quadrupoles_local = constraints.expand_quadrupoles(test_quadrupole)
+            test_parameter[:] = 0.
+            test_parameter[ip] = h
+            quadrupoles_local = constraints.expand_quadrupoles_for_fdiff(test_parameter)
             mask = np.any(quadrupoles_local != 0., axis=(1, 2))
             j = 0.0
             for idx, s in enumerate(structures):
-                quadrupoles = constraints.rotate_quadrupoles_to_global_axis(quadrupoles_local, s)
+                quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local,
+                                        s.rotation_matrices)
                 esp = -field(s, 2, quadrupoles, 0, mask=mask)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
@@ -282,4 +273,6 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
 
     # scale by large number to make optimizer work better...
     # or "units in (mH)**2"
+    print(res)
+    #print(jac)
     return 1e6 * res, 1e6 * jac

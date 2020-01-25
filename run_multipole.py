@@ -52,8 +52,6 @@ if args.h5_filelist:
 if len(structures) == 0:
     raise ValueError('Please provide electric potentials via either the --h5-files or --h5-file-list options.')
 
-
-
 if args.weights:
     weights = np.loadtxt(args.weights)
 else:
@@ -69,6 +67,7 @@ for s in structures:
 
 fun = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
 res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter': 1000})
+print(res.jac)
 
 print(res)
 print()
@@ -95,4 +94,6 @@ print()
 print("Quadrupoles (in local axes):")
 print("{:>6}   {:<13} {:<13} {:<13} {:<13} {:<13} {:<13}".format("Index", "xx", "xy", "xz", "yy", "yz", "zz"))
 for i, quadrupole in enumerate(quadrupoles_local):
-    print(f'{i:>6}: {quadrupole[0,0]: 12.10f} {quadrupole[0,1]: 12.10f} {quadrupole[0,2]: 12.10f} {quadrupole[1,1]: 12.10f} {quadrupole[1,2]: 12.10f} {quadrupole[2,2]: 12.10f}')
+    print(
+        f'{i:>6}: {quadrupole[0,0]: 12.10f} {quadrupole[0,1]: 12.10f} {quadrupole[0,2]: 12.10f} {quadrupole[1,1]: 12.10f} {quadrupole[1,2]: 12.10f} {quadrupole[2,2]: 12.10f}'
+    )

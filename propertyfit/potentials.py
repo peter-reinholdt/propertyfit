@@ -3,7 +3,7 @@ from math import factorial
 from string import ascii_lowercase as abc
 from string import ascii_uppercase as ABC
 from numpy import sqrt
-from .utilities import memoize_on_first_arg_function
+
 
 def T0(Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
@@ -14,6 +14,7 @@ def T0(Ra, Rb):
     result = np.zeros(shape, dtype=np.float64)
     result[..., ] = 1 / sqrt(x**2 + y**2 + z**2)
     return result
+
 
 def T1(Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
@@ -27,6 +28,7 @@ def T1(Ra, Rb):
     result[..., 1] = -x0 * y
     result[..., 2] = -x0 * z
     return result
+
 
 def T2(Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
@@ -54,6 +56,7 @@ def T2(Ra, Rb):
     result[..., 2, 1] = x8
     result[..., 2, 2] = -x4 * (x0 + x1 - 2 * x2)
     return result
+
 
 def field(structure, multipole_rank, multipoles, field_rank, mask=None):
     """
