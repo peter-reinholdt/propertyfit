@@ -70,6 +70,7 @@ def load_geometry_from_molden(filename):
         return coordinates, elements
 
 dipole_axis_nonzero = {}
+# indexed by (axis_type, number_of_symmetric)
 dipole_axis_nonzero[('internal_four_neighbors', (2, 1, 1))] = [False, True, True] 
 dipole_axis_nonzero[('internal_four_neighbors', (2, 2)]     = [False, False, True] 
 dipole_axis_nonzero[('internal_four_neighbors', (1, 1, 1, 1)] = [False, False, True] 
@@ -85,6 +86,11 @@ dipole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,1,1,1)] = [True, Tr
 dipole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,2)] = [False, True, True]
 dipole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,1,1)] = [True, True, True]
 dipole_axis_nonzero[('terminal_one_adjacent_neighbor', (1,1)] = [True, False, True]
+# note: did not work out which are non-zero yet
+dipole_axis_nonzero[('zthenx', (1,1)] = [True, True, True]
+dipole_axis_nonzero[('zthenx', (2)] = [True, True, True]
+dipole_axis_nonzero[('bisector', (1,1)] = [True, True, True]
+dipole_axis_nonzero[('bisector', (2)] = [True, True, True]
 quadrupole_axis_nonzero = {}
 quadrupole_axis_nonzero[('internal_four_neighbors', (2, 1, 1))] = [False, False, True, True, True]
 quadrupole_axis_nonzero[('internal_four_neighbors', (2, 2)]     = [False, False, False, True, False]
@@ -101,3 +107,7 @@ quadrupole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,1,1,1)] = [True
 quadrupole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,2)] = [False, False, True, True, True]
 quadrupole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,1,1)] = [True, True, True, True, True]
 quadrupole_axis_nonzero[('terminal_one_adjacent_neighbor', (1,1)] = [False, True, False, True, True]
+quadrupole_axis_nonzero[('zthenx', (1,1)] = [True, True, True, True, True]
+quadrupole_axis_nonzero[('zthenx', (2)] = [True, True, True, True, True]
+quadrupole_axis_nonzero[('bisector', (1,1)] = [True, True, True, True, True]
+quadrupole_axis_nonzero[('bisector', (2)] = [True, True, True, True, True]

@@ -5,7 +5,7 @@ from string import ascii_uppercase as ABC
 from numpy import sqrt
 from .utilities import memoize_on_first_arg_function
 
-def T0(idx, Ra, Rb):
+def T0(Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
     y = Rab[..., 1]
@@ -15,7 +15,7 @@ def T0(idx, Ra, Rb):
     result[..., ] = 1 / sqrt(x**2 + y**2 + z**2)
     return result
 
-def T1(idx, Ra, Rb):
+def T1(Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
     y = Rab[..., 1]
@@ -28,7 +28,7 @@ def T1(idx, Ra, Rb):
     result[..., 2] = -x0 * z
     return result
 
-def T2(idx, Ra, Rb):
+def T2(Ra, Rb):
     Rab = -(Ra[:, np.newaxis, :] - Rb[np.newaxis, :, :])
     x = Rab[..., 0]
     y = Rab[..., 1]
@@ -55,7 +55,7 @@ def T2(idx, Ra, Rb):
     result[..., 2, 2] = -x4 * (x0 + x1 - 2 * x2)
     return result
 
-def field(structure, multipole_rank, multipoles, field_rank, idx):
+def field(structure, multipole_rank, multipoles, field_rank, mask=None):
     """
     Calculates the field (derivatives) due to a set of multipoles in a set of points
     
@@ -79,6 +79,10 @@ def field(structure, multipole_rank, multipoles, field_rank, idx):
     Rab_additional_rank = 3 - multipole_additional_rank - 1
     Tn = getattr(structure, f'T{tensor_rank}')
     factor = -1.0 * (-1)**multipole_rank / factorial(multipole_rank)
+    # apply mask
+    if mask is not None:
+        Tn = Tn[mask, ...]
+        multipoles = multipoles[mask, ...]
     # Tn:multipoles->out
     # abc... for multipole/field contraction
     # ABC... for additional ranks

@@ -2,21 +2,25 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division, print_function
-import numpy as np
+import os
 import warnings
+
+import sh
+import h5py
+import numpy as np
+
 from qcelemental import periodictable, vdw_radii
 from qcelemental.constants import bohr2angstrom
+
+import .rotations
+from .utilities import load_qmfiles, load_json, load_geometry_from_molden, memoize_on_first_arg_method, dipole_axis_nonzero, quadrupole_axis_nonzero
+from .potentials import T0, T1, T2
+
 try:
     import horton
 except:
     pass
     #warnings.warn("Running without support for horton", RuntimeWarning)
-import h5py
-from .utilities import load_qmfiles, load_json, load_geometry_from_molden, memoize_on_first_arg_method, dipole_axis_nonzero, quadrupole_axis_nonzero
-from .rotations import zthenx, bisector
-from numba import jit
-import os
-import sh
 
 
 class structure(object):
@@ -32,6 +36,10 @@ class structure(object):
         self.vdw_grid_pointdensity = vdw_grid_pointdensity
         self.vdw_grid_nsurfaces = vdw_grid_nsurfaces
         self.dm = None
+        self.T0 = None
+        self.T1 = None
+        self.T2 = None
+        self.rotation_matrices = None
 
     def load_qm(self, filename, field=np.zeros(3, dtype=np.float64)):
         IO = horton.IOData.from_file(filename)
@@ -178,6 +186,9 @@ class structure(object):
             print(len(s))
         self.grid = np.concatenate(surfaces)
         self.ngridpoints = len(self.grid)
+        self.T0 = None
+        self.T1 = None
+        self.T2 = None
 
     def compute_qm_esp(self):
         esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float),
@@ -227,6 +238,34 @@ class structure(object):
         else:
             self.field = np.zeros(3, dtype=np.float64)
         f.close()
+    
+    @property
+    def T0(self):
+        if self.T0 is not None:
+            return self.T0
+        self.T0 = T0(self.coordinates, self.grid)
+        return self.T0
+
+    @property
+    def T1(self):
+        if self.T1 is not None:
+            return self.T1
+        self.T1 = T1(self.coordinates, self.grid)
+        return self.T1
+
+    @property
+    def T2(self):
+        if self.T2 is not None:
+            return self.T2
+        self.T2 = T2(self.coordinates, self.grid)
+        return self.T2
+
+    def self.get_rotation_matrices(self, constraints):
+        self.rotation_matrices = np.zeros((self.natoms, 3, 3), dtype=np.float64)
+        for idx in range(self.natoms):
+            points = [self.coordinates[i, :] for i in [idx, *constraints.axis_indices[i]]]
+            self.rotation_matrices[idx, :, :] = getattr(rotations, constraints.axis_types[idx])(*points)
+
 
 
 class fragment(object):
@@ -299,22 +338,6 @@ class fragment(object):
         #for isotropic polarizability, there is no constraint on
         # the sum
         self.nparametersa = self.natoms - nsymp
-
-    @memoize_on_first_arg_method
-    def get_rotation_matrix(self, idx, coordinates):
-        idx = idx[0]
-        point1 = coordinates[idx, :]
-        axis_indices = self.idx2axis_indices[idx]
-        point2 = coordinates[axis_indices[0], :]
-        point3 = coordinates[axis_indices[1], :]
-        #print(idx, axis_indices)
-        if self.idx2axis_type[idx] == 'zthenx':
-            return zthenx(point1, point2, point3)
-        elif self.idx2axis_type[idx] == 'bisector':
-            return bisector(point1, point2, point3)
-        else:
-            raise NotImplementedError(f'Unknown axis type: {self.idx2axis_type[idx]}')
-
 
 class constraints(object):
     def __init__(self, filename):

@@ -205,14 +205,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
                     about symmetries etc.
     """
     #expand multipole parameters to full set (and rotate dipole, quadrupole from local axis to global axis)
-    charge_parameters = parameters[0:constraints.nparametersq]
-    dipole_parameters = parameters[constraints.nparametersq:constraints.nparametersq + constraints.nparametersmu]
-    quadrupole_parameters = parameters[constraints.nparametersq + constraints.nparametersmu:constraints.nparametersq +
-                                       constraints.nparametersmu + constraints.nparameterstheta]
-
-    charges = constraints.expand_charges(charge_parameters)
-    dipoles_local = constraints.expand_dipoles(dipole_parameters)
-    quadrupoles_local = constraints.expand_quadrupoles(quadrupole_parameters)
+    charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
 
     nstructures = len(structures)
     res = 0.0
@@ -230,9 +223,9 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
         test_esp = np.zeros(s.esp_grid_qm.shape)
         #minus sign due to potential definition
         dipoles, quadrupoles = constraints.rotate_multipoles_to_global_axis(dipoles_local, quadrupoles_local, s)
-        test_esp += -field(s, 0, charges, 0, idx)
-        test_esp += -field(s, 1, dipoles, 0, idx)
-        test_esp += -field(s, 2, quadrupoles, 0, idx)
+        test_esp += -field(s, 0, charges, 0)
+        test_esp += -field(s, 1, dipoles, 0)
+        test_esp += -field(s, 2, quadrupoles, 0)
         diff_esps.append(test_esp - s.esp_grid_qm)
         contribution = np.average((test_esp - s.esp_grid_qm)**2)
         contributions[idx] = contribution * weights[idx]
@@ -254,7 +247,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
             mask = charges != 0.
             j = 0.0
             for idx, s in enumerate(structures):
-                esp = -field(s.coordinates[mask, :], s.grid, 0, charges[mask], 0, (ip, idx))
+                esp = -field(s, 0, charges, 0, mask=mask)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
         elif ip < constraints.nparametersq + constraints.nparametersmu:
@@ -265,7 +258,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
             j = 0.0
             for idx, s in enumerate(structures):
                 dipoles = constraints.rotate_dipoles_to_global_axis(dipoles_local, s)
-                esp = -field(s.coordinates[mask, :], s.grid, 1, dipoles[mask, :], 0, (ip, idx))
+                esp = -field(s, 1, dipoles, 0, mask=mask)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
         elif ip < constraints.nparametersq + constraints.nparametersmu + constraints.nparameterstheta:
@@ -276,7 +269,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
             j = 0.0
             for idx, s in enumerate(structures):
                 quadrupoles = constraints.rotate_quadrupoles_to_global_axis(quadrupoles_local, s)
-                esp = -field(s.coordinates[mask, :], s.grid, 2, quadrupoles[mask, :, :], 0, (ip, idx))
+                esp = -field(s, 2, quadrupoles, 0, mask=mask)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
 
