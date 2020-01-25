@@ -273,6 +273,4 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
 
     # scale by large number to make optimizer work better...
     # or "units in (mH)**2"
-    print(res)
-    #print(jac)
     return 1e6 * res, 1e6 * jac

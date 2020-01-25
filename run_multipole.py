@@ -66,23 +66,14 @@ for s in structures:
     s.get_rotation_matrices(con)
 
 fun = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
-res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter': 1000})
-print(res.jac)
-
-print(res)
+res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter': 10})
+charges, dipoles_local, quadrupoles_local = con.expand_parameter_vector(res.x)
 print()
-con = constraints(args.top)
-con.restraint = 0.
-fun_EP = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
-print("fun EP:", fun_EP(res.x)[0])
-print("fun restraint:", fun(res.x)[0] - fun_EP(res.x)[0])
-print("fun full:", fun(res.x)[0])
 print("=" * 85)
 print()
 print("Final result:")
 print("Charges:")
 print("{:>6}   {:<12}".format("Index", "Charge"))
-charges, dipoles_local, quadrupoles_local = con.expand_parameter_vector(res.x)
 for i, charge in enumerate(charges):
     print(f'{i:>6}: {charge: 12.10f}')
 print()
