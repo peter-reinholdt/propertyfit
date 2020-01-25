@@ -18,8 +18,6 @@ import json
 from numpy import nan
 from functools import wraps
 
-bohr2angstrom = 0.52917724900001
-angstrom2bohr = 1.0 / (bohr2angstrom)
 hartree2kjmol = 2625.5002
 kjmol2hartree = 1.0 / hartree2kjmol
 
@@ -100,3 +98,36 @@ def memoize_on_first_arg_method(f):
             return cache[args[1]]
 
     return wrapper
+
+dipole_axis_nonzero = {}
+dipole_axis_nonzero[('internal_four_neighbors', (2, 1, 1))] = [False, True, True] 
+dipole_axis_nonzero[('internal_four_neighbors', (2, 2)]     = [False, False, True] 
+dipole_axis_nonzero[('internal_four_neighbors', (1, 1, 1, 1)] = [False, False, True] 
+dipole_axis_nonzero[('internal_four_neighbors_symmetric', (3, 1)] = [False, False, True] 
+dipole_axis_nonzero[('internal_three_neighbors', (2,1)] = [False, True, True] 
+dipole_axis_nonzero[('internal_three_neighbors', (3)] = [False, False, True] 
+dipole_axis_nonzero[('internal_three_neighbors', (1, 1, 1)] = [True, True, True] 
+dipole_axis_nonzero[('internal_two_neighbors', (2)] = [False, True, False] 
+dipole_axis_nonzero[('internal_two_neighbors', (1,1)] = [True, True, False] 
+dipole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,2,1)] = [False, True, True]
+dipole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,3)] = [False, False, True]
+dipole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,1,1,1)] = [True, True, True]
+dipole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,2)] = [False, True, True]
+dipole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,1,1)] = [True, True, True]
+dipole_axis_nonzero[('terminal_one_adjacent_neighbor', (1,1)] = [True, False, True]
+quadrupole_axis_nonzero = {}
+quadrupole_axis_nonzero[('internal_four_neighbors', (2, 1, 1))] = [False, False, True, True, True]
+quadrupole_axis_nonzero[('internal_four_neighbors', (2, 2)]     = [False, False, False, True, False]
+quadrupole_axis_nonzero[('internal_four_neighbors', (1, 1, 1, 1)] = [True, True, True, True, True]
+quadrupole_axis_nonzero[('internal_four_neighbors_symmetric', (3, 1)] = [False, False, False, False, True]
+quadrupole_axis_nonzero[('internal_three_neighbors', (2,1)] = [False, False, True, True, True]
+quadrupole_axis_nonzero[('internal_three_neighbors', (3)] = [False, False, False, False, True]
+quadrupole_axis_nonzero[('internal_three_neighbors', (1, 1, 1)] = [True, True, True, True, True]
+quadrupole_axis_nonzero[('internal_two_neighbors', (2)] = [False, False, False, False, True]
+quadrupole_axis_nonzero[('internal_two_neighbors', (1,1)] = [True, False, False, True, True]
+quadrupole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,2,1)] = [False, False, True, True, True]
+quadrupole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,3)] = [False, False, False, False, True]
+quadrupole_axis_nonzero[('terminal_three_adjacent_neighbors', (1,1,1,1)] = [True, True, True, True, True]
+quadrupole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,2)] = [False, False, True, True, True]
+quadrupole_axis_nonzero[('terminal_two_adjacent_neighbors', (1,1,1)] = [True, True, True, True, True]
+quadrupole_axis_nonzero[('terminal_one_adjacent_neighbor', (1,1)] = [False, True, False, True, True]

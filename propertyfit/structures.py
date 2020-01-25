@@ -12,7 +12,7 @@ except:
     pass
     #warnings.warn("Running without support for horton", RuntimeWarning)
 import h5py
-from .utilities import load_qmfiles, load_json, load_geometry_from_molden, memoize_on_first_arg_method
+from .utilities import load_qmfiles, load_json, load_geometry_from_molden, memoize_on_first_arg_method, dipole_axis_nonzero, quadrupole_axis_nonzero
 from .rotations import zthenx, bisector
 from numba import jit
 import os
@@ -498,44 +498,8 @@ class constraints(object):
                         dipole += np.array(self.startguess_dipole_redundant[index])
                     dipole = dipole / len(sym)
                     # check which parameters are non-zero by local symmetry
-                    # "x -> is_nonzero(x)"
-                    if self.axis_types[index] == 'internal_four_neighbors':
-                        if self.axis_number_of_symmetric[0] == 2:
-                            x, y, z = [False, True, True]
-                        elif self.axis_number_of_symmetric[0] == self.axis_number_of_symmetric[1] == 2:
-                            x, y, z = [False, False, True]
-                        else:
-                            x, y, z = [True, True, True]
-                    elif self.axis_types[index] == 'internal_four_neighbors_symmetric':
-                        x, y, z = [False, False, True]
-                    elif self.axis_types[index] == 'internal_three_neighbors':
-                        if self.axis_number_of_symmetric[0] == 2:
-                            x, y, z = [False, True, True]
-                        elif self.axis_number_of_symmetric[0] == 3:
-                            x, y, z = [False, False, True]
-                        else:
-                            x, y, z = [True, True, True]
-                    elif self.axis_types[index] == 'internal_two_neighbors':
-                        if self.axis_number_of_symmetric[0] == 2:
-                            x, y, z = [False, True, False]
-                        else:
-                            x, y, z = [True, True, False]
-                    elif self.axis_types[index] == 'terminal_three_adjacent_neighbors':
-                        if self.axis_number_of_symmetric[1] == 2:
-                            x, y, z = [False, True, True]
-                        elif self.axis_number_of_symmetric[1] == 3:
-                            x, y, z = [False, False, True]
-                        else:
-                            x, y, z = [True, True, True]
-                    elif self.axis_types[index] == 'terminal_two_adjacent_neighbors':
-                        if self.axis_number_of_symmetric[1] == 2:
-                            x, y, z = [False, True, True]
-                        else:
-                            x, y, z = [True, True, True]
-                    elif self.axis_types[index] == 'terminal_one_adjacent_neighbor':
-                        x, y, z = [True, False, True]
-                    else:
-                        raise ValueError(self.axis_types[index])
+                    # "bool x -> is_nonzero(x)"
+                    x, y, z = dipole_axis_nonzero[(self.axis_types[index], self.axis_number_of_symmetric[index])]
                     if x: mu0.append(dipole[0])
                     if y: mu0.append(dipole[1])
                     if z: mu0.append(dipole[2])
@@ -550,44 +514,8 @@ class constraints(object):
                         quadrupole += np.array(self.startguess_dipole_redundant[index])
                     quadrupole = quadrupole / len(sym)
                     # check which parameters are non-zero by local symmetry
-                    # "xy -> is_nonzero(xy)"
-                    if self.axis_types[index] == 'internal_four_neighbors':
-                        if self.axis_number_of_symmetric[0] == 2:
-                            xy, xz, yz, xxmyy, zz = [False, False, True, True, True]
-                        elif self.axis_number_of_symmetric[0] == self.axis_number_of_symmetric[1] == 2:
-                            xy, xz, yz, xxmyy, zz = [False, False, False, True, False]
-                        else:
-                            xy, xz, yz, xxmyy, zz = [True, True, True, True, True]
-                    elif self.axis_types[index] == 'internal_four_neighbors_symmetric':
-                        xy, xz, yz, xxmyy, zz = [False, False, False, False, True]
-                    elif self.axis_types[index] == 'internal_three_neighbors':
-                        if self.axis_number_of_symmetric[0] == 2:
-                            xy, xz, yz, xxmyy, zz = [False, False, True, True, True]
-                        elif self.axis_number_of_symmetric[0] == 3:
-                            xy, xz, yz, xxmyy, zz = [False, False, False, False, True]
-                        else:
-                            xy, xz, yz, xxmyy, zz = [True, True, True, True, True]
-                    elif self.axis_types[index] == 'internal_two_neighbors':
-                        if self.axis_number_of_symmetric[0] == 2:
-                            xy, xz, yz, xxmyy, zz = [False, False, False, False, True]
-                        else:
-                            xy, xz, yz, xxmyy, zz = [True, False, False, True, True]
-                    elif self.axis_types[index] == 'terminal_three_adjacent_neighbors':
-                        if self.axis_number_of_symmetric[1] == 2:
-                            xy, xz, yz, xxmyy, zz = [False, False, True, True, True]
-                        elif self.axis_number_of_symmetric[1] == 3:
-                            xy, xz, yz, xxmyy, zz = [False, False, False, False, True]
-                        else:
-                            xy, xz, yz, xxmyy, zz = [True, True, True, True, True]
-                    elif self.axis_types[index] == 'terminal_two_adjacent_neighbors':
-                        if self.axis_number_of_symmetric[1] == 2:
-                            xy, xz, yz, xxmyy, zz = [False, False, True, True, True]
-                        else:
-                            xy, xz, yz, xxmyy, zz = [True, True, True, True, True]
-                    elif self.axis_types[index] == 'terminal_one_adjacent_neighbor':
-                        xy, xz, yz, xxmyy, zz = [False, True, False, True, True]
-                    else:
-                        raise ValueError(self.axis_types[index])
+                    # "bool xy -> is_nonzero(xy)"
+                    xy, xz, yz, xxmyy, zz = quadrupole_axis_nonzero[(self.axis_types[index], self.axis_number_of_symmetric[index])]
                     if xy: theta0.append(quadrupole[0, 1])
                     if xz: theta0.append(quadrupole[0, 2])
                     if yz: theta0.append(quadrupole[1, 2])
