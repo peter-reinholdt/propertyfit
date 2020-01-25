@@ -6,58 +6,8 @@ import sys
 import numpy as np
 import pandas
 import pyframe
-
-def bisector(point1, point2, point3):
-    """
-    decide local frame unit vectors x, y, z
-    point1: coordinates of the atom in the origin of the local coordinate system
-    point2: coordinates of first atom to define bisector
-    point3: coordinates of second atom to define bisector
-    """
-    #create z-axis
-    v1 = point2 - point1
-    v1 = v1 / np.linalg.norm(v1)
-    v2 = point3 - point1
-    v2 = v2 / np.linalg.norm(v2)
-    z = v1 + v2
-    z = z / np.linalg.norm(z)
-
-    #create x-axis by rejection
-    x = point3 - point1
-    x = x - (np.dot(x, z) / np.dot(z, z)) * z
-    x = x / np.sqrt(np.sum(x * x))
-
-    #dot = np.dot(v2, z)
-    #x = v2 - dot * z
-    #x = x / np.linalg.norm(x)
-
-    #right hand rule for y
-    y = np.cross(z, x)
-    return np.vstack([x, y, z]).T
-
-
-def zthenx(point1, point2, point3):
-    """
-    decide local frame unit vectors x, y, z
-    point1: coordinates of the atom in the origin of the local coordinate system
-    point2: coordinates of the atom to which the local z-axis is created
-    point3: coordinates of a third atom, with which the local x-axis is created 
-    """
-
-    #create z-axis
-    z = point2 - point1
-    z = z / np.sqrt(np.sum(z * z))
-
-    #create x-axis by rejection
-    x = point3 - point1
-    x = x - (np.dot(x, z) / np.dot(z, z)) * z
-    x = x / np.sqrt(np.sum(x * x))
-
-    #right hand rule for y
-    y = np.cross(z, x)
-
-    #rotation matrix
-    return np.vstack([x, y, z]).T
+from qcelemental import covalentradii
+from propertyfit import rotations
 
 parameters = pandas.read_csv("results.csv")
 system = pyframe.MolecularSystem(sys.argv[1])
@@ -75,7 +25,7 @@ quadrupoles = []
 rotation_matrices = []
 
 equivalent_names = {'H': ['H1'],
-                     'H1': ['H'],
+                    'H1': ['H'],
                     'HA1': ['HA2', 'HA3'], #HA1, HA2, HA3 equivalent
                     'HA2': ['HA1', 'HA2'],
                     'HA3': ['HA1', 'HA2'],
@@ -98,13 +48,31 @@ equivalent_names = {'H': ['H1'],
                     'HG22': ['HG21', 'HG22'],
                     'HG23': ['HG21', 'HG22'],}
 
+elements = []
+coords = []
+atomnames = []
+for fragment in system.fragments.values():
+    for atom in fragment.atoms:
+        elements.append(atom.element)
+        coords.append(atom.coordinate)
+        atomnames.append(atom.name)
+coords = np.array(coords)
+bonds = []
+for i in range(coords.shape[0]):
+    bonded_atoms = []
+    distances = np.linalg.norm(coords[i,:] - coords[:,:], axis=1)
+    for idist, dist in enumerate(distances):
+        if idist == i:
+            continue
+        if dist < 0.60*(covalentradii.get(elements[i]) + covalentradii.get(elements[idist])):
+            bonded_atoms.append(idist)
+    bonds.append(bonded_atoms)
+
+
 for fragment in system.fragments.values():
     residue = parameters[parameters.resname == fragment.name]
 
-    fragment_coordinates = [atom.coordinate for atom in fragment.atoms]
-    fragment_atomnames = np.array([atom.name for atom in fragment.atoms])
-
-    for iatom, atom in enumerate(fragment.atoms):
+    for atom in fragment.atoms:
         if atom.name in residue.atomname.values:
             p = residue[residue.atomname == atom.name]
         else:
@@ -116,41 +84,58 @@ for fragment in system.fragments.values():
         charges.append(p.charge.values[0])
         dipoles.append([p["dipole[0]"].values[0], p["dipole[1]"].values[0], p["dipole[2]"].values[0]])
         quadrupoles.append([p["quadrupole[0]"].values[0], p["quadrupole[1]"].values[0], p["quadrupole[2]"].values[0], p["quadrupole[3]"].values[0], p["quadrupole[4]"].values[0], p["quadrupole[5]"].values[0]])
-
-        point1 = atom.coordinate
-        point1_idx = iatom
         
-
-        # get other points
-        point2_atomnames = list(p["axis_atomnames[0]"].values)
-        extra_names = []
-        for name in point2_atomnames:
-            if name in equivalent_names:
-                extra_names += equivalent_names[name]
-        all_names = np.array([list(set(point2_atomnames + extra_names))])
-        locs = np.where(all_names.T == fragment_atomnames)
-        point2_idx = list(set(locs[1][:]).difference(set([point1_idx])))[0]
-        point2 = fragment_coordinates[point2_idx]
-
-        point3_atomnames = list(p["axis_atomnames[1]"].values)
-        extra_names = []
-        for name in point3_atomnames:
-            if name in equivalent_names:
-                extra_names += equivalent_names[name]
-        all_names = np.array([list(set(point3_atomnames + extra_names))])
-        locs = np.where(all_names.T == fragment_atomnames)
-        point3_idx = list(set(locs[1][:]).difference(set([point1_idx, point2_idx])))[0]
-        point3 = fragment_coordinates[point3_idx]
-
-
-        if p.axis_type.values[0] == "zthenx":
-            R = zthenx(point1, point2, point3)
-            rotation_matrices.append(R)
-        elif p.axis_type.values[0] == "bisector":
-            R = bisector(point1, point2, point3)
-            rotation_matrices.append(R)
+        axis_atomnames = p["axis_atomnames"].values[0].split()
+        if "internal" in p["axis_type"].values[0]:
+            adjacent_indices_unordered = [b for b in bonds[atom.number - 1]]
+            axis_indices = [atom.number - 1]
+            for atomname in axis_atomnames:
+                found_match = False
+                for index in adjacent_indices_unordered:
+                    if atomnames[index] == atomname:
+                        found_match = True
+                        axis_indices.append(index)
+                        adjacent_indices_unordered.remove(index)
+                        break
+                if not found_match:
+                    for equivalent_name in equivalent_names[atomname]:
+                        for index in adjacent_indices_unordered:
+                            if atomnames[index] == equivalent_name:
+                                found_match = True
+                                axis_indices.append(index)
+                                adjacent_indices_unordered.remove(index)
+                                break
+                if not found_match:
+                    raise ValueError
+        elif "terminal" in  p["axis_type"].values[0]:
+            bonded_to = bonds[atom.number - 1][0]
+            bonded_to_atomname = atomnames[bonded_to]
+            adjacent_indices_unordered = [b for b in bonds[bonded_to] if b != atom.number - 1]
+            axis_indices = [atom.number -1, bonded_to]
+            for atomname in axis_atomnames[1:]:
+                found_match = False
+                for index in adjacent_indices_unordered:
+                    if atomnames[index] == atomname:
+                        found_match = True
+                        axis_indices.append(index)
+                        adjacent_indices_unordered.remove(index)
+                        break
+                if not found_match:
+                    for equivalent_name in equivalent_names[atomname]:
+                        for index in adjacent_indices_unordered:
+                            if atomnames[index] == equivalent_name:
+                                found_match = True
+                                axis_indices.append(index)
+                                adjacent_indices_unordered.remove(index)
+                                break
+                if not found_match:
+                    raise ValueError(f'{atom.name}, {axis_atomnames}')
         else:
-            raise NotImplementedError
+            raise ValueError
+
+        points = [*[coords[i, :] for i in axis_indices]]
+        R = getattr(rotations, p["axis_type"].values[0])(*points)
+        rotation_matrices.append(R)
 
 print('@COORDINATES')
 print(len(atoms))

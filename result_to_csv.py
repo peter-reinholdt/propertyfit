@@ -7,7 +7,7 @@ import propertyfit
 from propertyfit.structures import constraints
 
 with open('results.csv', 'w') as csvfile:
-    csvfile.write('resname,atomname,axis_type,axis_atomnames[0],axis_atomnames[1],charge,dipole[0],dipole[1],dipole[2],quadrupole[0],quadrupole[1],quadrupole[2],quadrupole[3],quadrupole[4],quadrupole[5]\n')
+    csvfile.write('resname,atomname,axis_type,axis_atomnames,charge,dipole[0],dipole[1],dipole[2],quadrupole[0],quadrupole[1],quadrupole[2],quadrupole[3],quadrupole[4],quadrupole[5]\n')
     for filename in sys.argv[1:]:
         path = pathlib.Path(filename)
         if not path.stat().st_size > 0:
@@ -64,10 +64,10 @@ with open('results.csv', 'w') as csvfile:
         #@
         frag = con.fragments[central_fragment]
         for idx in frag.atomindices:
-            atomname = frag.idx2atomname[idx]
-            axis_type = frag.idx2axis_type[idx]
-            axis_atomnames = frag.idx2axis_atomnames[idx]
+            atomname = con.atomnames[idx]
+            axis_type = con.axis_types[idx]
+            axis_atomnames = con.axis_atomnames[idx]
             charge = charges[idx]
             dipole = dipoles[idx]
             quadrupole = quadrupoles[idx]
-            csvfile.write(f'{prefix+resname},{atomname},{axis_type},{axis_atomnames[0]},{axis_atomnames[1]},{charge},{dipole[0]},{dipole[1]},{dipole[2]},{quadrupole[0]},{quadrupole[1]},{quadrupole[2]},{quadrupole[3]},{quadrupole[4]},{quadrupole[5]}\n')
+            csvfile.write(f'{prefix+resname},{atomname},{axis_type},{" ".join(axis_atomnames)},{charge},{dipole[0]},{dipole[1]},{dipole[2]},{quadrupole[0]},{quadrupole[1]},{quadrupole[2]},{quadrupole[3]},{quadrupole[4]},{quadrupole[5]}\n')
