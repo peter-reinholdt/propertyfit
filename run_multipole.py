@@ -66,9 +66,9 @@ for s in structures:
     s.get_rotation_matrices(con)
 
 fun = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights)
-res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter': 10})
+res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter': 1000})
 charges, dipoles_local, quadrupoles_local = con.expand_parameter_vector(res.x)
-print()
+print(res)
 print("=" * 85)
 print()
 print("Final result:")

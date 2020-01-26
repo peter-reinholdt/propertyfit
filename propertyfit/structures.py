@@ -369,7 +369,40 @@ class constraints(object):
         self.startguess_dipole_redundant = np.array(self.startguess_dipole_redundant)
         self.startguess_quadrupole_redundant = np.array(self.startguess_quadrupole_redundant)
 
-    def get_multipole_parameter_vector(self, optimize_charges=True, optimize_dipoles=True, optimize_quadrupoles=True):
+        #symmetrize start-guesses
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                q_sym = 0.0
+                for member in sym:
+                    q_sym += self.startguess_charge_redundant[member]
+                q_sym = q_sym / len(sym)
+                for member in sym:
+                    self.startguess_charge_redundant[member] = q_sym
+            excess = 0.
+            for index in frag.atomindices:
+                excess += self.startguess_charge_redundant[index]
+            excess = excess - frag.qtot
+            for index in frag.fullsymmetries[-1]:
+                self.startguess_charge_redundant[index] -= excess / len(frag.fullsymmetries[-1])
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                dipole_sym = np.zeros(3)
+                quadrupole_sym = np.zeros((3, 3))
+                for member in sym:
+                    dipole_sym += self.startguess_dipole_redundant[member, :]
+                    quadrupole_sym += self.startguess_quadrupole_redundant[member, :, :]
+                dipole_sym /= len(sym)
+                quadrupole_sym /= len(sym)
+                for member in sym:
+                    self.startguess_dipole_redundant[member, :] = dipole_sym
+                    self.startguess_quadrupole_redundant[member, :, :] = quadrupole_sym
+
+    def get_multipole_parameter_vector(self,
+                                       optimize_charges=True,
+                                       optimize_dipoles=True,
+                                       optimize_quadrupoles=True,
+                                       dipole_zero_threshold=1e-2,
+                                       quadrupole_zero_threshold=1e-2):
         self.optimize_charges = optimize_charges
         self.optimize_dipoles = optimize_dipoles
         self.optimize_quadrupoles = optimize_quadrupoles
@@ -411,10 +444,9 @@ class constraints(object):
                     for index in sym:
                         dipole += np.array(self.startguess_dipole_redundant[index])
                     dipole = dipole / len(sym)
-                    # check which parameters are non-zero by local symmetry
+                    # check which parameters are non-zero
                     # "bool x -> is_nonzero(x)"
-                    x, y, z = dipole_axis_nonzero[(self.axis_types[index],
-                                                   tuple(self.axis_number_of_symmetric[index]))]
+                    x, y, z = dipole_axis_nonzero = np.abs(dipole) > dipole_zero_threshold
                     if x: mu0.append(dipole[0])
                     if y: mu0.append(dipole[1])
                     if z: mu0.append(dipole[2])
@@ -430,14 +462,17 @@ class constraints(object):
                     quadrupole = quadrupole / len(sym)
                     # check which parameters are non-zero by local symmetry
                     # "bool xy -> is_nonzero(xy)"
-                    xy, xz, yz, xxmyy, zz = quadrupole_axis_nonzero[(self.axis_types[index],
-                                                                     tuple(self.axis_number_of_symmetric[index]))]
+                    xx = np.abs(quadrupole[0, 0]) > quadrupole_zero_threshold
+                    xy = np.abs(quadrupole[0, 1]) < quadrupole_zero_threshold
+                    xz = np.abs(quadrupole[0, 2]) < quadrupole_zero_threshold
+                    yy = np.abs(quadrupole[1, 1]) < quadrupole_zero_threshold
+                    yz = np.abs(quadrupole[1, 2]) < quadrupole_zero_threshold
+                    if xx: theta0.append(quadrupole[0, 0])
                     if xy: theta0.append(quadrupole[0, 1])
                     if xz: theta0.append(quadrupole[0, 2])
+                    if yy: theta0.append(quadrupole[1, 1])
                     if yz: theta0.append(quadrupole[1, 2])
-                    if xxmyy: theta0.append(quadrupole[0, 0] - quadrupole[1, 1])
-                    if zz: theta0.append(quadrupole[2, 2])
-                    self.quadrupole_parameters_active.append([xy, xz, yz, xxmyy, zz])
+                    self.quadrupole_parameters_active.append([xx, xy, xz, yy, yz])
         self.nparametersmu = len(mu0)
         self.nparameterstheta = len(theta0)
         parameter_vector = q0 + mu0 + theta0
@@ -488,36 +523,34 @@ class constraints(object):
             quadrupole_pcounter = 0
             for frag in self.fragments:
                 for sym in frag.fullsymmetries:
-                    xy, xz, yz, xxmyy, zz = self.quadrupole_parameters_active[quadrupole_pcounter]
+                    xx, xy, xz, yy, yz = self.quadrupole_parameters_active[quadrupole_pcounter]
                     quadrupole_pcounter += 1
-                    Qxy = Qxz = Qyz = Qxxmyy = Qzz = 0.
+                    Qxx = Qxy = Qxz = Qyy = Qyz = Qzz = 0.
+                    if xx:
+                        Qxx = parameter_vector[pcounter]
+                        pcounter += 1
                     if xy:
                         Qxy = parameter_vector[pcounter]
                         pcounter += 1
                     if xz:
                         Qxz = parameter_vector[pcounter]
                         pcounter += 1
+                    if yy:
+                        Qyy = parameter_vector[pcounter]
+                        pcounter += 1
                     if yz:
                         Qyz = parameter_vector[pcounter]
                         pcounter += 1
-                    if xxmyy:
-                        Qxxmyy = parameter_vector[pcounter]
-                        pcounter += 1
-                    if zz:
-                        Qzz = parameter_vector[pcounter]
-                        pcounter += 1
                     for idx in sym:
+                        quadrupoles[idx, 0, 0] = Qxx
                         quadrupoles[idx, 0, 1] = Qxy
                         quadrupoles[idx, 1, 0] = Qxy
                         quadrupoles[idx, 0, 2] = Qxz
                         quadrupoles[idx, 2, 0] = Qxz
+                        quadrupoles[idx, 1, 1] = Qyy
                         quadrupoles[idx, 1, 2] = Qyz
                         quadrupoles[idx, 2, 1] = Qyz
-                        Qxx = 0.5 * Qxxmyy - Qzz
-                        Qyy = -(Qxxmyy - Qxx)
-                        quadrupoles[idx, 0, 0] = Qxx
-                        quadrupoles[idx, 1, 1] = Qyy
-                        quadrupoles[idx, 2, 2] = Qzz
+                        quadrupoles[idx, 2, 2] = -(Qxx + Qyy)
         else:
             quadrupoles = self.startguess_quadrupole_redundant
         return charges, dipoles, quadrupoles
@@ -570,34 +603,32 @@ class constraints(object):
         quadrupole_pcounter = 0
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
-                xy, xz, yz, xxmyy, zz = self.quadrupole_parameters_active[quadrupole_pcounter]
+                xx, xy, xz, yy, yz = self.quadrupole_parameters_active[quadrupole_pcounter]
                 quadrupole_pcounter += 1
-                Qxy = Qxz = Qyz = Qxxmyy = Qzz = 0.
+                Qxx = Qxy = Qxz = Qyy = Qyz = Qzz = 0.
+                if xx:
+                    Qxx = parameter_vector[pcounter]
+                    pcounter += 1
                 if xy:
                     Qxy = parameter_vector[pcounter]
                     pcounter += 1
                 if xz:
                     Qxz = parameter_vector[pcounter]
                     pcounter += 1
+                if yy:
+                    Qyy = parameter_vector[pcounter]
+                    pcounter += 1
                 if yz:
                     Qyz = parameter_vector[pcounter]
                     pcounter += 1
-                if xxmyy:
-                    Qxxmyy = parameter_vector[pcounter]
-                    pcounter += 1
-                if zz:
-                    Qzz = parameter_vector[pcounter]
-                    pcounter += 1
                 for idx in sym:
+                    quadrupoles[idx, 0, 0] = Qxx
                     quadrupoles[idx, 0, 1] = Qxy
                     quadrupoles[idx, 1, 0] = Qxy
                     quadrupoles[idx, 0, 2] = Qxz
                     quadrupoles[idx, 2, 0] = Qxz
+                    quadrupoles[idx, 1, 1] = Qyy
                     quadrupoles[idx, 1, 2] = Qyz
                     quadrupoles[idx, 2, 1] = Qyz
-                    Qxx = 0.5 * Qxxmyy - Qzz
-                    Qyy = -(Qxxmyy - Qxx)
-                    quadrupoles[idx, 0, 0] = Qxx
-                    quadrupoles[idx, 1, 1] = Qyy
-                    quadrupoles[idx, 2, 2] = Qzz
+                    quadrupoles[idx, 2, 2] = -(Qxx + Qyy)
         return quadrupoles
