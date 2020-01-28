@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import re
 import sys
 import pathlib
 import warnings
@@ -18,8 +19,9 @@ with open('results.csv', 'w') as csvfile:
         dipoles = []
         quadrupoles = []
         stem = path.stem
-        resname = stem.split("_")[1]
-        restype = "_".join(stem.split("_")[2:4])
+        print(stem)
+        resname = re.search('[A-Z][A-Z][A-Z]', stem).group(0)
+        restype = re.search(f'{resname}_([a-z]+_[a-z]+)', stem).group(1)  
         name = '_'.join([resname, restype])
         if restype == "methyl_methyl":
             prefix = ''
