@@ -69,10 +69,14 @@ for i in range(coords.shape[0]):
     bonds.append(bonded_atoms)
 
 
+offset = 0
 for fragment in system.fragments.values():
     residue = parameters[parameters.resname == fragment.name]
+    fragment_atomnames = np.array([atom.name for atom in fragment.atoms])
+    fragment_coordinates = np.array([atom.coordinate for atom in fragment.atoms])
 
-    for atom in fragment.atoms:
+
+    for iatom, atom in enumerate(fragment.atoms):
         if atom.name in residue.atomname.values:
             p = residue[residue.atomname == atom.name]
         else:
@@ -130,12 +134,35 @@ for fragment in system.fragments.values():
                                 break
                 if not found_match:
                     raise ValueError(f'{atom.name}, {axis_atomnames}')
+        elif p["axis_type"].values[0] in ("zthenx", "bisector"):
+            point1 = atom.coordinate
+            point1_idx = iatom
+            point2_atomnames = [p["axis_atomnames"].values[0].split()[0]]
+            extra_names = []
+            for name in point2_atomnames:
+                if name in equivalent_names:
+                    extra_names += equivalent_names[name]
+            all_names = np.array([list(set(point2_atomnames + extra_names))])
+            locs = np.where(all_names.T == fragment_atomnames)
+            point2_idx = list(set(locs[1][:]).difference(set([point1_idx])))[0]
+            point2 = fragment_coordinates[point2_idx]
+            point3_atomnames = [p["axis_atomnames"].values[0].split()[1]]
+            extra_names = []
+            for name in point3_atomnames:
+                if name in equivalent_names:
+                    extra_names += equivalent_names[name]
+            all_names = np.array([list(set(point3_atomnames + extra_names))])
+            locs = np.where(all_names.T == fragment_atomnames)
+            point3_idx = list(set(locs[1][:]).difference(set([point1_idx, point2_idx])))[0]
+            point3 = fragment_coordinates[point3_idx]
+            axis_indices = [idx + offset for idx in (point1_idx, point2_idx, point3_idx)]
         else:
             raise ValueError
 
         points = [*[coords[i, :] for i in axis_indices]]
         R = getattr(rotations, p["axis_type"].values[0])(*points)
         rotation_matrices.append(R)
+    offset += len(fragment_atomnames)
 
 print('@COORDINATES')
 print(len(atoms))

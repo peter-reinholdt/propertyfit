@@ -292,7 +292,10 @@ class fragment(object):
         self.axis_atomindices = [[idx - 1 for idx in axis_atomindices]
                                  for axis_atomindices in fragdict["axis_atomindices"]]
         self.axis_atomnames = fragdict["axis_atomnames"]
-        self.axis_number_of_symmetric = fragdict["axis_number_of_symmetric"]
+        if "axis_number_of_symmetric" in fragdict:
+            self.axis_number_of_symmetric = fragdict["axis_number_of_symmetric"]
+        else:
+            self.axis_number_of_symmetric = []
 
         for iloc, idx in enumerate(self.symmetryidx):
             for sym in self.symmetries:
