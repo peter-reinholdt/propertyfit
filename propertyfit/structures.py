@@ -466,10 +466,10 @@ class constraints(object):
                     # check which parameters are non-zero by local symmetry
                     # "bool xy -> is_nonzero(xy)"
                     xx = np.abs(quadrupole[0, 0]) > quadrupole_zero_threshold
-                    xy = np.abs(quadrupole[0, 1]) < quadrupole_zero_threshold
-                    xz = np.abs(quadrupole[0, 2]) < quadrupole_zero_threshold
-                    yy = np.abs(quadrupole[1, 1]) < quadrupole_zero_threshold
-                    yz = np.abs(quadrupole[1, 2]) < quadrupole_zero_threshold
+                    xy = np.abs(quadrupole[0, 1]) > quadrupole_zero_threshold
+                    xz = np.abs(quadrupole[0, 2]) > quadrupole_zero_threshold
+                    yy = np.abs(quadrupole[1, 1]) > quadrupole_zero_threshold
+                    yz = np.abs(quadrupole[1, 2]) > quadrupole_zero_threshold
                     if xx: theta0.append(quadrupole[0, 0])
                     if xy: theta0.append(quadrupole[0, 1])
                     if xz: theta0.append(quadrupole[0, 2])

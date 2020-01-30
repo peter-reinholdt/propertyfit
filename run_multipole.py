@@ -25,6 +25,8 @@ parser.add_argument('--topology',
 #parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
+parser.add_argument('--dipole-zero-threshold', type=float, dest='dipole_zero_threshold', default=1e-2)
+parser.add_argument('--quadrupole-zero-threshold', type=float, dest='quadrupole_zero_threshold', default=1e-2)
 parser.add_argument('--restraint',
                     dest='restraint',
                     type=float,
@@ -60,7 +62,9 @@ else:
 con.restraint = args.restraint
 parameters = con.get_multipole_parameter_vector(optimize_charges=True,
                                                 optimize_dipoles=True,
-                                                optimize_quadrupoles=True)
+                                                optimize_quadrupoles=True,
+                                                dipole_zero_threshold=args.dipole_zero_threshold,
+                                                quadrupole_zero_threshold=args.quadrupole_zero_threshold)
 
 for s in structures:
     s.get_rotation_matrices(con)
