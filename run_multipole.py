@@ -27,6 +27,7 @@ parser.add_argument('--method', dest='method', default='slsqp', help='Which opti
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
 parser.add_argument('--dipole-zero-threshold', type=float, dest='dipole_zero_threshold', default=1e-2)
 parser.add_argument('--quadrupole-zero-threshold', type=float, dest='quadrupole_zero_threshold', default=1e-2)
+parser.add_argument('--hydrogen-max-angular-momentum', type=int, default=1)
 parser.add_argument('--restraint',
                     dest='restraint',
                     type=float,
@@ -63,6 +64,7 @@ con.restraint = args.restraint
 parameters = con.get_multipole_parameter_vector(optimize_charges=True,
                                                 optimize_dipoles=True,
                                                 optimize_quadrupoles=True,
+                                                hydrogen_max_angular_momentum=args.hydrogen_max_angular_momentum,
                                                 dipole_zero_threshold=args.dipole_zero_threshold,
                                                 quadrupole_zero_threshold=args.quadrupole_zero_threshold)
 

@@ -401,6 +401,7 @@ class constraints(object):
                     self.startguess_quadrupole_redundant[member, :, :] = quadrupole_sym
 
     def get_multipole_parameter_vector(self,
+                                       hydrogen_max_angular_momentum=1,
                                        optimize_charges=True,
                                        optimize_dipoles=True,
                                        optimize_quadrupoles=True,
@@ -450,6 +451,9 @@ class constraints(object):
                     # check which parameters are non-zero
                     # "bool x -> is_nonzero(x)"
                     x, y, z = dipole_axis_nonzero = np.abs(dipole) > dipole_zero_threshold
+                    if self.atomnames[index][0] == 'H':
+                        if hydrogen_max_angular_momentum < 1:
+                            x, y, z = [False, False, False]
                     if x: mu0.append(dipole[0])
                     if y: mu0.append(dipole[1])
                     if z: mu0.append(dipole[2])
@@ -470,6 +474,9 @@ class constraints(object):
                     xz = np.abs(quadrupole[0, 2]) > quadrupole_zero_threshold
                     yy = np.abs(quadrupole[1, 1]) > quadrupole_zero_threshold
                     yz = np.abs(quadrupole[1, 2]) > quadrupole_zero_threshold
+                    if self.atomnames[index][0] == 'H':
+                        if hydrogen_max_angular_momentum < 2:
+                            xx, xy, xz, yy, yz = [False, False, False, False, False]
                     if xx: theta0.append(quadrupole[0, 0])
                     if xy: theta0.append(quadrupole[0, 1])
                     if xz: theta0.append(quadrupole[0, 2])
