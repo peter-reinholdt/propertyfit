@@ -4,10 +4,13 @@
 from __future__ import division, print_function
 import os
 import warnings
+import pathlib
 
 import sh
 import h5py
 import numpy as np
+import scipy
+from scipy.spatial.distance import euclidean as dist
 
 from qcelemental import periodictable, vdwradii
 from qcelemental import constants
@@ -51,6 +54,38 @@ class structure(object):
         self.fchkname = filename
         self.field = field
 
+    def load_fchk(self, fchkname):
+        self.fchkname = fchkname
+        numbers = []
+        coordinates = []
+        with open(fchkname, 'r') as f:
+            read_numbers = False
+            read_coordinates = False
+            while True:
+                line = f.readline()
+                if 'Number of atoms' in line:
+                    self.natoms = int(line.split()[-1])
+                elif 'Nuclear charges' in line:
+                    while len(numbers) < self.natoms:
+                        line = f.readline()
+                        for entry in line.split():
+                            numbers.append(int(float(entry)))
+                    else:
+                        read_numbers = True
+                        self.numbers = np.array(numbers)
+                elif 'Current cartesian coordinates' in line:
+                    while len(coordinates) < 3 * self.natoms:
+                        line = f.readline()
+                        for entry in line.split():
+                            coordinates.append(float(entry))
+                    else:
+                        read_coordinates = True
+                        self.coordinates = np.array(coordinates).reshape(-1,3)
+                if read_numbers and read_coordinates:
+                    break
+
+
+
     def load_esp_terachem(self, terachem_scrdir, field=np.zeros(3, dtype=np.float64)):
         #we really only need to provide coordinates, grid_points, (external field), and ESP
         #from terachem manual:
@@ -64,7 +99,7 @@ class structure(object):
         #   When we use software to visualize this xyz file, only data in the first 4 columns is read by the software,
         #   though sometimes the 5th column can also be recognized and presents in labels (Molden).
         esp_data = np.loadtxt(terachem_scrdir + '/esp.xyz', skiprows=2, dtype=str)[:, 1:5].astype(np.float64)
-        self.grid = esp_data[:, 0:3] / constants.bohr2angstrom
+        self.grid = esp_data[:, 0:3] / constants.bohr2angstroms
         self.esp_grid_qm = esp_data[:, 3]  #quite sure this is in hartree
         self.ngridpoints = self.esp_grid_qm.shape[0]
         #we assume xyz is in angstrom and convert to bohr
@@ -112,10 +147,10 @@ class structure(object):
 
     def compute_grid_surface(self, pointdensity=2.0, radius_scale=1.4):
         """
-        Generates apparent uniformly spaced points on a vdw_radii
+        Generates apparent uniformly spaced points on a vdwradii
         surface of a molecule.
         
-        vdw_radii   = van der Waals radius of atoms
+        vdwradii   = van der Waals radius of atoms
         points      = number of points on a sphere around each atom
         grid        = output points in x, y, z
         idx         = used to keep track of index in grid, when generating 
@@ -126,7 +161,7 @@ class structure(object):
         """
         points = np.zeros(self.natoms, dtype=np.int64)
         for i in range(self.natoms):
-            points[i] = np.int(pointdensity * 4 * np.pi * radius_scale * vdw_radii.get(self.numbers[i]))
+            points[i] = np.int(pointdensity * 4 * np.pi * radius_scale * vdwradii.get(self.numbers[i]))
         # grid = [x, y, z]
         grid = np.zeros((np.sum(points), 3), dtype=np.float64)
         idx = 0
@@ -141,15 +176,14 @@ class structure(object):
                 else:
                     #phi_k  phi_{k-1}
                     phi = ((phi + 3.6 / np.sqrt(N * (1 - h**2)))) % (2 * np.pi)
-                x = radius_scale * vdw_radii.get(self.numbers[i]) * np.cos(phi) * np.sin(theta)
-                y = radius_scale * vdw_radii.get(self.numbers[i]) * np.sin(phi) * np.sin(theta)
-                z = radius_scale * vdw_radii.get(self.numbers[i]) * np.cos(theta)
+                x = radius_scale * vdwradii.get(self.numbers[i]) * np.cos(phi) * np.sin(theta)
+                y = radius_scale * vdwradii.get(self.numbers[i]) * np.sin(phi) * np.sin(theta)
+                z = radius_scale * vdwradii.get(self.numbers[i]) * np.cos(theta)
                 grid[idx, 0] = x + self.coordinates[i, 0]
                 grid[idx, 1] = y + self.coordinates[i, 1]
                 grid[idx, 2] = z + self.coordinates[i, 2]
                 idx += 1
 
-        dist = lambda i, j: np.sqrt(np.sum((i - j)**2))
 
         #This is the distance points have to be apart
         #since they are from the same atom
@@ -158,20 +192,14 @@ class structure(object):
         #Remove overlap all points to close to any atom
         not_near_atom = np.ones(grid.shape[0], dtype=bool)
         for i in range(self.natoms):
-            for j in range(grid.shape[0]):
-                r = dist(grid[j, :], self.coordinates[i, :])
-                if r < radius_scale * 0.99 * vdw_radii.get(self.numbers[i]):
-                    not_near_atom[j] = False
+            not_near_atom *= scipy.spatial.distance.cdist(self.coordinates[i,:].reshape(1,3), grid).reshape(-1) > radius_scale * 0.99 * vdwradii.get(self.numbers[i])
         grid = grid[not_near_atom]
 
         # Double loop over grid to remove close lying points
-        not_overlapping = np.ones(grid.shape[0], dtype=bool)
-        for i in range(grid.shape[0]):
-            for j in range(i + 1, grid.shape[0]):
-                if (not not_overlapping[j]): continue  #already marked for removal
-                r = dist(grid[i, :], grid[j, :])
-                if 0.90 * grid_spacing > r:
-                    not_overlapping[j] = False
+        distance = scipy.spatial.distance.cdist(grid, grid)
+        #remove diagonal
+        distance[np.diag_indices(distance.shape[0])] = 1e9
+        not_overlapping = np.all(distance > 0.9 * grid_spacing, axis=0)
         grid = grid[not_overlapping]
         return grid
 
@@ -190,6 +218,23 @@ class structure(object):
         self._T1 = None
         self._T2 = None
 
+    def compute_qm_esp_gaussian(self):
+        self.esp_grid_qm = np.zeros(self.grid.shape[0])
+        fchk = pathlib.Path(self.fchkname)
+        base = fchk.stem
+        sh.unfchk(self.fchkname)
+        com = f"%OldChk={base}.chk\n# Prop=(potential, read) ChkBasis Density=Checkpoint Geom=AllCheckpoint\n\n"
+        com += '\n'.join(' '.join(coord) for coord in (constants.bohr2angstroms * self.grid).astype(str)) + '\n\n'
+        output = sh.g09(_in=com).stdout.decode().split('\n')
+        for header_loc, line in enumerate(output):
+            if 'Center     Electric         -------- Electric Field --------' in line:
+                break
+        for i, line in enumerate(output[header_loc+3+self.natoms:header_loc+3+self.natoms+self.grid.shape[0]]):
+            esp = float(line.split()[-1])
+            self.esp_grid_qm[i] = esp
+
+
+
     def compute_qm_esp(self):
         esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float),
                                                       self.grid)
@@ -205,9 +250,9 @@ class structure(object):
             for i in range(self.natoms):
                 atomname = periodictable.to_symbol[self.numbers[i]]
                 f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(
-                    atomname, self.coordinates[i, 0] * constants.bohr2angstrom,
-                    self.coordinates[i, 1] * constants.bohr2angstrom,
-                    self.coordinates[i, 2] * constants.bohr2angstrom))
+                    atomname, self.coordinates[i, 0] * constants.bohr2angstroms,
+                    self.coordinates[i, 1] * constants.bohr2angstroms,
+                    self.coordinates[i, 2] * constants.bohr2angstroms))
 
     def write_grid(self, filename):
         with open(filename, "w") as f:
@@ -215,9 +260,9 @@ class structure(object):
             for i in range(self.ngridpoints):
                 atomname = 'H'
                 f.write("{} {: .10f}   {: .10f}   {: .10f}\n".format(atomname,
-                                                                     self.grid[i, 0] * constants.bohr2angstrom,
-                                                                     self.grid[i, 1] * constants.bohr2angstrom,
-                                                                     self.grid[i, 2] * constants.bohr2angstrom))
+                                                                     self.grid[i, 0] * constants.bohr2angstroms,
+                                                                     self.grid[i, 1] * constants.bohr2angstroms,
+                                                                     self.grid[i, 2] * constants.bohr2angstroms))
 
     def save_h5(self, filename):
         f = h5py.File(filename, "w")
