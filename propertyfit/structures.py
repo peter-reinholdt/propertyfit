@@ -16,7 +16,7 @@ from qcelemental import periodictable, vdwradii
 from qcelemental import constants
 
 from . import rotations
-from .utilities import load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero
+from .utilities import return_to_cwd, load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero
 from .potentials import T0, T1, T2
 
 class structure(object):
@@ -203,10 +203,12 @@ class structure(object):
         self.esp_grid_qm = np.zeros(self.grid.shape[0])
         fchk = pathlib.Path(self.fchkname)
         base = fchk.stem
-        sh.unfchk(self.fchkname)
-        com = f"%OldChk={base}.chk\n# Prop=(potential, read) ChkBasis Density=Checkpoint Geom=AllCheckpoint\n\n"
-        com += '\n'.join(' '.join(coord) for coord in (constants.bohr2angstroms * self.grid).astype(str)) + '\n\n'
-        output = sh.g09(_in=com).stdout.decode().split('\n')
+        with return_to_cwd():
+            os.chdir(fchk.parent)
+            sh.unfchk(fchk.name)
+            com = f"%OldChk={base}.chk\n# Prop=(potential, read) ChkBasis Density=Checkpoint Geom=AllCheckpoint\n\n"
+            com += '\n'.join(' '.join(coord) for coord in (constants.bohr2angstroms * self.grid).astype(str)) + '\n\n'
+            output = sh.g09(_in=com).stdout.decode().split('\n')
         for header_loc, line in enumerate(output):
             if 'Center     Electric         -------- Electric Field --------' in line:
                 break

@@ -10,6 +10,7 @@ import glob
 import numpy as np
 import sh
 import json
+import contextlib
 from numpy import nan
 from functools import wraps
 
@@ -43,6 +44,14 @@ def load_geometry_from_molden(filename):
         return coordinates * 1.8897259886, elements
     else:
         return coordinates, elements
+
+@contextlib.contextmanager
+def return_to_cwd():
+    cwd = os.getcwd()
+    try: 
+        yield
+    finally:
+        os.chdir(cwd)
 
 
 dipole_axis_nonzero = {}
