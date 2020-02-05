@@ -6,11 +6,6 @@ conversion factors
 
 import os
 import warnings
-try:
-    import horton
-except:
-    pass
-    #warnings.warn("Running without support for horton", RuntimeWarning)
 import glob
 import numpy as np
 import sh
@@ -20,26 +15,6 @@ from functools import wraps
 
 hartree2kjmol = 2625.5002
 kjmol2hartree = 1.0 / hartree2kjmol
-
-
-def load_qmfiles(regex):
-    from structures import structure  #sorry!
-    files = glob.glob(regex)
-    structures = []
-    for i in files:
-        io = horton.IOData.from_file(i)
-        try:
-            grepfield = sh.grep("E-field", i, "-A1")
-            field = np.array([float(x) for x in grepfield.stdout.split()[6:9]])
-        except:
-            print("INFO: no field information found in {}. Assuming zero field.".format(i))
-            field = np.array([0., 0., 0.])
-
-        s = structure()
-        s.load_qm(i, field)
-        structures.append(s)
-    return structures
-
 
 def load_json(filename):
     with open(filename, "r") as f:

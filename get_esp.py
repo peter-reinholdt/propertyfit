@@ -11,7 +11,7 @@ parser.add_argument('--qm-files',
                     dest="qm",
                     type=str,
                     nargs="+",
-                    help="Get ESP from .molden or .fchk files (with horton).")
+                    help="Get ESP from .fchk files (the ESP is evaluated with gaussian).")
 parser.add_argument('--terachem-scrdirs',
                     dest="terachem_scrdirs",
                     type=str,
@@ -39,13 +39,10 @@ if not (args.qm or args.terachem_scrdirs or (args.orca_gbws and args.orca_densit
 if args.qm:
     for fname in args.qm:
         s = structure()
-        s.load_qm(fname, np.array([0.0, 0.0, 0.0]))
+        s.load_fchk(fname)
         s.compute_grid(rmin=args.rmin, rmax=args.rmax, pointdensity=args.point_density, nsurfaces=args.n_surfaces)
-        s.compute_rinvmat()
-        s.compute_xyzmat()
-        s.compute_qm_esp()
+        s.compute_qm_esp_gaussian()
         s.save_h5(fname + ".h5")
-        structures.append(s)
 if args.terachem_scrdirs:
     for folder_name in args.terachem_scrdirs:
         s = structure()

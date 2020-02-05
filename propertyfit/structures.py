@@ -16,23 +16,10 @@ from qcelemental import periodictable, vdwradii
 from qcelemental import constants
 
 from . import rotations
-from .utilities import load_qmfiles, load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero
+from .utilities import load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero
 from .potentials import T0, T1, T2
 
-try:
-    import horton
-except:
-    pass
-    #warnings.warn("Running without support for horton", RuntimeWarning)
-
-
 class structure(object):
-    """
-    A structure depends on horton for loading QM file data
-    and calculating ESP on a grid.
-    We define the grid-points on which to calculate ESP, as
-    well as pre-calculated arrays of distances
-    """
     def __init__(self, vdw_grid_rmin=1.4, vdw_grid_rmax=2.0, vdw_grid_pointdensity=2.0, vdw_grid_nsurfaces=2):
         self.vdw_grid_rmin = vdw_grid_rmin
         self.vdw_grid_rmax = vdw_grid_rmax
@@ -44,16 +31,6 @@ class structure(object):
         self._T2 = None
         self.rotation_matrices = None
 
-    def load_qm(self, filename, field=np.zeros(3, dtype=np.float64)):
-        IO = horton.IOData.from_file(filename)
-        self.coordinates = IO.coordinates
-        self.numbers = IO.numbers
-        self.dm = IO.get_dm_full()
-        self.obasis = IO.obasis
-        self.natoms = len(self.numbers)
-        self.fchkname = filename
-        self.field = field
-
     def load_fchk(self, fchkname):
         self.fchkname = fchkname
         numbers = []
@@ -61,6 +38,7 @@ class structure(object):
         with open(fchkname, 'r') as f:
             read_numbers = False
             read_coordinates = False
+            read_field = False
             while True:
                 line = f.readline()
                 if 'Number of atoms' in line:
@@ -81,10 +59,13 @@ class structure(object):
                     else:
                         read_coordinates = True
                         self.coordinates = np.array(coordinates).reshape(-1,3)
-                if read_numbers and read_coordinates:
+                elif 'External E-field' in line:
+                    line = f.readline()
+                    potential, Ex, Ey, Ez, Gxx = line.split()
+                    self.field = np.array([float(Ex), float(Ey), float(Ez)])
+                    read_field = True
+                if read_numbers and read_coordinates and read_field:
                     break
-
-
 
     def load_esp_terachem(self, terachem_scrdir, field=np.zeros(3, dtype=np.float64)):
         #we really only need to provide coordinates, grid_points, (external field), and ESP
@@ -232,13 +213,6 @@ class structure(object):
         for i, line in enumerate(output[header_loc+3+self.natoms:header_loc+3+self.natoms+self.grid.shape[0]]):
             esp = float(line.split()[-1])
             self.esp_grid_qm[i] = esp
-
-
-
-    def compute_qm_esp(self):
-        esp_grid_qm = self.obasis.compute_grid_esp_dm(self.dm, self.coordinates, self.numbers.astype(float),
-                                                      self.grid)
-        self.esp_grid_qm = esp_grid_qm
 
     def compute_all(self):
         self.compute_grid()
