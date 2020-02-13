@@ -46,7 +46,9 @@ equivalent_names = {'H': ['H1'],
                     'HG13': ['HG11', 'HG12'],
                     'HG21': ['HG22', 'HG23'], #HG21, HG22, HG23 equivalent
                     'HG22': ['HG21', 'HG22'],
-                    'HG23': ['HG21', 'HG22'],}
+                    'HG23': ['HG21', 'HG22'],
+                    'SD': ['SG'],             # SD/G in CYX
+                    'SG': ['SD'],}
 
 elements = []
 coords = []

@@ -46,9 +46,9 @@ def isopol_cost_function(alphatest, structures, fieldstructures, constraints, we
 
 def multipole_restraint_contribution_res(parameters, constraints):
     charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
-    res = np.sum((charges - constraints.startguess_charge_redundant)**2)
-    res += np.sum((dipoles_local - constraints.startguess_dipole_redundant)**2)
-    res += np.sum((quadrupoles_local - constraints.startguess_quadrupole_redundant)**2)
+    res =  np.average((charges - constraints.startguess_charge_redundant)**2)
+    res += 1/3 * np.average((dipoles_local - constraints.startguess_dipole_redundant)**2)
+    res += 1/9 * np.average((quadrupoles_local - constraints.startguess_quadrupole_redundant)**2)
     res *= constraints.restraint
     return res
 
@@ -66,7 +66,7 @@ def multipole_restraint_contribution_jac(parameters, constraints):
     return jac
 
 
-def multipole_cost_function(parameters, structures=None, constraints=None, filter_outliers=True, weights=None):
+def multipole_cost_function(parameters, structures=None, constraints=None, filter_outliers=True, weights=None, calc_jac=False):
     """
     Cost function for multipoles, based on the average of 
     square esp error across all structures.
@@ -110,53 +110,57 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     res = np.sum(contributions)
 
     # get jacobian
-    jac = np.zeros(parameters.shape)
-    h = 1e-6
-    test_parameter = np.zeros(parameters.shape[0])
+    if calc_jac:
+        jac = np.zeros(parameters.shape)
+        h = 1e-6
+        test_parameter = np.zeros(parameters.shape[0])
 
-    # EP contribution
-    for ip in range(len(parameters)):
-        if ip < constraints.nparametersq:
-            test_parameter[:] = 0.
-            test_parameter[ip] = h
-            charges = constraints.expand_charges_for_fdiff(test_parameter)
-            mask = charges != 0.
-            j = 0.0
-            for idx, s in enumerate(structures):
-                esp = -field(s, 0, charges, 0, mask=mask)
-                j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
-            jac[ip] = j / (2 * h)
-        elif ip < constraints.nparametersq + constraints.nparametersmu:
-            test_parameter[:] = 0.
-            test_parameter[ip] = h
-            dipoles_local = constraints.expand_dipoles_for_fdiff(test_parameter)
-            mask = np.any(dipoles_local != 0., axis=1)
-            j = 0.0
-            for idx, s in enumerate(structures):
-                dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
-                esp = -field(s, 1, dipoles, 0, mask=mask)
-                j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
-            jac[ip] = j / (2 * h)
-        elif ip < constraints.nparametersq + constraints.nparametersmu + constraints.nparameterstheta:
-            test_parameter[:] = 0.
-            test_parameter[ip] = h
-            quadrupoles_local = constraints.expand_quadrupoles_for_fdiff(test_parameter)
-            mask = np.any(quadrupoles_local != 0., axis=(1, 2))
-            j = 0.0
-            for idx, s in enumerate(structures):
-                quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local,
-                                        s.rotation_matrices)
-                esp = -field(s, 2, quadrupoles, 0, mask=mask)
-                j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
-            jac[ip] = j / (2 * h)
+        # EP contribution
+        for ip in range(len(parameters)):
+            if ip < constraints.nparametersq:
+                test_parameter[:] = 0.
+                test_parameter[ip] = h
+                charges = constraints.expand_charges_for_fdiff(test_parameter)
+                mask = charges != 0.
+                j = 0.0
+                for idx, s in enumerate(structures):
+                    esp = -field(s, 0, charges, 0, mask=mask)
+                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
+                jac[ip] = j / (2 * h)
+            elif ip < constraints.nparametersq + constraints.nparametersmu:
+                test_parameter[:] = 0.
+                test_parameter[ip] = h
+                dipoles_local = constraints.expand_dipoles_for_fdiff(test_parameter)
+                mask = np.any(dipoles_local != 0., axis=1)
+                j = 0.0
+                for idx, s in enumerate(structures):
+                    dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
+                    esp = -field(s, 1, dipoles, 0, mask=mask)
+                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
+                jac[ip] = j / (2 * h)
+            elif ip < constraints.nparametersq + constraints.nparametersmu + constraints.nparameterstheta:
+                test_parameter[:] = 0.
+                test_parameter[ip] = h
+                quadrupoles_local = constraints.expand_quadrupoles_for_fdiff(test_parameter)
+                mask = np.any(quadrupoles_local != 0., axis=(1, 2))
+                j = 0.0
+                for idx, s in enumerate(structures):
+                    quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local,
+                                            s.rotation_matrices)
+                    esp = -field(s, 2, quadrupoles, 0, mask=mask)
+                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
+                jac[ip] = j / (2 * h)
 
-    # restraint contribution
-    if constraints.restraint > 0.:
-        res_restraint = multipole_restraint_contribution_res(parameters, constraints)
-        jac_restraint = multipole_restraint_contribution_jac(parameters, constraints)
-        res += res_restraint
-        jac += jac_restraint
+        # restraint contribution
+        if constraints.restraint > 0.:
+            res_restraint = multipole_restraint_contribution_res(parameters, constraints)
+            jac_restraint = multipole_restraint_contribution_jac(parameters, constraints)
+            res += res_restraint
+            jac += jac_restraint
 
     # scale by large number to make optimizer work better...
     # or "units in (mH)**2"
-    return 1e6 * res, 1e6 * jac
+    if calc_jac:
+        return 1e6 * res, 1e6 * jac
+    else:
+        return 1e6 * res

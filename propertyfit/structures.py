@@ -425,9 +425,7 @@ class constraints(object):
                                        hydrogen_max_angular_momentum=1,
                                        optimize_charges=True,
                                        optimize_dipoles=True,
-                                       optimize_quadrupoles=True,
-                                       dipole_zero_threshold=1e-2,
-                                       quadrupole_zero_threshold=1e-2):
+                                       optimize_quadrupoles=True):
         self.optimize_charges = optimize_charges
         self.optimize_dipoles = optimize_dipoles
         self.optimize_quadrupoles = optimize_quadrupoles
@@ -471,7 +469,7 @@ class constraints(object):
                     dipole = dipole / len(sym)
                     # check which parameters are non-zero
                     # "bool x -> is_nonzero(x)"
-                    x, y, z = dipole_axis_nonzero = np.abs(dipole) > dipole_zero_threshold
+                    x, y, z = dipole_axis_nonzero[(self.axis_types[index], tuple(self.axis_number_of_symmetric[index]))]
                     if self.atomnames[index][0] == 'H':
                         if hydrogen_max_angular_momentum < 1:
                             x, y, z = [False, False, False]
@@ -490,11 +488,7 @@ class constraints(object):
                     quadrupole = quadrupole / len(sym)
                     # check which parameters are non-zero by local symmetry
                     # "bool xy -> is_nonzero(xy)"
-                    xx = np.abs(quadrupole[0, 0]) > quadrupole_zero_threshold
-                    xy = np.abs(quadrupole[0, 1]) > quadrupole_zero_threshold
-                    xz = np.abs(quadrupole[0, 2]) > quadrupole_zero_threshold
-                    yy = np.abs(quadrupole[1, 1]) > quadrupole_zero_threshold
-                    yz = np.abs(quadrupole[1, 2]) > quadrupole_zero_threshold
+                    xx, xy, xz, yy, yz = quadrupole_axis_nonzero[(self.axis_types[index], tuple(self.axis_number_of_symmetric[index]))]
                     if self.atomnames[index][0] == 'H':
                         if hydrogen_max_angular_momentum < 2:
                             xx, xy, xz, yy, yz = [False, False, False, False, False]

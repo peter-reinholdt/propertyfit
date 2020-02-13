@@ -17,6 +17,7 @@ from functools import wraps
 hartree2kjmol = 2625.5002
 kjmol2hartree = 1.0 / hartree2kjmol
 
+
 def load_json(filename):
     with open(filename, "r") as f:
         res = json.load(f)
@@ -45,10 +46,11 @@ def load_geometry_from_molden(filename):
     else:
         return coordinates, elements
 
+
 @contextlib.contextmanager
 def return_to_cwd():
     cwd = os.getcwd()
-    try: 
+    try:
         yield
     finally:
         os.chdir(cwd)
@@ -72,10 +74,36 @@ dipole_axis_nonzero[('terminal_two_adjacent_neighbors', (1, 2))] = [False, True,
 dipole_axis_nonzero[('terminal_two_adjacent_neighbors', (1, 1, 1))] = [True, True, True]
 dipole_axis_nonzero[('terminal_one_adjacent_neighbor', (1, 1))] = [True, False, True]
 # note: did not work out which are non-zero yet
-dipole_axis_nonzero[('zthenx', (1, 1))] = [True, True, True]
-dipole_axis_nonzero[('zthenx', (2))] = [True, True, True]
-dipole_axis_nonzero[('bisector', (1, 1))] = [True, True, True]
-dipole_axis_nonzero[('bisector', (2))] = [True, True, True]
+dipole_axis_nonzero[('zthenx', (2, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (2, 2))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (3, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (2, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (3))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (2))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 2, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 3))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 2))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('zthenx', (1, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (2, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (2, 2))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (3, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (2, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (3))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (2))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 2, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 3))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 2))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 1, 1))] = [True, False, True]
+dipole_axis_nonzero[('bisector', (1, 1))] = [True, False, True]
 quadrupole_axis_nonzero = {}
 quadrupole_axis_nonzero[('internal_four_neighbors', (2, 1, 1))] = [False, False, True, True, True]
 quadrupole_axis_nonzero[('internal_four_neighbors', (2, 2))] = [False, False, False, True, False]
@@ -92,7 +120,34 @@ quadrupole_axis_nonzero[('terminal_three_adjacent_neighbors', (1, 1, 1, 1))] = [
 quadrupole_axis_nonzero[('terminal_two_adjacent_neighbors', (1, 2))] = [False, False, True, True, True]
 quadrupole_axis_nonzero[('terminal_two_adjacent_neighbors', (1, 1, 1))] = [True, True, True, True, True]
 quadrupole_axis_nonzero[('terminal_one_adjacent_neighbor', (1, 1))] = [False, True, False, True, True]
-quadrupole_axis_nonzero[('zthenx', (1, 1))] = [True, True, True, True, True]
-quadrupole_axis_nonzero[('zthenx', (2))] = [True, True, True, True, True]
-quadrupole_axis_nonzero[('bisector', (1, 1))] = [True, True, True, True, True]
-quadrupole_axis_nonzero[('bisector', (2))] = [True, True, True, True, True]
+# note: did not work out which are non-zero yet
+quadrupole_axis_nonzero[('zthenx', (2, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (2, 2))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (3, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (2, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (3))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (2))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 2, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 3))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 2))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('zthenx', (1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (2, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (2, 2))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (3, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (2, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (3))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (2))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 2, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 3))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 2))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 1, 1))] = [True, False, True, True, False]
+quadrupole_axis_nonzero[('bisector', (1, 1))] = [True, False, True, True, False]
