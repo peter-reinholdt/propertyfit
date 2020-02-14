@@ -9,7 +9,7 @@ from propertyfit.structures import constraints
 
 with open('results.csv', 'w') as csvfile:
     csvfile.write('resname,atomname,axis_type,axis_atomnames,charge,dipole[0],dipole[1],dipole[2],quadrupole[0],quadrupole[1],quadrupole[2],quadrupole[3],quadrupole[4],quadrupole[5]\n')
-    for filename in sys.argv[1:]:
+    for filename in sys.argv[2:]:
         path = pathlib.Path(filename)
         if not path.stat().st_size > 0:
             warnings.warn(f'Skipping empty file {filename}')
@@ -40,7 +40,7 @@ with open('results.csv', 'w') as csvfile:
             central_fragment = 1
         else:
             raise NotImplementedError(restype)
-        con = constraints(f"constraints/{name}.constraints.new")
+        con = constraints(f"{sys.argv[1]}/{name}.constraints.new")
         with open(filename, 'r') as resultfile:
             for line in resultfile:
                 if 'Charges' in line:
