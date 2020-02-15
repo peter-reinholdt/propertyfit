@@ -6,7 +6,7 @@ import numpy as np
 import functools
 from scipy.optimize import minimize
 from propertyfit.structures import structure, constraints
-from propertyfit.costfunctions import isopol_cost_function
+from propertyfit.costfunctions import polarizability_cost_function
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -15,7 +15,7 @@ parser.add_argument('--topology', dest='top', type=str, help='Provide file for i
 parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
-parser.add_argument('-o', dest='output', type=str, default='alphas.dat', help='Name of file to write polarizabilities to')
+parser.add_argument('--isotropic', dest='isotropic', type=bool, action='store_true', help='Use only isotropic polarizabilities')
 
 
 args = parser.parse_args()
@@ -38,22 +38,31 @@ for i in range(len(ref_files)):
         print("Warning, recieved an exception {ex}. Ignoring bad structure, please check the files {r} and {f}".format(ex=e, r=ref_files[i], f=field_files[i]))
 
 
+if args.weights:
+    weights = np.loadtxt(args.weights)
+else:
+    weights = None
 
-#use partial to wrap cost function, so we only need a single atest argument (and not constraints, structures)
-#then we can call fun(atest) instead of isopol_cost_function(atest, structures, fieldstructures, constraints)
-
-#read initial parameters from a0
-a0 = con.a0
 con.restraint = args.restraint
+parameters = con.get_polarizability_parameter_vector(isotropic=args.isotropic)
+
+for s in structures:
+    s.get_rotation_matrices(con)
+for s in fieldstructures:
+    s.get_rotation_matrices(con)
 
 fun = functools.partial(isopol_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con)
-constraints = [{'type': 'ineq', 'fun': lambda x: np.min(x)}]
-res = minimize(fun, x0=a0, method=args.method, constraints=constraints, tol=1e-14, options={'maxiter':1000})
+res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, options={'maxiter':1000})
+polarizabilities_local = con.expand_polarizabilities(res.x)
 
 print(res)
-print("\n========================================================\n")
+
+print("=" * 85)
+print()
 print("Final result:")
-with open(args.output, "w") as f:
-    for a in con.expand_a(res.x):
-        print(a[0,0])
-        f.write("{}\n".format(a[0,0]))
+print("Polarizabilities (in local axes):")
+print("{:>6}   {:<13} {:<13} {:<13} {:<13} {:<13} {:<13}".format("Index", "xx", "xy", "xz", "yy", "yz", "zz"))
+for i, polarizability in enumerate(polarizabilities_local):
+    print(
+        f'{i:>6}: {polarizability[0,0]: 12.10f} {polarizability[0,1]: 12.10f} {polarizability[0,2]: 12.10f} {polarizability[1,1]: 12.10f} {polarizability[1,2]: 12.10f} {polarizability[2,2]: 12.10f}'
+    )

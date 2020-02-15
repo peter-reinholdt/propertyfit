@@ -11,44 +11,95 @@ import numpy as np
 from .utilities import hartree2kjmol
 from .potentials import field
 
-def isopol_cost_function(alphatest, structures, fieldstructures, constraints, weights=None):
-    """
-    Cost function for isotropic polarizabilities, based on the average of 
-    induced_esp_sum_squared_error across all structures.
-    alphatest:      array of non-redundant test-polarizablity parameters
-    structures:     list of structure objects
-    constraints:    constraints object, which contains information
-                    about symmetries etc.
-    """
-    afull = constraints.expand_a(alphatest)
-    afull_ref = constraints.expand_a(constraints.a0)
+def polarizability_restraint_contribution_res(parameters, constraints):
+    polarizabilities_local = constraints.expand_polarizabilities(parameters)
+    nonzero = polarizabilities_local != 0.
+    res += np.average((polarizabilities_local[nonzero] - constraints.startguess_polarizability_redundant[nonzero])**2)
+    res *= constraints.restraint
+    return res
+
+
+def polarizability_restraint_contribution_jac(parameters, constraints):
+    h = 1e-6
+    jac = np.zeros(parameters.shape)
+    for ip in range(len(parameters)):
+        pplus = np.copy(parameters)
+        pplus[ip] += h
+        pminus = np.copy(parameters)
+        pminus[ip] -= h
+        # maybe it is 2*(a-aref) ? 
+        jac[ip] = (polarizability_restraint_contribution_res(pplus, constraints) -
+                   polarizability_restraint_contribution_res(pminus, constraints)) / (2 * h)
+    return jac
+
+def polarizability_cost_function(alphatest, structures, fieldstructures, constraints, weights=None, calc_jac=False):
+    # todo: implement
+    polarizabiltiies_local = constraints.expand_polarizabilities(parameters)
     nstructures = len(structures)
 
     if weights is not None:
-        #make sure it is normalized
         weights = weights / np.sum(weights)
     else:
         weights = np.zeros(nstructures)
         weights[:] = 1.0 / nstructures
 
     res = 0.0
-    for i in range(nstructures):
-        contribution = induced_esp_sum_squared_error(structures[i].rinvmat, structures[i].xyzmat,
-                                                     structures[i].esp_grid_qm - fieldstructures[i].esp_grid_qm,
-                                                     fieldstructures[i].field, afull)
-        res += contribution * weights[i]
-    #print(res)
-    if constraints.restraint > 0.0:
-        for i in range(constraints.natoms):
-            res += constraints.restraint * (afull[i][0, 0] - afull_ref[i][0, 0])**2
-    return res
+    jac = np.zeros(parameters.shape[0])
+    contributions = np.zeros(nstructures)
+    diff_esps = []
+    for idx, fs, s in enumerate(zip(fieldstructures, structures)):
+        test_esp = np.zeros(s.esp_grid_qm.shape)
+        # minus sign due to potential definition
+        # R @ alpha @ R.T
+        polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local, fs.rotation_matrices)
+        induced_dipoles = np.einsum("aij,aj->ai", polarizabilities, fs.field)
+        test_esp = -field(s, 1, induced_dipoles, 0)
+        qm_induced_esp = fs.esp_grid_qm - s.esp_grid_qm
+        esp_difference = test_esp - qm_induced_esp
+        diff_esps.append(esp_difference)
+        contribution = np.average((esp_difference)**2)
+        contributions[idx] = contribution * weights[idx]
+    res = np.sum(contributions)
+
+    if calc_jac:
+        h = 1e-6
+        test_parameter = np.zeros(parameters.shape[0])
+        # EP contribution
+        for ip in range(len(parameters)):
+            test_parameter[:] = 0.
+            test_parameter[ip] = h
+            polarizabilities_local = constraints.expand_polarizabilties(test_parameter)
+            mask = np.any(polarizabilities_local != 0., axis=(1, 2))
+            j = 0.0
+            for idx, fs in enumerate(fieldstructures):
+                polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local, fs.rotation_matrices)
+                induced_dipoles = np.einsum("aij,aj->ai", polarizabilities, fs.field)
+                esp = -field(s, 1, induced_dipoles, 0)
+                j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
+            jac[ip] = j / (2 * h)
+                       
+    # restraint contribution
+    if constraints.restraint > 0.:
+        res_restraint = polarizability_restraint_contribution_res(parameters, constraints)
+        jac_restraint = polarizability_restraint_contribution_jac(parameters, constraints)
+        res += res_restraint
+        jac += jac_restraint
+
+    # scale by large number to make optimizer work better...
+    # or "units in (mH)**2"
+    if calc_jac:
+        return 1e6 * res, 1e6 * jac
+    else:
+        return 1e6 * res
 
 
 def multipole_restraint_contribution_res(parameters, constraints):
     charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
     res =  np.average((charges - constraints.startguess_charge_redundant)**2)
-    res += 1/3 * np.average((dipoles_local - constraints.startguess_dipole_redundant)**2)
-    res += 1/9 * np.average((quadrupoles_local - constraints.startguess_quadrupole_redundant)**2)
+    nonzero = dipoles_local != 0.
+    res += 1/8 * np.average((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
+    nonzero = quadrupoles_local != 0.
+    res += 1/4 * np.average((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
     res *= constraints.restraint
     return res
 
@@ -84,6 +135,7 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
 
     nstructures = len(structures)
     res = 0.0
+    jac = np.zeros(parameters.shape)
 
     if weights is not None:
         #make sure it is normalized
@@ -111,7 +163,6 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
 
     # get jacobian
     if calc_jac:
-        jac = np.zeros(parameters.shape)
         h = 1e-6
         test_parameter = np.zeros(parameters.shape[0])
 
