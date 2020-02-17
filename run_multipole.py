@@ -22,7 +22,6 @@ parser.add_argument('--topology',
                     type=str,
                     help='Provide file for information about symmetry-equivalent atoms and more.',
                     required=True)
-#parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
 parser.add_argument('--hydrogen-max-angular-momentum', type=int, default=1)

@@ -16,7 +16,7 @@ from qcelemental import periodictable, vdwradii
 from qcelemental import constants
 
 from . import rotations
-from .utilities import return_to_cwd, load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero
+from .utilities import return_to_cwd, load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero, polarizability_axis_nonzero
 from .potentials import T0, T1, T2
 
 class structure(object):
@@ -372,6 +372,7 @@ class constraints(object):
         self.startguess_charge_redundant = []
         self.startguess_dipole_redundant = []
         self.startguess_quadrupole_redundant = []
+        self.startguess_polarizability_redundant = []
         self.atomnames = []
         self.axis_types = []
         self.atomindices = []
@@ -386,6 +387,7 @@ class constraints(object):
             self.startguess_charge_redundant += frag.startguess_charge
             self.startguess_dipole_redundant += frag.startguess_dipole
             self.startguess_quadrupole_redundant += frag.startguess_quadrupole
+            self.startguess_polarizability_redundant += frag.startguess_polarizability
             self.axis_types += frag.axis_types
             self.atomindices += list(frag.atomindices)
             self.axis_atomindices += list(frag.axis_atomindices)
@@ -394,6 +396,7 @@ class constraints(object):
         self.startguess_charge_redundant = np.array(self.startguess_charge_redundant)
         self.startguess_dipole_redundant = np.array(self.startguess_dipole_redundant)
         self.startguess_quadrupole_redundant = np.array(self.startguess_quadrupole_redundant)
+        self.startguess_polarizability_redundant = np.array(self.startguess_polarizability_redundant)
 
         #symmetrize start-guesses
         for frag in self.fragments:
@@ -666,7 +669,7 @@ class constraints(object):
         polarizabilities = np.zeros((self.natoms, 3, 3))
         for frag in self.fragments:
             for sym in frag.fullsymmetries:
-                if isotropic_polarizabilities:
+                if self.isotropic_polarizabilities:
                     aiso = parameter_vector[pcounter]
                     for idx in sym:
                         polarizabilities[idx, 0, 0] = aiso
@@ -705,34 +708,32 @@ class constraints(object):
                         polarizabilities[idx, 2, 2] = azz
         return polarizabilities
 
-    def get_multipole_parameter_vector(self, isotropic=False):
+    def get_polarizability_parameter_vector(self, isotropic=False):
         self.isotropic_polarizabilities = isotropic
-        parameter_vector = []
         alpha0 = []
-        if optimize_quadrupoles:
-            self.quadrupole_parameters_active = []
-            for frag in self.fragments:
-                for sym in frag.fullsymmetries:
-                    polarizability = np.zeros((3, 3))
-                    for index in sym:
-                        polarizability += np.array(self.startguess_polarizability_redundant[index])
-                    polarizability = polarizability / len(sym)
-                    # check which parameters are non-zero by local symmetry
-                    # "bool xy -> is_nonzero(xy)"
-                    if isotropic:
-                        # not really used.:w
-                        xy, xz, yz = False
-                        xx, yy, zz = True
-                        theta0.append(np.trace(polarizability/3))
-                    else:
-                        xx, xy, xz, yy, yz, zz = polarizability_axis_nonzero[(self.axis_types[index], tuple(self.axis_number_of_symmetric[index]))]
-                        if xx: theta0.append(polarizability[0, 0])
-                        if xy: theta0.append(polarizability[0, 1])
-                        if xz: theta0.append(polarizability[0, 2])
-                        if yy: theta0.append(polarizability[1, 1])
-                        if yz: theta0.append(polarizability[1, 2])
-                        if yz: theta0.append(polarizability[2, 2])
-                    self.polarizability_parameters_active.append([xx, xy, xz, yy, yz, zz])
+        self.polarizability_parameters_active = []
+        for frag in self.fragments:
+            for sym in frag.fullsymmetries:
+                polarizability = np.zeros((3, 3))
+                for index in sym:
+                    polarizability += np.array(self.startguess_polarizability_redundant[index])
+                polarizability = polarizability / len(sym)
+                # check which parameters are non-zero by local symmetry
+                # "bool xy -> is_nonzero(xy)"
+                if isotropic:
+                    # not really used
+                    xy, xz, yz = False
+                    xx, yy, zz = True
+                    alpha0.append(np.trace(polarizability/3))
+                else:
+                    xx, xy, xz, yy, yz, zz = polarizability_axis_nonzero[(self.axis_types[index], tuple(self.axis_number_of_symmetric[index]))]
+                    if xx: alpha0.append(polarizability[0, 0])
+                    if xy: alpha0.append(polarizability[0, 1])
+                    if xz: alpha0.append(polarizability[0, 2])
+                    if yy: alpha0.append(polarizability[1, 1])
+                    if yz: alpha0.append(polarizability[1, 2])
+                    if zz: alpha0.append(polarizability[2, 2])
+                self.polarizability_parameters_active.append([xx, xy, xz, yy, yz, zz])
         self.nparametersalpha = len(alpha0)
         parameter_vector = alpha0
         return parameter_vector

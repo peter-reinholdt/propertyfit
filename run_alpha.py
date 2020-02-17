@@ -15,7 +15,7 @@ parser.add_argument('--topology', dest='top', type=str, help='Provide file for i
 parser.add_argument('--restraint', dest='restraint', type=float, default=0.0, help='Strength of harmonic restraint towards charges from topology file')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
-parser.add_argument('--isotropic', dest='isotropic', type=bool, action='store_true', help='Use only isotropic polarizabilities')
+parser.add_argument('--isotropic', dest='isotropic', action='store_true', help='Use only isotropic polarizabilities')
 
 
 args = parser.parse_args()
@@ -46,13 +46,13 @@ else:
 con.restraint = args.restraint
 parameters = con.get_polarizability_parameter_vector(isotropic=args.isotropic)
 
-for s in structures:
+for s in ref_structures:
     s.get_rotation_matrices(con)
-for s in fieldstructures:
+for s in field_structures:
     s.get_rotation_matrices(con)
 
-fun = functools.partial(isopol_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con)
-res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, options={'maxiter':1000})
+fun = functools.partial(polarizability_cost_function, structures=ref_structures, fieldstructures=field_structures, constraints=con, calc_jac=True)
+res = minimize(fun, x0=parameters, method=args.method, tol=1e-12, jac=True, options={'maxiter':1000})
 polarizabilities_local = con.expand_polarizabilities(res.x)
 
 print(res)
