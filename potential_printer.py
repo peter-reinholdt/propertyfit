@@ -24,31 +24,33 @@ dipoles = []
 quadrupoles = []
 rotation_matrices = []
 
-equivalent_names = {'H': ['H1'],
-                    'H1': ['H'],
-                    'HA1': ['HA2', 'HA3'], #HA1, HA2, HA3 equivalent
-                    'HA2': ['HA1', 'HA2'],
-                    'HA3': ['HA1', 'HA2'],
-                    'HB1': ['HB2', 'HB3'], #HB1, HB2, HB3 equivalent
-                    'HB2': ['HB1', 'HB2'],
-                    'HB3': ['HB1', 'HB2'],
-                    'HG1': ['HG2', 'HG3'], #HG1, HG2, HG3 equivalent
-                    'HG2': ['HG1', 'HG2'],
-                    'HG3': ['HG1', 'HG2'],
-                    'HD1': ['HD2', 'HD3'], #HD1, HD2, HD3 equivalent
-                    'HD2': ['HD1', 'HD2'],
-                    'HD3': ['HD1', 'HD2'],
-                    'HE1': ['HE2', 'HE3'], #HE1, HE2, HE3 equivalent
-                    'HE2': ['HE1', 'HE2'],
-                    'HE3': ['HE1', 'HE2'],
-                    'HG11': ['HG12', 'HG13'], #HG11, HG12, HG13 equivalent
-                    'HG12': ['HG11', 'HG12'],
-                    'HG13': ['HG11', 'HG12'],
-                    'HG21': ['HG22', 'HG23'], #HG21, HG22, HG23 equivalent
-                    'HG22': ['HG21', 'HG22'],
-                    'HG23': ['HG21', 'HG22'],
-                    'SD': ['SG'],             # SD/G in CYX
-                    'SG': ['SD'],}
+equivalent_names = {
+    'H': ['H1'],
+    'H1': ['H'],
+    'HA1': ['HA2', 'HA3'],  #HA1, HA2, HA3 equivalent
+    'HA2': ['HA1', 'HA2'],
+    'HA3': ['HA1', 'HA2'],
+    'HB1': ['HB2', 'HB3'],  #HB1, HB2, HB3 equivalent
+    'HB2': ['HB1', 'HB2'],
+    'HB3': ['HB1', 'HB2'],
+    'HG1': ['HG2', 'HG3'],  #HG1, HG2, HG3 equivalent
+    'HG2': ['HG1', 'HG2'],
+    'HG3': ['HG1', 'HG2'],
+    'HD1': ['HD2', 'HD3'],  #HD1, HD2, HD3 equivalent
+    'HD2': ['HD1', 'HD2'],
+    'HD3': ['HD1', 'HD2'],
+    'HE1': ['HE2', 'HE3'],  #HE1, HE2, HE3 equivalent
+    'HE2': ['HE1', 'HE2'],
+    'HE3': ['HE1', 'HE2'],
+    'HG11': ['HG12', 'HG13'],  #HG11, HG12, HG13 equivalent
+    'HG12': ['HG11', 'HG12'],
+    'HG13': ['HG11', 'HG12'],
+    'HG21': ['HG22', 'HG23'],  #HG21, HG22, HG23 equivalent
+    'HG22': ['HG21', 'HG22'],
+    'HG23': ['HG21', 'HG22'],
+    'SD': ['SG'],  # SD/G in CYX
+    'SG': ['SD'],
+}
 
 elements = []
 coords = []
@@ -62,21 +64,19 @@ coords = np.array(coords)
 bonds = []
 for i in range(coords.shape[0]):
     bonded_atoms = []
-    distances = np.linalg.norm(coords[i,:] - coords[:,:], axis=1)
+    distances = np.linalg.norm(coords[i, :] - coords[:, :], axis=1)
     for idist, dist in enumerate(distances):
         if idist == i:
             continue
-        if dist < 0.60*(covalentradii.get(elements[i]) + covalentradii.get(elements[idist])):
+        if dist < 0.60 * (covalentradii.get(elements[i]) + covalentradii.get(elements[idist])):
             bonded_atoms.append(idist)
     bonds.append(bonded_atoms)
-
 
 offset = 0
 for fragment in system.fragments.values():
     residue = parameters[parameters.resname == fragment.name]
     fragment_atomnames = np.array([atom.name for atom in fragment.atoms])
     fragment_coordinates = np.array([atom.coordinate for atom in fragment.atoms])
-
 
     for iatom, atom in enumerate(fragment.atoms):
         if atom.name in residue.atomname.values:
@@ -89,8 +89,11 @@ for fragment in system.fragments.values():
 
         charges.append(p.charge.values[0])
         dipoles.append([p["dipole[0]"].values[0], p["dipole[1]"].values[0], p["dipole[2]"].values[0]])
-        quadrupoles.append([p["quadrupole[0]"].values[0], p["quadrupole[1]"].values[0], p["quadrupole[2]"].values[0], p["quadrupole[3]"].values[0], p["quadrupole[4]"].values[0], p["quadrupole[5]"].values[0]])
-        
+        quadrupoles.append([
+            p["quadrupole[0]"].values[0], p["quadrupole[1]"].values[0], p["quadrupole[2]"].values[0],
+            p["quadrupole[3]"].values[0], p["quadrupole[4]"].values[0], p["quadrupole[5]"].values[0]
+        ])
+
         axis_atomnames = p["axis_atomnames"].values[0].split()
         if "internal" in p["axis_type"].values[0]:
             adjacent_indices_unordered = [b for b in bonds[atom.number - 1]]
@@ -113,11 +116,11 @@ for fragment in system.fragments.values():
                                 break
                 if not found_match:
                     raise ValueError
-        elif "terminal" in  p["axis_type"].values[0]:
+        elif "terminal" in p["axis_type"].values[0]:
             bonded_to = bonds[atom.number - 1][0]
             bonded_to_atomname = atomnames[bonded_to]
             adjacent_indices_unordered = [b for b in bonds[bonded_to] if b != atom.number - 1]
-            axis_indices = [atom.number -1, bonded_to]
+            axis_indices = [atom.number - 1, bonded_to]
             for atomname in axis_atomnames[1:]:
                 found_match = False
                 for index in adjacent_indices_unordered:
@@ -170,7 +173,8 @@ print('@COORDINATES')
 print(len(atoms))
 print('AA')
 for atom in atoms:
-    print('{:6s} {:16.12f} {:16.12f} {:16.12f} {:12d} ! {}'.format(atom.element, *atom.coordinate, atom.number, atom.name))
+    print('{:6s} {:16.12f} {:16.12f} {:16.12f} {:12d} ! {}'.format(atom.element, *atom.coordinate, atom.number,
+                                                                   atom.name))
 
 print('@MULTIPOLES')
 print('ORDER 0')
@@ -190,18 +194,20 @@ for idx, atom in enumerate(atoms):
 print('ORDER 2')
 print(len(atoms))
 for idx, atom in enumerate(atoms):
-    quadrupole = np.zeros((3,3))
-    quadrupole[0,0] = quadrupoles[idx][0]
-    quadrupole[0,1] = quadrupoles[idx][1]
-    quadrupole[1,0] = quadrupoles[idx][1]
-    quadrupole[0,2] = quadrupoles[idx][2]
-    quadrupole[2,0] = quadrupoles[idx][2]
-    quadrupole[1,1] = quadrupoles[idx][3]
-    quadrupole[1,2] = quadrupoles[idx][4]
-    quadrupole[2,1] = quadrupoles[idx][4]
-    quadrupole[2,2] = quadrupoles[idx][5]
+    quadrupole = np.zeros((3, 3))
+    quadrupole[0, 0] = quadrupoles[idx][0]
+    quadrupole[0, 1] = quadrupoles[idx][1]
+    quadrupole[1, 0] = quadrupoles[idx][1]
+    quadrupole[0, 2] = quadrupoles[idx][2]
+    quadrupole[2, 0] = quadrupoles[idx][2]
+    quadrupole[1, 1] = quadrupoles[idx][3]
+    quadrupole[1, 2] = quadrupoles[idx][4]
+    quadrupole[2, 1] = quadrupoles[idx][4]
+    quadrupole[2, 2] = quadrupoles[idx][5]
     quadrupole = rotation_matrices[idx] @ quadrupole @ rotation_matrices[idx].T
-    theta = [quadrupole[0,0], quadrupole[0,1], quadrupole[0,2], quadrupole[1,1], quadrupole[1,2], quadrupole[2,2]]
+    theta = [
+        quadrupole[0, 0], quadrupole[0, 1], quadrupole[0, 2], quadrupole[1, 1], quadrupole[1, 2], quadrupole[2, 2]
+    ]
     print('{:<12d} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f}'.format(atom.number, *theta))
 
 print('@POLARIZABILITIES')
@@ -211,14 +217,13 @@ for atom, p in zip(atoms, system.potential.values()):
     # for now, use standard cp3 polarizability
     print('{:<12d} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f}'.format(atom.number, *p.P11))
 
-
 print('EXCLISTS')
 maxlength = 0
 for p in system.potential.values():
     maxlength = max(maxlength, len(p.exclusion_list))
 
 print(len(atoms), maxlength + 1)
-fmt = '{:<8} ' +  ' {:>8d}'  * maxlength
+fmt = '{:<8} ' + ' {:>8d}' * maxlength
 for atom, p in zip(atoms, system.potential.values()):
     excluded = p.exclusion_list
-    print(fmt.format(atom.number, *excluded, *[0]*(maxlength - len(excluded))))
+    print(fmt.format(atom.number, *excluded, *[0] * (maxlength - len(excluded))))

@@ -19,6 +19,7 @@ from . import rotations
 from .utilities import return_to_cwd, load_json, load_geometry_from_molden, dipole_axis_nonzero, quadrupole_axis_nonzero, polarizability_axis_nonzero
 from .potentials import T0, T1, T2
 
+
 class structure(object):
     def __init__(self, vdw_grid_rmin=1.4, vdw_grid_rmax=2.0, vdw_grid_pointdensity=2.0, vdw_grid_nsurfaces=2):
         self.vdw_grid_rmin = vdw_grid_rmin
@@ -58,7 +59,7 @@ class structure(object):
                             coordinates.append(float(entry))
                     else:
                         read_coordinates = True
-                        self.coordinates = np.array(coordinates).reshape(-1,3)
+                        self.coordinates = np.array(coordinates).reshape(-1, 3)
                 elif 'External E-field' in line:
                     line = f.readline()
                     potential, Ex, Ey, Ez, Gxx = line.split()
@@ -165,7 +166,6 @@ class structure(object):
                 grid[idx, 2] = z + self.coordinates[i, 2]
                 idx += 1
 
-
         #This is the distance points have to be apart
         #since they are from the same atom
         grid_spacing = dist(grid[0, :], grid[1, :])
@@ -173,7 +173,8 @@ class structure(object):
         #Remove overlap all points to close to any atom
         not_near_atom = np.ones(grid.shape[0], dtype=bool)
         for i in range(self.natoms):
-            not_near_atom *= scipy.spatial.distance.cdist(self.coordinates[i,:].reshape(1,3), grid).reshape(-1) > radius_scale * 0.99 * vdwradii.get(self.numbers[i])
+            not_near_atom *= scipy.spatial.distance.cdist(self.coordinates[i, :].reshape(
+                1, 3), grid).reshape(-1) > radius_scale * 0.99 * vdwradii.get(self.numbers[i])
         grid = grid[not_near_atom]
 
         # Double loop over grid to remove close lying points
@@ -212,7 +213,8 @@ class structure(object):
         for header_loc, line in enumerate(output):
             if 'Center     Electric         -------- Electric Field --------' in line:
                 break
-        for i, line in enumerate(output[header_loc+3+self.natoms:header_loc+3+self.natoms+self.grid.shape[0]]):
+        for i, line in enumerate(output[header_loc + 3 + self.natoms:header_loc + 3 + self.natoms +
+                                        self.grid.shape[0]]):
             esp = float(line.split()[-1])
             self.esp_grid_qm[i] = esp
 
@@ -286,7 +288,9 @@ class structure(object):
     def get_rotation_matrices(self, constraints):
         self.rotation_matrices = np.zeros((self.natoms, 3, 3), dtype=np.float64)
         for idx in range(self.natoms):
-            points = [self.coordinates[i, :] for i in [constraints.atomindices[idx], *constraints.axis_atomindices[idx]]]
+            points = [
+                self.coordinates[i, :] for i in [constraints.atomindices[idx], *constraints.axis_atomindices[idx]]
+            ]
             self.rotation_matrices[idx, :, :] = getattr(rotations, constraints.axis_types[idx])(*points)
 
 
@@ -474,7 +478,8 @@ class constraints(object):
                     dipole = dipole / len(sym)
                     # check which parameters are non-zero
                     # "bool x -> is_nonzero(x)"
-                    x, y, z = dipole_axis_nonzero[(self.axis_types[index], tuple(self.axis_number_of_symmetric[index]))]
+                    x, y, z = dipole_axis_nonzero[(self.axis_types[index],
+                                                   tuple(self.axis_number_of_symmetric[index]))]
                     if self.atomnames[index][0] == 'H':
                         if hydrogen_max_angular_momentum < 1:
                             x, y, z = [False, False, False]
@@ -493,7 +498,8 @@ class constraints(object):
                     quadrupole = quadrupole / len(sym)
                     # check which parameters are non-zero by local symmetry
                     # "bool xy -> is_nonzero(xy)"
-                    xx, xy, xz, yy, yz = quadrupole_axis_nonzero[(self.axis_types[index], tuple(self.axis_number_of_symmetric[index]))]
+                    xx, xy, xz, yy, yz = quadrupole_axis_nonzero[(self.axis_types[index],
+                                                                  tuple(self.axis_number_of_symmetric[index]))]
                     if self.atomnames[index][0] == 'H':
                         if hydrogen_max_angular_momentum < 2:
                             xx, xy, xz, yy, yz = [False, False, False, False, False]
@@ -724,9 +730,11 @@ class constraints(object):
                     # not really used
                     xy, xz, yz = False
                     xx, yy, zz = True
-                    alpha0.append(np.trace(polarizability/3))
+                    alpha0.append(np.trace(polarizability / 3))
                 else:
-                    xx, xy, xz, yy, yz, zz = polarizability_axis_nonzero[(self.axis_types[index], tuple(self.axis_number_of_symmetric[index]))]
+                    xx, xy, xz, yy, yz, zz = polarizability_axis_nonzero[(self.axis_types[index],
+                                                                          tuple(
+                                                                              self.axis_number_of_symmetric[index]))]
                     if xx: alpha0.append(polarizability[0, 0])
                     if xy: alpha0.append(polarizability[0, 1])
                     if xz: alpha0.append(polarizability[0, 2])

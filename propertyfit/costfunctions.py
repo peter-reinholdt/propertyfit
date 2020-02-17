@@ -11,7 +11,13 @@ import numpy as np
 from .utilities import hartree2kjmol
 from .potentials import field
 
-def multipole_cost_function(parameters, structures=None, constraints=None, filter_outliers=True, weights=None, calc_jac=False):
+
+def multipole_cost_function(parameters,
+                            structures=None,
+                            constraints=None,
+                            filter_outliers=True,
+                            weights=None,
+                            calc_jac=False):
     """
     Cost function for multipoles, based on the average of 
     square esp error across all structures.
@@ -70,7 +76,8 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
                 j = 0.0
                 for idx, s in enumerate(structures):
                     esp = -field(s, 0, charges, 0, mask=mask)
-                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
+                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average(
+                        (diff_esps[idx] - esp)**2))
                 jac[ip] = j / (2 * h)
             elif ip < constraints.nparametersq + constraints.nparametersmu:
                 test_parameter[:] = 0.
@@ -81,7 +88,8 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
                 for idx, s in enumerate(structures):
                     dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
                     esp = -field(s, 1, dipoles, 0, mask=mask)
-                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
+                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average(
+                        (diff_esps[idx] - esp)**2))
                 jac[ip] = j / (2 * h)
             elif ip < constraints.nparametersq + constraints.nparametersmu + constraints.nparameterstheta:
                 test_parameter[:] = 0.
@@ -93,7 +101,8 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
                     quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local,
                                             s.rotation_matrices)
                     esp = -field(s, 2, quadrupoles, 0, mask=mask)
-                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
+                    j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average(
+                        (diff_esps[idx] - esp)**2))
                 jac[ip] = j / (2 * h)
 
         # restraint contribution
@@ -110,15 +119,17 @@ def multipole_cost_function(parameters, structures=None, constraints=None, filte
     else:
         return 1e6 * res
 
+
 def multipole_restraint_contribution_res(parameters, constraints):
     charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
-    res =  np.average((charges - constraints.startguess_charge_redundant)**2)
+    res = np.average((charges - constraints.startguess_charge_redundant)**2)
     nonzero = dipoles_local != 0.
-    res += 1/8 * np.average((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
+    res += 1 / 8 * np.average((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
     nonzero = quadrupoles_local != 0.
-    res += 1/4 * np.average((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
+    res += 1 / 4 * np.average((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
     res *= constraints.restraint
     return res
+
 
 def multipole_restraint_contribution_jac(parameters, constraints):
     h = 1e-6
@@ -131,6 +142,7 @@ def multipole_restraint_contribution_jac(parameters, constraints):
         jac[ip] = (multipole_restraint_contribution_res(pplus, constraints) -
                    multipole_restraint_contribution_res(pminus, constraints)) / (2 * h)
     return jac
+
 
 def polarizability_cost_function(parameters, structures, fieldstructures, constraints, weights=None, calc_jac=False):
     # todo: implement
@@ -151,7 +163,8 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
         test_esp = np.zeros(s.esp_grid_qm.shape)
         # minus sign due to potential definition
         # R @ alpha @ R.T
-        polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local, fs.rotation_matrices)
+        polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local,
+                                     fs.rotation_matrices)
         induced_dipoles = np.einsum("aij,j->ai", polarizabilities, fs.field)
         test_esp = -field(s, 1, induced_dipoles, 0)
         qm_induced_esp = s.esp_grid_qm - fs.esp_grid_qm
@@ -172,12 +185,13 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
             mask = np.any(polarizabilities_local != 0., axis=(1, 2))
             j = 0.0
             for idx, fs in enumerate(fieldstructures):
-                polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local, fs.rotation_matrices)
+                polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local,
+                                             fs.rotation_matrices)
                 induced_dipoles = np.einsum("aij,j->ai", polarizabilities, fs.field)
                 esp = -field(s, 1, induced_dipoles, 0)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
-                       
+
     # restraint contribution
     if constraints.restraint > 0.:
         res_restraint = polarizability_restraint_contribution_res(parameters, constraints)
@@ -193,12 +207,14 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
     else:
         return 1e6 * res
 
+
 def polarizability_restraint_contribution_res(parameters, constraints):
     polarizabilities_local = constraints.expand_polarizabilities(parameters)
     nonzero = polarizabilities_local != 0.
     res = np.average((polarizabilities_local[nonzero] - constraints.startguess_polarizability_redundant[nonzero])**2)
     res *= constraints.restraint
     return res
+
 
 def polarizability_restraint_contribution_jac(parameters, constraints):
     h = 1e-6
@@ -208,7 +224,7 @@ def polarizability_restraint_contribution_jac(parameters, constraints):
         pplus[ip] += h
         pminus = np.copy(parameters)
         pminus[ip] -= h
-        # maybe it is 2*(a-aref) ? 
+        # maybe it is 2*(a-aref) ?
         jac[ip] = (polarizability_restraint_contribution_res(pplus, constraints) -
                    polarizability_restraint_contribution_res(pminus, constraints)) / (2 * h)
     return jac

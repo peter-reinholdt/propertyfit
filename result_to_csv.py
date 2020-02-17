@@ -8,7 +8,9 @@ import propertyfit
 from propertyfit.structures import constraints
 
 with open('results.csv', 'w') as csvfile:
-    csvfile.write('resname,atomname,axis_type,axis_atomnames,charge,dipole[0],dipole[1],dipole[2],quadrupole[0],quadrupole[1],quadrupole[2],quadrupole[3],quadrupole[4],quadrupole[5]\n')
+    csvfile.write(
+        'resname,atomname,axis_type,axis_atomnames,charge,dipole[0],dipole[1],dipole[2],quadrupole[0],quadrupole[1],quadrupole[2],quadrupole[3],quadrupole[4],quadrupole[5]\n'
+    )
     for filename in sys.argv[2:]:
         path = pathlib.Path(filename)
         if not path.stat().st_size > 0:
@@ -21,7 +23,7 @@ with open('results.csv', 'w') as csvfile:
         stem = path.stem
         print(stem)
         resname = re.search('[A-Z][A-Z][A-Z]', stem).group(0)
-        restype = re.search(f'{resname}_([a-z]+_[a-z]+)', stem).group(1)  
+        restype = re.search(f'{resname}_([a-z]+_[a-z]+)', stem).group(1)
         name = '_'.join([resname, restype])
         if restype == "methyl_methyl":
             prefix = ''
@@ -54,7 +56,7 @@ with open('results.csv', 'w') as csvfile:
                     continue
                 elif 'Index' in line:
                     continue
-                
+
                 if not line.split():
                     continue
                 elif section == 'charges':
@@ -72,4 +74,6 @@ with open('results.csv', 'w') as csvfile:
             charge = charges[idx]
             dipole = dipoles[idx]
             quadrupole = quadrupoles[idx]
-            csvfile.write(f'{prefix+resname},{atomname},{axis_type},{" ".join(axis_atomnames)},{charge},{dipole[0]},{dipole[1]},{dipole[2]},{quadrupole[0]},{quadrupole[1]},{quadrupole[2]},{quadrupole[3]},{quadrupole[4]},{quadrupole[5]}\n')
+            csvfile.write(
+                f'{prefix+resname},{atomname},{axis_type},{" ".join(axis_atomnames)},{charge},{dipole[0]},{dipole[1]},{dipole[2]},{quadrupole[0]},{quadrupole[1]},{quadrupole[2]},{quadrupole[3]},{quadrupole[4]},{quadrupole[5]}\n'
+            )

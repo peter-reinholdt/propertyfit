@@ -64,7 +64,11 @@ parameters = con.get_multipole_parameter_vector(optimize_charges=True,
                                                 hydrogen_max_angular_momentum=args.hydrogen_max_angular_momentum)
 for s in structures:
     s.get_rotation_matrices(con)
-fun = functools.partial(multipole_cost_function, structures=structures, constraints=con, weights=weights, calc_jac=True)
+fun = functools.partial(multipole_cost_function,
+                        structures=structures,
+                        constraints=con,
+                        weights=weights,
+                        calc_jac=True)
 res = minimize(fun, x0=parameters, method=args.method, tol=1e-9, jac=True, options={'maxiter': 1000})
 charges, dipoles_local, quadrupoles_local = con.expand_parameter_vector(res.x)
 print(res)
