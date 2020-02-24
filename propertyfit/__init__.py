@@ -1,2 +1,2 @@
-from . import structures, utilities, rotations
-__all__ = ['structures', 'utilities', 'rotations']
+from . import structures, utilities, rotations, costfunctions
+__all__ = ['structures', 'utilities', 'rotations', 'costfunctions']

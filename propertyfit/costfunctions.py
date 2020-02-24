@@ -35,7 +35,7 @@ def multipole_cost_function(parameters,
 
     nstructures = len(structures)
     res = 0.0
-    jac = np.zeros(parameters.shape)
+    jac = np.zeros(len(parameters))
 
     if weights is not None:
         #make sure it is normalized
@@ -64,7 +64,7 @@ def multipole_cost_function(parameters,
     # get jacobian
     if calc_jac:
         h = 1e-6
-        test_parameter = np.zeros(parameters.shape[0])
+        test_parameter = np.zeros(len(parameters))
 
         # EP contribution
         for ip in range(len(parameters)):
@@ -106,7 +106,7 @@ def multipole_cost_function(parameters,
                 jac[ip] = j / (2 * h)
 
         # restraint contribution
-        if constraints.restraint > 0.:
+        if constraints.restraint:
             res_restraint = multipole_restraint_contribution_res(parameters, constraints)
             jac_restraint = multipole_restraint_contribution_jac(parameters, constraints)
             res += res_restraint
@@ -133,7 +133,7 @@ def multipole_restraint_contribution_res(parameters, constraints):
 
 def multipole_restraint_contribution_jac(parameters, constraints):
     h = 1e-6
-    jac = np.zeros(parameters.shape)
+    jac = np.zeros(len(parameters))
     for ip in range(len(parameters)):
         pplus = np.copy(parameters)
         pplus[ip] += h
@@ -156,7 +156,7 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
         weights[:] = 1.0 / nstructures
 
     res = 0.0
-    jac = np.zeros(parameters.shape[0])
+    jac = np.zeros(len(parameters))
     contributions = np.zeros(nstructures)
     diff_esps = []
     for idx, (fs, s) in enumerate(zip(fieldstructures, structures)):
@@ -176,7 +176,7 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
 
     if calc_jac:
         h = 1e-6
-        test_parameter = np.zeros(parameters.shape[0])
+        test_parameter = np.zeros(len(parameters))
         # EP contribution
         for ip in range(len(parameters)):
             test_parameter[:] = 0.
@@ -193,7 +193,7 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
             jac[ip] = j / (2 * h)
 
     # restraint contribution
-    if constraints.restraint > 0.:
+    if constraints.restraint:
         res_restraint = polarizability_restraint_contribution_res(parameters, constraints)
         jac_restraint = polarizability_restraint_contribution_jac(parameters, constraints)
         res += res_restraint
@@ -218,7 +218,7 @@ def polarizability_restraint_contribution_res(parameters, constraints):
 
 def polarizability_restraint_contribution_jac(parameters, constraints):
     h = 1e-6
-    jac = np.zeros(parameters.shape)
+    jac = np.zeros(len(parameters))
     for ip in range(len(parameters)):
         pplus = np.copy(parameters)
         pplus[ip] += h
