@@ -122,12 +122,11 @@ def multipole_cost_function(parameters,
 
 def multipole_restraint_contribution_res(parameters, constraints):
     charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
-    res = np.average((charges - constraints.startguess_charge_redundant)**2)
+    res = constraints.restraint[0] * np.average((charges - constraints.startguess_charge_redundant)**2)
     nonzero = dipoles_local != 0.
-    res += 1 / 8 * np.average((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
+    res += constraints.restraint[1] * np.average((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
     nonzero = quadrupoles_local != 0.
-    res += 1 / 4 * np.average((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
-    res *= constraints.restraint
+    res += constraints.restraint[2] * np.average((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
     return res
 
 

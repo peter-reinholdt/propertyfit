@@ -29,6 +29,7 @@ parser.add_argument('--restraint',
                     dest='restraint',
                     type=float,
                     default=0.0,
+                    nargs='+',
                     help='Strength of harmonic restraint towards charges from topology file')
 
 args = parser.parse_args()
