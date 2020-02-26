@@ -150,6 +150,8 @@ quadrupole_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True, True, True, True, T
 quadrupole_axis_nonzero[('bisector', (1, 1, 1))] = [True, False, True, True, False]  #  (37, 36, 37, 37, 19)
 # quadrupole_axis_nonzero[('bisector', (1, 1))] = [False, False, False, False, False]  #  (0, 0, 0, 0, 0)
 
+# for now assume all activated...
+# they probably follow similar rules as quadrupoles?
 polarizability_axis_nonzero = dict()
 polarizability_axis_nonzero[('zthenx', (2, 1, 1))] = [True] * 6
 polarizability_axis_nonzero[('zthenx', (2, 2))] = [True] * 6
@@ -181,3 +183,18 @@ polarizability_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True] * 6
 polarizability_axis_nonzero[('bisector', (1, 2))] = [True] * 6
 polarizability_axis_nonzero[('bisector', (1, 1, 1))] = [True] * 6
 polarizability_axis_nonzero[('bisector', (1, 1))] = [True] * 6
+polarizability_axis_nonzero[('internal_four_neighbors', (2, 1, 1))] = [True]*6
+polarizability_axis_nonzero[('internal_four_neighbors', (2, 2))] = [True]*6
+polarizability_axis_nonzero[('internal_four_neighbors', (1, 1, 1, 1))] = [True]*6
+polarizability_axis_nonzero[('internal_four_neighbors_symmetric', (3, 1))] = [True]*6
+polarizability_axis_nonzero[('internal_three_neighbors', (2, 1))] = [True]*6
+polarizability_axis_nonzero[('internal_three_neighbors', (3))] = [True]*6
+polarizability_axis_nonzero[('internal_three_neighbors', (1, 1, 1))] = [True]*6
+polarizability_axis_nonzero[('internal_two_neighbors', (2))] = [True]*6
+polarizability_axis_nonzero[('internal_two_neighbors', (1, 1))] = [True]*6
+polarizability_axis_nonzero[('terminal_three_adjacent_neighbors', (1, 2, 1))] = [True]*6
+polarizability_axis_nonzero[('terminal_three_adjacent_neighbors', (1, 3))] = [True]*6
+polarizability_axis_nonzero[('terminal_three_adjacent_neighbors', (1, 1, 1, 1))] = [True]*6
+polarizability_axis_nonzero[('terminal_two_adjacent_neighbors', (1, 2))] = [True]*6
+polarizability_axis_nonzero[('terminal_two_adjacent_neighbors', (1, 1, 1))] = [True]*6
+polarizability_axis_nonzero[('terminal_one_adjacent_neighbor', (1, 1))] = [True]*6

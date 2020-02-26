@@ -187,7 +187,7 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
                 polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local,
                                              fs.rotation_matrices)
                 induced_dipoles = np.einsum("aij,j->ai", polarizabilities, fs.field)
-                esp = -field(s, 1, induced_dipoles, 0)
+                esp = -field(fs, 1, induced_dipoles, 0)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
             jac[ip] = j / (2 * h)
 
@@ -200,7 +200,7 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
 
     # scale by large number to make optimizer work better...
     # or "units in (mH)**2"
-    print(res, np.linalg.norm(jac))
+    # print(res, np.linalg.norm(jac))
     if calc_jac:
         return 1e6 * res, 1e6 * jac
     else:
