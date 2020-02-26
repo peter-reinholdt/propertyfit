@@ -10,8 +10,10 @@ from qcelemental import covalentradii
 from propertyfit import rotations
 
 parameters = pandas.read_csv("results.csv")
+polarizability_parameters = pandas.read_csv("results.csv")
 system = pyframe.MolecularSystem(sys.argv[1])
-system.add_region('all', fragments=system.fragments, use_standard_potentials=True, standard_potential_model='cp3')
+system.add_region('all', fragments=system.fragments, use_standard_potentials=True,
+                  standard_potential_model='cp3')  #, standard_potential_exclusion_type='mfcc')
 project = pyframe.Project()
 project.scratch_dir = '/tmp'
 project.create_embedding_potential(system)
@@ -22,6 +24,7 @@ for fragment in system.fragments.values():
 charges = []
 dipoles = []
 quadrupoles = []
+polarizabilities = []
 rotation_matrices = []
 
 equivalent_names = {
@@ -75,16 +78,19 @@ for i in range(coords.shape[0]):
 offset = 0
 for fragment in system.fragments.values():
     residue = parameters[parameters.resname == fragment.name]
+    aresidue = polarizability_parameters[parameters.resname == fragment.name]
     fragment_atomnames = np.array([atom.name for atom in fragment.atoms])
     fragment_coordinates = np.array([atom.coordinate for atom in fragment.atoms])
 
     for iatom, atom in enumerate(fragment.atoms):
         if atom.name in residue.atomname.values:
             p = residue[residue.atomname == atom.name]
+            ap = aresidue[residue.atomname == atom.name]
         else:
             for name in equivalent_names[atom.name]:
                 if name in residue.atomname.values:
                     p = residue[residue.atomname == name]
+                    ap = aresidue[residue.atomname == name]
                     break
 
         charges.append(p.charge.values[0])
@@ -92,6 +98,10 @@ for fragment in system.fragments.values():
         quadrupoles.append([
             p["quadrupole[0]"].values[0], p["quadrupole[1]"].values[0], p["quadrupole[2]"].values[0],
             p["quadrupole[3]"].values[0], p["quadrupole[4]"].values[0], p["quadrupole[5]"].values[0]
+        ])
+        polarizabilities.append([
+            ap["polarizability[0]"].values[0], ap["polarizability[1]"].values[0], ap["polarizability[2]"].values[0],
+            ap["polarizability[3]"].values[0], ap["polarizability[4]"].values[0], ap["polarizability[5]"].values[0]
         ])
 
         axis_atomnames = p["axis_atomnames"].values[0].split()
@@ -214,8 +224,25 @@ print('@POLARIZABILITIES')
 print('ORDER 1 1')
 print(len(atoms))
 for atom, p in zip(atoms, system.potential.values()):
-    # for now, use standard cp3 polarizability
-    print('{:<12d} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f}'.format(atom.number, *p.P11))
+    # standard cp3 polarizability
+    # print('{:<12d} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f}'.format(atom.number, *p.P11))
+    # anisotropic cp3 -- unpack, rotate, repack
+    polarizability = np.zeros((3, 3))
+    polarizability[0, 0] = polarizabilities[idx][0]
+    polarizability[0, 1] = polarizabilities[idx][1]
+    polarizability[1, 0] = polarizabilities[idx][1]
+    polarizability[0, 2] = polarizabilities[idx][2]
+    polarizability[2, 0] = polarizabilities[idx][2]
+    polarizability[1, 1] = polarizabilities[idx][3]
+    polarizability[1, 2] = polarizabilities[idx][4]
+    polarizability[2, 1] = polarizabilities[idx][4]
+    polarizability[2, 2] = polarizabilities[idx][5]
+    polarizability = rotation_matrices[idx] @ polarizability @ rotation_matrices[idx].T
+    alpha = [
+        polarizability[0, 0], polarizability[0, 1], polarizability[0, 2], polarizability[1, 1], polarizability[1, 2],
+        polarizability[2, 2]
+    ]
+    print('{:<12d} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f}'.format(atom.number, *alpha))
 
 print('EXCLISTS')
 maxlength = 0
