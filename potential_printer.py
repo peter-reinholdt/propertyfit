@@ -78,19 +78,19 @@ for i in range(coords.shape[0]):
 offset = 0
 for fragment in system.fragments.values():
     residue = parameters[parameters.resname == fragment.name]
-    aresidue = polarizability_parameters[parameters.resname == fragment.name]
+    aresidue = polarizability_parameters[polarizability_parameters.resname == fragment.name]
     fragment_atomnames = np.array([atom.name for atom in fragment.atoms])
     fragment_coordinates = np.array([atom.coordinate for atom in fragment.atoms])
 
     for iatom, atom in enumerate(fragment.atoms):
         if atom.name in residue.atomname.values:
             p = residue[residue.atomname == atom.name]
-            ap = aresidue[residue.atomname == atom.name]
+            ap = aresidue[aresidue.atomname == atom.name]
         else:
             for name in equivalent_names[atom.name]:
                 if name in residue.atomname.values:
                     p = residue[residue.atomname == name]
-                    ap = aresidue[residue.atomname == name]
+                    ap = aresidue[aresidue.atomname == name]
                     break
 
         charges.append(p.charge.values[0])
