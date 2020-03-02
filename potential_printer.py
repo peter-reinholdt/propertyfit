@@ -10,10 +10,10 @@ from qcelemental import covalentradii
 from propertyfit import rotations
 
 parameters = pandas.read_csv("results.csv")
-polarizability_parameters = pandas.read_csv("results.csv")
+polarizability_parameters = pandas.read_csv("alpha_results.csv")
 system = pyframe.MolecularSystem(sys.argv[1])
 system.add_region('all', fragments=system.fragments, use_standard_potentials=True,
-                  standard_potential_model='cp3')  #, standard_potential_exclusion_type='mfcc')
+                  standard_potential_model='cp3', standard_potential_exclusion_type='fragment')
 project = pyframe.Project()
 project.scratch_dir = '/tmp'
 project.create_embedding_potential(system)
@@ -223,7 +223,7 @@ for idx, atom in enumerate(atoms):
 print('@POLARIZABILITIES')
 print('ORDER 1 1')
 print(len(atoms))
-for atom, p in zip(atoms, system.potential.values()):
+for idx, atom in enumerate(atoms):
     # standard cp3 polarizability
     # print('{:<12d} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f} {:16.12f}'.format(atom.number, *p.P11))
     # anisotropic cp3 -- unpack, rotate, repack

@@ -81,3 +81,9 @@ for i, polarizability in enumerate(polarizabilities_local):
     print(
         f'{i:>6}: {polarizability[0,0]: 12.10f} {polarizability[0,1]: 12.10f} {polarizability[0,2]: 12.10f} {polarizability[1,1]: 12.10f} {polarizability[1,2]: 12.10f} {polarizability[2,2]: 12.10f}'
     )
+print("Change in Polarizabilities (in local axes):")
+print("{:>6}   {:<13} {:<13} {:<13} {:<13} {:<13} {:<13}".format("Index", "xx", "xy", "xz", "yy", "yz", "zz"))
+for i, polarizability in enumerate(polarizabilities_local - con.startguess_polarizability_redundant):
+    print(
+        f'{i:>6}: {polarizability[0,0]: 12.10f} {polarizability[0,1]: 12.10f} {polarizability[0,2]: 12.10f} {polarizability[1,1]: 12.10f} {polarizability[1,2]: 12.10f} {polarizability[2,2]: 12.10f}'
+    )
