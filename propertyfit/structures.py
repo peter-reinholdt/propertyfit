@@ -677,12 +677,14 @@ class constraints(object):
             for sym in frag.fullsymmetries:
                 if self.isotropic_polarizabilities:
                     aiso = parameter_vector[pcounter]
+                    pcounter += 1
                     for idx in sym:
                         polarizabilities[idx, 0, 0] = aiso
                         polarizabilities[idx, 1, 1] = aiso
                         polarizabilities[idx, 2, 2] = aiso
                 else:
                     xx, xy, xz, yy, yz, zz = self.polarizability_parameters_active[polarizability_pcounter]
+                    polarizability_pcounter += 1
                     axx = axy = axz = ayy = ayz = azz = 0.
                     if xx:
                         axx = parameter_vector[pcounter]
@@ -727,9 +729,6 @@ class constraints(object):
                 # check which parameters are non-zero by local symmetry
                 # "bool xy -> is_nonzero(xy)"
                 if isotropic:
-                    # not really used
-                    xy, xz, yz = False
-                    xx, yy, zz = True
                     alpha0.append(np.trace(polarizability / 3))
                 else:
                     xx, xy, xz, yy, yz, zz = polarizability_axis_nonzero[(self.axis_types[index],
@@ -741,7 +740,7 @@ class constraints(object):
                     if yy: alpha0.append(polarizability[1, 1])
                     if yz: alpha0.append(polarizability[1, 2])
                     if zz: alpha0.append(polarizability[2, 2])
-                self.polarizability_parameters_active.append([xx, xy, xz, yy, yz, zz])
+                    self.polarizability_parameters_active.append([xx, xy, xz, yy, yz, zz])
         self.nparametersalpha = len(alpha0)
         parameter_vector = alpha0
         return parameter_vector
