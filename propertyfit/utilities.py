@@ -1,9 +1,4 @@
 #!/usr/bin/env python
-"""
-Utility routines and
-conversion factors
-"""
-
 import os
 import warnings
 import glob
@@ -13,9 +8,6 @@ import json
 import contextlib
 from numpy import nan
 from functools import wraps
-
-hartree2kjmol = 2625.5002
-kjmol2hartree = 1.0 / hartree2kjmol
 
 
 def load_json(filename):

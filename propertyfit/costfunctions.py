@@ -1,14 +1,6 @@
 #!/usr/bin/env python
-"""
-Contains routines for evaluating potential from
-test charges and dipoles, as well as definitions
-of cost functions for fitting charges and
-(isotropic) polarizabilities
-"""
-
 from __future__ import print_function
 import numpy as np
-from .utilities import hartree2kjmol
 from .potentials import field
 
 

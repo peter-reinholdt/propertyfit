@@ -22,6 +22,11 @@ parser.add_argument('--topology',
                     type=str,
                     help='Provide file for information about symmetry-equivalent atoms and more.',
                     required=True)
+parser.add_argument('--fit-type',
+                    dest='fit_type',
+                    default='multipole',
+                    choices=['charge', 'multipole'],
+                    help='Which type of fit to perform')
 parser.add_argument('--method', dest='method', default='slsqp', help='Which optimizer to use')
 parser.add_argument('--weights', dest='weights', type=str, help='Weights to use in optimization')
 parser.add_argument('--hydrogen-max-angular-momentum', type=int, default=1)
@@ -59,12 +64,18 @@ else:
     weights = None
 
 con.restraint = args.restraint
-parameters = con.get_multipole_parameter_vector(optimize_charges=True,
-                                                optimize_dipoles=True,
-                                                optimize_quadrupoles=True,
-                                                hydrogen_max_angular_momentum=args.hydrogen_max_angular_momentum)
-for s in structures:
-    s.get_rotation_matrices(con)
+if args.fit_type == 'charge':
+    parameters = con.get_multipole_parameter_vector(optimize_charges=True,
+                                                    optimize_dipoles=False,
+                                                    optimize_quadrupoles=False,
+                                                    hydrogen_max_angular_momentum=args.hydrogen_max_angular_momentum)
+elif args.fit_type == 'multipole':
+    for s in structures:
+        s.get_rotation_matrices(con)
+    parameters = con.get_multipole_parameter_vector(optimize_charges=True,
+                                                    optimize_dipoles=True,
+                                                    optimize_quadrupoles=True,
+                                                    hydrogen_max_angular_momentum=args.hydrogen_max_angular_momentum)
 fun = functools.partial(multipole_cost_function,
                         structures=structures,
                         constraints=con,
