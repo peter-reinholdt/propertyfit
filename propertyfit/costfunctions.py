@@ -122,11 +122,11 @@ def multipole_cost_function(parameters,
 
 def multipole_restraint_contribution_res(parameters, constraints):
     charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
-    res = constraints.restraint[0] * np.average((charges - constraints.startguess_charge_redundant)**2)
+    res = constraints.restraint[0] * np.sum((charges - constraints.startguess_charge_redundant)**2)
     nonzero = dipoles_local != 0.
-    res += constraints.restraint[1] * np.average((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
+    res += constraints.restraint[1] * np.sum((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
     nonzero = quadrupoles_local != 0.
-    res += constraints.restraint[2] * np.average((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
+    res += constraints.restraint[2] * np.sum((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
     return res
 
 
@@ -210,7 +210,7 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
 def polarizability_restraint_contribution_res(parameters, constraints):
     polarizabilities_local = constraints.expand_polarizabilities(parameters)
     nonzero = polarizabilities_local != 0.
-    res = np.average((polarizabilities_local[nonzero] - constraints.startguess_polarizability_redundant[nonzero])**2)
+    res = np.sum((polarizabilities_local[nonzero] - constraints.startguess_polarizability_redundant[nonzero])**2)
     res *= constraints.restraint
     return res
 
