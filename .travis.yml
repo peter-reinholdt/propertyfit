@@ -1,6 +1,6 @@
 language: python
 python:
-  - 2.7
+  - 3.7
   
 os: linux
 
@@ -15,18 +15,17 @@ install:
   - conda info -a
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
-  - conda install numpy scipy pytest numba sh
-  - conda install -c theochem horton
-  - conda install pytest-cov coveralls
+  - conda install numpy scipy pytest sh h5py pytest-cov coveralls
+  - pip install qcelemental
   
 script:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]];
     then pytest -vv data/testfiles/test_*.py --cov;
     else pytest -vv data/testfiles/test_*.py;
     fi
 
 after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]];
     then coveralls;
     fi
 
