@@ -168,9 +168,13 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
     for idx, (fs, s) in enumerate(zip(fieldstructures, structures)):
         test_esp = np.zeros(s.esp_grid_qm.shape)
         # minus sign due to potential definition
-        # R @ alpha @ R.T
-        polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local,
-                                     fs.rotation_matrices)
+        if constraints.isotropic_polarizabilities:
+            # no need to rotate; they should be ~ np.eye(3) * aiso
+            polarizabilities = polarizabilities_local
+        else:
+            # R @ alpha @ R.T
+            polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local,
+                                         fs.rotation_matrices)
         induced_dipoles = np.einsum("aij,j->ai", polarizabilities, fs.field)
         test_esp = -field(s, 1, induced_dipoles, 0)
         qm_induced_esp = s.esp_grid_qm - fs.esp_grid_qm
@@ -191,8 +195,12 @@ def polarizability_cost_function(parameters, structures, fieldstructures, constr
             mask = np.any(polarizabilities_local != 0., axis=(1, 2))
             j = 0.0
             for idx, fs in enumerate(fieldstructures):
-                polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local,
-                                             fs.rotation_matrices)
+                if constraints.isotropic_polarizabilities:
+                    # no need to rotate; they should be ~ np.eye(3) * aiso
+                    polarizabilities = polarizabilities_local
+                else:
+                    polarizabilities = np.einsum("aij,ajk,alk->ail", fs.rotation_matrices, polarizabilities_local,
+                                                 fs.rotation_matrices)
                 induced_dipoles = np.einsum("aij,j->ai", polarizabilities, fs.field)
                 esp = -field(fs, 1, induced_dipoles, 0)
                 j += weights[idx] * (np.average((diff_esps[idx] + esp)**2) - np.average((diff_esps[idx] - esp)**2))
