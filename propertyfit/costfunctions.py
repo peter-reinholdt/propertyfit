@@ -55,7 +55,7 @@ def multipole_cost_function(parameters,
             dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
             test_esp += -field(s, 1, dipoles, 0)
         if np.any(quadrupoles_local):
-        # R @ theta @ R.T
+            # R @ theta @ R.T
             quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local, s.rotation_matrices)
             test_esp += -field(s, 2, quadrupoles, 0)
         diff_esps.append(test_esp - s.esp_grid_qm)
@@ -130,10 +130,12 @@ def multipole_restraint_contribution_res(parameters, constraints):
     res = constraints.restraint[0] * np.sum((charges - constraints.startguess_charge_redundant)**2)
     if np.any(dipoles_local):
         nonzero = dipoles_local != 0.
-        res += constraints.restraint[1] * np.sum((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
+        res += constraints.restraint[1] * np.sum(
+            (dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
     if np.any(quadrupoles_local):
         nonzero = quadrupoles_local != 0.
-        res += constraints.restraint[2] * np.sum((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
+        res += constraints.restraint[2] * np.sum(
+            (quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
     return res
 
 

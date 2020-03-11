@@ -309,8 +309,8 @@ class fragment(object):
         self.lastidxissym = False
         self.lastidxnsym = 1  #standard, no symmetry on last atom
         self.lastidxsym = [self.lastidx]
-        
-        # below: Read data. Some is not present in older versions. 
+
+        # below: Read data. Some is not present in older versions.
         def optional_read(fragdict, field, default):
             if field in fragdict:
                 return fragdict[field]
@@ -318,13 +318,13 @@ class fragment(object):
                 return default
 
         self.startguess_charge = optional_read(fragdict, "startguess_charge", np.zeros(self.natoms).tolist())
-        self.startguess_dipole = optional_read(fragdict, "startguess_dipole", np.zeros((self.natoms,3)).tolist())
-        self.startguess_quadrupole = optional_read(fragdict, "startguess_quadrupole", np.zeros((self.natoms, 3, 3)).tolist())
+        self.startguess_dipole = optional_read(fragdict, "startguess_dipole", np.zeros((self.natoms, 3)).tolist())
+        self.startguess_quadrupole = optional_read(fragdict, "startguess_quadrupole",
+                                                   np.zeros((self.natoms, 3, 3)).tolist())
         self.startguess_polarizability = optional_read(fragdict, "startguess_polarizability", [])
         self.axis_types = optional_read(fragdict, "axis_types", [])
         axis_indices = optional_read(fragdict, "axis_atomindices", [[]])
-        self.axis_atomindices = [[idx - 1 for idx in axis_atomindices]
-                                     for axis_atomindices in axis_indices]
+        self.axis_atomindices = [[idx - 1 for idx in axis_atomindices] for axis_atomindices in axis_indices]
         self.axis_atomnames = optional_read(fragdict, "axis_atomnames", [])
         self.axis_number_of_symmetric = optional_read(fragdict, "axis_number_of_symmetric", [])
 

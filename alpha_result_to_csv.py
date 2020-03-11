@@ -8,7 +8,9 @@ import propertyfit
 from propertyfit.structures import constraints
 
 with open('alpha_results.csv', 'w') as csvfile:
-    csvfile.write('resname,atomname,axis_type,axis_atomnames,polarizability[0],polarizability[1],polarizability[2],polarizability[3],polarizability[4],polarizability[5]\n')
+    csvfile.write(
+        'resname,atomname,axis_type,axis_atomnames,polarizability[0],polarizability[1],polarizability[2],polarizability[3],polarizability[4],polarizability[5]\n'
+    )
     for filename in sys.argv[2:]:
         path = pathlib.Path(filename)
         if not path.stat().st_size > 0:

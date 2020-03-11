@@ -12,8 +12,11 @@ from propertyfit import rotations
 parameters = pandas.read_csv("results.csv")
 polarizability_parameters = pandas.read_csv("alpha_results.csv")
 system = pyframe.MolecularSystem(sys.argv[1])
-system.add_region('all', fragments=system.fragments, use_standard_potentials=True,
-                  standard_potential_model='cp3', standard_potential_exclusion_type='fragment')
+system.add_region('all',
+                  fragments=system.fragments,
+                  use_standard_potentials=True,
+                  standard_potential_model='cp3',
+                  standard_potential_exclusion_type='fragment')
 project = pyframe.Project()
 project.scratch_dir = '/tmp'
 project.create_embedding_potential(system)

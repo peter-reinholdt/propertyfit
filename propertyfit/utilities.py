@@ -57,7 +57,7 @@ def return_to_cwd():
 
 
 dipole_axis_nonzero = {}
-polarizability_axis_nonzero = dict()
+polarizability_axis_nonzero = {}
 quadrupole_axis_nonzero = {}
 
 # indexed by (axis_type, number_of_symmetric)
@@ -135,16 +135,22 @@ quadrupole_axis_nonzero[('zthenx', (-1, 1))] = [True, False, False, True, False]
 quadrupole_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True, True, True, True, True]  #  (2, 2, 2, 2, 2)
 quadrupole_axis_nonzero[('bisector', (2, 1))] = [True, False, False, True, False]  #  (42, 42, 39, 42, 41)
 quadrupole_axis_nonzero[('bisector', (1, 1, 1))] = [True, False, True, True, False]  #  (37, 37, 37, 37, 35)
-polarizability_axis_nonzero[('zthenx', (2, 1, 1))] = [True, False, True, True, False, True]  #  (201, 154, 192, 201, 111)
-polarizability_axis_nonzero[('zthenx', (1, 1, 1, 1))] = [True, True, False, True, True, True]  #  (138, 138, 73, 138, 130)
+polarizability_axis_nonzero[('zthenx', (2, 1, 1))] = [True, False, True, True, False,
+                                                      True]  #  (201, 154, 192, 201, 111)
+polarizability_axis_nonzero[('zthenx', (1, 1, 1, 1))] = [True, True, False, True, True,
+                                                         True]  #  (138, 138, 73, 138, 130)
 polarizability_axis_nonzero[('zthenx', (3, 1))] = [True, False, True, True, False, True]  #  (243, 236, 220, 243, 169)
 polarizability_axis_nonzero[('zthenx', (2, 1))] = [True, False, True, True, True, True]  #  (71, 48, 36, 71, 43)
-polarizability_axis_nonzero[('zthenx', (1, 1, 1))] = [True, False, True, True, False, True]  #  (490, 286, 381, 490, 252)
+polarizability_axis_nonzero[('zthenx', (1, 1, 1))] = [True, False, True, True, False,
+                                                      True]  #  (490, 286, 381, 490, 252)
 polarizability_axis_nonzero[('zthenx', (1, 1))] = [True, False, True, True, False, True]  #  (82, 67, 78, 82, 59)
-polarizability_axis_nonzero[('zthenx', (-1, 2, 1))] = [True, False, True, True, False, True]  #  (744, 743, 645, 682, 731)
-polarizability_axis_nonzero[('zthenx', (-1, 1, 1, 1))] = [True, False, False, True, False, True]  #  (519, 521, 501, 514, 488)
+polarizability_axis_nonzero[('zthenx', (-1, 2, 1))] = [True, False, True, True, False,
+                                                       True]  #  (744, 743, 645, 682, 731)
+polarizability_axis_nonzero[('zthenx', (-1, 1, 1, 1))] = [True, False, False, True, False,
+                                                          True]  #  (519, 521, 501, 514, 488)
 polarizability_axis_nonzero[('zthenx', (-1, 2))] = [True, False, False, True, False, True]  #  (5, 5, 5, 5, 5)
-polarizability_axis_nonzero[('zthenx', (-1, 1, 1))] = [True, False, False, True, False, True]  #  (665, 668, 423, 669, 641)
+polarizability_axis_nonzero[('zthenx', (-1, 1, 1))] = [True, False, False, True, False,
+                                                       True]  #  (665, 668, 423, 669, 641)
 polarizability_axis_nonzero[('zthenx', (-1, 1))] = [True, False, True, True, False, True]  #  (57, 57, 37, 57, 57)
 polarizability_axis_nonzero[('bisector', (1, 1, 1, 1))] = [True, True, True, True, True, True]  #  (2, 2, 2, 2, 2)
 polarizability_axis_nonzero[('bisector', (2, 1))] = [True, False, True, True, False, True]  #  (42, 40, 41, 42, 29)
