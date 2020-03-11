@@ -309,18 +309,24 @@ class fragment(object):
         self.lastidxissym = False
         self.lastidxnsym = 1  #standard, no symmetry on last atom
         self.lastidxsym = [self.lastidx]
-        self.startguess_charge = fragdict["startguess_charge"]
-        self.startguess_dipole = fragdict["startguess_dipole"]
-        self.startguess_quadrupole = fragdict["startguess_quadrupole"]
-        self.startguess_polarizability = fragdict["startguess_polarizability"]
-        self.axis_types = fragdict["axis_types"]
+        
+        # below: Read data. Some is not present in older versions. 
+        def optional_read(fragdict, field, default):
+            if field in fragdict:
+                return fragdict[field]
+            else:
+                return default
+
+        self.startguess_charge = optional_read(fragdict, "startguess_charge", np.zeros(self.natoms).tolist())
+        self.startguess_dipole = optional_read(fragdict, "startguess_dipole", np.zeros((self.natoms,3)).tolist())
+        self.startguess_quadrupole = optional_read(fragdict, "startguess_quadrupole", np.zeros((self.natoms, 3, 3)).tolist())
+        self.startguess_polarizability = optional_read(fragdict, "startguess_polarizability", [])
+        self.axis_types = optional_read(fragdict, "axis_types", [])
+        axis_indices = optional_read(fragdict, "axis_atomindices", [[]])
         self.axis_atomindices = [[idx - 1 for idx in axis_atomindices]
-                                 for axis_atomindices in fragdict["axis_atomindices"]]
-        self.axis_atomnames = fragdict["axis_atomnames"]
-        if "axis_number_of_symmetric" in fragdict:
-            self.axis_number_of_symmetric = fragdict["axis_number_of_symmetric"]
-        else:
-            self.axis_number_of_symmetric = []
+                                     for axis_atomindices in axis_indices]
+        self.axis_atomnames = optional_read(fragdict, "axis_atomnames", [])
+        self.axis_number_of_symmetric = optional_read(fragdict, "axis_number_of_symmetric", [])
 
         for iloc, idx in enumerate(self.symmetryidx):
             for sym in self.symmetries:
@@ -553,7 +559,7 @@ class constraints(object):
                         dipoles[idx, 1] = my
                         dipoles[idx, 2] = mz
         else:
-            dipoles = self.startguess_dipole_redundant
+            dipoles = []
         if self.optimize_quadrupoles:
             quadrupoles = np.zeros((self.natoms, 3, 3))
             quadrupole_pcounter = 0
@@ -588,7 +594,7 @@ class constraints(object):
                         quadrupoles[idx, 2, 1] = Qyz
                         quadrupoles[idx, 2, 2] = -(Qxx + Qyy)
         else:
-            quadrupoles = self.startguess_quadrupole_redundant
+            quadrupoles = []
         return charges, dipoles, quadrupoles
 
     def expand_charges_for_fdiff(self, parameter_vector):

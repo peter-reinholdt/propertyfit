@@ -47,19 +47,26 @@ def multipole_cost_function(parameters,
     contributions = np.zeros(nstructures)
     diff_esps = []
     for idx, s in enumerate(structures):
-        test_esp = np.zeros(s.esp_grid_qm.shape)
         # minus sign due to potential definition
-        # R @ mu
-        dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
-        # R @ theta @ R.T
-        quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local, s.rotation_matrices)
+        test_esp = np.zeros(s.esp_grid_qm.shape)
         test_esp += -field(s, 0, charges, 0)
-        test_esp += -field(s, 1, dipoles, 0)
-        test_esp += -field(s, 2, quadrupoles, 0)
+        if np.any(dipoles_local):
+            # R @ mu
+            dipoles = np.einsum("aij,aj->ai", s.rotation_matrices, dipoles_local)
+            test_esp += -field(s, 1, dipoles, 0)
+        if np.any(quadrupoles_local):
+        # R @ theta @ R.T
+            quadrupoles = np.einsum("aij,ajk,alk->ail", s.rotation_matrices, quadrupoles_local, s.rotation_matrices)
+            test_esp += -field(s, 2, quadrupoles, 0)
         diff_esps.append(test_esp - s.esp_grid_qm)
         contribution = np.average((test_esp - s.esp_grid_qm)**2)
         contributions[idx] = contribution * weights[idx]
     res = np.sum(contributions)
+
+    # restraint contribution
+    if constraints.restraint:
+        res_restraint = multipole_restraint_contribution_res(parameters, constraints)
+        res += res_restraint
 
     # get jacobian
     if calc_jac:
@@ -107,9 +114,7 @@ def multipole_cost_function(parameters,
 
         # restraint contribution
         if constraints.restraint:
-            res_restraint = multipole_restraint_contribution_res(parameters, constraints)
             jac_restraint = multipole_restraint_contribution_jac(parameters, constraints)
-            res += res_restraint
             jac += jac_restraint
 
     # scale by large number to make optimizer work better...
@@ -123,10 +128,12 @@ def multipole_cost_function(parameters,
 def multipole_restraint_contribution_res(parameters, constraints):
     charges, dipoles_local, quadrupoles_local = constraints.expand_parameter_vector(parameters)
     res = constraints.restraint[0] * np.sum((charges - constraints.startguess_charge_redundant)**2)
-    nonzero = dipoles_local != 0.
-    res += constraints.restraint[1] * np.sum((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
-    nonzero = quadrupoles_local != 0.
-    res += constraints.restraint[2] * np.sum((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
+    if np.any(dipoles_local):
+        nonzero = dipoles_local != 0.
+        res += constraints.restraint[1] * np.sum((dipoles_local[nonzero] - constraints.startguess_dipole_redundant[nonzero])**2)
+    if np.any(quadrupoles_local):
+        nonzero = quadrupoles_local != 0.
+        res += constraints.restraint[2] * np.sum((quadrupoles_local[nonzero] - constraints.startguess_quadrupole_redundant[nonzero])**2)
     return res
 
 
